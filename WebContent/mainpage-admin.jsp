@@ -42,7 +42,7 @@
 	            <a  href="ListClientes" class="nav-link">Clientes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Ver pedidos</a>
+              <a class="nav-link" href="ListPedidos">Pedidos</a>
           </li>
           <li class="nav-item">
              

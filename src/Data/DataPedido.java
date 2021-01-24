@@ -14,7 +14,7 @@ public class DataPedido {
 		
 		Statement stmt=null;
 		ResultSet rs=null;
-		LinkedList<Pedido> pedidos= new LinkedList<>();
+		LinkedList<Pedido> pedidos= new LinkedList<Pedido>();
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
@@ -158,4 +158,43 @@ public class DataPedido {
 		}
 		return p;
 		}
+
+	public Pedido getById(Pedido ped) {
+		Pedido p=null;
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		try {
+			stmt=DbConnector.getInstancia().getConn().prepareStatement(
+					"select idPedido,fechaPedido,precioTotal,fechaEntrega, direccionEnvio,estado,id_persona,id_dcto from pedido where idPedido=? "
+					);
+			stmt.setInt(1, ped.getIdPedido());
+			
+			rs=stmt.executeQuery();
+			if(rs!=null && rs.next()) {
+				p=new Pedido();
+				p.setIdPedido(rs.getInt("idPedido"));
+				p.setFechaPedido(rs.getDate("fechaPedido"));
+				
+				p.setPrecioTotal(rs.getDouble("precioTotal"));
+				p.setFechaEntrega(rs.getDate("fechaEntrega"));
+				p.setDireccionEnvio(rs.getString("direccionEnvio"));
+				p.setEstado(rs.getString("estado"));
+				p.setId_persona(rs.getInt("id_persona"));
+				p.setId_dcto(rs.getInt("id_dcto"));
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return p;
 }
+	}

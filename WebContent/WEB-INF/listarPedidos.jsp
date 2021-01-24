@@ -1,15 +1,14 @@
 <%@page import="java.util.LinkedList"%>
 <%@page import="entidades.*"%>
 <%@page import="logic.*"%>
-<%@ page language="java" contentType="text/html; charset= ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="ISO-8859-1">
 
- <!-- Bootstrap core CSS -->
+  <!-- Bootstrap core CSS -->
   <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
@@ -24,16 +23,15 @@
   <link href="style/clientes-admin/confirmacion.css" rel="stylesheet">
   
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
- 
-
   
-<title>Clientes</title>
+<title>Pedidos</title>
 
-<% LinkedList<Persona> lc = (LinkedList<Persona>)request.getAttribute("listado");
+<% LinkedList<Pedido> lp = (LinkedList<Pedido>)request.getAttribute("pedidos");
 %>
 
 </head>
 <body>
+
 <!-- Page Content -->
   <div class="container">
  <!-- Navigation -->
@@ -53,15 +51,17 @@
           <li class="nav-item">
             <a class="nav-link" href="categorias-admin.jsp">Categorías</a>
           </li>
-          <li class="nav-item">
-           <a class="nav-link" href="ListDescuentos">Descuentos</a>
+          <li class="nav-item ">
+            <a class="nav-link" href="ListDescuentos">Descuentos</a>
+           
+          </li>
+          <li class="nav-item ">
+	            <a class="nav-link" href="ListClientes">Clientes</a>
+	             
           </li>
           <li class="nav-item active">
-	            <a class="nav-link" href="ListClientes">Clientes</a>
-	             <span class="sr-only">(current)</span>
-          </li>
-          <li class="nav-item">
-             <a class="nav-link" href="ListPedidos">Pedidos</a>
+            <a class="nav-link" href="ListPedidos">Pedidos</a>
+             <span class="sr-only">(current)</span>
           </li>
           <li class="nav-item">
              <form action="Inicio" method="get">
@@ -85,41 +85,40 @@
                             <thead>
                                 <tr>
                                 <th align="center"><span>ID</span></th>
-                                <th align="center"><span>Nombre</span></th>
-                                <th align="center"><span>Apellido</span></th>
-                                <th align="center"><span>Tipo Doc</span></th>
-                                <th align="center"><span>Número Doc</span></th>
-                                <th align="center"><span>Telefono</span></th>
-                                <th align="center"><span>Dirección</span></th>
-                                <th align="center"><span>Email</span></th>
-                                <th align="center"><span>CUIT</span></th>
-                                <th align="center"><span>Fecha de Registro</span></th>
+                                <th align="center"><span>Fecha</span></th>
+                                <th align="center"><span>Precio Total</span></th>
+                                <th align="center"><span>Fecha Entrega</span></th>
+                                <th align="center"><span>Dirección Envío</span></th>
+                                <th align="center"><span>Estado</span></th>
+                                <th align="center"><span>ID Cliente</span></th>
+                                <th align="center"><span>ID Descuento</span></th>
+                                
+                               
                                
                                 <th>&nbsp;</th>
                                 </tr>
                             </thead>
                             <tbody>
-	                           <% for (Persona per : lc) { %>
+	                           <% for (Pedido p: lp) { %>
 	                    			<tr>
-	                    			<td><%=per.getIdPersona() %></td>
-                                    <td><%=per.getNombre()%></td>
-                                    <td><%=per.getApellido() %></td>
-                                    <td><%=per.getTipoDoc()%> </td>
-                                    <td><%=per.getNroDoc()%> </td>
-                                    <td><%=per.getTelefono() %> </td>
-                                    <td><%=per.getDireccion()%> </td>
-                                    <td><%=per.getEmail()%> </td>
-                                    <td><%=per.getCuit()%> </td>
-                                    <td><%=per.getFechaRegistro()%></td>
+	                    			<td><%=p.getIdPedido()%></td>
+                                    <td><%=p.getFechaPedido()%></td>
+                                    <td><%=p.getPrecioTotal()%></td>
+                                    <td><%=p.getFechaEntrega()%> </td>
+                                    <td><%=p.getDireccionEnvio()%> </td>
+                                    <td><%=p.getEstado()%> </td>
+                                    <td><%=p.getId_persona()%> </td>
+                                    <td><%=p.getId_dcto()%> </td>
+       
                                      <td style="width: 10%;">
                                         
-                                        <a href="EditClientes?id=<%=per.getIdPersona()%>" class="table-link text-info">
+                                        <a href="EditPedido?id=<%=p.getIdPedido()%>" class="table-link text-info">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                             </span>
                                         </a>
-                                        <a  href="DeleteClientes?id=<%=per.getIdPersona()%>" class="table-link danger" onclick="return confirm('Are you sure you want to delete this item?');" >
+                                        <a  href="DeletePedido?id=<%=p.getIdPedido()%>" class="table-link danger" onclick="return confirm('Desea eliminar este pedido?');" >
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -141,18 +140,16 @@
                 </div>
             </div>
             <span style="text-align: right; vertical-align: bottom;">
-            <form action="AddClientes" method=post">
+            <form action="AddPedido" method=post">
 					<div class="w3-container">	 
 						<button class="w3-button w3-xlarge w3-circle w3-teal" type="submit" >+</button>
-						<a href="AddClientes"> Agregar cliente</a>
+						<a href="AddClientes"> Agregar pedido</a>
 					</div>
 			</form>
 			</span>
         </div>
     </div>
 </div>
-
-
 
 </body>
 </html>

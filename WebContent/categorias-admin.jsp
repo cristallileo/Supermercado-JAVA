@@ -43,7 +43,7 @@
           </form>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Ver pedidos</a>
+             <a class="nav-link" href="ListPedidos">Pedidos</a>
           </li>
           <li class="nav-item">
               <form action="Inicio" method="get">
