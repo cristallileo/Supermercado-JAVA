@@ -35,7 +35,8 @@ public class PersonaController {
 	
 	public Persona getById(Persona per) {
 		Persona p=new Persona();
-		return dp.getById(per);
+		p= dp.getById(per);
+		return p;
 	}
 	
 	public Persona addPersona(Persona per) {

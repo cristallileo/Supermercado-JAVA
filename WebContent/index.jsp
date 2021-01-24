@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 
 <title>Bienvenido</title>
 
@@ -12,6 +12,28 @@
 
   <!-- Custom styles for this template -->
   <link href="style/mainpage/modern-business.css" rel="stylesheet">
+  
+  
+  <style>
+
+	.masthead {
+	 
+	font-family: Arial, Helvetica, sans-serif;
+  height: 100vh;
+  min-height: 500px;
+  background-image: url('style/login/1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+	h1, .h1 {
+	  font-size: 4em;
+	}
+	
+
+
+	
+</style>
   
 </head>
 <body>
@@ -36,7 +58,28 @@
       </div>
     </div>
   </nav>
-	
+
+
+  <!-- Page Content -->
+
+
+<!-- Full Page Image Header with Vertically Centered Content -->
+<header class="masthead">
+  <div class="container h-100">
+    <div class="row h-50 align-items-center">
+      <div class="col-12 text-center">
+       <b><h1  class="font-weight-light">Comprá Online</h1></b>
+        <p style="font-size:30px;" class="lead">Nosotros te lo llevamos a tu casa</p>
+ 		<a href="login.jsp" class="btn btn-info" role="button">Comenzar a comprar</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+
+</body>
 
 </body>
 </html>

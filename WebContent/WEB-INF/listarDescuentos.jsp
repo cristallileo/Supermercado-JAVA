@@ -1,14 +1,12 @@
 <%@page import="java.util.LinkedList"%>
 <%@page import="entidades.*"%>
 <%@page import="logic.*"%>
-<%@ page language="java" contentType="text/html; charset= ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="ISO-8859-1">
-
  <!-- Bootstrap core CSS -->
   <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
 
@@ -24,12 +22,11 @@
   <link href="style/clientes-admin/confirmacion.css" rel="stylesheet">
   
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
- 
-
   
-<title>Clientes</title>
+<title>Descuentos</title>
 
-<% LinkedList<Persona> lc = (LinkedList<Persona>)request.getAttribute("listado");
+
+<% LinkedList<Descuento> ld = (LinkedList<Descuento>)request.getAttribute("descuentos");
 %>
 
 </head>
@@ -53,12 +50,13 @@
           <li class="nav-item">
             <a class="nav-link" href="categorias-admin.jsp">Categorías</a>
           </li>
-          <li class="nav-item">
-           <a class="nav-link" href="ListDescuentos">Descuentos</a>
-          </li>
           <li class="nav-item active">
+            <a class="nav-link" href="ListDescuentos">Descuentos</a>
+            <span class="sr-only">(current)</span>
+          </li>
+          <li class="nav-item ">
 	            <a class="nav-link" href="ListClientes">Clientes</a>
-	             <span class="sr-only">(current)</span>
+	             
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Ver pedidos</a>
@@ -85,41 +83,31 @@
                             <thead>
                                 <tr>
                                 <th align="center"><span>ID</span></th>
-                                <th align="center"><span>Nombre</span></th>
-                                <th align="center"><span>Apellido</span></th>
-                                <th align="center"><span>Tipo Doc</span></th>
-                                <th align="center"><span>Número Doc</span></th>
-                                <th align="center"><span>Telefono</span></th>
-                                <th align="center"><span>Dirección</span></th>
-                                <th align="center"><span>Email</span></th>
-                                <th align="center"><span>CUIT</span></th>
-                                <th align="center"><span>Fecha de Registro</span></th>
+                                <th align="center"><span>Porcentaje</span></th>
+                                <th align="center"><span>Fecha Inicio</span></th>
+                                <th align="center"><span>Fecha Fin</span></th>
+                               
                                
                                 <th>&nbsp;</th>
                                 </tr>
                             </thead>
                             <tbody>
-	                           <% for (Persona per : lc) { %>
+	                           <% for (Descuento d : ld) { %>
 	                    			<tr>
-	                    			<td><%=per.getIdPersona() %></td>
-                                    <td><%=per.getNombre()%></td>
-                                    <td><%=per.getApellido() %></td>
-                                    <td><%=per.getTipoDoc()%> </td>
-                                    <td><%=per.getNroDoc()%> </td>
-                                    <td><%=per.getTelefono() %> </td>
-                                    <td><%=per.getDireccion()%> </td>
-                                    <td><%=per.getEmail()%> </td>
-                                    <td><%=per.getCuit()%> </td>
-                                    <td><%=per.getFechaRegistro()%></td>
+	                    			<td><%=d.getIdDcto() %></td>
+                                    <td><%=d.getPorcDcto()%></td>
+                                    <td><%=d.getFechaDctoInicio()%></td>
+                                    <td><%=d.getFechaDctoFin()%> </td>
+       
                                      <td style="width: 10%;">
                                         
-                                        <a href="EditClientes?id=<%=per.getIdPersona()%>" class="table-link text-info">
+                                        <a href="EditDescuento?id=<%=d.getIdDcto()%>" class="table-link text-info">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                             </span>
                                         </a>
-                                        <a  href="DeleteClientes?id=<%=per.getIdPersona()%>" class="table-link danger" onclick="return confirm('Are you sure you want to delete this item?');" >
+                                        <a  href="DeleteDescuento?id=<%=d.getIdDcto()%>" class="table-link danger" onclick="return confirm('Desea eliminar este descuento?');" >
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -141,17 +129,16 @@
                 </div>
             </div>
             <span style="text-align: right; vertical-align: bottom;">
-            <form action="AddClientes" method=post">
+            <form action="AddDescuento" method=post">
 					<div class="w3-container">	 
 						<button class="w3-button w3-xlarge w3-circle w3-teal" type="submit" >+</button>
-						<a href="AddClientes"> Agregar cliente</a>
+						<a href="AddClientes"> Agregar descuento</a>
 					</div>
 			</form>
 			</span>
         </div>
     </div>
 </div>
-
 
 
 </body>

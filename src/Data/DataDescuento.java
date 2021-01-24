@@ -46,7 +46,8 @@ import entidades.*;
 			return descuentos;
 		}
 
-	public void add(Descuento d) { 
+	
+	public Descuento add(Descuento d) { 
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
 		try {
@@ -81,7 +82,8 @@ import entidades.*;
             }
 		}
 		
-    }
+    return d;
+	}
 
 	public Descuento editDescuento (Descuento d) {
 		PreparedStatement stmt= null;
@@ -146,4 +148,69 @@ import entidades.*;
 		return p;
 		}
 	
+	public void deleteDescuento(Descuento d) {
+		
+		PreparedStatement stmt= null;
+		ResultSet keyResultSet=null;
+		try {
+			stmt=DbConnector.getInstancia().getConn().
+					prepareStatement(
+							"delete from descuento where descuento.idDcto=? ", PreparedStatement.RETURN_GENERATED_KEYS);
+			stmt.setInt(1, d.getIdDcto());
+			
+			stmt.executeUpdate();
+			
+			keyResultSet=stmt.getGeneratedKeys();
+            if(keyResultSet!=null && keyResultSet.next()){
+                d.setIdDcto(keyResultSet.getInt(1));
+            }
+		} catch (SQLException e) {
+        e.printStackTrace();
+		} finally {
+        try {
+        	 if(keyResultSet!=null)keyResultSet.close();
+            if(stmt!=null) stmt.close();
+            DbConnector.getInstancia().releaseConn();
+        } catch (SQLException e) {
+        	e.printStackTrace();
+        }
+	}
+	
+	}
+
+
+	public Descuento getById(Descuento des) {
+		Descuento d=null;
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		try {
+			stmt=DbConnector.getInstancia().getConn().prepareStatement(
+					"select idDcto,porcDcto,fechaDctoInicio,fechaDctoFin from descuento where idDcto=? "
+					);
+			stmt.setInt(1, des.getIdDcto());
+			
+			rs=stmt.executeQuery();
+			if(rs!=null && rs.next()) {
+				d=new Descuento();
+				d.setIdDcto(rs.getInt("idDcto"));
+				d.setPorcDcto(rs.getDouble("porcDcto"));
+				d.setFechaDctoInicio(rs.getDate("fechaDctoInicio"));
+				d.setFechaDctoFin(rs.getDate("fechaDctoFin"));
+
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return d;
+}
 	}

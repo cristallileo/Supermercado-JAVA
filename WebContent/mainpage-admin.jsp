@@ -36,7 +36,7 @@
             <a class="nav-link" href="categorias-admin.jsp">Categorías</a>
           </li>
 			      <li class="nav-item">
-            <a class="nav-link" href="#">Descuentos</a>
+            <a class="nav-link" href="ListDescuentos">Descuentos</a>
           </li>
           <li class="nav-item">
 	            <a  href="ListClientes" class="nav-link">Clientes</a>

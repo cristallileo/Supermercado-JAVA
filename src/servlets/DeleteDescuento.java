@@ -7,20 +7,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import entidades.Persona;
-import logic.PersonaController;
+import entidades.*;
+import logic.*;
+
 
 /**
- * Servlet implementation class DeleteClientes
+ * Servlet implementation class DeleteDescuento
  */
-@WebServlet("/DeleteClientes")
-public class DeleteClientes extends HttpServlet {
+@WebServlet("/DeleteDescuento")
+public class DeleteDescuento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteClientes() {
+    public DeleteDescuento() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,26 +40,18 @@ public class DeleteClientes extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//doGet(request, response);
-		
-		
-		PersonaController ctrl= new PersonaController();
-		Persona per= new Persona();
-		
-		
-		//Persona cli = (Persona)request.getSession().getAttribute("cliente_eliminar");
-		//Persona eliminada= ctrl.deletePersona(cli);
-	
-		int id = Integer.parseInt(request.getParameter("id"));
+
+		DescuentoController ctrl= new DescuentoController();
+		Descuento d= new Descuento();
 		//response.getWriter().append("Served at: ").append(id);
-		per.setIdPersona(id);
-		per =ctrl.getById(per);
-		per=ctrl.deletePersona(per);
-		request.setAttribute("listado", ctrl.listarClientes());
-		request.getRequestDispatcher("ListClientes").forward(request, response);
+		int id = Integer.parseInt(request.getParameter("id"));
+		d.setIdDcto(id);
+		d =ctrl.getById(d);
+		ctrl.deleteDescuento(d);
+		
+		request.setAttribute("descuentos", ctrl.listarDescuentos());
+		request.getRequestDispatcher("ListDescuentos").forward(request, response);
 	
-		
-		
 	}
 
 }

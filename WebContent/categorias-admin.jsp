@@ -35,7 +35,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Descuentos</a>
+            <a class="nav-link" href="ListDescuentos">Descuentos</a>
           </li>
           <li class="nav-item">
              <form action="ListClientes" method="get">
