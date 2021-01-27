@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.LinkedList;
+ 
 
 
 import Data.*;
@@ -71,7 +72,7 @@ public class DataPersona {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into persona(tipoDoc, nroDoc, nombre, apellido, telefono, direccion, email, password, cuit, fechaIngreso, fechaRegistro, cliente, empleado) values(?,?,?,?,?,?,?,?,?,?,?,?,?)",
+							"insert into `tp_java`.`persona`(`tipoDoc`, `nroDoc`, `nombre`, `apellido`, `telefono`, `direccion`, `email, `password`, `cuit`, `fechaIngreso`, `fechaRegistro`, `cliente`, `empleado`) values(?,?,?,?,?,?,?,?,?,?,curdate(),?,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
 			stmt.setString(1, p.getTipoDoc());
@@ -82,12 +83,13 @@ public class DataPersona {
 			stmt.setString(6, p.getDireccion());
 			stmt.setString(7, p.getEmail());
 			stmt.setString(8, p.getPassword());
-		
+		 
+			   
 			if (p.isCliente()==true) {
 				//LocalDate ld=  LocalDate.now();
 				stmt.setString(9, null);
 				stmt.setDate(10, null);
-				stmt.setDate(11, p.getFechaRegistro());		
+					
 			}else if (p.isEmpleado()==true){
 				stmt.setString(9, p.getCuit());
 				stmt.setDate(10, p.getFechaIngreso());

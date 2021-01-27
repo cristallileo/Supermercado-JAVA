@@ -44,49 +44,59 @@
 	    </div>
 	  </nav>
 	  
-
+<br>
+<br>
 <form action="AddClientes" method="post">
   <div class="container">
-    <h1>Register</h1>
-    <p>Please fill in this form to create an account.</p>
+    <h1>Únete a (nombre)</h1>
+    <p>Por favor complete el formulario para crear una cuenta</p>
     <hr>
 	
-	 <label for="name"><b>Nombre</b></label>
-    <input type="text" placeholder="Enter Name" name="name" id="name" required>
+	<label for="name"><b>Nombre </b></label>
+    <input type="text" placeholder="Ingrese nombre" name="name" id="name" required>
     
      <label for="surname"><b>Apellido</b></label>
-    <input type="text" placeholder="Enter Surname" name="surname" id="surname" required>
+    <input type="text" placeholder="Ingrese apellido" name="surname" id="surname" required>
     
-    <label for="tipoDoc"><b>tipo doc</b></label>
-    <input type="text" placeholder="Enter tipo doc" name="tipoDoc" id="tipoDoc" required>
+    <label for="surname"><b>Tipo de Documento</b></label>
+    <input type="text" placeholder="Tipo" name="surname" id="tipoDoc" required>
     
-    <label for="nroDoc"><b>nroDoc</b></label>
-    <input type="text" placeholder="Enter nroDoc" name="nroDoc" id="nroDoc" required>
+	<!-- <label for="tDoc"><b>Elegir tipo de documento</b></label>
+	  <select id="text" name="tipoDoc">
+	    <option value="dni">Dni</option>
+	    <option value="pasaporte">Pasaporte</option>
+	    <option value="ect">etc</option>
+	  </select>
+	<br>     
+    <br> -->
     
-    <label for="tel"><b>telefono</b></label>
-    <input type="text" placeholder="Enter tel" name="tel" id="tel" required>
+    <label for="nroDoc"><b>Numero de Documento</b></label>
+    <input type="text" placeholder="Nro doc" name="nroDoc" id="nroDoc" required>
     
-        <label for="direc"><b>direc</b></label>
-    <input type="text" placeholder="enter direc" name="direc" id="direc" required>
+    <label for="tel"><b>Telefono</b></label>
+    <input type="text" placeholder="Ingrese telefono" name="tel" id="tel" required>
+    
+        <label for="direc"><b>Dirección</b></label>
+    <input type="text" placeholder="Ingrese direccion" name="direc" id="direc" required>
 	
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" id="email" required>
+    <input type="text" placeholder="Ingrese email" name="email" id="email" required>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+    <label for="psw"><b>Contraseña</b></label>
+    <input type="password" placeholder="Ingrese contraseña" name="psw" id="psw" required>
 
-    <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+    <label for="psw-repeat"><b>Repetir Contraseña</b></label>
+    <input type="password" placeholder="Repita la contraseña" name="psw-repeat" id="psw-repeat" required>
     <hr>
 
 
-    <button type="submit" class="registerbtn">Register</button>
+    <button type="submit" class="registerbtn" value="AddClientes">Registrame</button>
   </div>
 
-  <div class="container signin">
-    <p>Already have an account? <a href="#">Sign in</a>.</p>
-  </div>
 </form>
 
+  <div class="container signin">
+    <p>¿Ya tienes una cuenta? <a href="login.jsp">Log in</a>.</p>
+  </div>
 </body>
 </html>
