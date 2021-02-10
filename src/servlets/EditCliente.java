@@ -1,9 +1,8 @@
 package servlets;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.util.Calendar;
-import java.util.LinkedList;
+
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,16 +14,16 @@ import entidades.Persona;
 import logic.PersonaController;
 
 /**
- * Servlet implementation class AddClientes
+ * Servlet implementation class EditCliente
  */
-@WebServlet("/AddClientes")
-public class AddClientes extends HttpServlet {
+@WebServlet("/EditCliente")
+public class EditCliente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddClientes() {
+    public EditCliente() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,7 +33,7 @@ public class AddClientes extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+	//	response.getWriter().append("Served at: ").append(request.getContextPath());
 		doPost(request, response);
 	}
 
@@ -45,10 +44,9 @@ public class AddClientes extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		
-		//response.getWriter().append("Hola: ").append(nombre);		
-		
+		//Persona p = (Persona)request.getAttribute("cliente-editar");
 		Persona per= new Persona();
-		Persona cli= new Persona();
+	
 		PersonaController ctrl= new PersonaController();
 		
 		String nombre= request.getParameter("name");
@@ -67,8 +65,12 @@ public class AddClientes extends HttpServlet {
 		String email= request.getParameter("email");
 
 		String pass= request.getParameter("pass");
-
 		
+		//int id= p.getIdPersona();
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		//per.setIdPersona(id);
+		per.setIdPersona(id);
 		per.setTipoDoc(tDoc);
 		per.setNroDoc(nDoc);
 		per.setNombre(nombre);
@@ -77,34 +79,25 @@ public class AddClientes extends HttpServlet {
 		per.setDireccion(direccion);
 		per.setEmail(email);
 		per.setPassword(pass);
-		per.setCuil("");
-		per.setFechaIngreso(null);
+		//per.setCuit("");
+		//per.setFechaIngreso(null);
 		//per.setCliente(true);
 		//per.setEmpleado(false);
-		Date hoy = new Date(System.currentTimeMillis()); 
-		java.sql.Date timeNow = new Date(Calendar.getInstance().getTimeInMillis());
+		//Date hoy = new Date(System.currentTimeMillis()); 
+		//java.sql.Date timeNow = new Date(Calendar.getInstance().getTimeInMillis());
 		//Date hoy= new Date(System.currentTimeMillis());
-		per.setFechaRegistro(timeNow);
+		//per.setFechaRegistro(timeNow);
+		
+		
 
-		//String pass2= request.getParameter("psw-repeat");
-		//per.setPassword(pass2);
+		per=ctrl.editPersona(per);
 		
-		//DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-		  // LocalDateTime now = LocalDateTime.now(); 
-		cli=ctrl.addPersona(per);
-		//LinkedList<Persona> personas = new LinkedList<Persona>();
-		//personas=ctrl.listarClientes();
 		
-		request.setAttribute("nuevoCliente", cli);
-		//request.setAttribute("listado", personas);
-		request.getRequestDispatcher("registro-aceptado.jsp").forward(request, response);
+		request.setAttribute("cliente-editado", per);
+		request.setAttribute("listado", ctrl.listarClientes());
+		request.getRequestDispatcher("listarClientes.jsp").forward(request, response);
 			
-			
-			
-		}
-	
-			//cartel de q esta mal
-		
 	}
+	
 
-
+}

@@ -42,6 +42,9 @@
 	            <a class="nav-link" href="ListClientes">Clientes</a>
           </form>
           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="ListEmpleados">Empleados</a>
+          </li>
           <li class="nav-item">
              <a class="nav-link" href="ListPedidos">Pedidos</a>
           </li>

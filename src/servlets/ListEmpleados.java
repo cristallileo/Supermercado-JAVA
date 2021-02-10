@@ -8,22 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import Data.*;
-import entidades.*;
+
+import entidades.Persona;
 import logic.PersonaController;
 
 /**
- * Servlet implementation class ListClientes
+ * Servlet implementation class ListEmpleados
  */
-@SuppressWarnings("unused")
-@WebServlet("/ListClientes")
-public class ListClientes extends HttpServlet {
+@WebServlet("/ListEmpleados")
+public class ListEmpleados extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListClientes() {
+    public ListEmpleados() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,8 +34,6 @@ public class ListClientes extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		doPost(request, response);
-		
-		
 	}
 
 	/**
@@ -45,16 +42,15 @@ public class ListClientes extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		
 		PersonaController ctrl= new PersonaController();
-		//LinkedList<Persona> personas= new LinkedList<Persona>();
-		LinkedList<Persona> clientes= new LinkedList<Persona>();
-		clientes=ctrl.listarClientes();
+	
+		LinkedList<Persona> empleados= new LinkedList<Persona>();
+		empleados=ctrl.listarEmpleados();
+		
 		//request.getAttribute("usuario");
-		request.setAttribute("listado", clientes);
-        request.getRequestDispatcher("listarClientes.jsp").forward(request, response);
+		request.setAttribute("empleados", empleados);
+        request.getRequestDispatcher("listarEmpleados.jsp").forward(request, response);
 
-        
 	}
 
 }

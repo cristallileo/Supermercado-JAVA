@@ -7,7 +7,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
- <!-- Bootstrap core CSS -->
+
+<title>Empleados</title>
+<!-- Bootstrap core CSS -->
   <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
@@ -22,15 +24,12 @@
   <link href="style/clientes-admin/confirmacion.css" rel="stylesheet">
   
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  
-<title>Descuentos</title>
 
-
-<% LinkedList<Descuento> ld = (LinkedList<Descuento>)request.getAttribute("descuentos");
+<% LinkedList<Persona> le = (LinkedList<Persona>)request.getAttribute("empleados");
 %>
-
 </head>
 <body>
+
 <!-- Page Content -->
   <div class="container">
  <!-- Navigation -->
@@ -50,16 +49,16 @@
           <li class="nav-item">
             <a class="nav-link" href="categorias-admin.jsp">Categorías</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="ListDescuentos">Descuentos</a>
-            <span class="sr-only">(current)</span>
+          <li class="nav-item">
+           <a class="nav-link" href="ListDescuentos">Descuentos</a>
           </li>
           <li class="nav-item ">
 	            <a class="nav-link" href="ListClientes">Clientes</a>
-	             
+	         
           </li>
-                     <li class="nav-item">
-             <a class="nav-link" href="ListEmpleados">Empleados</a>
+          <li class="nav-item active">
+	            <a class="nav-link" href="ListEmpleados">Empleados</a>
+	            <span class="sr-only">(current)</span>
           </li>
           <li class="nav-item">
              <a class="nav-link" href="ListPedidos">Pedidos</a>
@@ -86,31 +85,41 @@
                             <thead>
                                 <tr>
                                 <th align="center"><span>ID</span></th>
-                                <th align="center"><span>Porcentaje</span></th>
-                                <th align="center"><span>Fecha Inicio</span></th>
-                                <th align="center"><span>Fecha Fin</span></th>
-                               
+                                <th align="center"><span>Nombre</span></th>
+                                <th align="center"><span>Apellido</span></th>
+                                <th align="center"><span>Tipo Doc</span></th>
+                                <th align="center"><span>Número Doc</span></th>
+                                <th align="center"><span>Telefono</span></th>
+                                <th align="center"><span>Dirección</span></th>
+                                <th align="center"><span>Email</span></th>
+                                <th align="center"><span>CUIL</span></th>
+                                <th align="center"><span>Fecha de Ingreso</span></th>
                                
                                 <th>&nbsp;</th>
                                 </tr>
                             </thead>
                             <tbody>
-	                           <% for (Descuento d : ld) { %>
+	                           <% for (Persona per : le) { %>
 	                    			<tr>
-	                    			<td><%=d.getIdDcto() %></td>
-                                    <td><%=d.getPorcDcto()%></td>
-                                    <td><%=d.getFechaDctoInicio()%></td>
-                                    <td><%=d.getFechaDctoFin()%> </td>
-       
+	                    			<td><%=per.getIdPersona() %></td>
+                                    <td><%=per.getNombre()%></td>
+                                    <td><%=per.getApellido() %></td>
+                                    <td><%=per.getTipoDoc()%> </td>
+                                    <td><%=per.getNroDoc()%> </td>
+                                    <td><%=per.getTelefono() %> </td>
+                                    <td><%=per.getDireccion()%> </td>
+                                    <td><%=per.getEmail()%> </td>
+                                    <td><%=per.getCuil()%> </td>
+                                    <td><%=per.getFechaIngreso()%></td>
                                      <td style="width: 10%;">
                                         
-                                        <a href="EditDescuento?id=<%=d.getIdDcto()%>" class="table-link text-info">
+                                        <a href="BuscarEmpleado?id=<%=per.getIdPersona()%>" class="table-link text-info">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                             </span>
                                         </a>
-                                        <a  href="DeleteDescuento?id=<%=d.getIdDcto()%>" class="table-link danger" onclick="return confirm('Desea eliminar este descuento?');" >
+                                        <a  href="DeleteEmpleado?id=<%=per.getIdPersona()%>" class="table-link danger" onclick="return confirm('Se eliminará el empleado. Desea confirmar?');" >
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -126,7 +135,7 @@
 	                    		
 	                    		<% } %>
 	                    		
-                    		</tbody>	
+                    			</tbody>	
                         </table>
                     </div>
                 </div>
@@ -134,9 +143,9 @@
             <span style="text-align: right; vertical-align: bottom;">
 			
 			<div class="w3-container">	 
-			<form action="crearDcto.jsp" method="post">
+			<form action="crear-empleado.jsp" method="post">
 				<button class="w3-button w3-xlarge w3-circle w3-teal" type="submit" >+</button>
-				<a href="crearDcto.jsp"> Agregar descuento</a>
+				<a href="crear-empleado.jsp"> Agregar Empleado</a>
 			</form>
 			</div>
 			
@@ -144,6 +153,8 @@
         </div>
     </div>
 </div>
+
+
 
 
 </body>

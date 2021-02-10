@@ -26,6 +26,10 @@ public class PersonaController {
 		return dp.getAllClientes();
 	}
 	
+	public LinkedList<Persona> listarEmpleados(){
+		return dp.getAllEmpleados();
+	}
+	
 	public Persona editPersona (Persona p) {
 		return dp.editPersona(p);
 	}
@@ -40,7 +44,13 @@ public class PersonaController {
 	}
 	
 	public Persona addPersona(Persona per) {
-		return dp.add(per);
+		 return dp.add(per);
+	}
+
+
+	public Persona addEmpleado(Persona per) {
+		
+		return dp.addEmpleado(per);
 	}
 	
 	 

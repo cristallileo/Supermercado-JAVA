@@ -60,6 +60,10 @@
 	            <a class="nav-link" href="ListClientes">Clientes</a>
 	             <span class="sr-only">(current)</span>
           </li>
+          <li class="nav-item ">
+	            <a class="nav-link" href="ListEmpleados">Empleados</a>
+	             
+          </li>
           <li class="nav-item">
              <a class="nav-link" href="ListPedidos">Pedidos</a>
           </li>
@@ -92,7 +96,7 @@
                                 <th align="center"><span>Telefono</span></th>
                                 <th align="center"><span>Dirección</span></th>
                                 <th align="center"><span>Email</span></th>
-                                <th align="center"><span>CUIT</span></th>
+                               
                                 <th align="center"><span>Fecha de Registro</span></th>
                                
                                 <th>&nbsp;</th>
@@ -109,11 +113,11 @@
                                     <td><%=per.getTelefono() %> </td>
                                     <td><%=per.getDireccion()%> </td>
                                     <td><%=per.getEmail()%> </td>
-                                    <td><%=per.getCuit()%> </td>
+                             
                                     <td><%=per.getFechaRegistro()%></td>
                                      <td style="width: 10%;">
                                         
-                                        <a href="EditClientes?id=<%=per.getIdPersona()%>" class="table-link text-info">
+                                        <a href="BuscarCliente?id=<%=per.getIdPersona()%>" class="table-link text-info">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
@@ -140,14 +144,15 @@
                     </div>
                 </div>
             </div>
-            <span style="text-align: right; vertical-align: bottom;">
-            <form action="AddClientes" method=post">
+           <!--  <span style="text-align: right; vertical-align: bottom;">
+            <form action="" method=post">
 					<div class="w3-container">	 
 						<button class="w3-button w3-xlarge w3-circle w3-teal" type="submit" >+</button>
-						<a href="AddClientes"> Agregar cliente</a>
+						<a href=""> Agregar cliente</a>
 					</div>
 			</form>
 			</span>
+			-->
         </div>
     </div>
 </div>

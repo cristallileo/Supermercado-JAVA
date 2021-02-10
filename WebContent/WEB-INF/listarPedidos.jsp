@@ -59,6 +59,9 @@
 	            <a class="nav-link" href="ListClientes">Clientes</a>
 	             
           </li>
+          <li class="nav-item">
+             <a class="nav-link" href="ListEmpleados">Empleados</a>
+          </li>
           <li class="nav-item active">
             <a class="nav-link" href="ListPedidos">Pedidos</a>
              <span class="sr-only">(current)</span>

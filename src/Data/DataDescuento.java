@@ -53,14 +53,14 @@ import entidades.*;
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into descuento(idDcto, porcDcto, fechaDctoInicio, fechaDctoFin) values(?,?,?,?)",
+							"insert into descuento( porcDcto, fechaDctoInicio, fechaDctoFin) values(?,?,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
 			
-			stmt.setInt(1, d.getIdDcto());
-			stmt.setDouble(2, d.getPorcDcto());
-			stmt.setDate(3, d.getFechaDctoInicio());
-			stmt.setDate(4, d.getFechaDctoFin());
+			
+			stmt.setDouble(1, d.getPorcDcto());
+			stmt.setDate(2, d.getFechaDctoInicio());
+			stmt.setDate(3, d.getFechaDctoFin());
 						
 			stmt.executeUpdate();
 			
@@ -75,7 +75,9 @@ import entidades.*;
 		} finally {
             try {
                 if(keyResultSet!=null)keyResultSet.close();
+                
                 if(stmt!=null)stmt.close();
+             //   conn.commit();
                 DbConnector.getInstancia().releaseConn();
             } catch (SQLException e) {
             	e.printStackTrace();

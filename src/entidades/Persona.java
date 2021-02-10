@@ -8,7 +8,7 @@ public class Persona {
 	private int idPersona;
 	private String tipoDoc;
 	private String nroDoc;
-	private String nombre, apellido, telefono, direccion, email, password, cuit;
+	private String nombre, apellido, telefono, direccion, email, password, cuil;
 	private Date fechaIngreso, fechaRegistro;
 	private boolean cliente, empleado;
 	
@@ -66,11 +66,11 @@ public class Persona {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getCuit() {
-		return cuit;
+	public String getCuil() {
+		return cuil;
 	}
-	public void setCuit(String cuit) {
-		this.cuit = cuit;
+	public void setCuil(String cuil) {
+		this.cuil = cuil;
 	}
 	public Date getFechaIngreso() {
 		return fechaIngreso;
