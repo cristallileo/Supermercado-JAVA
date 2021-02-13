@@ -7,11 +7,11 @@
 
 .login,
 .image {
-  min-height: 100vh;
+  min-height: 50vh;
 }
 
 .bg-image {
-  background-image:url("5.jpg");
+  background-image:url("10.jpg");
   background-size: cover;
   background-position: center;
 }

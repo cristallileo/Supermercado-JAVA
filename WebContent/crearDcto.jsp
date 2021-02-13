@@ -66,7 +66,7 @@
                 </div>
 
                 <div class="form-label-group">
-                  <input type="text" name="desde" id="inputDesde" class="form-control" placeholder="Desde" >
+                  <input type="text" name="desde" id="inputDesde" class="form-control" placeholder="Desde" required >
                   <label for="inputPassword">Desde</label>
                 </div>
 

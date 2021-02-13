@@ -93,6 +93,7 @@
                   <label for="inputPassword">Tipo Documento</label>
                 </div>
                 
+                             
                 <div class="form-label-group">
                   <input type="text" name="nroDoc" id="inputNro" class="form-control" value=<%=per.getNroDoc() %> required>
                   <label for="inputPassword">Nro Documento</label>

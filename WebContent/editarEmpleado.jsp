@@ -15,7 +15,7 @@
   
    <!--  <link href="style/login/login.css" rel="stylesheet"> -->
     
-   <link href="style/login/login.css" rel="stylesheet">
+   <link href="style/empleados-admin/create-empleados.css" rel="stylesheet">
   
 <% Persona per = (Persona)request.getAttribute("empleadoEditar");
 %> 
@@ -73,7 +73,7 @@
             <div class="col-md-9 col-lg-8 mx-auto ">
               <h3 class="login-heading mb-4 text-center">Editar Empleado</h3>
               
-              <form action="EditCliente?id=<%=per.getIdPersona()%>" method="post">
+              <form action="EditEmpleado?id=<%=per.getIdPersona()%>" method="post">
                
                 <div class="form-label-group">
                   <input type="text" name="name" id="inputName" class="form-control" value=<%=per.getNombre()%> required >
@@ -107,7 +107,7 @@
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="email" name="cuil" id="inputCuil" class="form-control" value=<%=per.getCuil()%> required>
+                  <input type="text" name="cuil" id="inputCuil" class="form-control" value=<%=per.getCuil()%> required>
                   <label for="inputPassword">CUIL</label>
                 </div>
                 
