@@ -93,12 +93,13 @@ import entidades.*;
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"UPDATE `java`.`descuento` SET `porcDcto` = ?,`fechaDctoInicio` = ?,`fechaDctoFin` = ? WHERE (`idDcto` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+							"UPDATE `tp_java`.`descuento` SET `porcDcto` = ?,`fechaDctoInicio` = ?,`fechaDctoFin` = ? WHERE (`idDcto` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
 			
 			
 			stmt.setDouble(1, d.getPorcDcto());
 			stmt.setDate(2, d.getFechaDctoInicio());
 			stmt.setDate(3, d.getFechaDctoFin());
+			stmt.setInt(4, d.getIdDcto());
 						
 			stmt.executeUpdate();
 			

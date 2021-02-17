@@ -104,7 +104,7 @@
        
                                      <td style="width: 10%;">
                                         
-                                        <a href="EditDescuento?id=<%=d.getIdDcto()%>" class="table-link text-info">
+                                        <a href="BuscarDescuento?id=<%=d.getIdDcto()%>" class="table-link text-info">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>

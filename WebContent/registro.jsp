@@ -98,7 +98,7 @@
                   <label for="inputPassword">Contraseña</label>
                 </div>
                 
-                <form action="AddCliente" method="post">
+                <form action="AddClientes" method="post">
                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se agregará un nuevo cliente. Desea confirmar?')">Agregar</button>
                 </form>
                 

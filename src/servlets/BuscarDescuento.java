@@ -1,8 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.LinkedList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,16 +11,16 @@ import entidades.Descuento;
 import logic.DescuentoController;
 
 /**
- * Servlet implementation class ListDescuentos
+ * Servlet implementation class BuscarDescuento
  */
-@WebServlet("/ListDescuentos")
-public class ListDescuentos extends HttpServlet {
+@WebServlet("/BuscarDescuento")
+public class BuscarDescuento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListDescuentos() {
+    public BuscarDescuento() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,12 +40,14 @@ public class ListDescuentos extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
+		
 		DescuentoController ctrl= new DescuentoController();
-		LinkedList<Descuento> descuentos= new LinkedList<Descuento>();
-		descuentos=ctrl.listarDescuentos();
-		request.setAttribute("descuentos", descuentos);
-        request.getRequestDispatcher("listarDescuentos.jsp").forward(request, response);
-
+		Descuento dcto= new Descuento();
+		int id= Integer.parseInt(request.getParameter("id"));
+		dcto.setIdDcto(id);
+		dcto =ctrl.getById(dcto);
+		request.setAttribute("descuentoEditar", dcto);
+		request.getRequestDispatcher("editarDescuento.jsp").forward(request, response);
 	}
 
 }
