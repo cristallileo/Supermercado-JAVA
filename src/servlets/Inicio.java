@@ -80,7 +80,7 @@ public class Inicio extends HttpServlet {
 				//response.getWriter().append("Bienvenido: "+ per.getApellido() + per.getNombre());
 			}
 			else {
-				response.getWriter().append("Usuario no encontrado");
+				response.getWriter().append("No existe el usuario");
 			}
 		}else {
 			request.getRequestDispatcher("error.jsp").forward(request, response);
