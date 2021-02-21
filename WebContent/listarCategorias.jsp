@@ -49,14 +49,14 @@
               
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="ListCategorias">Categorías</a>
                        	 <span class="sr-only">(current)</span>
           </li>
           <li class="nav-item">
            <a class="nav-link" href="ListDescuentos">Descuentos</a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item ">
 	            <a class="nav-link" href="ListClientes">Clientes</a>	            
           </li>
           <li class="nav-item ">
@@ -66,9 +66,7 @@
              <a class="nav-link" href="ListPedidos">Pedidos</a>
           </li>
           <li class="nav-item">
-             <form action="Inicio" method="get">
               	<a class="nav-link" href="">Cerrar Sesión</a>
-          	  </form>
           </li>
         </ul>
       </div>

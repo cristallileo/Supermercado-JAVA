@@ -48,7 +48,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="categorias-admin.jsp">Categorías</a>
+            <a class="nav-link" href="ListCategorias">Categorías</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="ListDescuentos">Descuentos</a>
@@ -65,9 +65,7 @@
              <a class="nav-link" href="ListPedidos">Pedidos</a>
           </li>
           <li class="nav-item">
-             <form action="Inicio" method="get">
               	<a class="nav-link" href="">Cerrar Sesión</a>
-          	  </form>
           </li>
         </ul>
       </div>

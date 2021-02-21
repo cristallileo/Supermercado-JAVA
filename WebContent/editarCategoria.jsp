@@ -71,18 +71,18 @@
         <div class="container">
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto ">
-              <h3 class="login-heading mb-4 text-center">Editar Categoria</h3>
+              <h3 class="login-heading mb-4 text-center">Editar Categoría</h3>
               
               <form action="EditCategoria?id=<%=cat.getIdCategoria()%>" method="post">
                
                 <div class="form-label-group">
                   <input type="text" name="descrip" id="inputDescrip" class="form-control" value=<%=cat.getDescCategoria()%> required >
-                  <label for="inputEmail">Descripcion</label>
+                  <label for="inputEmail">Descripción</label>
                 </div>
 
                
                      
-                	<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se editará el empleado. Desea confirmar?')">Guardar cambios</button>
+                	<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se editará la categoría. Desea confirmar?')">Guardar cambios</button>
                 
                 
          

@@ -216,4 +216,40 @@ import entidades.*;
 		
 		return d;
 }
+
+
+	public LinkedList<Descuento> getAllActivos() {
+		Statement stmt=null;
+		ResultSet rs=null;
+		LinkedList<Descuento> descuentos= new LinkedList<>();
+		
+		try {
+			stmt= DbConnector.getInstancia().getConn().createStatement();
+			rs= stmt.executeQuery("select idDcto,porcDcto,fechaDctoInicio, fechaDctoFin from descuento where fechaDctoInicio<=curdate() and fechaDctoFin>curdate()");
+			if(rs!=null) {
+				while(rs.next()) {
+					Descuento d=new Descuento();
+					d.setIdDcto(rs.getInt("idDcto"));
+					d.setPorcDcto(rs.getDouble("porcDcto"));
+					d.setFechaDctoInicio(rs.getDate("fechaDctoInicio"));
+					d.setFechaDctoFin(rs.getDate("fechaDctoFin"));
+					
+					descuentos.add(d);
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return descuentos;
+	}
 	}

@@ -49,7 +49,7 @@ public class ListPedidos extends HttpServlet {
 		pedidos=ctrl.listarPedidos();
 		
 		request.setAttribute("pedidos", pedidos);
-        request.getRequestDispatcher("WEB-INF/listarPedidos.jsp").forward(request, response);
+        request.getRequestDispatcher("listarPedidos.jsp").forward(request, response);
 	}
 	
 

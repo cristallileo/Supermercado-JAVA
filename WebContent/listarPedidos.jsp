@@ -67,9 +67,7 @@
              <span class="sr-only">(current)</span>
           </li>
           <li class="nav-item">
-             <form action="Inicio" method="get">
-              	<a class="nav-link" href="">Cerrar Sesión</a>
-          	  </form>
+             <a class="nav-link" href="">Cerrar Sesión</a>
           </li>
         </ul>
       </div>
@@ -142,14 +140,7 @@
                     </div>
                 </div>
             </div>
-            <span style="text-align: right; vertical-align: bottom;">
-            <form action="AddPedido" method=post">
-					<div class="w3-container">	 
-						<button class="w3-button w3-xlarge w3-circle w3-teal" type="submit" >+</button>
-						<a href="AddClientes"> Agregar pedido</a>
-					</div>
-			</form>
-			</span>
+            
         </div>
     </div>
 </div>

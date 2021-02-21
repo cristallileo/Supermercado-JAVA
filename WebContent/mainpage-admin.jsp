@@ -1,4 +1,5 @@
 <%@page import="entidades.*" %>
+<%@page import="logic.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
@@ -68,8 +69,8 @@
       </div>
       <!-- /.col-lg-8 -->
       <div class="col-lg-5 text-center" >
-        <h1 class="font-weight-light"><b>Ahora también podés comprar online.</b> </h1>
-        <p>La calidad de servicio de siempre, pero ahora desde la comodidad de tu casa. </p>
+        <h1 class="font-weight-light"><b>Hola de nuevo, <%=per.getNombre() %>!</b> </h1>
+        <p>Ahora podés ver las últimas novedades del negocio en un mismo lugar. </p>
        <!--  <a class="btn btn-primary" href="#">Call to Action!</a>  -->
       </div>
       <!-- /.col-md-4 -->
@@ -83,11 +84,13 @@
       <div class="col-md-4 mb-5">
         <div class="card h-100">
           <div class="card-body">
-            <h2 class="card-title">Card One</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+            <h2 class="card-title">Gestión de Descuentos</h2>
+            <%DescuentoController ctrl = new DescuentoController();
+            int cant=ctrl.contarDctos();%>
+            <p class="card-text">Descuentos activos actualmente: <b><%=cant %></b></p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary btn-sm">More Info</a>
+            <a href="ListDescuentos" class="btn btn-primary btn-sm">Ver más</a>
           </div>
         </div>
       </div>
@@ -95,11 +98,13 @@
       <div class="col-md-4 mb-5">
         <div class="card h-100">
           <div class="card-body">
-            <h2 class="card-title">Card Two</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
+            <h2 class="card-title">Gestión de <br>
+            Stock</h2>
+            <p class="card-text">Productos que alcanzaron stock mínimo: <b>0</b></p>
+  
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary btn-sm">More Info</a>
+            <a href="#" class="btn btn-primary btn-sm">Ver más</a>
           </div>
         </div>
       </div>
@@ -107,11 +112,12 @@
       <div class="col-md-4 mb-5">
         <div class="card h-100">
           <div class="card-body">
-            <h2 class="card-title">Card Three</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+            <h2 class="card-title">Gestión de Pedidos</h2>
+            <p class="card-text">Pedidos pendientes de envio: <b>0</b></p>
+            <p></p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary btn-sm">More Info</a>
+            <a href="#" class="btn btn-primary btn-sm">Ver más</a>
           </div>
         </div>
       </div>
@@ -122,14 +128,7 @@
 
   </div>
   
-    <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
-    </div>
-    <!-- /.container -->
-  </footer>
-  
+
   
 </body>
 </html>

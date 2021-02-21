@@ -66,14 +66,15 @@ public class Inicio extends HttpServlet {
 				
 				if(per.isCliente()) {
 					
+					request.getSession().setAttribute("usuario", per);
 					request.getRequestDispatcher("mainpage.jsp").forward(request, response);
 					
-					request.getSession().setAttribute("usuario", per);
 				}
 				else if(per.isEmpleado()) {
+					request.getSession().setAttribute("usuario", per);
 					request.getRequestDispatcher("mainpage-admin.jsp").forward(request, response);
 					
-					request.getSession().setAttribute("usuario", per);
+					
 				}
 				
 				
@@ -88,17 +89,7 @@ public class Inicio extends HttpServlet {
 		
 		
 		
-		/*if ((per.getEmail().equals("jp@gmail.com")) && (per.getPassword().equals("jperez"))) {
-			
-			request.getRequestDispatcher("mainpage.jsp").forward(request, response);
-			
-			request.getSession().setAttribute("usuario", per);
-		}
-		else {
-			response.getWriter().append("Usuario no encontrado");
-		}*/
-		
-		//request.getRequestDispatcher("WEB-INF/mainpage.jsp").forward(request, response);
+
 		
 			}
 

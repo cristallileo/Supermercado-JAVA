@@ -38,5 +38,12 @@ public class DescuentoController {
 		return dd.add(d);
 	}
 	
+	public int contarDctos(){
+		LinkedList<Descuento> descuentos = new LinkedList<Descuento>();
+		descuentos= dd.getAllActivos();
+		int cant= descuentos.size();
+		return cant;
+	}
+	
 	 
 }
