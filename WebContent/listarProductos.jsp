@@ -24,9 +24,9 @@
   
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   
-<title>Pedidos</title>
+<title>Productos</title>
 
-<% LinkedList<Pedido> lp = (LinkedList<Pedido>)request.getAttribute("pedidos");
+<% LinkedList<Producto> lprod = (LinkedList<Producto>)request.getAttribute("productos");
 %>
 
 </head>
@@ -86,40 +86,36 @@
                             <thead>
                                 <tr>
                                 <th align="center"><span>ID</span></th>
-                                <th align="center"><span>Fecha</span></th>
-                                <th align="center"><span>Precio Total</span></th>
-                                <th align="center"><span>Fecha Entrega</span></th>
-                                <th align="center"><span>Dirección Envío</span></th>
-                                <th align="center"><span>Estado</span></th>
-                                <th align="center"><span>ID Cliente</span></th>
-                                <th align="center"><span>ID Descuento</span></th>
-                                
-                               
-                               
+                                <th align="center"><span>Descripción</span></th>
+                                <th align="center"><span>Stock</span></th>
+                                <th align="center"><span>Stock Mínimo</span></th>
+                                <th align="center"><span>Marca</span></th>
+                                <th align="center"><span>ID Categoría</span></th>
+                                <th align="center"><span>Precio</span></th>
+        
                                 <th>&nbsp;</th>
                                 </tr>
                             </thead>
                             <tbody>
-	                           <% for (Pedido p: lp) { %>
+	                           <% for (Producto p: lprod) { %>
 	                    			<tr>
-	                    			<td><%=p.getIdPedido()%></td>
-                                    <td><%=p.getFechaPedido()%></td>
-                                    <td><%=p.getPrecioTotal()%></td>
-                                    <td><%=p.getFechaEntrega()%> </td>
-                                    <td><%=p.getDireccionEnvio()%> </td>
-                                    <td><%=p.getEstado()%> </td>
-                                    <td><%=p.getId_persona()%> </td>
-                                    <td><%=p.getId_dcto()%> </td>
+	                    			<td><%=p.getIdProducto()%></td>
+	                    			<td><%=p.getDescProducto()%></td>
+	                    			<td><%=p.getStock()%></td>
+                                    <td><%=p.getStockMinimo()%></td>
+                                    <td><%=p.getMarca()%></td>
+   									<td><%=p.getId_categoria()%></td>
+                                    <td><%=p.getPrecio()%> </td>
        
                                      <td style="width: 10%;">
                                         
-                                        <a href="BuscarPedido?id=<%=p.getIdPedido()%>" class="table-link text-info">
+                                         <a  href="BuscarProducto?id=<%=p.getIdProducto()%>"  class="table-link text-info">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                             </span>
                                         </a>
-                                        <a  href="DeletePedido?id=<%=p.getIdPedido()%>" class="table-link danger" onclick="return confirm('Desea eliminar este pedido?');" >
+                                        <a  href="DeleteProducto?id=<%=p.getIdProducto()%>" class="table-link danger" onclick="return confirm('Desea eliminar este producto?');" >
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -140,7 +136,18 @@
                     </div>
                 </div>
             </div>
+            <span style="text-align: right; vertical-align: bottom;">
+            	
+			<div class="w3-container">	 
+			<form action="crearProducto.jsp" method="post">
+				<button class="w3-button w3-xlarge w3-circle w3-teal" type="submit" >+</button>
+				<a href="crearProducto.jsp"> Agregar producto</a>
+			</form>
+			</div>
+			
+			</span>            
             
+          
         </div>
     </div>
 </div>

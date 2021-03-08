@@ -138,7 +138,7 @@ public class DataProducto {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into producto(idProducto, desc_producto, stock, stockMinimo, marca, id_categoria) values(?,?,?,?,?,?)",
+							"insert into producto(idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio) values(?,?,?,?,?,?,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
 			stmt.setInt(1, p.getIdProducto());
@@ -147,6 +147,7 @@ public class DataProducto {
 			stmt.setInt(4, p.getStockMinimo());
 			stmt.setString(5, p.getMarca());
 			stmt.setInt(6, p.getId_categoria());
+			stmt.setDouble(7, p.getPrecio());
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();
@@ -175,7 +176,7 @@ public class DataProducto {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"UPDATE `java`.`producto` SET  `desc_producto` = ?, `stock` = ?, `stockMinimo` = ?, `marca` = ?, `id_categoria` = ?, `precio` = ? WHERE (`idProducto` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+							"UPDATE `tp_java`.`producto` SET  `desc_producto` = ?, `stock` = ?, `stockMinimo` = ?, `marca` = ?, `id_categoria` = ?, `precio` = ? WHERE (`idProducto` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
 				
 			stmt.setString(1, p.getDescProducto());
 			stmt.setInt(2, p.getStock());
@@ -270,4 +271,43 @@ public class DataProducto {
 		}
 		return productos;
 	}
+
+	public Producto getById(Producto prod) {
+		Producto p=null;
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		try {
+			stmt=DbConnector.getInstancia().getConn().prepareStatement(
+					"select idProducto,desc_Producto,stock,stockMinimo,marca,id_categoria,precio from producto where idProducto=?"
+					);
+			stmt.setInt(1, prod.getIdProducto());
+			
+			rs=stmt.executeQuery();
+			if(rs!=null && rs.next()) {
+				p=new Producto();
+				p.setIdProducto(rs.getInt("idProducto"));
+				p.setDescProducto(rs.getString("desc_Producto"));
+				p.setStock(rs.getInt("stock"));
+				p.setStockMinimo(rs.getInt("stockMinimo"));
+				p.setMarca(rs.getString("marca"));
+				p.setId_categoria(rs.getInt("id_categoria"));
+				p.setPrecio(rs.getDouble("precio"));
+		
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return p;
+}	
+
+	
 }
