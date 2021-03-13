@@ -35,6 +35,11 @@ private DataProducto dp;
 	public void addProducto(Producto p) {
 		 dp.add(p);
 	}
+	
+	public LinkedList<Producto> listarByCategoria (Categoria cat){
+		return dp.getByCategoria(cat);
+	}
+	
 }
 
 

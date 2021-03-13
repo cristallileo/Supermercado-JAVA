@@ -61,6 +61,9 @@
 	            <span class="sr-only">(current)</span>
           </li>
           <li class="nav-item">
+              <a class="nav-link" href="ListProductos">Productos</a>
+          </li>
+          <li class="nav-item">
              <a class="nav-link" href="ListPedidos">Pedidos</a>
           </li>
           <li class="nav-item">

@@ -9,10 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import entidades.Pedido;
-import entidades.Producto;
-import logic.PedidoController;
-import logic.ProductoController;
+import entidades.*;
+import logic.*;
 
 /**
  * Servlet implementation class ListProductos
@@ -46,9 +44,17 @@ public class ListProductos extends HttpServlet {
 		// doGet(request, response);
 	
 		ProductoController ctrl= new ProductoController();
+		CategoriaController ctrlCat= new CategoriaController();
+		
 		LinkedList<Producto> productos= new LinkedList<Producto>();
+		LinkedList<Categoria> categorias= new LinkedList<Categoria>();
+		
 		productos=ctrl.listarProductos();
+		categorias= ctrlCat.listarCategorias();
+		
 		request.setAttribute("productos", productos);
+		request.setAttribute("categorias", categorias);
+		
         request.getRequestDispatcher("listarProductos.jsp").forward(request, response);
 
 	}

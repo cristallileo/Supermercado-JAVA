@@ -92,8 +92,8 @@
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" name="categ" id="inputCategoria" class="form-control" placeholder="Id_categoria" required>
-                  <label for="inputFechaf">ID Categoria</label>
+                  <input type="text" name="categ" id="inputCategoria" class="form-control" placeholder="Categoria(AGREGAR DROPLIST)" required>
+                  <label for="inputFechaf">Categoria</label>
                 </div>
                 
                 <div class="form-label-group">

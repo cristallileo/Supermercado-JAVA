@@ -79,7 +79,7 @@
                 
  
                 <form action="AddCategoria" method="post">
-                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se agregará un nuevo empleado. Desea confirmar?')">Agregar</button>
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se agregará una nueva categoría. Desea confirmar?')">Agregar</button>
                 </form>
                 
       	     </form>

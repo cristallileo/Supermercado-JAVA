@@ -24,9 +24,12 @@
   
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   
+  <link rel="stylesheet" href="style/filtros.css">
+  
 <title>Productos</title>
 
 <% LinkedList<Producto> lprod = (LinkedList<Producto>)request.getAttribute("productos");
+LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categorias");
 %>
 
 </head>
@@ -63,8 +66,11 @@
              <a class="nav-link" href="ListEmpleados">Empleados</a>
           </li>
           <li class="nav-item active">
+              <a class="nav-link" href="ListProductos">Productos</a>
+                <span class="sr-only">(current)</span>
+          </li>
+          <li class="nav-item ">
             <a class="nav-link" href="ListPedidos">Pedidos</a>
-             <span class="sr-only">(current)</span>
           </li>
           <li class="nav-item">
              <a class="nav-link" href="">Cerrar Sesión</a>
@@ -76,7 +82,24 @@
   </div>
   
  <hr> 
- <div class="container bootstrap snippets bootdey">
+
+    <div class="container bootstrap snippets bootdey"> 
+	
+	<!--  DROPLIST -->
+	<div class="w3-container">
+  	<div class="w3-dropdown-hover">
+    	<button class="w3-button w3-black">Categoria</button>
+	    <div class="w3-dropdown-content w3-bar-block w3-border">
+	     <a class="w3-bar-item w3-button" href="ListProductos">Todos</a>
+		    <% for (Categoria c: lc) { %>
+		      <a class="w3-bar-item w3-button" href="BuscarCat?id=<%=c.getIdCategoria()%>"><%=c.getDescCategoria()%></a>
+		  	 <%} %>
+    	</div>
+  	</div>
+	</div>
+	<br>
+	
+	<!--  TABLA -->	
     <div class="row">
         <div class="col-lg-12">
             <div class="main-box no-header clearfix">

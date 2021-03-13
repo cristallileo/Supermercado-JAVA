@@ -44,6 +44,10 @@
           </li>
               <li class="nav-item">
 	            <a  href="ListEmpleados" class="nav-link">Empleados</a>
+         
+          </li> 
+          <li class="nav-item">
+              <a class="nav-link" href="ListProductos">Productos</a>
           </li>
           <li class="nav-item">
               <a class="nav-link" href="ListPedidos">Pedidos</a>

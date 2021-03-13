@@ -310,4 +310,45 @@ public class DataProducto {
 }	
 
 	
-}
+			
+	public LinkedList<Producto> getByCategoria(Categoria cat) {
+		
+		LinkedList<Producto> prods = new LinkedList<Producto>();
+		Producto p=null;
+			PreparedStatement stmt=null;
+			ResultSet rs=null;
+			try {
+				stmt=DbConnector.getInstancia().getConn().prepareStatement(
+						"select idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio from producto where id_categoria=? "
+						);
+				stmt.setInt(1, cat.getIdCategoria());
+				
+				rs=stmt.executeQuery();
+				if(rs!=null && rs.next()) {
+					p=new Producto();
+					p.setIdProducto(rs.getInt("idProducto"));
+					p.setDescProducto(rs.getString("desc_producto"));
+					p.setStock(rs.getInt("stock"));
+					p.setStockMinimo(rs.getInt("stockMinimo"));
+					p.setMarca(rs.getString("marca"));
+					p.setId_categoria(rs.getInt("id_categoria"));
+					p.setPrecio(rs.getDouble("precio"));
+					prods.add(p);
+					
+					
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if(rs!=null) {rs.close();}
+					if(stmt!=null) {stmt.close();}
+					DbConnector.getInstancia().releaseConn();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			return prods;
+	}
+	}
