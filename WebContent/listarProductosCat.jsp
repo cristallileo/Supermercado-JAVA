@@ -86,18 +86,29 @@
   
  <hr> 
  <div class="container bootstrap snippets bootdey">
- 	<!--  DROPLIST -->
+	<!--  DROPLISTS -->
+	<!-- CATEGORIAS -->
 	<div class="w3-container">
   	<div class="w3-dropdown-hover">
     	<button class="w3-button w3-black">Categoria</button>
 	    <div class="w3-dropdown-content w3-bar-block w3-border">
-	    <a class="w3-bar-item w3-button" href="ListProductos">Todos</a>
-		    <% for (Categoria cat: lc) { %>
-		      <a class="w3-bar-item w3-button" href="BuscarCat?id=<%=cat.getIdCategoria()%>"><%=cat.getDescCategoria()%></a>
+	     <a class="w3-bar-item w3-button" href="ListProductos">Todos</a>
+		    <% for (Categoria c: lc) { %>
+		      <a class="w3-bar-item w3-button" href="BuscarCat?id=<%=c.getIdCategoria()%>"><%=c.getDescCategoria()%></a>
 		  	 <%} %>
     	</div>
   	</div>
+  	<!-- precio -->
+  	<div class="w3-dropdown-hover">
+  	<button class="w3-button w3-black">Precio</button>
+	    <div class="w3-dropdown-content w3-bar-block w3-border">
+	     <a class="w3-bar-item w3-button" href="ListProductos">De menor a mayor precio</a>
+		 <a class="w3-bar-item w3-button" href="ListProductos">De mayor a menor precio</a>
+    	</div>
 	</div>
+	</div>
+
+	
 	<br>
 		
         <div class="col-lg-12">

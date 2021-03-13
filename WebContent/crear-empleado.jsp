@@ -75,49 +75,49 @@
               <form action="AddEmpleado" method="post">
                
                 <div class="form-label-group">
-                  <input type="text" name="name" id="inputName" class="form-control" placeholder="Nombre" required >
-                  <label for="inputEmail">Nombre</label>
+                  <input type="text" name="name" id="name" class="form-control" placeholder="Nombre" required >
+                  <label for="name">Nombre</label>
                 </div>
 
                 <div class="form-label-group">
-                  <input type="text" name="surname" id="inputSurname" class="form-control" placeholder="Apellido" required>
-                  <label for="inputPassword">Apellido</label>
+                  <input type="text" name="surname" id="surname" class="form-control" placeholder="Apellido" required>
+                  <label for="surname">Apellido</label>
                 </div>
 
 				
                 <div class="form-label-group">
-                  <input type="text" name="tipoDoc" id="inputTipo" class="form-control" placeholder="Tipo doc" required>
-                  <label for="inputPassword">Tipo Documento</label>
+                  <input type="text" name="tipoDoc" id="tipoDoc" class="form-control" placeholder="Tipo doc" required>
+                  <label for="tipoDoc">Tipo Documento</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" name="nroDoc" id="inputNro" class="form-control" placeholder="Nro doc" required>
-                  <label for="inputPassword">Nro Documento</label>
+                  <input type="text" name="nroDoc" id="nroDoc" class="form-control" placeholder="Nro doc" required>
+                  <label for="nroDoc">Nro Documento</label>
                 </div>
              
                 <div class="form-label-group">
-                  <input type="text" name="tel" id="inputTel" class="form-control" placeholder="Telefono" required>
-                  <label for="inputPassword">Teléfono</label>
+                  <input type="text" name="tel" id="tel" class="form-control" placeholder="Telefono" required>
+                  <label for="tel">Teléfono</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" name="direc" id="inputDirec" class="form-control" placeholder="Dirección" required>
-                  <label for="inputPassword">Dirección</label>
+                  <input type="text" name="direc" id="direc" class="form-control" placeholder="Dirección" required>
+                  <label for="direc">Dirección</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email" required>
-                  <label for="inputPassword">Email</label>
+                  <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
+                  <label for="email">Email</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="password" name="pass" id="inputPass" class="form-control" placeholder="Contraseña" required>
-                  <label for="inputPassword">Contraseña</label>
+                  <input type="password" name="pass" id="pass" class="form-control" placeholder="Contraseña" required>
+                  <label for="pass">Contraseña</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" name="cuil" id="inputCuil" class="form-control" placeholder="CUIL" required>
-                  <label for="inputPassword">CUIL</label>
+                  <input type="text" name="cuil" id="cuil" class="form-control" placeholder="CUIL" required>
+                  <label for="cuil">CUIL</label>
                 </div>
                 
                 <form action="AddEmpleado" method="post">

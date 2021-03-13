@@ -79,49 +79,49 @@
               <form action="EditEmpleado?id=<%=per.getIdPersona()%>" method="post">
                
                 <div class="form-label-group">
-                  <input type="text" name="name" id="inputName" class="form-control" value=<%=per.getNombre()%> required >
-                  <label for="inputEmail">Nombre</label>
+                  <input type="text" name="name" id="name" class="form-control" value=<%=per.getNombre()%> required >
+                  <label for="name">Nombre</label>
                 </div>
 
                 <div class="form-label-group">
-                  <input type="text" name="surname" id="inputSurname" class="form-control" value=<%=per.getApellido()%> required>
-                  <label for="inputPassword">Apellido</label>
+                  <input type="text" name="surname" id="surname" class="form-control" value=<%=per.getApellido()%> required>
+                  <label for="surname">Apellido</label>
                 </div>
 
 				
                 <div class="form-label-group">
-                  <input type="text" name="tipoDoc" id="inputTipo" class="form-control" value=<%=per.getTipoDoc() %> required>
-                  <label for="inputPassword">Tipo Documento</label>
+                  <input type="text" name="tipoDoc" id="tipoDoc" class="form-control" value=<%=per.getTipoDoc() %> required>
+                  <label for="tipoDoc">Tipo Documento</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" name="nroDoc" id="inputNro" class="form-control" value=<%=per.getNroDoc() %> required>
-                  <label for="inputPassword">Nro Documento</label>
+                  <input type="text" name="nroDoc" id="nroDoc" class="form-control" value=<%=per.getNroDoc() %> required>
+                  <label for="nroDoc">Nro Documento</label>
                 </div>
              
                 <div class="form-label-group">
-                  <input type="text" name="tel" id="inputTel" class="form-control" value=<%=per.getTelefono()%> required >
-                  <label for="inputPassword">Teléfono</label>
+                  <input type="text" name="tel" id="tel" class="form-control" value=<%=per.getTelefono()%> required >
+                  <label for="tel">Teléfono</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" name="direc" id="inputDirec" class="form-control" value=<%=per.getDireccion() %> required>
-                  <label for="inputPassword">Dirección</label>
+                  <input type="text" name="direc" id="direc" class="form-control" value=<%=per.getDireccion() %> required>
+                  <label for="direc">Dirección</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" name="cuil" id="inputCuil" class="form-control" value=<%=per.getCuil()%> required>
-                  <label for="inputPassword">CUIL</label>
+                  <input type="text" name="cuil" id="cuil" class="form-control" value=<%=per.getCuil()%> required>
+                  <label for="cuil">CUIL</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="email" name="email" id="inputEmail" class="form-control" value=<%=per.getEmail() %> required>
-                  <label for="inputPassword">Email</label>
+                  <input type="email" name="email" id="email" class="form-control" value=<%=per.getEmail() %> required>
+                  <label for="email">Email</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="password" name="pass" id="inputPass" class="form-control" value=<%=per.getPassword() %> required>
-                  <label for="inputPassword">Contraseña</label>
+                  <input type="password" name="pass" id="pass" class="form-control" value=<%=per.getPassword() %> required>
+                  <label for="pass">Contraseña</label>
                 </div>
                 
                 

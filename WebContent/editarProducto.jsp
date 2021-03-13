@@ -81,33 +81,33 @@
               <form action="EditProducto?id=<%=prod.getIdProducto()%>" method="post">
 
                 <div class="form-label-group">
-                  <input type="text" name="descProd" id="inputDescProd" class="form-control" value=<%=prod.getDescProducto()%> required >
-                  <label for="inputPorc">Descripcion</label>
+                  <input type="text" name="descProd" id="descProd" class="form-control" value=<%=prod.getDescProducto()%> required >
+                  <label for="descProd">Descripcion</label>
                 </div>
 
                 <div class="form-label-group">
-                  <input type="text" name="stock" id="inputStock" class="form-control" value=<%=prod.getStock()%> required>
-                  <label for="inputFechai">Stock</label>
+                  <input type="text" name="stock" id="stock" class="form-control" value=<%=prod.getStock()%> required>
+                  <label for="stock">Stock</label>
                 </div>
 				
 				<div class="form-label-group">
-                  <input type="text" name="stockMin" id="inputStockMin" class="form-control" value=<%=prod.getStockMinimo()%> required>
-                  <label for="inputFechai">Stock Minimo</label>
+                  <input type="text" name="stockMin" id="stockMin" class="form-control" value=<%=prod.getStockMinimo()%> required>
+                  <label for="stockMin">Stock Minimo</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" name="marca" id="inputMarca" class="form-control" value=<%=prod.getMarca()%> required>
-                  <label for="inputFechaf">Marca</label>
+                  <input type="text" name="marca" id="marca" class="form-control" value=<%=prod.getMarca()%> required>
+                  <label for="marca">Marca</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" name="categ" id="inputCategoria" class="form-control" value=<%=prod.getId_categoria()%> required>
-                  <label for="inputFechaf">ID Categoria</label>
+                  <input type="text" name="categ" id="categ" class="form-control" value=<%=prod.getId_categoria()%> required>
+                  <label for="categ">ID Categoria</label>
                 </div>
 
                 <div class="form-label-group">
-                  <input type="text" name="precio" id="inputPrecio" class="form-control" value=<%=prod.getPrecio()%> required>
-                  <label for="inputFechaf">Precio</label>
+                  <input type="text" name="precio" id="precio" class="form-control" value=<%=prod.getPrecio()%> required>
+                  <label for="precio">Precio</label>
                 </div>
                 
                 	<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se editará el producto. Desea confirmar?')">Guardar cambios</button>

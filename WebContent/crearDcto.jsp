@@ -64,19 +64,19 @@
   </div>
   <form action="AddDescuento" method="post">
   				<div class="form-label-group">
-                  <input type="text" name="porc" id="inputPorc" class="form-control" placeholder="Porcentaje" required >
-                  <label for="inputEmail">Porcentaje</label>
+                  <input type="text" name="porc" id="porc" class="form-control" placeholder="Porcentaje" required >
+                  <label for="porc">Porcentaje</label>
                 </div>
 
                 <div class="form-label-group">
-                  <input type="text" name="desde" id="inputDesde" class="form-control" placeholder="Desde" required >
-                  <label for="inputPassword">Desde</label>
+                  <input type="text" name="desde" id="desde" class="form-control" placeholder="Desde" required >
+                  <label for="desde">Desde</label>
                 </div>
 
 				
                 <div class="form-label-group">
-                  <input type="text" name="hasta" id="inputHasta" class="form-control" placeholder="Hasta" >
-                  <label for="inputPassword">Hasta</label>
+                  <input type="text" name="hasta" id="hasta" class="form-control" placeholder="Hasta" >
+                  <label for="hasta">Hasta</label>
                 </div>
             	<form action="AddDescuento" method="post">
     				<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se agregará un nuevo descuento. Desea confirmar?')">Agregar</button>

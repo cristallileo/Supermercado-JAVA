@@ -72,8 +72,8 @@
               <form action="AddCategoria" method="post">
                
                 <div class="form-label-group">
-                  <input type="text" name="descrip" id="inputDescrip" class="form-control" placeholder="Descripcion" required >
-                  <label for="inputEmail">Descripcion</label>
+                  <input type="text" name="descrip" id="descrip" class="form-control" placeholder="Descripcion" required >
+                  <label for="descrip">Descripcion</label>
                 </div>
 
                 

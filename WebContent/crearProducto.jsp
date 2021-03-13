@@ -72,33 +72,33 @@
   				<form action="AddProducto" method="post">
   				
   				<div class="form-label-group">
-                  <input type="text" name="descProd" id="inputDescProd" class="form-control" placeholder="Descripcion" required >
-                  <label for="inputPorc">Descripcion</label>
+                  <input type="text" name="descProd" id="descProd" class="form-control" placeholder="Descripcion" required >
+                  <label for="descProd">Descripcion</label>
                 </div>
 
                 <div class="form-label-group">
-                  <input type="text" name="stock" id="inputStock" class="form-control" placeholder="Stock" required>
-                  <label for="inputFechai">Stock</label>
+                  <input type="text" name="stock" id="stock" class="form-control" placeholder="Stock" required>
+                  <label for="stock">Stock</label>
                 </div>
 				
 				<div class="form-label-group">
-                  <input type="text" name="stockMin" id="inputStockMin" class="form-control" placeholder="Stock Minimo" required>
-                  <label for="inputFechai">Stock Minimo</label>
+                  <input type="text" name="stockMin" id="stockMin" class="form-control" placeholder="Stock Minimo" required>
+                  <label for="stockMin">Stock Minimo</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" name="marca" id="inputMarca" class="form-control" placeholder="Marca" required>
-                  <label for="inputFechaf">Marca</label>
+                  <input type="text" name="marca" id="marca" class="form-control" placeholder="Marca" required>
+                  <label for="marca">Marca</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" name="categ" id="inputCategoria" class="form-control" placeholder="Categoria(AGREGAR DROPLIST)" required>
-                  <label for="inputFechaf">Categoria</label>
+                  <input type="text" name="categ" id="categ" class="form-control" placeholder="Categoria(AGREGAR DROPLIST)" required>
+                  <label for="categ">Categoria</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" name="precio" id="inputPrecio" class="form-control" placeholder="Precio"  required>
-                  <label for="inputFechaf">Precio</label>
+                  <input type="text" name="precio" id="precio" class="form-control" placeholder="Precio"  required>
+                  <label for="precio">Precio</label>
                 </div>
                 
             	<form action="AddProducto" method="post">

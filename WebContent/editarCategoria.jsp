@@ -80,7 +80,7 @@
                
                 <div class="form-label-group">
                   <input type="text" name="descrip" id="inputDescrip" class="form-control" value=<%=cat.getDescCategoria()%> required >
-                  <label for="inputEmail">Descripción</label>
+                  <label for="inputDescrip">Descripción</label>
                 </div>
 
                

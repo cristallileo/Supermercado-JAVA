@@ -310,7 +310,6 @@ public class DataProducto {
 }	
 
 	
-			
 	public LinkedList<Producto> getByCategoria(Categoria cat) {
 		
 		LinkedList<Producto> prods = new LinkedList<Producto>();
@@ -351,4 +350,85 @@ public class DataProducto {
 			
 			return prods;
 	}
+
+
+	public LinkedList<Producto> getMenosMas(){
+		
+		Statement stmt=null;
+		ResultSet rs=null;
+		LinkedList<Producto> productos= new LinkedList<>();
+		
+		try {
+			stmt= DbConnector.getInstancia().getConn().createStatement();
+			rs= stmt.executeQuery("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria, precio from producto order by precio");
+			if(rs!=null) {
+				while(rs.next()) {
+					Producto p=new Producto();
+					p.setIdProducto(rs.getInt("idProducto"));
+					p.setDescProducto(rs.getString("desc_producto"));
+					p.setStock(rs.getInt("stock"));
+					p.setStockMinimo(rs.getInt("stockMinimo"));
+					p.setMarca(rs.getString("marca"));
+					p.setId_categoria(rs.getInt("id_categoria"));
+					p.setPrecio(rs.getDouble("precio"));
+					productos.add(p);
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return productos;
 	}
+
+	public LinkedList<Producto> getMasMenos(){
+		
+		Statement stmt=null;
+		ResultSet rs=null;
+		LinkedList<Producto> productos= new LinkedList<>();
+		
+		try {
+			stmt= DbConnector.getInstancia().getConn().createStatement();
+			rs= stmt.executeQuery("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria, precio from producto order by precio DESC");
+			if(rs!=null) {
+				while(rs.next()) {
+					Producto p=new Producto();
+					p.setIdProducto(rs.getInt("idProducto"));
+					p.setDescProducto(rs.getString("desc_producto"));
+					p.setStock(rs.getInt("stock"));
+					p.setStockMinimo(rs.getInt("stockMinimo"));
+					p.setMarca(rs.getString("marca"));
+					p.setId_categoria(rs.getInt("id_categoria"));
+					p.setPrecio(rs.getDouble("precio"));
+					productos.add(p);
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return productos;
+	}
+}

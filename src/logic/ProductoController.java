@@ -40,6 +40,14 @@ private DataProducto dp;
 		return dp.getByCategoria(cat);
 	}
 	
+	public LinkedList<Producto> listarMenosMas (){
+		return dp.getMenosMas();
+	}
+	
+	public LinkedList<Producto> listarMasMenos (){
+		return dp.getMasMenos();
+	}
+	
 }
 
 

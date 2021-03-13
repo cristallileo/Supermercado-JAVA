@@ -81,18 +81,18 @@
               <form action="EditDescuento?id=<%=dcto.getIdDcto()%>" method="post">
                
                 <div class="form-label-group">
-                  <input type="text" name="porc" id="inputPorc" class="form-control" value=<%=dcto.getPorcDcto()%> required >
-                  <label for="inputPorc">Porcentaje</label>
+                  <input type="text" name="porc" id="porc" class="form-control" value=<%=dcto.getPorcDcto()%> required >
+                  <label for="porc">Porcentaje</label>
                 </div>
 
                 <div class="form-label-group">
-                  <input type="text" name="fechaIni" id="inputFechai" class="form-control" value=<%=dcto.getFechaDctoInicio()%> required>
-                  <label for="inputFechai">Fecha inicio</label>
+                  <input type="text" name="fechaIni" id="fechaIni" class="form-control" value=<%=dcto.getFechaDctoInicio()%> required>
+                  <label for="fechaIni">Fecha inicio</label>
                 </div>
 				
                 <div class="form-label-group">
-                  <input type="text" name="fechaFin" id="inputFechaf" class="form-control" value=<%=dcto.getFechaDctoFin() %> required>
-                  <label for="inputFechaf">Fecha fin</label>
+                  <input type="text" name="fechaFin" id="fechaFin" class="form-control" value=<%=dcto.getFechaDctoFin() %> required>
+                  <label for="fechaFin">Fecha fin</label>
                 </div>
                 
                 
