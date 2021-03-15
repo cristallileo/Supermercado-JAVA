@@ -48,6 +48,11 @@ private DataProducto dp;
 		return dp.getMasMenos();
 	}
 	
+	public LinkedList<Producto> listarByDesc (String desc){
+		return dp.getByDesc(desc);
+	}
+	
+	
 }
 
 

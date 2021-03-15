@@ -49,7 +49,7 @@ public class DataProveedor {
 			return proveedores;
 		}
 
-	public void add(Proveedor p) { 
+	public Proveedor add(Proveedor p) { 
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
 		try {
@@ -83,7 +83,7 @@ public class DataProveedor {
             	e.printStackTrace();
             }
 		}
-		
+		return p;
     }
 	
 	public Proveedor editProveedor (Proveedor p) {
@@ -122,7 +122,7 @@ public class DataProveedor {
 	return p;
 	}
 
-	public Proveedor deleteProveedor(Proveedor p) {
+	public void deleteProveedor(Proveedor p) {
 			
 			PreparedStatement stmt= null;
 			ResultSet keyResultSet=null;
@@ -149,8 +149,42 @@ public class DataProveedor {
 	        	e.printStackTrace();
 	        }
 		}
-		return p;
+			
 		}
 
-	
+	public Proveedor getById(Proveedor prov) {
+		Proveedor p=null;
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		try {
+			stmt=DbConnector.getInstancia().getConn().prepareStatement(
+					"select idProveedor, telefono, email, razonSocial, fechaBaja from proveedor where idProveedor=?"
+					);
+			stmt.setInt(1, prov.getIdProveedor());
+			
+			rs=stmt.executeQuery();
+			if(rs!=null && rs.next()) {
+				p=new Proveedor();
+				p.setIdProveedor(rs.getInt("idProveedor"));
+				p.setMail(rs.getString("email"));
+				p.setTelefono(rs.getString("telefono"));
+				p.setRazonSocial(rs.getString("razonSocial"));
+				p.setFechaBaja(rs.getDate("fechaBaja"));
+
+		
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return p;
+}	
 }
