@@ -1,11 +1,7 @@
 package servlets;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.sql.Date;
-import java.util.LinkedList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,20 +10,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entidades.Descuento;
+import entidades.Proveedor;
 import logic.DescuentoController;
+import logic.ProveedorController;
 
 /**
- * Servlet implementation class AddDescuento
+ * Servlet implementation class EditProveedor
  */
-@SuppressWarnings("unused")
-@WebServlet("/AddDescuento")
-public class AddDescuento extends HttpServlet {
+@WebServlet("/EditProveedor")
+public class EditProveedor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddDescuento() {
+    public EditProveedor() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,38 +37,39 @@ public class AddDescuento extends HttpServlet {
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
 		doPost(request, response);
 	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	//	doGet(request, response);
-		Descuento d = new Descuento();
-		Descuento descuento= new Descuento();
-		//LinkedList<Descuento> descuentos = new LinkedList<Descuento>();
-		DescuentoController ctrl = new DescuentoController();
+		// doGet(request, response);
 		
-		String porc= request.getParameter("porc");
-		Double porcen= Double.parseDouble(porc);
+		ProveedorController ctrl= new ProveedorController();
+		Proveedor prov= new Proveedor();
 		
-		String desde = request.getParameter("desde");
-	    Date fecha_desde=Date.valueOf(desde);
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		String tel= request.getParameter("tel");
+		String email= request.getParameter("email");
+		String razonSocial= request.getParameter("razonSocial");
+		String baja = request.getParameter("baja");
+	    Date fecha_baja=Date.valueOf(baja);
 	    
-		String hasta = request.getParameter("hasta");
-	    Date fecha_hasta=Date.valueOf(hasta);
-		
-		d.setPorcDcto(porcen);
-		d.setFechaDctoInicio(fecha_desde);
-		d.setFechaDctoFin(fecha_hasta);
-		descuento= ctrl.add(d);
-		//d.setFechaDctoInicio(fd);
-		
-		//descuentos= ctrl.listarDescuentos();
+	    prov.setIdProveedor(id); 
+	    prov.setTelefono(tel);
+	    prov.setMail(email);
+	    prov.setFechaBaja(fecha_baja);
+	    prov.setRazonSocial(razonSocial);
+		prov= ctrl.add(prov);
 
-		request.setAttribute("nuevoDesc", descuento);
-		//request.setAttribute("descuentos", descuentos);
-		request.getRequestDispatcher("ListDescuentos").forward(request, response);
+		prov=ctrl.editProveedor(prov);
+		
+		request.setAttribute("proveedor-editado", prov);
+		request.setAttribute("proveedores", ctrl.listarProveedores());
+		request.getRequestDispatcher("listarProveedores.jsp").forward(request, response);
+		
 	}
 
 }

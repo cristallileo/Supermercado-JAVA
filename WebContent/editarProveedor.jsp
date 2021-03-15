@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Editar descuento</title>
+<title>Editar proveedor</title>
 
 <!-- Bootstrap core CSS -->
   <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
@@ -19,7 +19,7 @@
     
    <link href="style/login/login.css" rel="stylesheet">
   
-<% Descuento dcto = (Descuento)request.getAttribute("descuentoEditar");
+<% Proveedor prov = (Proveedor)request.getAttribute("proveedorEditar");
 %> 
 </head>
 <body>
@@ -36,20 +36,18 @@
             <a class="nav-link" href="mainpage-admin.jsp">Home
               
             </a>
-          </li>
-          <li class="nav-item">
+                   <li class="nav-item">
             <a class="nav-link" href="ListCategorias">Categorías</a>
           </li>
           <li class="nav-item">
-           <a class="nav-link" href="ListDescuentos">Descuentos</a>
+            <a class="nav-link" href="ListDescuentos">Descuentos</a>
           </li>
           <li class="nav-item ">
 	            <a class="nav-link" href="ListClientes">Clientes</a>
-	         
-          </li>
-          <li class="nav-item ">
-	            <a class="nav-link" href="ListEmpleados">Empleados</a>
 	             
+          </li>
+                     <li class="nav-item">
+             <a class="nav-link" href="ListEmpleados">Empleados</a>
           </li>
            <li class="nav-item">
               <a class="nav-link" href="ListProductos">Productos</a>
@@ -61,10 +59,7 @@
             <a class="nav-link" href="ListProveedores">Proveedores</a>
           </li>
           <li class="nav-item">
-             <form action="Inicio" method="get">
               	<a class="nav-link" href="">Cerrar Sesión</a>
-          	  </form>
-          	 
           </li>
         </ul>
       </div>
@@ -80,23 +75,28 @@
         <div class="container">
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto ">
-              <h3 class="login-heading mb-4 text-center">Editar descuento</h3>
+              <h3 class="login-heading mb-4 text-center">Editar proveedor</h3>
               
-              <form action="EditDescuento?id=<%=dcto.getIdDcto()%>" method="post" >
+              <form action="EditProveedor?id=<%=prov.getIdProveedor()%>>" method="post" >
                
-                <div class="form-label-group" style="margin:auto;max-width:300px" >
-                  <input type="text" name="porc" id="porc" class="form-control" value=<%=dcto.getPorcDcto()%> required >
-                  <label for="porc">Porcentaje</label>
+                <div class="form-label-group"  >
+                  <input type="text" name="tel" id="tel" class="form-control" value=<%=prov.getTelefono()%> required >
+                  <label for="tel">Telefono</label>
                 </div>
 
-                <div class="form-label-group" style="margin:auto;max-width:300px">
-                  <input type="text" name="fechaIni" id="fechaIni" class="form-control" value=<%=dcto.getFechaDctoInicio()%> required>
-                  <label for="fechaIni">Fecha inicio</label>
+                <div class="form-label-group" >
+                  <input id="email" class="form-control" value=<%=prov.getMail()%> required>
+                  <label for="email">Email</label>
                 </div>
-				
-                <div class="form-label-group" style="margin:auto;max-width:300px">
-                  <input type="text" name="fechaFin" id="fechaFin" class="form-control" value=<%=dcto.getFechaDctoFin() %> required>
-                  <label for="fechaFin">Fecha fin</label>
+
+                <div class="form-label-group" >
+                  <input id="razonSocial" class="form-control" value=<%=prov.getRazonSocial()%> required>
+                  <label for="razonSocial">Razon Social</label>
+                </div>
+
+                <div class="form-label-group" >
+                  <input type="text" name="baja" id="baja" class="form-control" value=<%=prov.getFechaBaja()%> required>
+                  <label for="baja">Fecha Baja</label>
                 </div>
                 
                 

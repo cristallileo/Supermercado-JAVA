@@ -14,7 +14,7 @@
      
     <link href="style/login/login.css" rel="stylesheet">
    
-<title>Alta Descuentos</title>
+<title>Alta Proveedores</title>
 </head>
 <body>
 <!-- Page Content -->
@@ -32,18 +32,16 @@
             <a class="nav-link" href="mainpage-admin.jsp">Home
               
             </a>
-          </li>
           <li class="nav-item">
             <a class="nav-link" href="ListCategorias">Categorías</a>
           </li>
           <li class="nav-item">
-           <a class="nav-link" href="ListDescuentos">Descuentos</a>
+            <a class="nav-link" href="ListDescuentos">Descuentos</a>
           </li>
           <li class="nav-item ">
-	            <a class="nav-link" href="ListClientes">Clientes</a>
-	             
+	         <a class="nav-link" href="ListClientes">Clientes</a>
           </li>
-                     <li class="nav-item">
+           <li class="nav-item">
              <a class="nav-link" href="ListEmpleados">Empleados</a>
           </li>
            <li class="nav-item">
@@ -52,39 +50,41 @@
           <li class="nav-item">
              <a class="nav-link" href="ListPedidos">Pedidos</a>
           </li>
-          </li>
            <li class="nav-item ">
             <a class="nav-link" href="ListProveedores">Proveedores</a>
           </li>
           <li class="nav-item">
-             <form action="Inicio" method="get">
-              	<a class="nav-link" href="">Cerrar Sesión</a>
-          	  </form>
-          </li>
+            <a class="nav-link" href="">Cerrar Sesión</a>
         </ul>
       </div>
     </div>
   </nav>
   </div>
-  <form action="AddDescuento" method="post">
+  <form action="AddProveedor" method="post">
   				<div class="form-label-group">
-                  <input type="text" name="porc" id="porc" class="form-control" placeholder="Porcentaje" required >
-                  <label for="porc">Porcentaje</label>
+                  <input type="text" name="tel" id="tel" class="form-control" placeholder="Telefono" required >
+                  <label for="tel">Telefono</label>
                 </div>
 
                 <div class="form-label-group">
-                  <input type="text" name="desde" id="desde" class="form-control" placeholder="Desde" required >
-                  <label for="desde">Desde</label>
+                  <input type="text" name="email" id="email" class="form-control" placeholder="Email" required >
+                  <label for="email">Email</label>
                 </div>
 
-				
                 <div class="form-label-group">
-                  <input type="text" name="hasta" id="hasta" class="form-control" placeholder="Hasta" >
-                  <label for="hasta">Hasta</label>
+                  <input type="text" name="razonS" id="razonS" class="form-control" placeholder="RazonSocial" required>
+                  <label for="razonS">Razon Social</label>
                 </div>
-            	<form action="AddDescuento" method="post">
-    				<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se agregará un nuevo descuento. Desea confirmar?')">Agregar</button>
- 				</form> 
+
+                <div class="form-label-group">
+                  <input type="text" name="baja" id="baja" class="form-control" placeholder="baja" >
+                  <label for="baja">Fecha Baja</label>
+                </div>          
+                
+  <form action="AddProveedor" method="post">
+    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se agregará un nuevo proveedor. Desea confirmar?')">Agregar</button>
+ </form> 
+ 
 </form>
 </body>
 </html>

@@ -8,11 +8,13 @@ import java.util.LinkedList;
 
 import Data.*;
 import entidades.*;
+import logic.*;
 
 
 @SuppressWarnings("unused")
 public class DataProducto {
 	
+	//no usamamos este metodo
 	public LinkedList<Producto> getByDescCat(Categoria cat){
 		
 		LinkedList<Producto> productos = new LinkedList <> ();
@@ -92,33 +94,33 @@ public class DataProducto {
 		return productos;
 	}
 	
-	public LinkedList<Producto> getByDesc(Producto p){
-		
-		LinkedList<Producto> productos = new LinkedList <> ();
-		
-		Producto prod =null;
-		PreparedStatement stmt=null;
+	public LinkedList<Producto> getByDesc(String desc){
+
+		Statement stmt=null;
 		ResultSet rs=null;
+		LinkedList<Producto> productos= new LinkedList<>();
+		
 		try {
-			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idProducto, desc_producto,stock, stockMinimo, marca, id_categoria, precio from producto p where p.desc_producto=?"
-					);
-			stmt.setString(1, p.getDescProducto());
-			rs=stmt.executeQuery();
-			if(rs!=null && rs.next()) {
-				prod=new Producto();
-				prod.setIdProducto(rs.getInt("idProducto"));
-				prod.setDescProducto(rs.getString("desc_producto"));
-				prod.setStock(rs.getInt("stock"));
-				prod.setStockMinimo(rs.getInt("stockMinimo"));
-				prod.setMarca(rs.getString("marca")); 
-				prod.setId_categoria(rs.getInt("id_categoria"));
-				prod.setPrecio(rs.getDouble("precio"));
-				productos.add(prod);
+			stmt= DbConnector.getInstancia().getConn().createStatement();
+			rs= stmt.executeQuery("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria, precio from producto where producto.desc_producto like '%=?%' ");
+			if(rs!=null) {
+				while(rs.next()) {
+					Producto p=new Producto();
+					p.setIdProducto(rs.getInt("idProducto"));
+					p.setDescProducto(rs.getString("desc_producto"));
+					p.setStock(rs.getInt("stock"));
+					p.setStockMinimo(rs.getInt("stockMinimo"));
+					p.setMarca(rs.getString("marca"));
+					p.setId_categoria(rs.getInt("id_categoria"));
+					p.setPrecio(rs.getDouble("precio"));
+					productos.add(p);
+				}
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+			
+		} finally {
 			try {
 				if(rs!=null) {rs.close();}
 				if(stmt!=null) {stmt.close();}
@@ -129,7 +131,6 @@ public class DataProducto {
 		}
 		
 		return productos;
-		
 	}
 
 	public void add(Producto p) { 
@@ -235,6 +236,7 @@ public class DataProducto {
 	return p;
 	}
 
+	//no usamamos este metodo
 	public LinkedList<Producto> getByPrecio (int max) {
 		
 		LinkedList<Producto> productos = new LinkedList <> ();

@@ -52,6 +52,9 @@
           <li class="nav-item">
               <a class="nav-link" href="ListPedidos">Pedidos</a>
           </li>
+           <li class="nav-item ">
+            <a class="nav-link" href="ListProveedores">Proveedores</a>
+          </li>
           <li class="nav-item">
              
               	<a class="nav-link" href="">Cerrar Sesión</a>
