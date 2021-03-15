@@ -81,7 +81,7 @@
                
                 <div class="form-label-group"  >
                   <input type="text" name="tel" id="tel" class="form-control" value=<%=prov.getTelefono()%> required >
-                  <label for="tel">Telefono</label>
+                  <label for="tel">Teléfono</label>
                 </div>
 
                 <div class="form-label-group" >
@@ -90,17 +90,19 @@
                 </div>
 
                 <div class="form-label-group" >
-                  <input id="razonSocial" class="form-control" value=<%=prov.getRazonSocial()%> required>
-                  <label for="razonSocial">Razon Social</label>
+                  <input id="razonS" class="form-control" value=<%=prov.getRazonSocial()%> required>
+                  <label for="razonS">Razón Social</label>
                 </div>
 
+                <%if (prov.getFechaBaja()!=null) {%>
                 <div class="form-label-group" >
-                  <input type="text" name="baja" id="baja" class="form-control" value=<%=prov.getFechaBaja()%> required>
+                  <input type="text" name="baja" id="baja" class="form-control" value=<%=prov.getFechaBaja()%> disabled>
                   <label for="baja">Fecha Baja</label>
                 </div>
+                <%} %>
                 
                 
-                	<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se editará el descuento. Desea confirmar?')">Guardar cambios</button>
+                	<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se editará el proveedor. Desea confirmar?')">Guardar cambios</button>
                 
          
               </form>

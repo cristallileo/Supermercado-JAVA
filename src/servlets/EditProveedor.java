@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import entidades.Descuento;
-import entidades.Proveedor;
-import logic.DescuentoController;
-import logic.ProveedorController;
+import entidades.*;
+
+import logic.*;
 
 /**
  * Servlet implementation class EditProveedor
@@ -51,24 +50,27 @@ public class EditProveedor extends HttpServlet {
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		
+		prov.setIdProveedor(id);
+		prov = ctrl.getById(prov);
+		
 		String tel= request.getParameter("tel");
 		String email= request.getParameter("email");
 		String razonSocial= request.getParameter("razonSocial");
 		String baja = request.getParameter("baja");
 	    Date fecha_baja=Date.valueOf(baja);
 	    
-	    prov.setIdProveedor(id); 
+	   // prov.setIdProveedor(id); 
 	    prov.setTelefono(tel);
 	    prov.setMail(email);
 	    prov.setFechaBaja(fecha_baja);
 	    prov.setRazonSocial(razonSocial);
-		prov= ctrl.add(prov);
+		prov= ctrl.editProveedor(prov);
 
-		prov=ctrl.editProveedor(prov);
+		
 		
 		request.setAttribute("proveedor-editado", prov);
 		request.setAttribute("proveedores", ctrl.listarProveedores());
-		request.getRequestDispatcher("listarProveedores.jsp").forward(request, response);
+		request.getRequestDispatcher("ListProveedores").forward(request, response);
 		
 	}
 

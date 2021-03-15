@@ -55,14 +55,14 @@ public class DataProveedor {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into proveedor(idProveedor, telefono, email, razonSocial, fechaBaja) values(?,?,?,?,?)",
+							"insert into proveedor( telefono, email, razonSocial, fechaBaja) values(?,?,?,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
-			stmt.setInt(1, p.getIdProveedor());
-			stmt.setString(2, p.getTelefono());
-			stmt.setString(3, p.getMail());
-			stmt.setString(4, p.getRazonSocial());
-			stmt.setDate(5, p.getFechaBaja());
+	
+			stmt.setString(1, p.getTelefono());
+			stmt.setString(2, p.getMail());
+			stmt.setString(3, p.getRazonSocial());
+			stmt.setDate(4,p.getFechaBaja());
 						
 			stmt.executeUpdate();
 			
@@ -92,7 +92,7 @@ public class DataProveedor {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"UPDATE `java`.`proveedor` SET `telefono` = ?,`email` = ?,`razonSocial` = ?, `fechaBaja` = ? WHERE (`idProveedor` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+							"UPDATE `tp_java`.`proveedor` SET `telefono` = ?,`email` = ?,`razonSocial` = ?, `fechaBaja` = ? WHERE (`idProveedor` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
 			
 			
 			stmt.setString(1, p.getTelefono());

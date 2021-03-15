@@ -1,11 +1,8 @@
 package servlets;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+//import java.sql.Date;
 import java.sql.Date;
-import java.util.LinkedList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -54,17 +51,20 @@ public class AddProveedor extends HttpServlet {
 		
 		String tel= request.getParameter("tel");
 		String email= request.getParameter("email");
-		String razonSocial= request.getParameter("razonSocial");
+		String razonSocial= request.getParameter("razonS");
+		
 		String baja = request.getParameter("baja");
 	    Date fecha_baja=Date.valueOf(baja);
+	    prov.setFechaBaja(fecha_baja);
 	    
 	    prov.setTelefono(tel);
 	    prov.setMail(email);
 	    prov.setRazonSocial(razonSocial);
-	    prov.setFechaBaja(fecha_baja);
+	    
 	    prov= ctrl.add(prov);
 
 		request.setAttribute("nuevoProv", prov);
+		request.setAttribute("proveedores", ctrl.listarProveedores());
 		request.getRequestDispatcher("ListProveedores").forward(request, response);
 	}
 

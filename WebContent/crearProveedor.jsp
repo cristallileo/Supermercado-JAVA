@@ -72,14 +72,14 @@
                 </div>
 
                 <div class="form-label-group">
-                  <input type="text" name="razonS" id="razonS" class="form-control" placeholder="RazonSocial" required>
-                  <label for="razonS">Razon Social</label>
+                  <input type="text" name="razonS" id="razonS" class="form-control" placeholder="Razon Social" required>
+                  <label for="razonS">Razón Social</label>
                 </div>
 
-                <div class="form-label-group">
-                  <input type="text" name="baja" id="baja" class="form-control" placeholder="baja" >
+            <!--  <div class="form-label-group">
+                  <input type="text" name="baja" id="baja" class="form-control" placeholder="Fecha de Baja" >
                   <label for="baja">Fecha Baja</label>
-                </div>          
+                </div>  -->     
                 
   <form action="AddProveedor" method="post">
     <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se agregará un nuevo proveedor. Desea confirmar?')">Agregar</button>

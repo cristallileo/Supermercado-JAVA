@@ -18,10 +18,12 @@
  
  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
  
+ 
      <!-- Custom styles for this template -->
   <link href="style/clientes-admin/confirmacion.css" rel="stylesheet">
   
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
   
 <title>Proveedores</title>
 
@@ -93,7 +95,7 @@
                                 <th align="center"><span>Telefono</span></th>
                                 <th align="center"><span>Email</span></th>
                                 <th align="center"><span>Razon Social</span></th>
-                                <th align="center"><span>Fecha Baja</span></th>
+                                <th align="center"><span>Estado</span></th>
                                
                                
                                 <th>&nbsp;</th>
@@ -106,7 +108,20 @@
                                     <td><%=p.getTelefono()%></td>
                                     <td><%=p.getMail()%></td>
                                     <td><%=p.getRazonSocial()%> </td>
-                                    <td><%=p.getFechaBaja()%> </td>
+                                    <%if (p.getFechaBaja()==null){%>
+                                    <td>
+                                    <a href="DeshabilitarProveedor?idProv=<%=p.getIdProveedor()%>" onclick="return confirm('Desea deshabilitar este proveedor?');">
+                                    	<span class="badge bg-success">Activo</span>
+                                    </a>
+                                    </td>
+                                    <%}else{%> 
+                                       <td>
+                                       <a href="HabilitarProveedor?idProv=<%=p.getIdProveedor()%>" onclick="return confirm('Desea habilitar este proveedor?');">
+                                       	<span class="badge bg-danger">Inactivo</span>
+                                       </a>
+                                       </td>
+                                    <%} %>
+                                    
        
                                      <td style="width: 10%;">
                                         

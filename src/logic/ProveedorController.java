@@ -33,5 +33,7 @@ public class ProveedorController {
 	public Proveedor editProveedor (Proveedor p) {
 		return dp.editProveedor(p);
 	}
+
+
 	
 }
