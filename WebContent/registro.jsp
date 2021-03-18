@@ -6,35 +6,21 @@
 <meta charset="ISO-8859-1">
 <title>Crear cuenta</title>
 
-  <!-- Bootstrap core CSS -->
   <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
   <link href="style/mainpage/modern-business.css" rel="stylesheet">
-  
-   <!--  <link href="style/login/login.css" rel="stylesheet"> -->
-   
-     
-    <link href="style/login/login.css" rel="stylesheet">
-   
-  
+  <link href="style/login/login.css" rel="stylesheet">
+
 </head>
 <body>
 
- <!-- Navigation -->
 	  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 	    <div class="container">
 	      <a class="navbar-brand" href="index.jsp">Supermercado</a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="navbar-toggler-icon"></span>
-	      </button>
 	      <div class="collapse navbar-collapse" id="navbarResponsive">
 	        <ul class="navbar-nav ml-auto">
 	           <li class="nav-item ">
-	            <a class="nav-link" href="login.jsp">Iniciar Sesión
-	             
-	            </a>
-          	  </li>
+	            <a class="nav-link" href="login.jsp">Iniciar Sesión </a>
+          	   </li>
 	          <li class="nav-item active">
 	            <a class="nav-link" href="registro.jsp">Registrarse</a>
 	             <span class="sr-only">(current)</span>
@@ -67,12 +53,13 @@
                   <label for="inputPassword">Apellido</label>
                 </div>
 
-				
-                <div class="form-label-group">
-                  <input type="text" name="tipoDoc" id="inputTipo" class="form-control" placeholder="Tipo doc" required>
-                  <label for="inputPassword">Tipo Documento</label>
-                </div>
-                
+				<label for="tipoDoc">Elegir Tipo Doc:</label>
+  				<select id="tipoDoc" name="tipoDoc">
+   				<option value="dni">DNI</option>
+  				<option value="libreta">Libreta Cívica</option>
+  				<option value="libreta">Libreta de Enrolamiento</option>
+  				</select>
+              
                 <div class="form-label-group">
                   <input type="text" name="nroDoc" id="inputNro" class="form-control" placeholder="Nro doc" required>
                   <label for="inputPassword">Nro Documento</label>
@@ -98,7 +85,7 @@
                   <label for="inputPassword">Contraseña</label>
                 </div>
                 
-                <form action="AddClientes" method="post">
+                <form action="AddCliente" method="post">
                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se agregará un nuevo cliente. Desea confirmar?')">Agregar</button>
                 </form>
                 

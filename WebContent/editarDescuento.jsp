@@ -7,36 +7,24 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+
 <title>Editar descuento</title>
 
-<!-- Bootstrap core CSS -->
   <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="style/mainpage/modern-business.css" rel="stylesheet">
+  <link href="style/mainpage/modern-business.css" rel="stylesheet">  
+  <link href="style/login/login.css" rel="stylesheet">
   
-   <!--  <link href="style/login/login.css" rel="stylesheet"> -->
-    
-   <link href="style/login/login.css" rel="stylesheet">
-  
-<% Descuento dcto = (Descuento)request.getAttribute("descuentoEditar");
-%> 
+<% Descuento dcto = (Descuento)request.getAttribute("descuentoEditar");%> 
 </head>
 <body>
-<!-- Navigation -->
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="mainpage-admin.jsp">Supermercado</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item ">
-            <a class="nav-link" href="mainpage-admin.jsp">Home
-              
-            </a>
-          </li>
+
           <li class="nav-item">
             <a class="nav-link" href="ListCategorias">Categorías</a>
           </li>
@@ -99,10 +87,10 @@
                   <label for="fechaFin">Fecha fin</label>
                 </div>
                 
-                
+                <p>${message_iae}</p>
+                               
                 	<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se editará el descuento. Desea confirmar?')">Guardar cambios</button>
-                
-         
+                       
               </form>
             </div>
           </div>

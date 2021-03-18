@@ -88,11 +88,7 @@ public class DataPersona {
 			stmt.setString(9, p.getCuil());
 			stmt.setDate(10, p.getFechaIngreso());
 			stmt.setDate(11, p.getFechaRegistro());
-			//stmt.setBoolean(12, p.isCliente());
-			//stmt.setBoolean(13, p.isEmpleado());
-			
-
-						
+	
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();
@@ -140,11 +136,7 @@ public class DataPersona {
 			stmt.setString(9, p.getCuil());
 			stmt.setDate(10, p.getFechaIngreso());
 			stmt.setDate(11, p.getFechaRegistro());
-			//stmt.setBoolean(12, p.isCliente());
-			//stmt.setBoolean(13, p.isEmpleado());
 			
-
-						
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();
