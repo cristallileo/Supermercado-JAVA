@@ -10,37 +10,18 @@ import Data.*;
 import entidades.*;
 import logic.*;
 
-/**
- * Servlet implementation class Inicio
- */
 @SuppressWarnings("unused")
 @WebServlet("/Inicio")
+
 public class Inicio extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
-
-    /**
-     * Default constructor. 
-     */
-    public Inicio() {
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		//request.getSession().invalidate();
-		//request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
+
 		Boolean email_format, pass_format;
 		Persona per = new Persona();
 		Login ctrl = new Login();
@@ -78,20 +59,19 @@ public class Inicio extends HttpServlet {
 				}
 				
 				
-				//response.getWriter().append("Bienvenido: "+ per.getApellido() + per.getNombre());
 			}
 			else {
-				response.getWriter().append("No existe el usuario");
+				request.setAttribute("message_def", "Usuario y/o incorrectos, intente nuevamente");
+				request.getRequestDispatcher("login.jsp").forward(request, response);
 			}
-		}else {
-			request.getRequestDispatcher("error.jsp").forward(request, response);
 		}
 		
-		
-		
-
-		
-			}
+		else {
+			request.setAttribute("message_sec", "Los datos ingresados son invalidos, la contraseña debe tener al menos 8 caracteres y no más de 15");
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+		}
+	
+	}
 
 	
 		private static boolean emailIsValid(String email) {
@@ -102,8 +82,5 @@ public class Inicio extends HttpServlet {
 		private static boolean passIsValid(String pass) {
 		      String pass_string = "^([a-zA-Z0-9@*#]{6,15})$"; //Match all alphanumeric character and predefined wild characters. Password must consists of at least 8 characters and not more than 15 characters.
 		      return pass.matches(pass_string);
-		   }
-		
-	
-
+		   }	
 }

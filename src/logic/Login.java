@@ -24,9 +24,4 @@ public class Login {
 			return dp.getByUser(p);
 		}
 
-		/*public LinkedList<Producto> getByDescCat(String cat){
-			
-			Categoria categ= dc.getById(cat);
-			return dprod.getByDescCat(categ);
-		}*/
 }

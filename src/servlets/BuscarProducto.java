@@ -6,10 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import entidades.Pedido;
 import entidades.Producto;
-import logic.PedidoController;
 import logic.ProductoController;
 
 /**
