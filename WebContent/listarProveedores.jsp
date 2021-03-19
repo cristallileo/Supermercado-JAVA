@@ -39,10 +39,16 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="mainpage-admin.jsp">Supermercado</a>
-
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
- 
+          <li class="nav-item ">
+            <a class="nav-link" href="mainpage-admin.jsp">Home
+              
+            </a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="ListCategorias">Categorías</a>
           </li>
@@ -86,9 +92,9 @@
                             <thead>
                                 <tr>
                                 <th align="center"><span>ID</span></th>
-                                <th align="center"><span>Telefono</span></th>
-                                <th align="center"><span>Email</span></th>
                                 <th align="center"><span>Razon Social</span></th>
+                                <th align="center"><span>Email</span></th>
+                                <th align="center"><span>Teléfono</span></th>
                                 <th align="center"><span>Estado</span></th>
                                
                                
@@ -99,9 +105,9 @@
 	                           <% for (Proveedor p : lp) { %>
 	                    			<tr>
 	                    			<td><%=p.getIdProveedor()%></td>
-                                    <td><%=p.getTelefono()%></td>
+                                    <td><%=p.getRazonSocial()%></td>
                                     <td><%=p.getMail()%></td>
-                                    <td><%=p.getRazonSocial()%> </td>
+                                    <td><%=p.getTelefono()%> </td>
                                     <%if (p.getFechaBaja()==null){%>
                                     <td>
                                     <a href="DeshabilitarProveedor?idProv=<%=p.getIdProveedor()%>" onclick="return confirm('Desea deshabilitar este proveedor?');">
@@ -163,3 +169,4 @@
 
 </body>
 </html>
+
