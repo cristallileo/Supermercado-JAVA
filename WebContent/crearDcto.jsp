@@ -81,13 +81,13 @@
                 </div>
 
                 <div class="form-label-group">
-                  <input type="text" name="desde" id="desde" class="form-control" placeholder="Desde" required >
+                  <input type="date" name="desde" id="desde" class="form-control" placeholder="Desde" required >
                   <label for="desde">Desde</label>
                 </div>
 
 				
                 <div class="form-label-group">
-                  <input type="text" name="hasta" id="hasta" class="form-control" placeholder="Hasta" >
+                  <input type="date" name="hasta" id="hasta" class="form-control" placeholder="Hasta" >
                   <label for="hasta">Hasta</label>
                 </div>
                 

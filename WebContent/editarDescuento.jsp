@@ -13,6 +13,8 @@
   <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
   <link href="style/mainpage/modern-business.css" rel="stylesheet">  
   <link href="style/login/login.css" rel="stylesheet">
+	
+
   
 <% Descuento dcto = (Descuento)request.getAttribute("descuentoEditar");%> 
 </head>
@@ -78,12 +80,13 @@
                 </div>
                 
                 <div class="form-label-group"  >
-                  <input type="text" name="fechaIni" id="fechaIni" class="form-control" value=<%=dcto.getFechaDctoInicio()%> required >
+                  <input type="date" name="fechaIni" id="fechaIni" class="form-control" value=<%=dcto.getFechaDctoInicio()%> required >
                   <label for="fechaIni">Fecha inicio</label>
                 </div>
-
+                
+				
                 <div class="form-label-group">
-                  <input type="text" name="fechaFin" id="fechaFin" class="form-control" value=<%=dcto.getFechaDctoFin()%> required>
+                  <input type="date" name="fechaFin" id="fechaFin" class="form-control" value=<%=dcto.getFechaDctoFin()%> required>
                   <label for="fechaFin">Fecha fin</label>
                 </div>
               

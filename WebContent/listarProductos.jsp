@@ -91,6 +91,7 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
 	<!-- CATEGORIAS -->
 	<div class="w3-container">
 	<div class="row">
+	
   	<div class="w3-dropdown-hover">
     	<button class="w3-button w3-black">Categoria</button>
 	    <div class="w3-dropdown-content w3-bar-block w3-border">
@@ -100,12 +101,12 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
 		  	 <%} %>
     	</div>
   	</div>
-  	<!-- PRECIO -->
+  	<!-- precio -->
   	<div class="w3-dropdown-hover">
   	<button class="w3-button w3-black">Precio</button>
 	    <div class="w3-dropdown-content w3-bar-block w3-border">
-	     <a class="w3-bar-item w3-button" href="ListProductosMenosMas">De menor a mayor precio</a>
-		 <a class="w3-bar-item w3-button" href="ListProductosMasMenos">De mayor a menor precio</a>
+	     <a class="w3-bar-item w3-button" href="ListProductos">De menor a mayor precio</a>
+		 <a class="w3-bar-item w3-button" href="ListProductos">De mayor a menor precio</a>
     	</div>
 	</div>
 	<!-- SEARCH -->
@@ -116,17 +117,20 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
 	      <button type="submit"><i class="fa fa-search"></i></button>
 	   </div>
 	</form>
-	<div>
-	<form action="ListProductos">
-    	<button type="submit"><i class="fa fa-ban" aria-hidden="true"></i></button>
-</form>
+	
+	
 	</div>
 </div>
-</div>
+	
+
+
+
 <br>
 	
 	<!--  TABLA -->	
     <div class="row">
+    
+    
         <div class="col-lg-12">
             <div class="main-box no-header clearfix">
                 <div class="main-box-body clearfix">
