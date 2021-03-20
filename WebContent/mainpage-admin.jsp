@@ -62,7 +62,7 @@
       </div>
 
       <div class="col-lg-5 text-center" >
-        <h1 class="font-weight-light"><b>Hola de nuevo, <%=per.getNombre() %>!</b> </h1>
+        <h1 class="font-weight-light"><b>Bienvenido!</b> </h1>
         <p>Ahora podés ver las últimas novedades del negocio en un mismo lugar. </p>
       </div>
     </div>

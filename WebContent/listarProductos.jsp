@@ -8,6 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
 
+	
   <!-- Bootstrap core CSS -->
   <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
 
@@ -27,6 +28,8 @@
   <link rel="stylesheet" href="style/filtros.css">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+	
   
 <title>Productos</title>
 
@@ -87,6 +90,7 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
 	<!--  DROPLISTS -->
 	<!-- CATEGORIAS -->
 	<div class="w3-container">
+	<div class="row">
   	<div class="w3-dropdown-hover">
     	<button class="w3-button w3-black">Categoria</button>
 	    <div class="w3-dropdown-content w3-bar-block w3-border">
@@ -107,17 +111,19 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
 	<!-- SEARCH -->
 	<!-- DESCRIPCION -->
 	<form action="ListProductosDesc">
-	   <div class="search-container" style="margin:auto;max-width:300px">
+	   <div class="search-box" style="margin:8px;max-width:300px;position:absolute;font-size: 16px;">
 	      <input type="text" placeholder="Descripcion..." name="desc">
 	      <button type="submit"><i class="fa fa-search"></i></button>
 	   </div>
 	</form>
-
+	<div>
+	<form action="ListProductos">
+    	<button type="submit"><i class="fa fa-ban" aria-hidden="true"></i></button>
+</form>
+	</div>
 </div>
-	
-
-	
-	<br>
+</div>
+<br>
 	
 	<!--  TABLA -->	
     <div class="row">
