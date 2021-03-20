@@ -1,5 +1,7 @@
 <%@page import="java.util.LinkedList"%>
+<%@page import="java.sql.Date" %>
 <%@page import="entidades.*"%>
+<%@ page import="java.util.Calendar"%>
 <%@page import="logic.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -19,7 +21,10 @@
 <title>Descuentos</title>
 
 
-<% LinkedList<Descuento> ld = (LinkedList<Descuento>)request.getAttribute("descuentos");%>
+<% LinkedList<Descuento> ld = (LinkedList<Descuento>)request.getAttribute("descuentos");
+java.sql.Date timeNow = new Date(Calendar.getInstance().getTimeInMillis());
+
+%>
 
 </head>
 <body>
@@ -74,7 +79,7 @@
                                 <th align="center"><span>Porcentaje</span></th>
                                 <th align="center"><span>Fecha Inicio</span></th>
                                 <th align="center"><span>Fecha Fin</span></th>
-                               
+                                <th align="center"><span>Estado</span></th>
                                
                                 <th>&nbsp;</th>
                                 </tr>
@@ -86,6 +91,20 @@
                                     <td><%=d.getPorcDcto()%></td>
                                     <td><%=d.getFechaDctoInicio()%></td>
                                     <td><%=d.getFechaDctoFin()%> </td>
+       								 <%if (d.getFechaDctoInicio().before(timeNow) && d.getFechaDctoFin().after(timeNow)){%>
+                                    <td>
+                                    <a>
+                                    	<span class="badge bg-success">Activo</span>
+                                    </a>
+                                    </td>
+                                    <%}else{%> 
+                                       <td>
+                                       <a>
+                                       	<span class="badge bg-danger">Inactivo</span>
+                                       </a>
+                                     </td>
+                                    <%} %>
+       
        
                                      <td style="width: 10%;">
                                         
