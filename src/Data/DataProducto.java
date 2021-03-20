@@ -101,9 +101,9 @@ public class DataProducto {
 		LinkedList<Producto> productos= new LinkedList<>();
 		
 		try {
-			stmt=DbConnector.getInstancia().getConn().prepareStatement("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria, precio from producto where producto.desc_producto like  ('%' || ? || '%') ");
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select * from producto where producto.desc_producto like  '%" +desc+"%'");
 			
-			stmt.setString(1, desc);
+		
 			rs=stmt.executeQuery();
 			
 			if(rs!=null) {
