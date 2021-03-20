@@ -53,14 +53,14 @@ public class AddProveedor extends HttpServlet {
 		String email= request.getParameter("email");
 		String razonSocial= request.getParameter("razonS");
 		
-		String baja = request.getParameter("baja");
+		/*String baja = request.getParameter("baja");
 	    Date fecha_baja=Date.valueOf(baja);
-	    prov.setFechaBaja(fecha_baja);
+	    prov.setFechaBaja(fecha_baja);*/
 	    
 	    prov.setTelefono(tel);
 	    prov.setMail(email);
 	    prov.setRazonSocial(razonSocial);
-	    
+	    prov.setFechaBaja(null);
 	    prov= ctrl.add(prov);
 
 		request.setAttribute("nuevoProv", prov);

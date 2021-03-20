@@ -62,16 +62,13 @@ public class EditProveedor extends HttpServlet {
 	    prov.setTelefono(tel);
 	    prov.setMail(email);
 	    if (baja!=null) {
-			Date fecha_baja=Date.valueOf(baja);
+	    	//prov.setFechaBaja(null);
+	    	Date fecha_baja=Date.valueOf(baja);
 			prov.setFechaBaja(fecha_baja);
-		    }else {
-		    	prov.setFechaBaja(null);
-		    }
+		    }		    
 	    prov.setRazonSocial(razonSocial);
 		prov= ctrl.editProveedor(prov);
 
-		
-		
 		request.setAttribute("proveedor-editado", prov);
 		request.setAttribute("proveedores", ctrl.listarProveedores());
 		request.getRequestDispatcher("ListProveedores").forward(request, response);
