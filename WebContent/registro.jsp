@@ -44,49 +44,49 @@
               <form action="AddClientes" method="post">
                
                 <div class="form-label-group">
-                  <input type="text" name="name" id="inputName" class="form-control" placeholder="Nombre" required >
-                  <label for="inputEmail">Nombre</label>
+                  <input type="text" name="name" id="name" class="form-control" placeholder="Nombre" required >
+                  <label for="name">Nombre</label>
                 </div>
 
                 <div class="form-label-group">
-                  <input type="text" name="surname" id="inputSurname" class="form-control" placeholder="Apellido" required>
-                  <label for="inputPassword">Apellido</label>
+                  <input type="text" name="surname" id="surname" class="form-control" placeholder="Apellido" required>
+                  <label for="surname">Apellido</label>
                 </div>
 
-				<label for="tipoDoc">Elegir Tipo Doc:</label>
+				<label for="tipoDoc">Tipo Doc:</label>
   				<select id="tipoDoc" name="tipoDoc">
    				<option value="dni">DNI</option>
   				<option value="libreta">Libreta Cívica</option>
-  				<option value="libreta">Libreta de Enrolamiento</option>
+  				<option value="enrolamiento">Libreta de Enrolamiento</option>
   				</select>
               
                 <div class="form-label-group">
-                  <input type="text" name="nroDoc" id="inputNro" class="form-control" placeholder="Nro doc" required>
-                  <label for="inputPassword">Nro Documento</label>
+                  <input type="text" name="nroDoc" id="nroDoc" class="form-control" placeholder="Nro doc" required>
+                  <label for="nroDoc">Nro Documento</label>
                 </div>
              
                 <div class="form-label-group">
-                  <input type="text" name="tel" id="inputTel" class="form-control" placeholder="Telefono" required>
-                  <label for="inputPassword">Teléfono</label>
+                  <input type="text" name="tel" id="tel" class="form-control" placeholder="Telefono" required>
+                  <label for="tel">Teléfono</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" name="direc" id="inputDirec" class="form-control" placeholder="Dirección" required>
-                  <label for="inputPassword">Dirección</label>
+                  <input type="text" name="direc" id="direc" class="form-control" placeholder="Dirección" required>
+                  <label for="direc">Dirección</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email" required>
-                  <label for="inputPassword">Email</label>
+                  <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
+                  <label for="email">Email</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="password" name="pass" id="inputPass" class="form-control" placeholder="Contraseña" required>
-                  <label for="inputPassword">Contraseña</label>
+                  <input type="password" name="pass" id="pass" class="form-control" placeholder="Contraseña" required>
+                  <label for="pass">Contraseña</label>
                 </div>
                 
                 <form action="AddCliente" method="post">
-                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se agregará un nuevo cliente. Desea confirmar?')">Agregar</button>
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Enviar</button>
                 </form>
                 
                 <div class="text-center">

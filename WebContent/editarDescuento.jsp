@@ -60,7 +60,7 @@
   </nav>
 
 
-  <div class="container-fluid">
+    <div class="container-fluid">
   <div class="row no-gutter">
     <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
     <div class="col-md-8 col-lg-6">
@@ -72,21 +72,21 @@
               
               <form action="EditDescuento?id=<%=dcto.getIdDcto()%>" method="post" >
                
-                <div class="form-label-group" style="margin:auto;max-width:300px" >
-                  <input type="text" name="porc" id="porc" class="form-control" value=<%=dcto.getPorcDcto()%> required >
+                <div class="form-label-group" >
+                  <input type="text" name="porc" id="porc" class="form-control" value=<%=dcto.getPorcDcto()%> required>
                   <label for="porc">Porcentaje</label>
                 </div>
-
-                <div class="form-label-group" style="margin:auto;max-width:300px">
-                  <input type="text" name="fechaIni" id="fechaIni" class="form-control" value=<%=dcto.getFechaDctoInicio()%> required>
+                
+                <div class="form-label-group"  >
+                  <input type="text" name="fechaIni" id="fechaIni" class="form-control" value=<%=dcto.getFechaDctoInicio()%> required >
                   <label for="fechaIni">Fecha inicio</label>
                 </div>
-				
-                <div class="form-label-group" style="margin:auto;max-width:300px">
-                  <input type="text" name="fechaFin" id="fechaFin" class="form-control" value=<%=dcto.getFechaDctoFin() %> required>
+
+                <div class="form-label-group">
+                  <input type="text" name="fechaFin" id="fechaFin" class="form-control" value=<%=dcto.getFechaDctoFin()%> required>
                   <label for="fechaFin">Fecha fin</label>
                 </div>
-                
+              
                 <p>${message_iae}</p>
                                
                 	<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se editará el descuento. Desea confirmar?')">Guardar cambios</button>

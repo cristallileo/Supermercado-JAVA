@@ -45,7 +45,8 @@ public class ListProductosDesc extends HttpServlet {
 		// TODO Auto-generated method stub
 		// doGet(request, response);
 	
-
+		//Categoria categoria= new Categoria();
+		
 		ProductoController ctrl= new ProductoController();
 		CategoriaController ctrlCat= new CategoriaController();
 		
@@ -53,7 +54,8 @@ public class ListProductosDesc extends HttpServlet {
 		LinkedList<Categoria> categorias= new LinkedList<Categoria>();
 
 		String desc= request.getParameter("desc");
-
+		//categoria.setDescCategoria(desc);
+		
 		productos=ctrl.listarByDesc(desc);
 		categorias= ctrlCat.listarCategorias();
 		

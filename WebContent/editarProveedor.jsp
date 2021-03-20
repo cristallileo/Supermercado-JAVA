@@ -27,11 +27,16 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="mainpage-admin.jsp">Supermercado</a>
-
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-
-          <li class="nav-item">
+          <li class="nav-item ">
+            <a class="nav-link" href="mainpage-admin.jsp">Home
+              
+            </a>
+                   <li class="nav-item">
             <a class="nav-link" href="ListCategorias">Categorías</a>
           </li>
           <li class="nav-item">
@@ -72,21 +77,21 @@
             <div class="col-md-9 col-lg-8 mx-auto ">
               <h3 class="login-heading mb-4 text-center">Editar proveedor</h3>
               
-              <form action="EditProveedor?id=<%=prov.getIdProveedor()%>>" method="post" >
+              <form action="EditProveedor?id=<%=prov.getIdProveedor()%>" method="post" >
                
+                <div class="form-label-group" >
+                  <input type="text" name="razonS" id="razonS" class="form-control" value=<%=prov.getRazonSocial()%> required>
+                  <label for="razonS">Razón Social</label>
+                </div>
+                
                 <div class="form-label-group"  >
                   <input type="text" name="tel" id="tel" class="form-control" value=<%=prov.getTelefono()%> required >
                   <label for="tel">Teléfono</label>
                 </div>
 
-                <div class="form-label-group" >
-                  <input id="email" class="form-control" value=<%=prov.getMail()%> required>
+                <div class="form-label-group">
+                  <input type="text" name="email" id="email" class="form-control" value=<%=prov.getMail()%> required>
                   <label for="email">Email</label>
-                </div>
-
-                <div class="form-label-group" >
-                  <input id="razonS" class="form-control" value=<%=prov.getRazonSocial()%> required>
-                  <label for="razonS">Razón Social</label>
                 </div>
 
                 <%if (prov.getFechaBaja()!=null) {%>

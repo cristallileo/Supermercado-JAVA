@@ -96,13 +96,16 @@ public class DataProducto {
 	
 	public LinkedList<Producto> getByDesc(String desc){
 
-		Statement stmt=null;
+		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		LinkedList<Producto> productos= new LinkedList<>();
 		
 		try {
-			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria, precio from producto where producto.desc_producto like '%=?%' ");
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria, precio from producto where producto.desc_producto like  ('%' || ? || '%') ");
+			
+			stmt.setString(1, desc);
+			rs=stmt.executeQuery();
+			
 			if(rs!=null) {
 				while(rs.next()) {
 					Producto p=new Producto();

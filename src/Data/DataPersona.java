@@ -242,6 +242,7 @@ public class DataPersona {
 			stmt.setString(1, per.getEmail());
 			stmt.setString(2, per.getPassword());
 			rs=stmt.executeQuery();
+			
 			if(rs!=null && rs.next()) {
 				p=new Persona();
 				p.setIdPersona(rs.getInt("idPersona"));

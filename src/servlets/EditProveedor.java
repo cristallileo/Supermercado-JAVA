@@ -55,19 +55,20 @@ public class EditProveedor extends HttpServlet {
 		
 		String tel= request.getParameter("tel");
 		String email= request.getParameter("email");
-		String razonSocial= request.getParameter("razonSocial");
+		String razonSocial= request.getParameter("razonS");
 		String baja = request.getParameter("baja");
-	    Date fecha_baja=Date.valueOf(baja);
 	    
 	   // prov.setIdProveedor(id); 
 	    prov.setTelefono(tel);
 	    prov.setMail(email);
-	    prov.setFechaBaja(fecha_baja);
+	    if (baja!=null) {
+	    	//prov.setFechaBaja(null);
+	    	Date fecha_baja=Date.valueOf(baja);
+			prov.setFechaBaja(fecha_baja);
+		    }		    
 	    prov.setRazonSocial(razonSocial);
 		prov= ctrl.editProveedor(prov);
 
-		
-		
 		request.setAttribute("proveedor-editado", prov);
 		request.setAttribute("proveedores", ctrl.listarProveedores());
 		request.getRequestDispatcher("ListProveedores").forward(request, response);
@@ -75,3 +76,4 @@ public class EditProveedor extends HttpServlet {
 	}
 
 }
+
