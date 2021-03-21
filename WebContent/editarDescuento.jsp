@@ -90,7 +90,12 @@
                   <label for="fechaFin">Fecha fin</label>
                 </div>
               
+                <!-- fecha de incio no puede sewr posterior a la de fin -->
+              	<p>${message_fechas}</p>              	
+              	
+                <!-- NO HACE FALTA PQ LA FECHA SE INGRESA POR CALENDARIO
                 <p>${message_iae}</p>
+                -->
                                
                 	<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se editará el descuento. Desea confirmar?')">Guardar cambios</button>
                        

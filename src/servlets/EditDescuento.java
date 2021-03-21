@@ -29,6 +29,8 @@ public class EditDescuento extends HttpServlet {
 		
 		DescuentoController ctrl= new DescuentoController();
 		Descuento dcto= new Descuento();
+		MyHelper h= new MyHelper();
+		request.setAttribute("message_fechas", null);
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		Double porcentaje= Double.parseDouble(request.getParameter("porc"));
@@ -39,6 +41,15 @@ public class EditDescuento extends HttpServlet {
 		String hasta = request.getParameter("fechaFin");
 	    Date fecha_hasta=Date.valueOf(hasta);
 				
+		try {
+			h.verificarFechas(fecha_desde, fecha_hasta);
+		}
+		catch (CustomException e) {
+			//ce.printStackTrace();
+			request.setAttribute("message_fechas", e.getMessage());
+			request.getRequestDispatcher("BuscarDescuento?id="+ id).forward(request, response);
+		}
+	    
 		dcto.setIdDcto(id);
 		dcto.setPorcDcto(porcentaje);
 		dcto.setFechaDctoInicio(fecha_desde);

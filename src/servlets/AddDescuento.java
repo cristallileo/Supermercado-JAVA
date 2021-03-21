@@ -56,10 +56,7 @@ public class AddDescuento extends HttpServlet {
 			//ce.printStackTrace();
 			request.setAttribute("message_fechas", e.getMessage());
 			request.getRequestDispatcher("crearDcto.jsp").forward(request, response);
-		}finally {
-			
 		}
-		
 		d.setPorcDcto(porcen);
 		d.setFechaDctoInicio(fecha_desde);
 		d.setFechaDctoFin(fecha_hasta);
