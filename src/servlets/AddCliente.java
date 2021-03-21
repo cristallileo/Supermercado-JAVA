@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import entidades.Persona;
+import logic.CustomException;
+import logic.MyHelper;
 import logic.PersonaController;
 
 @WebServlet("/AddClientes")
@@ -29,6 +31,7 @@ public class AddCliente extends HttpServlet {
 		Persona per= new Persona();
 		Persona cli= new Persona();
 		PersonaController ctrl= new PersonaController();
+		MyHelper h= new MyHelper();
 		
 		String nombre= request.getParameter("name");		
 		String apellido= request.getParameter("surname");				
@@ -38,6 +41,14 @@ public class AddCliente extends HttpServlet {
 		String direccion= request.getParameter("direc");	
 		String email= request.getParameter("email");
 		String pass= request.getParameter("pass");
+		
+		try {
+			h.isClienteDuplicado(email);
+		}
+		catch (CustomException e){
+			request.setAttribute("message_cliente",e.getMessage());
+			request.getRequestDispatcher("registro.jsp").forward(request, response);
+		}
 		
 		per.setTipoDoc(tDoc);
 		per.setNroDoc(nDoc);
