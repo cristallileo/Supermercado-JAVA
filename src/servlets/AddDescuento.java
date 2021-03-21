@@ -11,8 +11,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
 import entidades.Descuento;
 import logic.DescuentoController;
+import logic.*;
 
 @SuppressWarnings("unused")
 @WebServlet("/AddDescuento")
@@ -32,33 +35,42 @@ public class AddDescuento extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Descuento d = new Descuento();
-		Descuento descuento= new Descuento();
 		DescuentoController ctrl = new DescuentoController();
+		MyHelper h= new MyHelper();
 		
-		try {
+		
 		String porc= request.getParameter("porc");
 		Double porcen= Double.parseDouble(porc);
 		
+					
 		String desde = request.getParameter("desde");
 	    Date fecha_desde=Date.valueOf(desde);
 	    
 		String hasta = request.getParameter("hasta");
 	    Date fecha_hasta=Date.valueOf(hasta);
+	   
+		try {
+			h.verificarFechas(fecha_desde, fecha_hasta);
+		}
+		catch (CustomException e) {
+			//ce.printStackTrace();
+			request.setAttribute("message_fechas", e.getMessage());
+			request.getRequestDispatcher("crearDcto.jsp").forward(request, response);
+		}finally {
+			
+		}
 		
 		d.setPorcDcto(porcen);
 		d.setFechaDctoInicio(fecha_desde);
 		d.setFechaDctoFin(fecha_hasta);
-		descuento= ctrl.add(d);
+		d= ctrl.add(d);
 
-		request.setAttribute("nuevoDesc", descuento);
+		request.setAttribute("nuevoDesc", d);
 		request.getRequestDispatcher("ListDescuentos").forward(request, response);
-		}
+		
 
-		catch (IllegalArgumentException iae)	
-		{
-			request.setAttribute("message_iae", "Ingrese correctamente el formato de la fecha (AÑO-MES-DIA), Respetar separacion con guiones");
-			request.getRequestDispatcher("crearDcto.jsp").forward(request, response);
-		}
+	
+		
 	}
 
 }
