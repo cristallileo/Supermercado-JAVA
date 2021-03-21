@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import entidades.Categoria;
 import logic.CategoriaController;
+import logic.CustomException;
+import logic.MyHelper;
 
 @WebServlet("/AddCategoria")
 
@@ -27,9 +29,18 @@ public class AddCategoria extends HttpServlet {
 		
 		Categoria cat= new Categoria();
 		CategoriaController ctrl= new CategoriaController();
+		MyHelper h= new MyHelper();
 		
 		String desc_categoria = request.getParameter("descrip");
 				
+		try {
+			h.isCatDuplicada(desc_categoria);
+		}
+		catch (CustomException e){
+			request.setAttribute("message_categoria",e.getMessage());
+			request.getRequestDispatcher("crearCategoria.jsp").forward(request, response);
+		}
+		
 		cat.setDescCategoria(desc_categoria);
 		ctrl.addCategoria(cat);
 		request.setAttribute("nuevaCategoria", cat);

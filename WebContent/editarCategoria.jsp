@@ -80,7 +80,7 @@
                   <label for="inputDescrip">Descripción</label>
                 </div>
 
-               
+               <p>${message_categoria}</p>
                      
                 	<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se editará la categoría. Desea confirmar?')">Guardar cambios</button>
                 
