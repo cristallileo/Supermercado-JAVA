@@ -85,8 +85,10 @@
                   <label for="pass">Contraseña</label>
                 </div>
                 
-                <form action="AddCliente" method="post">
-                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Enviar</button>
+                <p>${message_cliente}</p>
+         
+      			<form action="AddCliente" method="post">
+                		<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Enviar</button>
                 </form>
                 
                 <div class="text-center">
