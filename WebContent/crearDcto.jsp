@@ -91,7 +91,11 @@
                   <label for="hasta">Hasta</label>
                 </div>
                 
-                <p>${message_iae}</p>
+                <!-- NO HACE FALTA PORQUE AHORA LA FECHA SE SELECCIONA DESDE UN CALENDARIO.
+                 <p>${message_iae}</p>-->
+                 
+                 <!-- Mensaje de error si la fecha desde es anterior a la fecha hasta -->
+                <p>${message_fechas}</p>
                 
             	<form action="AddDescuento" method="post">
     				<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se agregará un nuevo descuento. Desea confirmar?')">Agregar</button>
