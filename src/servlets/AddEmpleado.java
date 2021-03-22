@@ -48,11 +48,33 @@ public class AddEmpleado extends HttpServlet {
 		try {
 			h.isEmpleadoDuplicado(email);
 		}
-		catch (CustomException e){
-			request.setAttribute("message_empleado",e.getMessage());
+		catch (CustomException e1){
+			request.setAttribute("message_empleado1",e1.getMessage());
 			request.getRequestDispatcher("crearEmpleado.jsp").forward(request, response);
 		}
 		
+		try {
+		  h.docIsNumeric(nDoc);
+			
+		}catch (CustomException e2) {
+			request.setAttribute("message_empleado2",e2.getMessage());
+			request.getRequestDispatcher("crearEmpleado.jsp").forward(request, response);
+		}
+		
+		try {
+			  h.cuilIsNumeric(cuil);
+				
+			}catch (CustomException e3) {
+				request.setAttribute("message_empleado3",e3.getMessage());
+				request.getRequestDispatcher("crearEmpleado.jsp").forward(request, response);
+			}
+		try {
+			  h.telIsNumeric(telefono);
+				
+			}catch (CustomException e4) {
+				request.setAttribute("message_empleado4",e4.getMessage());
+				request.getRequestDispatcher("crearEmpleado.jsp").forward(request, response);
+			}
 		per.setTipoDoc(tDoc);
 		per.setNroDoc(nDoc);
 		per.setNombre(nombre);

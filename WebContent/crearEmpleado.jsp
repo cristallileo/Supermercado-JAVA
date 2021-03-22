@@ -86,6 +86,7 @@
                   <input type="text" name="tel" id="tel" class="form-control" placeholder="Telefono" required>
                   <label for="tel">Teléfono</label>
                 </div>
+               
                 
                 <div class="form-label-group">
                   <input type="text" name="direc" id="direc" class="form-control" placeholder="Dirección" required>
@@ -107,8 +108,11 @@
                   <label for="cuil">CUIL</label>
                 </div>
                 
-                <p>${message_empleado}</p>
-                
+                <p>${message_empleado1}</p>
+                <p>${message_empleado2}</p>
+                <p>${message_empleado3}</p>
+                 <p>${message_empleado4}</p>
+                 
                 <form action="AddEmpleado" method="post">
                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se agregará un nuevo empleado. Desea confirmar?')">Agregar</button>
                 </form>

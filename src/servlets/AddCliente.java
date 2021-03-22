@@ -45,10 +45,26 @@ public class AddCliente extends HttpServlet {
 		try {
 			h.isClienteDuplicado(email);
 		}
-		catch (CustomException e){
-			request.setAttribute("message_cliente",e.getMessage());
+		catch (CustomException e1){
+			request.setAttribute("message_cliente1",e1.getMessage());
 			request.getRequestDispatcher("registro.jsp").forward(request, response);
 		}
+		
+		try {
+			  h.docIsNumeric(nDoc);
+				
+			}catch (CustomException e2) {
+				request.setAttribute("message_cliente2",e2.getMessage());
+				request.getRequestDispatcher("registro.jsp").forward(request, response);
+			}
+			
+		try {
+			  h.telIsNumeric(telefono);
+				
+			}catch (CustomException e3) {
+				request.setAttribute("message_cliente3",e3.getMessage());
+				request.getRequestDispatcher("registro.jsp").forward(request, response);
+			}
 		
 		per.setTipoDoc(tDoc);
 		per.setNroDoc(nDoc);
