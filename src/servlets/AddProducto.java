@@ -1,13 +1,18 @@
 package servlets;
 
 import java.io.IOException;
+
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
 import entidades.Producto;
 import logic.ProductoController;
+
 
 /**
  * Servlet implementation class AddProducto
@@ -40,20 +45,22 @@ public class AddProducto extends HttpServlet {
 		// doGet(request, response);
 
 		Producto prod = new Producto();
-		ProductoController ctrl= new ProductoController();		
-
+		ProductoController ctrl= new ProductoController();	
+		
 		String descProd= request.getParameter("descProd");
 		int stock = Integer.parseInt(request.getParameter("stock"));
 		int stockMin = Integer.parseInt(request.getParameter("stockMin"));
 		String marca = request.getParameter("marca");
-		int categ = Integer.parseInt(request.getParameter("categ"));
+		int id_categoria = Integer.parseInt(request.getParameter("id_categoria"));
 		Double precio= Double.parseDouble(request.getParameter("precio"));					
 				
 		prod.setDescProducto(descProd);
 		prod.setStock(stock);
 		prod.setStockMinimo(stockMin);
 		prod.setMarca(marca);
-		prod.setId_categoria(categ);
+		
+		prod.setId_categoria(id_categoria);
+		
 		prod.setPrecio(precio);
 
 		ctrl.addProducto(prod);

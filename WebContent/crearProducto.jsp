@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="entidades.*"%>
+<%@page import="logic.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +13,9 @@
   <link href="style/login/login.css" rel="stylesheet">
    
 <title>Alta Producto</title>
-
+<% 
+LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categorias");
+%>
 </head>
 <body>
   <div class="container">
@@ -82,10 +87,12 @@
                   <label for="marca">Marca</label>
                 </div>
                 
-                <div class="form-label-group">
-                  <input type="text" name="categ" id="categ" class="form-control" placeholder="Categoria(AGREGAR DROPLIST)" required>
-                  <label for="categ">Categoria</label>
-                </div>
+				<label for="id_cateogria">Categoria</label>
+  				<select id="id_categoria" name="id_categoria">
+  				 <% for (Categoria c: lc) { %> 				 
+   				<option value="<% c.getIdCategoria(); %>"><%= c.getDescCategoria()  %></option>
+   				<% } %> 
+  				</select> 
                 
                 <div class="form-label-group">
                   <input type="text" name="precio" id="precio" class="form-control" placeholder="Precio"  required>
