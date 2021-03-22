@@ -68,7 +68,13 @@ public class AddEmpleado extends HttpServlet {
 				request.setAttribute("message_empleado3",e3.getMessage());
 				request.getRequestDispatcher("crearEmpleado.jsp").forward(request, response);
 			}
-		
+		try {
+			  h.telIsNumeric(telefono);
+				
+			}catch (CustomException e4) {
+				request.setAttribute("message_empleado4",e4.getMessage());
+				request.getRequestDispatcher("crearEmpleado.jsp").forward(request, response);
+			}
 		per.setTipoDoc(tDoc);
 		per.setNroDoc(nDoc);
 		per.setNombre(nombre);

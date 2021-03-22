@@ -82,6 +82,14 @@ public class MyHelper {
 		}
 	}
 	
+	public  void telIsNumeric(String cadena) throws CustomException{
+		try {
+			Integer.parseInt(cadena);
+	
+		} catch (NumberFormatException nfe){
+			throw new CustomException("El campo teléfono debe ser numérico.");
+		}
+	}
 	}
 	
 	

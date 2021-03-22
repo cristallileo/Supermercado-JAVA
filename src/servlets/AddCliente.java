@@ -58,7 +58,13 @@ public class AddCliente extends HttpServlet {
 				request.getRequestDispatcher("registro.jsp").forward(request, response);
 			}
 			
-			
+		try {
+			  h.telIsNumeric(telefono);
+				
+			}catch (CustomException e3) {
+				request.setAttribute("message_cliente3",e3.getMessage());
+				request.getRequestDispatcher("registro.jsp").forward(request, response);
+			}
 		
 		per.setTipoDoc(tDoc);
 		per.setNroDoc(nDoc);

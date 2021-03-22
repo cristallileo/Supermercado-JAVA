@@ -87,6 +87,7 @@
                 
                 <p>${message_cliente1}</p>
                 <p>${message_cliente2}</p>
+         		<p>${message_cliente3}</p>
          
       			<form action="AddCliente" method="post">
                 		<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Enviar</button>
