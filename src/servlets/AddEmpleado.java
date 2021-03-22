@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.Calendar;
 import entidades.*;
+import logic.CustomException;
+import logic.MyHelper;
 import logic.PersonaController;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,6 +31,9 @@ public class AddEmpleado extends HttpServlet {
 
 		Persona per= new Persona();
 		Persona emp= new Persona();
+		MyHelper h= new MyHelper();
+		
+		
 		PersonaController ctrl= new PersonaController();		
 		String nombre= request.getParameter("name");		
 		String apellido= request.getParameter("surname");				
@@ -39,6 +44,14 @@ public class AddEmpleado extends HttpServlet {
 		String cuil= request.getParameter("cuil");	
 		String email= request.getParameter("email");
 		String pass= request.getParameter("pass");
+		
+		try {
+			h.isEmpleadoDuplicado(email);
+		}
+		catch (CustomException e){
+			request.setAttribute("message_empleado",e.getMessage());
+			request.getRequestDispatcher("crearEmpleado.jsp").forward(request, response);
+		}
 		
 		per.setTipoDoc(tDoc);
 		per.setNroDoc(nDoc);
