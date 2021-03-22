@@ -192,9 +192,9 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
             <span style="text-align: right; vertical-align: bottom;">
             	
 			<div class="w3-container">	 
-			<form action="crearProducto.jsp" method="post">
+			<form action="AddProductoDropList" method="post">
 				<button class="w3-button w3-xlarge w3-circle w3-teal" type="submit" >+</button>
-				<a href="crearProducto.jsp"> Agregar producto</a>
+				<a href="AddProductoDropList"> Agregar producto</a>
 			</form>
 			</div>
 			

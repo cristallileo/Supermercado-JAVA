@@ -55,9 +55,9 @@
 
 				<label for="tipoDoc">Tipo Doc:</label>
   				<select id="tipoDoc" name="tipoDoc">
-   				<option value="dni">DNI</option>
-  				<option value="libreta">Libreta Cívica</option>
-  				<option value="enrolamiento">Libreta de Enrolamiento</option>
+   				<option value="DNI">DNI</option>
+  				<option value="Libreta Civica">Libreta Cívica</option>
+  				<option value="Libreta de Enrolamiento">Libreta de Enrolamiento</option>
   				</select>
               
                 <div class="form-label-group">
