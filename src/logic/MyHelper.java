@@ -47,6 +47,23 @@ public class MyHelper {
 		}
 		
 	}
+
+	public void isEmpleadoDuplicado(String email) throws CustomException {
+	
+		LinkedList<Persona> empleados = new LinkedList<Persona>();
+		PersonaController ctrl= new PersonaController();
+		
+		empleados= ctrl.listarEmpleados();
+		
+		for (Persona e: empleados) {
+			if (e.getEmail().equals(email)) {
+				throw new CustomException("La cuenta de email "+ e.getEmail() + " ya se encuentra en uso.");
+			}
+			
+		}
+		
+	}
+	}
 	
 	
-}
+
