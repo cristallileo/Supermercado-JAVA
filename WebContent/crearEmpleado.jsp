@@ -70,7 +70,7 @@
                   <label for="surname">Apellido</label>
                 </div>
 
-				<label for="tipoDoc">Elegir Tipo Doc:</label>
+				<label for="tipoDoc">Tipo Doc:</label>
   				<select id="inputTipoDoc" name="tipoDoc">
    				<option value="DNI">DNI</option>
   				<option value="Libreta Civica">Libreta Cívica</option>
