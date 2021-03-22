@@ -70,7 +70,7 @@
                   <label for="surname">Apellido</label>
                 </div>
 
-				<label for="tipoDoc">Elegir Tipo Doc:</label>
+				<label for="tipoDoc">Tipo Doc:</label>
   				<select id="inputTipoDoc" name="tipoDoc">
    				<option value="DNI">DNI</option>
   				<option value="Libreta Civica">Libreta Cívica</option>
@@ -107,7 +107,9 @@
                   <label for="cuil">CUIL</label>
                 </div>
                 
-                <p>${message_empleado}</p>
+                <p>${message_empleado1}</p>
+                <p>${message_empleado2}</p>
+                <p>${message_empleado3}</p>
                 
                 <form action="AddEmpleado" method="post">
                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se agregará un nuevo empleado. Desea confirmar?')">Agregar</button>

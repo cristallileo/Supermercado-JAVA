@@ -63,6 +63,25 @@ public class MyHelper {
 		}
 		
 	}
+	
+	public  void docIsNumeric(String cadena) throws CustomException{
+		try {
+			Integer.parseInt(cadena);
+	
+		} catch (NumberFormatException nfe){
+			throw new CustomException("El campo número de documento debe ser numérico.");
+		}
+	}
+	
+	public  void cuilIsNumeric(String cadena) throws CustomException{
+		try {
+			Integer.parseInt(cadena);
+	
+		} catch (NumberFormatException nfe){
+			throw new CustomException("El campo CUIL debe ser numérico. No incluir guiones.");
+		}
+	}
+	
 	}
 	
 	
