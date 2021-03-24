@@ -105,8 +105,8 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
   	<div class="w3-dropdown-hover">
   	<button class="w3-button w3-black">Precio</button>
 	    <div class="w3-dropdown-content w3-bar-block w3-border">
-	     <a class="w3-bar-item w3-button" href="ListProductos">De menor a mayor precio</a>
-		 <a class="w3-bar-item w3-button" href="ListProductos">De mayor a menor precio</a>
+	     <a class="w3-bar-item w3-button" href="ListProductosMenosMas">De menor a mayor precio</a>
+		 <a class="w3-bar-item w3-button" href="ListProductosMasMenos">De mayor a menor precio</a>
     	</div>
 	</div>
 	<!-- SEARCH -->
