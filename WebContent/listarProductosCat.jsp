@@ -83,6 +83,7 @@
   
  <hr> 
  <div class="container bootstrap snippets bootdey">
+ <div class="row">
 	<!--  DROPLISTS -->
 	<!-- CATEGORIAS -->
 	<div class="w3-container">
@@ -99,11 +100,20 @@
   	<div class="w3-dropdown-hover">
   	<button class="w3-button w3-black">Precio</button>
 	    <div class="w3-dropdown-content w3-bar-block w3-border">
-	     <a class="w3-bar-item w3-button" href="ListProductos">De menor a mayor precio</a>
-		 <a class="w3-bar-item w3-button" href="ListProductos">De mayor a menor precio</a>
+	     <a class="w3-bar-item w3-button" href="ListProductosMasMenos">De menor a mayor precio</a>
+		 <a class="w3-bar-item w3-button" href="ListProductosMenosMas">De mayor a menor precio</a>
     	</div>
 	</div>
 	</div>
+	<!-- SEARCH -->
+	<!-- DESCRIPCION -->
+	<form action="ListProductosDesc">
+	   <div class="search-box" style="margin:8px;max-width:300px;position:absolute;font-size: 16px;">
+	      <input type="text" placeholder="Descripcion..." name="desc">
+	      <button type="submit"><i class="fa fa-search"></i></button>
+	   </div>
+	</form>
+</div>
 
 	
 	<br>
