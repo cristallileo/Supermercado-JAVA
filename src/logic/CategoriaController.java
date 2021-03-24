@@ -34,4 +34,6 @@ public class CategoriaController {
 	public void addCategoria(Categoria cat) {
 		dc.addCategoria(cat);
 	}
+	
+	
 }

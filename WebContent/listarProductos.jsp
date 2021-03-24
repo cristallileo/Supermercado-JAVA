@@ -143,7 +143,7 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
                                 <th align="center"><span>Stock</span></th>
                                 <th align="center"><span>Stock Mínimo</span></th>
                                 <th align="center"><span>Marca</span></th>
-                                <th align="center"><span>ID Categoría</span></th>
+                                <th align="center"><span>Categoría</span></th>
                                 <th align="center"><span>Precio</span></th>
         
                                 <th>&nbsp;</th>
@@ -157,7 +157,11 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
 	                    			<td><%=p.getStock()%></td>
                                     <td><%=p.getStockMinimo()%></td>
                                     <td><%=p.getMarca()%></td>
-   									<td><%=p.getId_categoria()%></td>
+                                    <%CategoriaController ctrl = new CategoriaController();
+                                    Categoria c= new Categoria();
+                                    c.setIdCategoria(p.getId_categoria());
+                                    c=ctrl.getOne(c);%>
+   									<td><%=c.getDescCategoria()%></td>
                                     <td><%=p.getPrecio()%> </td>
        
                                      <td style="width: 10%;">
