@@ -2,7 +2,6 @@ package servlets;
 
 import java.io.IOException;
 import java.util.LinkedList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,12 +24,11 @@ public class ListCategorias extends HttpServlet {
 		doPost(request, response);	
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		CategoriaController ctrl= new CategoriaController();
 		LinkedList<Categoria> categorias= new LinkedList<Categoria>();
-		categorias=ctrl.listarCategorias();
+		categorias=ctrl.listAllCategorias();
 		request.setAttribute("categorias", categorias);
         request.getRequestDispatcher("listarCategorias.jsp").forward(request, response);       
 	}

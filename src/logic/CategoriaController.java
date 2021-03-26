@@ -1,11 +1,11 @@
 package logic;
 
 import java.util.LinkedList;
-
 import Data.*;
 import entidades.*;
 
 @SuppressWarnings("unused")
+
 public class CategoriaController {
 	
 	private DataPersona dp;
@@ -15,7 +15,7 @@ public class CategoriaController {
 	public CategoriaController() {
 		dc=new DataCategoria();
 	}
-	public LinkedList<Categoria> listarCategorias() {
+	public LinkedList<Categoria> listAllCategorias() {
 		return dc.getAll();
 	}
 	public Categoria editCategoria (Categoria c) {
@@ -35,5 +35,7 @@ public class CategoriaController {
 		dc.addCategoria(cat);
 	}
 	
-	
+	public LinkedList<Categoria> listCategoriasActivas() {
+		return dc.getAllActivas();
+	}
 }

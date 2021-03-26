@@ -67,7 +67,7 @@ public class Inicio extends HttpServlet {
 		}
 		
 		else {
-			request.setAttribute("message_sec", "Los datos ingresados son invalidos, la contraseña debe tener entre 8 y 15 caracteres.");
+			request.setAttribute("message_sec", "La contraseña debe tener entre 8 y 15 caracteres.");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 	

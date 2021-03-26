@@ -4,18 +4,15 @@ import java.util.LinkedList;
 import Data.*;
 import entidades.*;
 
-
 public class ProductoController {
 
-private DataProducto dp;
+	private DataProducto dp;
 
-	
 	public ProductoController() {
 		dp=new DataProducto();
 	}
-
 	
-	public LinkedList<Producto> listarProductos() {
+	public LinkedList<Producto> listAllProductos() {
 		return dp.getAll();
 	}
 
@@ -52,6 +49,9 @@ private DataProducto dp;
 		return dp.getByDesc(desc);
 	}
 	
+	public LinkedList<Producto> listProductosActivos() {
+		return dp.getAllActivos();	
+	}
 	
 	
 }

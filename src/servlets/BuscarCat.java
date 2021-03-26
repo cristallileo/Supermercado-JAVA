@@ -14,35 +14,21 @@ import entidades.Producto;
 import logic.CategoriaController;
 import logic.ProductoController;
 
-/**
- * Servlet implementation class BuscarCat
- */
 @WebServlet("/BuscarCat")
+
 public class BuscarCat extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public BuscarCat() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 	//	doGet(request, response);
 		CategoriaController ctrl= new CategoriaController();
 		Categoria cat= new Categoria();
@@ -50,7 +36,7 @@ public class BuscarCat extends HttpServlet {
 		cat.setIdCategoria(id);
 		cat =ctrl.getOne(cat);
 		LinkedList<Categoria> categorias = new LinkedList<Categoria>();
-		categorias= ctrl.listarCategorias();
+		categorias= ctrl.listCategoriasActivas();
 		
 		ProductoController ctrlProd= new ProductoController();
 		LinkedList<Producto> prods = new LinkedList<Producto>();

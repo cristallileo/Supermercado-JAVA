@@ -1,6 +1,7 @@
 <%@page import="java.util.LinkedList"%>
 <%@page import="entidades.*"%>
 <%@page import="logic.*"%>
+<%@page import="java.sql.Timestamp"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -145,6 +146,7 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
                                 <th align="center"><span>Marca</span></th>
                                 <th align="center"><span>Categoría</span></th>
                                 <th align="center"><span>Precio</span></th>
+                                <th align="center"><span>Fecha Hora Baja</span></th>
         
                                 <th>&nbsp;</th>
                                 </tr>
@@ -163,7 +165,12 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
                                     c=ctrl.getOne(c);%>
    									<td><%=c.getDescCategoria()%></td>
                                     <td><%=p.getPrecio()%> </td>
-       
+       								<% if (p.getFecha_hora_baja() == null) { %> 
+       								 <td> </td>
+       								<% } else { %>
+       								<td> <%= p.getFecha_hora_baja() %> </td> 
+       								<% } %>
+       								
                                      <td style="width: 10%;">
                                         
                                          <a  href="BuscarProducto?id=<%=p.getIdProducto()%>"  class="table-link text-info">

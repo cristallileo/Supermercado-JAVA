@@ -33,7 +33,7 @@ public class DeleteProducto extends HttpServlet {
 		prod=ctrl.getById(prod);
 		prod=ctrl.deleteProducto(prod);
 		
-		request.setAttribute("productos", ctrl.listarProductos());
+		request.setAttribute("productos", ctrl.listAllProductos());
 		request.getRequestDispatcher("ListProductos").forward(request, response);
 				
 	}

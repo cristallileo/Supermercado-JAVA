@@ -46,7 +46,7 @@ public class EditProducto extends HttpServlet {
 	    prod=ctrl.editProducto(prod);
 
 		request.setAttribute("producto-editado", prod);
-		request.setAttribute("productos", ctrl.listarProductos());
+		request.setAttribute("productos", ctrl.listAllProductos());
 		request.getRequestDispatcher("ListProductos").forward(request, response);
 				
 	}

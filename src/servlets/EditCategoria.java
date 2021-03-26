@@ -6,39 +6,25 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import entidades.Categoria;
 import logic.CategoriaController;
 import logic.CustomException;
 import logic.MyHelper;
 
-/**
- * Servlet implementation class EditEmpleado
- */
 @WebServlet("/EditCategoria")
+
 public class EditCategoria extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public EditCategoria() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		Categoria cat= new Categoria();
@@ -60,7 +46,7 @@ public class EditCategoria extends HttpServlet {
 		cat.setDescCategoria(descrip);
 		cat=ctrl.editCategoria(cat);
 		request.setAttribute("categoriaEditada", cat);
-		request.setAttribute("categorias", ctrl.listarCategorias());
+		request.setAttribute("categorias", ctrl.listCategoriasActivas());
 		request.getRequestDispatcher("ListCategorias").forward(request, response);
 	}
 
