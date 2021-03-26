@@ -5,13 +5,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
-
 import Data.*;
 import entidades.*;
 import logic.*;
 
-
 @SuppressWarnings("unused")
+
 public class DataProducto {
 	
 	//no usamamos este metodo
@@ -62,7 +61,7 @@ public class DataProducto {
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria, precio from producto ");
+			rs= stmt.executeQuery("select idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja from producto");
 			if(rs!=null) {
 				while(rs.next()) {
 					Producto p=new Producto();
@@ -435,5 +434,42 @@ public class DataProducto {
 		
 		
 		return productos;
+	}
+public LinkedList<Producto> getAllActivos(){
+		
+		Statement stmt=null;
+		ResultSet rs=null;
+		LinkedList<Producto> productosActivos= new LinkedList<>();
+		
+		try {
+			stmt= DbConnector.getInstancia().getConn().createStatement();
+			rs= stmt.executeQuery("select idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio from producto where fecha_hora_baja is null");
+			if(rs!=null) {
+				while(rs.next()) {
+					Producto p=new Producto();
+					p.setIdProducto(rs.getInt("idProducto"));
+					p.setDescProducto(rs.getString("desc_producto"));
+					p.setStock(rs.getInt("stock"));
+					p.setStockMinimo(rs.getInt("stockMinimo"));
+					p.setMarca(rs.getString("marca"));
+					p.setId_categoria(rs.getInt("id_categoria"));
+					p.setPrecio(rs.getDouble("precio"));
+					productosActivos.add(p);
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}			
+		return productosActivos;
 	}
 }

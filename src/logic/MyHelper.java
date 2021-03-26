@@ -22,7 +22,7 @@ public class MyHelper {
 		LinkedList<Categoria> cats= new LinkedList<Categoria>();
 		CategoriaController ctrl= new CategoriaController();
 		
-		cats= ctrl.listarCategorias();
+		cats= ctrl.listAllCategorias();
 		
 		for (Categoria c: cats) {
 			if (c.getDescCategoria().equals(desc_cat)) {

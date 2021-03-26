@@ -1,5 +1,7 @@
 package entidades;
 
+import java.sql.Timestamp;
+
 public class Producto {
 	
 	private int idProducto;
@@ -9,7 +11,7 @@ public class Producto {
 	private String marca;
 	private int id_categoria;
 	private Double precio;
-	
+	private Timestamp fecha_hora_baja; 
 	
 	public int getIdProducto() {
 		return idProducto;
@@ -52,6 +54,15 @@ public class Producto {
 	}
 	public void setPrecio(Double precio) {
 		this.precio = precio;
+	}
+	
+	public Timestamp getFecha_hora_baja() {
+		return fecha_hora_baja;
+	}
+	
+	public void setFecha_hora_baja(Timestamp fecha_hora_baja)
+	{
+		this.fecha_hora_baja = fecha_hora_baja;
 	}
 	
 	

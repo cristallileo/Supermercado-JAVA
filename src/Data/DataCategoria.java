@@ -11,13 +11,11 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.LinkedList;
  
-
-
 import Data.*;
 import entidades.*;
 
-
 @SuppressWarnings("unused")
+
 public class DataCategoria {
 
 	public LinkedList<Categoria> getAll(){
@@ -137,7 +135,10 @@ public class DataCategoria {
             }
 		} catch (SQLException e) {
         e.printStackTrace();
-		} finally {
+		}
+
+			
+		finally {
         try {
         	 if(keyResultSet!=null)keyResultSet.close();
             if(stmt!=null) stmt.close();
@@ -214,4 +215,40 @@ public class DataCategoria {
 	}
 	return categorias;
 }
+	
+	public LinkedList<Categoria> getAllActivas(){
+		
+		Statement stmt=null;
+		ResultSet rs=null;
+		LinkedList<Categoria> categoriasActivas= new LinkedList<>();
+		
+		try {
+			stmt= DbConnector.getInstancia().getConn().createStatement();
+			rs= stmt.executeQuery("select idCategoria, desc_categoria from categoria where fecha_hora_baja is null");
+			if(rs!=null) {
+				while(rs.next()) {
+					
+					Categoria c = new Categoria();
+					
+					c.setIdCategoria(rs.getInt("idCategoria"));
+					c.setDescCategoria(rs.getString("desc_categoria"));
+					
+					categoriasActivas.add(c);
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return categoriasActivas;
+	}
 }

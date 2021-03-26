@@ -31,7 +31,7 @@ public class AddProductoDropList extends HttpServlet {
 		CategoriaController ctrl= new CategoriaController();
 		LinkedList<Categoria> categorias= new LinkedList<Categoria>();
 		System.out.println("Chorizo");
-		categorias= ctrl.listarCategorias();
+		categorias= ctrl.listCategoriasActivas();
 		
 		request.setAttribute("categorias", categorias);
 		request.getRequestDispatcher("crearProducto.jsp").forward(request, response);
