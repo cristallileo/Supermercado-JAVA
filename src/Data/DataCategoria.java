@@ -251,5 +251,34 @@ public class DataCategoria {
 		}
 		return categoriasActivas;
 	}
+	
+	public Categoria getOneByDesc(Categoria cat) {
+		Categoria c=null;
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		try {
+			stmt=DbConnector.getInstancia().getConn().prepareStatement(
+					"select idCategoria,desc_categoria from categoria where desc_categoria=?"
+					);
+			stmt.setString(1, cat.getDescCategoria());
+			rs=stmt.executeQuery();
+			if(rs!=null && rs.next()) {
+				c=new Categoria();
+				c.setIdCategoria(rs.getInt("idCategoria"));
+				c.setDescCategoria(rs.getString("desc_categoria"));			
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return c;
 }
 }

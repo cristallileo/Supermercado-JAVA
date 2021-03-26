@@ -17,7 +17,7 @@ public class MyHelper {
 		}
 	}
 	
-	public void isCatDuplicada (String desc_cat) throws CustomException{
+/*	public void isCatDuplicada (String desc_cat) throws CustomException{
 		
 		LinkedList<Categoria> cats= new LinkedList<Categoria>();
 		CategoriaController ctrl= new CategoriaController();
@@ -30,7 +30,7 @@ public class MyHelper {
 			}
 		}
 		
-	}
+	} */
 
 	public void isClienteDuplicado(String email) throws CustomException {
 		
