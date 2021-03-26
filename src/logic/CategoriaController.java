@@ -38,4 +38,10 @@ public class CategoriaController {
 	public LinkedList<Categoria> listCategoriasActivas() {
 		return dc.getAllActivas();
 	}
+	
+	public Categoria getOneByDesc(Categoria cat) {
+		Categoria c = new Categoria();
+		c = dc.getOneByDesc(cat);
+		return c;
+	}
 }

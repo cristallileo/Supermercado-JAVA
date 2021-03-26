@@ -28,7 +28,7 @@ public class ListCategorias extends HttpServlet {
 	
 		CategoriaController ctrl= new CategoriaController();
 		LinkedList<Categoria> categorias= new LinkedList<Categoria>();
-		categorias=ctrl.listAllCategorias();
+		categorias=ctrl.listCategoriasActivas();
 		request.setAttribute("categorias", categorias);
         request.getRequestDispatcher("listarCategorias.jsp").forward(request, response);       
 	}

@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import entidades.Categoria;
 import logic.CategoriaController;
-import logic.CustomException;
-import logic.MyHelper;
+//import logic.CustomException;
+//import logic.MyHelper;
 
 @WebServlet("/EditCategoria")
 
@@ -28,26 +28,37 @@ public class EditCategoria extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		Categoria cat= new Categoria();
-		MyHelper h= new MyHelper();
+		//MyHelper h= new MyHelper();
 		CategoriaController ctrl= new CategoriaController();
 		
 		String descrip= request.getParameter("descrip");
 		int id = Integer.parseInt(request.getParameter("id"));
 		
-		try {
+		/*try {
 			h.isCatDuplicada(descrip);
-		}
-		catch (CustomException e){
+		} */
+	/*	catch (CustomException e){
 			request.setAttribute("message_categoria",e.getMessage());
 			request.getRequestDispatcher("BuscarCategoria?id="+ id).forward(request, response);
-		}
+		} */
 		
 		cat.setIdCategoria(id);
 		cat.setDescCategoria(descrip);
-		cat=ctrl.editCategoria(cat);
-		request.setAttribute("categoriaEditada", cat);
-		request.setAttribute("categorias", ctrl.listCategoriasActivas());
-		request.getRequestDispatcher("ListCategorias").forward(request, response);
+		
+		if (ctrl.getOneByDesc(cat) == null)
+		{			
+			cat=ctrl.editCategoria(cat);
+			
+			request.setAttribute("categoriaEditada", cat);
+			request.setAttribute("categorias", ctrl.listCategoriasActivas());
+			request.getRequestDispatcher("ListCategorias").forward(request, response);
+		}
+		else
+		{
+			request.setAttribute("message_categoria","La categoria "+ cat.getDescCategoria() +" ya existe");
+			request.setAttribute("categoriaEditar",cat);
+			request.getRequestDispatcher("editarCategoria.jsp").forward(request, response);
+		}			
 	}
 
 }
