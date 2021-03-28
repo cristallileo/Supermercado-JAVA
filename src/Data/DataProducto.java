@@ -22,7 +22,7 @@ public class DataProducto {
 		ResultSet rs=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idProducto, desc_producto,stock, stockMinimo, marca, id_categoria, precio from producto p inner join categoria c on c.idCategoria=p.id_categoria where c.desc_categoria=?"
+					"select p.idProducto, p.desc_producto, p.stock, p.stockMinimo, p.marca, p.id_categoria, p.precio, p.fecha_hora_baja from producto p inner join categoria c on c.idCategoria=p.id_categoria where c.desc_categoria=?"
 					);
 			stmt.setString(1, cat.getDescCategoria());
 			rs=stmt.executeQuery();
@@ -35,6 +35,7 @@ public class DataProducto {
 				p.setMarca(rs.getString("marca"));
 				p.setId_categoria(rs.getInt("id_categoria"));
 				p.setPrecio(rs.getDouble("precio"));
+				p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
 				productos.add(p);
 			}
 		} catch (SQLException e) {
@@ -116,6 +117,7 @@ public class DataProducto {
 					p.setMarca(rs.getString("marca"));
 					p.setId_categoria(rs.getInt("id_categoria"));
 					p.setPrecio(rs.getDouble("precio"));
+					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
 					productos.add(p);
 				}
 			}
@@ -142,7 +144,7 @@ public class DataProducto {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into producto(idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio) values(?,?,?,?,?,?,?)",
+							"insert into producto(idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja) values(?,?,?,?,?,?,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
 			stmt.setInt(1, p.getIdProducto());
@@ -152,6 +154,7 @@ public class DataProducto {
 			stmt.setString(5, p.getMarca());
 			stmt.setInt(6, p.getId_categoria());
 			stmt.setDouble(7, p.getPrecio());
+			stmt.setTimestamp(8, p.getFecha_hora_baja());
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();
@@ -180,7 +183,7 @@ public class DataProducto {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"UPDATE `tp_java`.`producto` SET  `desc_producto` = ?, `stock` = ?, `stockMinimo` = ?, `marca` = ?, `id_categoria` = ?, `precio` = ? WHERE (`idProducto` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+							"UPDATE `tp_java`.`producto` SET  `desc_producto` = ?, `stock` = ?, `stockMinimo` = ?, `marca` = ?, `id_categoria` = ?, `precio` = ?, `fecha_hora_baja` = ? WHERE (`idProducto` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
 				
 			stmt.setString(1, p.getDescProducto());
 			stmt.setInt(2, p.getStock());
@@ -188,7 +191,8 @@ public class DataProducto {
 			stmt.setString(4, p.getMarca());
 			stmt.setInt(5, p.getId_categoria());
 			stmt.setDouble(6, p.getPrecio());
-			stmt.setInt(7, p.getIdProducto());
+			stmt.setTimestamp(7, p.getFecha_hora_baja());
+			stmt.setInt(8, p.getIdProducto());
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();
@@ -436,7 +440,8 @@ public class DataProducto {
 		
 		return productos;
 	}
-public LinkedList<Producto> getAllActivos(){
+
+	public LinkedList<Producto> getAllActivos(){
 		
 		Statement stmt=null;
 		ResultSet rs=null;

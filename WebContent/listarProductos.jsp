@@ -146,7 +146,7 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
                                 <th align="center"><span>Marca</span></th>
                                 <th align="center"><span>Categoría</span></th>
                                 <th align="center"><span>Precio</span></th>
-                                <th align="center"><span>Baja</span></th>
+                                <th align="center"><span>Estado</span></th>
         
                                 <th>&nbsp;</th>
                                 </tr>
@@ -166,9 +166,17 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
    									<td><%=c.getDescCategoria()%></td>
                                     <td><%=p.getPrecio()%> </td>
        								<% if (p.getFecha_hora_baja() == null) { %> 
-       								 <td>-</td>
+	       								 <td>
+		                                    <a>
+		                                      <span class="badge bg-success">Activo</span>
+		                                    </a>
+	                                    </td>
        								<% } else { %>
-       								<td> <%= p.getFecha_hora_baja() %> </td> 
+       								 	<td>
+	                                       <a href="HabilitarProducto?id=<%=p.getIdProducto()%>" onclick="return confirm('Desea habilitar este producto?');">
+	                                       	<span class="badge bg-danger">Inactivo</span>
+	                                       </a>
+                                       </td>
        								<% } %>
        								
                                      <td style="width: 10%;">
@@ -179,7 +187,7 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                             </span>
                                         </a>
-                                        <a  href="DeleteProducto?id=<%=p.getIdProducto()%>" class="table-link danger" onclick="return confirm('Desea eliminar este producto?');" >
+                                        <a  href="DeshabilitarProducto?id=<%=p.getIdProducto()%>" class="table-link danger" onclick="return confirm('Desea deshabilitar este producto?');" >
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
