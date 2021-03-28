@@ -46,8 +46,7 @@ public class HabilitarCategorias extends HttpServlet {
 		int id= Integer.parseInt(request.getParameter("id"));
 		
 		c.setIdCategoria(id);
-		c =ctrl.getOne(c);
-		
+		c =ctrl.getOne(c);		
 		//Date hoy = new Date(System.currentTimeMillis()); 
 		//java.sql.Date timeNow = new Date(Calendar.getInstance().getTimeInMillis());
 		c.setFecha_hora_baja(null);
