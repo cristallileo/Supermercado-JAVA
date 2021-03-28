@@ -67,7 +67,9 @@ public class HabilitarProducto extends HttpServlet {
 			request.getRequestDispatcher("error-prod-cat.jsp").forward(request, response);;
 		}
 		 
-		
-	}
+	
+
+}
+
 
 }

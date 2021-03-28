@@ -287,7 +287,7 @@ public class DataProducto {
 		ResultSet rs=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idProducto,desc_Producto,stock,stockMinimo,marca,id_categoria,precio from producto where idProducto=?"
+					"select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria,precio from producto where idProducto=?"
 					);
 			stmt.setInt(1, prod.getIdProducto());
 			
@@ -321,19 +321,19 @@ public class DataProducto {
 	
 	public LinkedList<Producto> getByCategoria(Categoria cat) {
 		
-		LinkedList<Producto> prods = new LinkedList<Producto>();
-		Producto p=null;
-			PreparedStatement stmt=null;
-			ResultSet rs=null;
-			try {
-				stmt=DbConnector.getInstancia().getConn().prepareStatement(
-						"select idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio from producto where id_categoria=? "
-						);
-				stmt.setInt(1, cat.getIdCategoria());
-				
-				rs=stmt.executeQuery();
-				if(rs!=null && rs.next()) {
-					p=new Producto();
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		LinkedList<Producto> productos= new LinkedList<>();
+		
+		try {
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria,precio, fecha_hora_baja from producto where producto.id_categoria="+cat.getIdCategoria());
+			
+		
+			rs=stmt.executeQuery();
+			
+			if(rs!=null) {
+				while(rs.next()) {
+					Producto p=new Producto();
 					p.setIdProducto(rs.getInt("idProducto"));
 					p.setDescProducto(rs.getString("desc_producto"));
 					p.setStock(rs.getInt("stock"));
@@ -341,10 +341,13 @@ public class DataProducto {
 					p.setMarca(rs.getString("marca"));
 					p.setId_categoria(rs.getInt("id_categoria"));
 					p.setPrecio(rs.getDouble("precio"));
-					prods.add(p);					
+					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
+					productos.add(p);
+
+								
 					
 				}
-			} catch (SQLException e) {
+			} }catch (SQLException e) {
 				e.printStackTrace();
 			}finally {
 				try {
@@ -352,11 +355,12 @@ public class DataProducto {
 					if(stmt!=null) {stmt.close();}
 					DbConnector.getInstancia().releaseConn();
 				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+					e.printStackTrace();}
+
 			}
-			
-			return prods;
+
+		
+		return productos;
 	}
 
 

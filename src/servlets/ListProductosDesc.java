@@ -37,7 +37,7 @@ public class ListProductosDesc extends HttpServlet {
 		String desc= request.getParameter("desc");
 		
 		productos=ctrl.listarByDesc(desc);
-		categorias= ctrlCat.listCategoriasActivas();
+		categorias= ctrlCat.listAllCategorias();
 		
 		request.setAttribute("productos", productos);
 		request.setAttribute("categorias", categorias);
@@ -48,3 +48,4 @@ public class ListProductosDesc extends HttpServlet {
 	}
 
 }
+
