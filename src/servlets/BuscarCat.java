@@ -36,7 +36,7 @@ public class BuscarCat extends HttpServlet {
 		cat.setIdCategoria(id);
 		cat =ctrl.getOne(cat);
 		LinkedList<Categoria> categorias = new LinkedList<Categoria>();
-		categorias= ctrl.listCategoriasActivas();
+		categorias= ctrl.listAllCategorias();
 		
 		ProductoController ctrlProd= new ProductoController();
 		LinkedList<Producto> prods = new LinkedList<Producto>();

@@ -12,10 +12,9 @@
   <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="style/mainpage/modern-business.css" rel="stylesheet">">
-  
-  
-  <style>
+  <link href="style/mainpage/modern-business.css" rel="stylesheet">
+
+<style>
 
 	.masthead {
 	 
@@ -30,8 +29,6 @@
 	h1, .h1 {
 	  font-size: 4em;
 	}
-	
-
 
 	
 </style>
