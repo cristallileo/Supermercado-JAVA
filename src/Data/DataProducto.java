@@ -341,8 +341,7 @@ public class DataProducto {
 					p.setMarca(rs.getString("marca"));
 					p.setId_categoria(rs.getInt("id_categoria"));
 					p.setPrecio(rs.getDouble("precio"));
-					prods.add(p);
-					
+					prods.add(p);					
 					
 				}
 			} catch (SQLException e) {
