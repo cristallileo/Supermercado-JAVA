@@ -89,9 +89,10 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
                 
 				<label for="id_cateogria">Categoria</label>
   				<select id="id_categoria" name="id_categoria">
-  				 <% for (Categoria c: lc) { %> 				 
-   				<option value="<%= c.getIdCategoria() %>"><%= c.getDescCategoria()  %></option>
-   				<% } %> 
+  				 <% for (Categoria c: lc) {
+  					 if(c.getFecha_hora_baja()==null){%> 				 
+   						<option value="<%= c.getIdCategoria() %>"><%= c.getDescCategoria()  %></option>
+   				<% }} %> 
   				</select> 
                 
                 <div class="form-label-group">

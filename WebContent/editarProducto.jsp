@@ -1,4 +1,5 @@
 <%@page import="Data.*" %>
+<%@page import="java.util.LinkedList"%>
 <%@page import="entidades.*"%>
 <%@page import="logic.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -20,6 +21,7 @@
    <link href="style/login/login.css" rel="stylesheet">
   
 <% Producto prod = (Producto)request.getAttribute("productoEditar");
+LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categorias");
 %> 
 </head>
 <body>
@@ -97,10 +99,13 @@
                   <label for="marca">Marca</label>
                 </div>
                 
-                <div class="form-label-group">
-                  <input type="text" name="categ" id="categ" class="form-control" value=<%=prod.getId_categoria()%> required>
-                  <label for="categ">ID Categoria</label>
-                </div>
+                <label for="id_cateogria">Categoria</label>
+  				<select id="id_categoria" name="id_categoria">
+  				 <% for (Categoria c: lc) {
+  					 if(c.getFecha_hora_baja()==null){%> 				 
+   						<option value="<%= c.getIdCategoria() %>"><%= c.getDescCategoria()  %></option>
+   				<% }} %> 
+  				</select> 
 
                 <div class="form-label-group">
                   <input type="text" name="precio" id="precio" class="form-control" value=<%=prod.getPrecio()%> required>
