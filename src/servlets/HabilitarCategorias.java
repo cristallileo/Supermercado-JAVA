@@ -52,9 +52,9 @@ public class HabilitarCategorias extends HttpServlet {
 		//java.sql.Date timeNow = new Date(Calendar.getInstance().getTimeInMillis());
 		c.setFecha_hora_baja(null);
 		c=ctrl.editCategoria(c);
-		request.setAttribute("catHabilitada", c);
+		
 		request.setAttribute("categorias", ctrl.listAllCategorias());
-		request.getRequestDispatcher("ListCategorias").forward(request, response);
+		request.getRequestDispatcher("listarCategorias.jsp").forward(request, response);
 	}
 
 }

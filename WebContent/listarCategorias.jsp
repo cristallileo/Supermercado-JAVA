@@ -84,7 +84,7 @@
 	                    			<tr>
 	                    			<td><%=cat.getIdCategoria() %></td>
                                     <td><%=cat.getDescCategoria()%></td>  
-                                     <%if (cat.getFecha_hora_baja()!=null){%>
+                                     <%if (cat.getFecha_hora_baja()==null){%>
                                     <td>
                                     <a>
                                       <span class="badge bg-success">Activo</span>
