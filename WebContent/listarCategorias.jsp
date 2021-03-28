@@ -86,7 +86,7 @@
                                     <td><%=cat.getDescCategoria()%></td>  
                                      <%if (cat.getFecha_hora_baja()==null){%>
                                     <td>
-                                    <a>
+                                    <a href="DeshabilitarCategoria?id=<%=cat.getIdCategoria()%>" onclick="return confirm('Desea deshabilitar esta categoría?');" >
                                       <span class="badge bg-success">Activo</span>
                                     </a>
                                     </td>
@@ -104,13 +104,7 @@
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                             </span>
                                         </a>
-                                      <a  href="DeshabilitarCategoria?id=<%=cat.getIdCategoria()%>" class="table-link danger" onclick="return confirm('Desea deshabilitar esta categoría?');" >
-                                            <span class="fa-stack">
-                                                <i class="fa fa-square fa-stack-2x"></i>
-                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                                            </span>
-                                            
-                                        </a>
+                                     
                                         
                                     
                                     </td>
