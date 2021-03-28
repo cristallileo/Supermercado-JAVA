@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import entidades.Producto;
+import logic.CategoriaController;
 import logic.ProductoController;
 
 /**
@@ -41,12 +42,14 @@ public class BuscarProducto extends HttpServlet {
 		// doGet(request, response);
 		
 		ProductoController ctrl= new ProductoController();
+		CategoriaController ctrlCat= new CategoriaController();
 		Producto prod= new Producto();
 		int id= Integer.parseInt(request.getParameter("id"));
 		prod.setIdProducto(id);
 		prod =ctrl.getById(prod);
 			
 		request.setAttribute("productoEditar", prod);
+		request.setAttribute("categorias", ctrlCat.listAllCategorias() );
 		request.getRequestDispatcher("editarProducto.jsp").forward(request, response);
 		
 	}

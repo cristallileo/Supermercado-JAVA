@@ -32,20 +32,24 @@ public class BuscarCat extends HttpServlet {
 	//	doGet(request, response);
 		CategoriaController ctrl= new CategoriaController();
 		Categoria cat= new Categoria();
+		
 		int id = Integer.parseInt(request.getParameter("id"));
+		
 		cat.setIdCategoria(id);
 		cat =ctrl.getOne(cat);
+		
 		LinkedList<Categoria> categorias = new LinkedList<Categoria>();
 		categorias= ctrl.listAllCategorias();
 		
 		ProductoController ctrlProd= new ProductoController();
-		LinkedList<Producto> prods = new LinkedList<Producto>();
 		
+		LinkedList<Producto> prods = new LinkedList<Producto>();
 		prods= ctrlProd.listarByCategoria(cat);
+		
 		request.setAttribute("categorias", categorias);
 
-		request.setAttribute("prods", prods);
-		request.getRequestDispatcher("listarProductosCat.jsp").forward(request, response);
+		request.setAttribute("productos", prods);
+		request.getRequestDispatcher("listarProductos.jsp").forward(request, response);
 	}
 
 }
