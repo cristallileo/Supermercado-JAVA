@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entidades.Categoria;
 import entidades.Producto;
 import logic.CategoriaController;
 import logic.ProductoController;
@@ -46,20 +47,27 @@ public class HabilitarProducto extends HttpServlet {
 
 		ProductoController ctrl= new ProductoController();
 		CategoriaController ctrlCat = new CategoriaController();
+		Categoria c= new Categoria();
 		Producto p= new Producto();
 		
 		int id= Integer.parseInt(request.getParameter("id"));
 		
 		p.setIdProducto(id);
 		p=ctrl.getById(p);
-		
+		c= ctrl.getCategoria(p);
+		if (c.getFecha_hora_baja()==null) {
+			p.setFecha_hora_baja(null);
+			p=ctrl.editProducto(p);
+			//request.setAttribute("catDeshabilitada", c);
+			request.setAttribute("productos", ctrl.listAllProductos());
+			request.setAttribute("categorias", ctrlCat.listAllCategorias());
+			request.getRequestDispatcher("listarProductos.jsp").forward(request, response);
+		}else {
+			
+			request.getRequestDispatcher("error-prod-cat.jsp").forward(request, response);;
+		}
 		 
-		p.setFecha_hora_baja(null);
-		p=ctrl.editProducto(p);
-		//request.setAttribute("catDeshabilitada", c);
-		request.setAttribute("productos", ctrl.listAllProductos());
-		request.setAttribute("categorias", ctrlCat.listAllCategorias());
-		request.getRequestDispatcher("listarProductos.jsp").forward(request, response);
+		
 	}
 
 }

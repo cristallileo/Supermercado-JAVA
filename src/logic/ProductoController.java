@@ -53,6 +53,14 @@ public class ProductoController {
 		return dp.getAllActivos();	
 	}
 	
+	public Categoria getCategoria(Producto p) {
+		int id= p.getId_categoria();
+		Categoria c = new Categoria();
+		c.setIdCategoria(id);
+		CategoriaController ctrl = new CategoriaController();
+		c=ctrl.getOne(c);
+		return c;
+	}
 	
 }
 
