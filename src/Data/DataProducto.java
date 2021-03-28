@@ -72,6 +72,7 @@ public class DataProducto {
 					p.setMarca(rs.getString("marca"));
 					p.setId_categoria(rs.getInt("id_categoria"));
 					p.setPrecio(rs.getDouble("precio"));
+					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
 					productos.add(p);
 				}
 			}

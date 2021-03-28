@@ -74,6 +74,7 @@
                                 <tr>
                                 <th align="center"><span>ID</span></th>                                               
                                 <th align="center"><span>DESCRIPCIÓN</span></th>
+                                <th align="center"><span>ESTADO</span></th>
                
                                 <th>&nbsp;</th>
                                 </tr>
@@ -82,7 +83,20 @@
 	                           <% for (Categoria cat : lc) { %>
 	                    			<tr>
 	                    			<td><%=cat.getIdCategoria() %></td>
-                                    <td><%=cat.getDescCategoria()%></td>                                           
+                                    <td><%=cat.getDescCategoria()%></td>  
+                                     <%if (cat.getFecha_hora_baja()!=null){%>
+                                    <td>
+                                    <a>
+                                      <span class="badge bg-success">Activo</span>
+                                    </a>
+                                    </td>
+                                    <%}else{%> 
+                                       <td>
+                                       <a href="HabilitarCategorias?id=<%=cat.getIdCategoria()%>" onclick="return confirm('Desea habilitar esta categoría?');">
+                                       	<span class="badge bg-danger">Inactivo</span>
+                                       </a>
+                                       </td>
+                                    <%} %>                                       
                                      <td style="width: 10%;">                                        
                                         <a href="BuscarCategoria?id=<%=cat.getIdCategoria()%>" class="table-link text-info">
                                             <span class="fa-stack">
@@ -90,13 +104,14 @@
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                             </span>
                                         </a>
-                                        <a  href="DeleteCategoria?id=<%=cat.getIdCategoria()%>" class="table-link danger" onclick="return confirm('Are you sure you want to delete this item?');" >
+                                      <a  href="DeshabilitarCategoria?id=<%=cat.getIdCategoria()%>" class="table-link danger" onclick="return confirm('Desea deshabilitar esta categoría?');" >
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
                                             </span>
                                             
                                         </a>
+                                        
                                     
                                     </td>
                                    

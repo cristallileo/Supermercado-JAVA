@@ -33,7 +33,7 @@ public class ListProductos extends HttpServlet {
 		LinkedList<Categoria> categorias= new LinkedList<Categoria>();
 		
 		productos=ctrl.listAllProductos();
-		categorias= ctrlCat.listCategoriasActivas();
+		categorias= ctrlCat.listAllCategorias();
 		
 		request.setAttribute("productos", productos);
 		request.setAttribute("categorias", categorias);

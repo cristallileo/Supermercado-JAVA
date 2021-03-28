@@ -26,13 +26,13 @@ public class DataCategoria {
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idCategoria,desc_categoria from categoria");
+			rs= stmt.executeQuery("select idCategoria,desc_categoria, fecha_hora_baja from categoria");
 			if(rs!=null) {
 				while(rs.next()) {
 					Categoria c=new Categoria();
 					c.setIdCategoria(rs.getInt("idCategoria"));
 					c.setDescCategoria(rs.getString("desc_categoria"));
-					
+					c.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
 					categorias.add(c);
 				}
 			}
@@ -95,10 +95,11 @@ public class DataCategoria {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"UPDATE `tp_java`.`categoria` SET `desc_categoria` = ? WHERE (`idCategoria` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+							"UPDATE `tp_java`.`categoria` SET `desc_categoria` = ?, `fecha_hora_baja` = ? WHERE (`idCategoria` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
 			//NO PERMITIMOS EDITAR FECHAS DE INGRESO DE EMPLEADOS NI FEHCA DE REGISTRO DE CLIENTES PORQ ES DE INGRESO AUTOMATICO, NO INGRESO HUMANO.
 			stmt.setString(1, c.getDescCategoria());
-			stmt.setInt(2, c.getIdCategoria());			
+			stmt.setTimestamp(2, c.getFecha_hora_baja());
+			stmt.setInt(3, c.getIdCategoria());			
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();
@@ -157,14 +158,15 @@ public class DataCategoria {
 		ResultSet rs=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idCategoria,desc_categoria from categoria where idCategoria=?"
+					"select idCategoria,desc_categoria,fecha_hora_baja from categoria where idCategoria=?"
 					);
 			stmt.setInt(1, cat.getIdCategoria());
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()) {
 				c=new Categoria();
 				c.setIdCategoria(rs.getInt("idCategoria"));
-				c.setDescCategoria(rs.getString("desc_categoria"));			
+				c.setDescCategoria(rs.getString("desc_categoria"));	
+				c.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

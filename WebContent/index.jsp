@@ -70,7 +70,7 @@
       <div class="col-12 text-center">
        <b><h1  class="font-weight-light">Comprá Online</h1></b>
         <p style="font-size:30px;" class="lead">Nosotros te lo llevamos a tu casa</p>
- 		<a href="login.jsp" class="btn btn-info" role="button">Comenzar a comprar</a>
+ 		<a href="login.jsp" class="btn btn-info" role="button">Iniciar Sesión</a>
       </div>
     </div>
   </div>

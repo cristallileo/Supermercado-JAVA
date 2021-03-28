@@ -82,7 +82,7 @@
                                 <th align="center"><span>Dirección</span></th>
                                 <th align="center"><span>Email</span></th>
                                
-                                <th align="center"><span>Fecha de Registro</span></th>
+                                <th align="center"><span>Registro</span></th>
                                
                                 <th>&nbsp;</th>
                                 </tr>

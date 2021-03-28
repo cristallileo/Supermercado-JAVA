@@ -146,7 +146,7 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
                                 <th align="center"><span>Marca</span></th>
                                 <th align="center"><span>Categoría</span></th>
                                 <th align="center"><span>Precio</span></th>
-                                <th align="center"><span>Fecha Hora Baja</span></th>
+                                <th align="center"><span>Baja</span></th>
         
                                 <th>&nbsp;</th>
                                 </tr>
@@ -166,7 +166,7 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
    									<td><%=c.getDescCategoria()%></td>
                                     <td><%=p.getPrecio()%> </td>
        								<% if (p.getFecha_hora_baja() == null) { %> 
-       								 <td> </td>
+       								 <td>-</td>
        								<% } else { %>
        								<td> <%= p.getFecha_hora_baja() %> </td> 
        								<% } %>
