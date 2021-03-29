@@ -82,10 +82,30 @@
 				
 				<label for="tipoDoc">Elegir Tipo Doc:</label>
   				<select id="inputTipoDoc" name="tipoDoc">
+  				
+  				<% switch (per.getTipoDoc()) 
+  				{ 
+  				
+  				case "DNI":%>  				
    				<option value="DNI">DNI</option>
   				<option value="Libreta Civica">Libreta Cívica</option>
   				<option value="Libreta de Enrolamiento">Libreta de Enrolamiento</option>
-  				</select>
+  				<% break; 
+  				
+  				case "Libreta Civica":%>    				
+  				<option value="Libreta Civica">Libreta Cívica</option>
+  				<option value="DNI">DNI</option>
+  				<option value="Libreta de Enrolamiento">Libreta de Enrolamiento</option>	
+  				<% break; 
+  				
+  				case "Libreta de Enrolamiento":%>
+  				<option value="Libreta de Enrolamiento">Libreta de Enrolamiento</option>
+  				<option value="DNI">DNI</option>
+  				<option value="Libreta Civica">Libreta Cívica</option>  				
+  				<% break; 
+  				} %>				
+
+                 </select>
                 
                 <div class="form-label-group">
                   <input type="text" name="nroDoc" id="nroDoc" class="form-control" value=<%=per.getNroDoc() %> required>
