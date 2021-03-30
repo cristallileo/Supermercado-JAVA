@@ -187,6 +187,48 @@ public class DataProveedor {
 		
 		return p;
 }	
+
+	public LinkedList<Proveedor> getByDesc(String razonS){
+
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		LinkedList<Proveedor> proveedores= new LinkedList<>();
+		
+		try {
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select * from proveedor where proveedor.razonSocial like  '%" +razonS+"%'");
+			
+		
+			rs=stmt.executeQuery();
+			
+			if(rs!=null) {
+				while(rs.next()) {
+					Proveedor p=new Proveedor();
+					p.setIdProveedor(rs.getInt("idProveedor"));
+					p.setTelefono(rs.getString("telefono"));
+					p.setMail(rs.getString("email"));
+					p.setRazonSocial(rs.getString("razonSocial"));
+					p.setFechaBaja(rs.getDate("fechaBaja"));
+					proveedores.add(p);
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return proveedores;
+	}
+
+
 }
 
 

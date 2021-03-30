@@ -151,7 +151,6 @@ public class DataCategoria {
 	return c;
 	}
 
-	
 	public Categoria getOne(Categoria cat) {
 		Categoria c=null;
 		PreparedStatement stmt=null;
@@ -183,7 +182,6 @@ public class DataCategoria {
 		return c;
 }
 	
-
 	public LinkedList<Categoria> getAllCategorias(){
 		
 
@@ -283,4 +281,45 @@ public class DataCategoria {
 		
 		return c;
 }
+
+	public LinkedList<Categoria> getByDesc(String categ){
+
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		LinkedList<Categoria> categorias= new LinkedList<>();
+		
+		try {
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select * from categoria where categoria.desc_categoria like  '%" +categ+"%'");
+			
+		
+			rs=stmt.executeQuery();
+			
+			if(rs!=null) {
+				while(rs.next()) {
+					Categoria c=new Categoria();
+					c.setIdCategoria(rs.getInt("idCategoria"));
+					c.setDescCategoria(rs.getString("desc_categoria"));
+					c.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
+					categorias.add(c);
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return categorias;
+	}
+
+
+
 }

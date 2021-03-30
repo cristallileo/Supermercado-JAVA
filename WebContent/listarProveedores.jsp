@@ -79,6 +79,26 @@
   
  <hr> 
  <div class="container bootstrap snippets bootdey">
+  	<div class="row">
+ 		
+ 		<!-- Agregar boton para que aparezcan todos los filtros -->	
+ 		
+ 		
+	 	<!-- SEARCH -->
+		<!-- DESCRIPCION -->	
+		<form action="ListProveedoresDesc">
+		   <div class="search-box" style="margin:8px;max-width:300px;position:absolute;font-size: 16px;">
+		      <input type="text" placeholder="Razon social..." name="razonS">
+		      <button type="submit"><i class="fa fa-search"></i></button>
+		   </div>
+		</form>
+	</div>
+ 
+	<br>
+	<br>
+	<br>
+	
+ 
     <div class="row">
         <div class="col-lg-12">
             <div class="main-box no-header clearfix">
