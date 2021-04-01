@@ -15,6 +15,7 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="style/clientes-admin/confirmacion.css" rel="stylesheet"> 
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
    
 <title>Categorias</title>
 
@@ -63,8 +64,35 @@
   </div>
   
  <hr> 
+ 
+ 
+
+	
  <div class="container bootstrap snippets bootdey">
+ 	<div class="row">
+ 		
+ 		<!-- Agregar boton para que aparezcan todos los filtros -->	
+ 		
+ 	<a href="ListCategorias">
+ 		<button class="btn default">Todos</button>	
+ 	</a>	
+ 		
+	 	<!-- SEARCH -->
+		<!-- DESCRIPCION -->	
+		<form action="ListCategoriasDesc">
+		   <div class="search-box" style="margin:8px;max-width:300px;position:absolute;font-size: 16px;">
+		      <input type="text" placeholder="Descripcion..." name="desc">
+		      <button type="submit"><i class="fa fa-search"></i></button>
+		   </div>
+		</form>
+	</div>
+
+	<br>
+	<br>
+	<br>
+	
     <div class="row">
+    <!--  TABLA -->	
         <div class="col-lg-12">
             <div class="main-box no-header clearfix">
                 <div class="main-box-body clearfix">

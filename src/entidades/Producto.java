@@ -2,7 +2,7 @@ package entidades;
 
 import java.sql.Timestamp;
 
-public class Producto {
+public class Producto implements Comparable <Producto>{
 	
 	private int idProducto;
 	private String descProducto;
@@ -64,6 +64,9 @@ public class Producto {
 	{
 		this.fecha_hora_baja = fecha_hora_baja;
 	}
-	
+	@Override
+	public int compareTo(Producto p) {
+		return precio.compareTo(p.getPrecio());	
+	}
 	
 }

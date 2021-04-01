@@ -34,7 +34,10 @@ public class ProveedorController {
 		return dp.editProveedor(p);
 	}
 
-
+	public LinkedList<Proveedor> listarByDesc (String razonS){
+		return dp.getByDesc(razonS);
+	}
+	
 	
 }
 

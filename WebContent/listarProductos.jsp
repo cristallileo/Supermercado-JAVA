@@ -2,6 +2,9 @@
 <%@page import="entidades.*"%>
 <%@page import="logic.*"%>
 <%@page import="java.sql.Timestamp"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%> 
+<%@page import="java.util.Collections"%> 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -35,7 +38,7 @@
 <title>Productos</title>
 
 <% LinkedList<Producto> lprod = (LinkedList<Producto>)request.getAttribute("productos");
-LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categorias");
+   LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categorias");
 %>
 
 </head>
@@ -103,13 +106,30 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
     	</div>
   	</div>
   	<!-- precio -->
+  	<!-- 
   	<div class="w3-dropdown-hover">
   	<button class="w3-button w3-black">Precio</button>
-	    <div class="w3-dropdown-content w3-bar-block w3-border">
-	     <a class="w3-bar-item w3-button" href="ListProductosMenosMas">De menor a mayor precio</a>
-		 <a class="w3-bar-item w3-button" href="ListProductosMasMenos">De mayor a menor precio</a>
-    	</div>
+	  <div class="w3-dropdown-content w3-bar-block w3-border">
+	     <a class="w3-bar-item w3-button" onclick=<%//Collections.sort(lprod);%> >De menor a mayor precio</a>
+		 <a class="w3-bar-item w3-button" onclick=<%//Collections.sort(lprod,Collections.reverseOrder());%>>De mayor a menor precio</a>
+		 
+		 <% //  Collections.sort(lprod); //de menor a mayor
+			// Collections.sort(lprod,Collections.reverseOrder()); //de mayor a menor
+		  %>
+
+      </div>
 	</div>
+	 -->
+
+	    <div class="w3-dropdown-hover">
+	  	  <button class="w3-button w3-black">Precio</button>
+		    <div class="w3-dropdown-content w3-bar-block w3-border">
+		     <a class="w3-bar-item w3-button" href="ListProductosMenosMas">De menor a mayor precio</a>
+			 <a class="w3-bar-item w3-button" href="ListProductosMasMenos">De mayor a menor precio</a>
+	    	</div>
+	    </div>
+	
+	
 	<!-- SEARCH -->
 	<!-- DESCRIPCION -->
 	<form action="ListProductosDesc">
@@ -123,8 +143,6 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
 	</div>
 </div>
 	
-
-
 
 <br>
 	
@@ -168,8 +186,8 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
        								<% if (p.getFecha_hora_baja() == null) { %> 
 	       								 <td>
 		                                      <a  href="DeshabilitarProducto?id=<%=p.getIdProducto()%>" onclick="return confirm('Desea deshabilitar este producto?');" >
-		                                      <span class="badge bg-success">Activo</span>
-		                                    </a>
+		                                      	<span class="badge bg-success">Activo</span>
+		                                      </a>
 	                                    </td>
        								<% } else { %>
        								 	<td>

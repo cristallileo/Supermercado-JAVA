@@ -44,4 +44,9 @@ public class CategoriaController {
 		c = dc.getOneByDesc(cat);
 		return c;
 	}
+	
+	public LinkedList<Categoria> listarByDesc (String categ){
+		return dc.getByDesc(categ);
+	}
+	
 }

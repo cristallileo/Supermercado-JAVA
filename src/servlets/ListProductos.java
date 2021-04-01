@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.LinkedList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,6 +35,8 @@ public class ListProductos extends HttpServlet {
 		
 		productos=ctrl.listAllProductos();
 		categorias= ctrlCat.listAllCategorias();
+		
+		Collections.sort(productos);
 		
 		request.setAttribute("productos", productos);
 		request.setAttribute("categorias", categorias);
