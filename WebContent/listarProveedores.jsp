@@ -81,9 +81,10 @@
  <div class="container bootstrap snippets bootdey">
   	<div class="row">
  		
- 		<!-- Agregar boton para que aparezcan todos los filtros -->	
- 		
- 		
+ 	<a href="ListProveedores">
+ 		<button class="btn default">Todos</button>	
+ 	</a>	
+
 	 	<!-- SEARCH -->
 		<!-- DESCRIPCION -->	
 		<form action="ListProveedoresDesc">

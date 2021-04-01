@@ -73,6 +73,9 @@
  		
  		<!-- Agregar boton para que aparezcan todos los filtros -->	
  		
+ 	<a href="ListCategorias">
+ 		<button class="btn default">Todos</button>	
+ 	</a>	
  		
 	 	<!-- SEARCH -->
 		<!-- DESCRIPCION -->	

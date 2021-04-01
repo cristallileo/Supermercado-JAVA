@@ -168,8 +168,8 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
        								<% if (p.getFecha_hora_baja() == null) { %> 
 	       								 <td>
 		                                      <a  href="DeshabilitarProducto?id=<%=p.getIdProducto()%>" onclick="return confirm('Desea deshabilitar este producto?');" >
-		                                      <span class="badge bg-success">Activo</span>
-		                                    </a>
+		                                      	<span class="badge bg-success">Activo</span>
+		                                      </a>
 	                                    </td>
        								<% } else { %>
        								 	<td>
