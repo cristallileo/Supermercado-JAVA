@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.LinkedList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,9 +34,11 @@ public class ListProductosMenosMas extends HttpServlet {
 		
 		LinkedList<Producto> productos= new LinkedList<Producto>();
 		LinkedList<Categoria> categorias= new LinkedList<Categoria>();
-		
+
 		productos=ctrl.listarMenosMas();
 		categorias= ctrlCat.listCategoriasActivas();
+		
+		//Collections.sort(lprod);
 		
 		request.setAttribute("productos", productos);
 		request.setAttribute("categorias", categorias);
