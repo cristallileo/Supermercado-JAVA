@@ -372,7 +372,7 @@ public class DataProducto {
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria, precio from producto order by precio");
+			rs= stmt.executeQuery("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria, precio,fecha_hora_baja from producto order by precio");
 			if(rs!=null) {
 				while(rs.next()) {
 					Producto p=new Producto();
@@ -383,6 +383,7 @@ public class DataProducto {
 					p.setMarca(rs.getString("marca"));
 					p.setId_categoria(rs.getInt("id_categoria"));
 					p.setPrecio(rs.getDouble("precio"));
+					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
 					productos.add(p);
 				}
 			}
@@ -412,7 +413,7 @@ public class DataProducto {
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria, precio from producto order by precio DESC");
+			rs= stmt.executeQuery("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria, precio, fecha_hora_baja from producto order by precio DESC");
 			if(rs!=null) {
 				while(rs.next()) {
 					Producto p=new Producto();
@@ -423,6 +424,7 @@ public class DataProducto {
 					p.setMarca(rs.getString("marca"));
 					p.setId_categoria(rs.getInt("id_categoria"));
 					p.setPrecio(rs.getDouble("precio"));
+					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
 					productos.add(p);
 				}
 			}
