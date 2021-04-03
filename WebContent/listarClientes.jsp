@@ -8,6 +8,8 @@
 <head>
 
 <meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
   <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
   <link href="style/mainpage/modern-business.css" rel="stylesheet">
@@ -16,6 +18,7 @@
   <link href="style/clientes-admin/confirmacion.css" rel="stylesheet">  
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+
 <title>Clientes</title>
 
 <% LinkedList<Persona> lc = (LinkedList<Persona>)request.getAttribute("listado");%>
@@ -23,9 +26,8 @@
 </head>
 <body>
 
-  <div class="container">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <a class="navbar-brand" href="mainpage-admin.jsp">Supermercado</a>
       
       <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -59,10 +61,12 @@
           </li>
         </ul>
       </div>
-    </div>
+   
   </nav>
-  </div>
+</div>
   
+
+
  <hr> 
  <div class="container bootstrap snippets bootdey">
     <div class="row">
