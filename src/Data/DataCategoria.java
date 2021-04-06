@@ -191,12 +191,13 @@ public class DataCategoria {
 	
 	try {
 		stmt= DbConnector.getInstancia().getConn().createStatement();
-		rs= stmt.executeQuery("select idCategoria,desc_categoria from categoria");
+		rs= stmt.executeQuery("select idCategoria,desc_categoria, fecha_hora_baja from categoria");
 		if(rs!=null) {
 			while(rs.next()) {
 				Categoria c=new Categoria();
 				c.setIdCategoria(rs.getInt("idCategoria"));
-				c.setDescCategoria(rs.getString("desc_categoria"));				
+				c.setDescCategoria(rs.getString("desc_categoria"));	
+				c.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja "));
 				categorias.add(c);
 			}
 		}
@@ -258,14 +259,15 @@ public class DataCategoria {
 		ResultSet rs=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idCategoria,desc_categoria from categoria where desc_categoria=?"
+					"select idCategoria,desc_categoria,fecha_hora_baja  from categoria where desc_categoria=?"
 					);
 			stmt.setString(1, cat.getDescCategoria());
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()) {
 				c=new Categoria();
 				c.setIdCategoria(rs.getInt("idCategoria"));
-				c.setDescCategoria(rs.getString("desc_categoria"));			
+				c.setDescCategoria(rs.getString("desc_categoria"));	
+				c.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja "));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
