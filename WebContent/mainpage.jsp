@@ -32,9 +32,14 @@
         <ul class="navbar-nav ml-auto">
   
           <li class="nav-item">
-            <a class="nav-link" href="categorias.jsp">Categorías</a>
+            <a class="nav-link" href="#">Mis pedidos</a> <!--  poner en un boton -->
           </li>
-
+          <li class="nav-item">
+            <a class="nav-link" href="#">Productos</a>
+          </li>          
+          <li class="nav-item">
+            <a class="nav-link" href="#">Descuentos</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Nosotros</a>
           </li>

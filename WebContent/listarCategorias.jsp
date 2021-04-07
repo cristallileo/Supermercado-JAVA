@@ -85,12 +85,18 @@
 		      <button type="submit"><i class="fa fa-search"></i></button>
 		   </div>
 		</form>
+	<%if(lc == null || lc.size() == 0){ %>                       
+    	<div class="alert alert-warning"> ¡Lo sentimos! No hay categorias con esa descripción.</div>                               	
+	<%} %>
 	</div>
 
 	<br>
 	<br>
 	<br>
+		
 	
+
+
     <div class="row">
     <!--  TABLA -->	
         <div class="col-lg-12">

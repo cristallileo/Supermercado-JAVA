@@ -163,10 +163,15 @@ function w3_close() {
 	      <button type="submit"><i class="fa fa-search"></i></button>
 	   </div>
 	</form>
-	
-	
-	</div>
+   </div>
 </div>
+   	<%if(lprod == null || lprod.size() == 0){ %>   
+		<br>
+		<br>
+		<br>                   
+    	<div class="alert alert-warning"> ¡Lo sentimos! No hay productos con esa descripción.</div>                               	
+	<%} %>
+<br>
 <br>
 <br>
 	
