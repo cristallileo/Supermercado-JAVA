@@ -21,6 +21,10 @@ public class DescuentoController {
 		return dd.getAll();
 	}
 
+	public LinkedList<Descuento> listarDescuentosAct() {
+		return dd.getAllActivos();
+	}
+
 	public Descuento editDescuento (Descuento d) {
 		return dd.editDescuento(d);
 	}

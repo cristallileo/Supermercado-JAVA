@@ -1,5 +1,6 @@
 package entidades;
 
+import java.sql.Blob;
 import java.sql.Timestamp;
 
 public class Producto implements Comparable <Producto>{
@@ -12,6 +13,8 @@ public class Producto implements Comparable <Producto>{
 	private int id_categoria;
 	private Double precio;
 	private Timestamp fecha_hora_baja; 
+	private Blob imagen;
+
 	
 	public int getIdProducto() {
 		return idProducto;
@@ -19,6 +22,7 @@ public class Producto implements Comparable <Producto>{
 	public void setIdProducto(int idProducto) {
 		this.idProducto = idProducto;
 	}
+	
 	public String getDescProducto() {
 		return descProducto;
 	}
@@ -64,6 +68,14 @@ public class Producto implements Comparable <Producto>{
 	{
 		this.fecha_hora_baja = fecha_hora_baja;
 	}
+	
+	public Blob getImagen() {
+		return imagen;
+	}
+	public void setImagen(Blob imagen) {
+		this.imagen = imagen;
+	}
+	
 	@Override
 	public int compareTo(Producto p) {
 		return precio.compareTo(p.getPrecio());	
