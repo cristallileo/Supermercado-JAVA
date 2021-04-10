@@ -225,7 +225,7 @@ import entidades.*;
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idDcto,porcDcto,fechaDctoInicio, fechaDctoFin from descuento where fechaDctoInicio<=curdate() and fechaDctoFin>curdate()");
+			rs= stmt.executeQuery("select idDcto,porcDcto,fechaDctoInicio, fechaDctoFin from descuento where fechaDctoInicio<=curdate() and fechaDctoFin>=curdate()");
 			if(rs!=null) {
 				while(rs.next()) {
 					Descuento d=new Descuento();

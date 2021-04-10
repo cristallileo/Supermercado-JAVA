@@ -1,10 +1,19 @@
 package Data;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
+
+import javax.servlet.http.HttpServletResponse;
+
 import Data.*;
 import entidades.*;
 import logic.*;
@@ -487,4 +496,50 @@ public class DataProducto {
 		}			
 		return productosActivos;
 	}
+
+
+/*
+public LinkedList<Producto> getAllconImg(){
+		
+		Statement stmt=null;
+		ResultSet rs=null;
+		LinkedList<Producto> productos= new LinkedList<>();
+		
+		try {
+			stmt= DbConnector.getInstancia().getConn().createStatement();
+			rs= stmt.executeQuery("select idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja, imagen from producto");
+			if(rs!=null) {
+				while(rs.next()) {
+					Producto p=new Producto();
+					p.setIdProducto(rs.getInt("idProducto"));
+					p.setDescProducto(rs.getString("desc_producto"));
+					p.setStock(rs.getInt("stock"));
+					p.setStockMinimo(rs.getInt("stockMinimo"));
+					p.setMarca(rs.getString("marca"));
+					p.setId_categoria(rs.getInt("id_categoria"));
+					p.setPrecio(rs.getDouble("precio"));
+					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
+					p.setImagen(rs.getBlob("imagen"));
+					productos.add(p);
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return productos;
+	}
+
+*/
+	
 }
