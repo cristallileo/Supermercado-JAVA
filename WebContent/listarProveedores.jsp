@@ -7,6 +7,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+
+ <!-- Boostrap para searchbar -->
+ <link href="style/search-bar/search-bar.css" rel="stylesheet">
+
  <!-- Bootstrap core CSS -->
   <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
 
@@ -24,6 +28,7 @@
   
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+  
   
 <title>Proveedores</title>
 
@@ -79,21 +84,21 @@
   
  <hr> 
  <div class="container bootstrap snippets bootdey">
-  	<div class="row">
- 		
- 	<a href="ListProveedores">
- 		<button class="btn default">Todos</button>	
- 	</a>	
-
-	 	<!-- SEARCH -->
+ <div class="row">	
+ 
+<form class="example" action="ListProveedoresDesc" style="margin:10px;max-width:300px">
+  <input type="text" placeholder="Razón Social" name="search">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+	
 		<!-- DESCRIPCION -->	
-		<form action="ListProveedoresDesc">
+		<!-- <form action="ListProveedoresDesc">
 		   <div class="search-box" style="margin:8px;max-width:300px;position:absolute;font-size: 16px;">
 		      <input type="text" placeholder="Razon social..." name="razonS">
 		      <button type="submit"><i class="fa fa-search"></i></button>
 		   </div>
-		</form>
-	</div>
+		</form>-->
+
 <%if(lp.size() == 0){ %>  
     <br>         
     <div class="alert alert-warning"> ¡Lo sentimos! No hay proveedores con esa descripción.</div>                               	
@@ -103,7 +108,7 @@
 	<br>
 	<br>
 	
- 
+ </div>
     <div class="row">
         <div class="col-lg-12">
             <div class="main-box no-header clearfix">
