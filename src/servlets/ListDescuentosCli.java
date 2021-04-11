@@ -46,7 +46,7 @@ public class ListDescuentosCli extends HttpServlet {
 		LinkedList<Descuento> descuentos= new LinkedList<Descuento>();
 		descuentos=ctrl.listarDescuentosAct();
 		request.setAttribute("descuentos", descuentos);
-        request.getRequestDispatcher("listarDescuentosCli.jsp").forward(request, response);
+        request.getRequestDispatcher("mainpage.jsp").forward(request, response);
 
 	}
 
