@@ -9,7 +9,10 @@
 <meta charset="ISO-8859-1">
 
 <title>Empleados</title>
-
+	 <!-- Boostrap para searchbar -->
+  <link href="style/search-bar/search-bar.css" rel="stylesheet">
+ 
+ 
   <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
   <link href="style/mainpage/modern-business.css" rel="stylesheet">  
  <!-- Estilo para el listado de clientes -->
@@ -65,6 +68,14 @@
   
  <hr> 
  <div class="container bootstrap snippets bootdey">
+   <div class="row">
+    <form class="example" action="ListProductosDesc" style="margin:10px;max-width:300px">
+	  <input type="text" placeholder="Descripción..." name="search">
+	  <button type="submit"><i class="fa fa-search"></i></button>
+	</form>
+	</div>    
+    
+    
     <div class="row">
         <div class="col-lg-12">
             <div class="main-box no-header clearfix">

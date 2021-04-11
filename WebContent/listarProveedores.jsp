@@ -87,7 +87,7 @@
  <div class="row">	
  
 <form class="example" action="ListProveedoresDesc" style="margin:10px;max-width:300px">
-  <input type="text" placeholder="Razón Social" name="search">
+  <input type="text" placeholder="Razón Social..." name="search">
   <button type="submit"><i class="fa fa-search"></i></button>
 </form>
 	

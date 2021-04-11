@@ -8,7 +8,10 @@
 <head>
 
 <meta charset="ISO-8859-1">
-
+	 <!-- Boostrap para searchbar -->
+ <link href="style/search-bar/search-bar.css" rel="stylesheet">
+ 
+ 
   <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
   <link href="style/mainpage/modern-business.css" rel="stylesheet">
   <link href="style/clientes-admin/listado-clientes.css" rel="stylesheet"> 
@@ -65,37 +68,22 @@
   
  <hr> 
  
- 
-
-	
  <div class="container bootstrap snippets bootdey">
- 	<div class="row">
- 		
- 		<!-- Agregar boton para que aparezcan todos los filtros -->	
- 		
- 	<a href="ListCategorias">
- 		<button class="btn default">Todos</button>	
- 	</a>	
- 		
-	 	<!-- SEARCH -->
-		<!-- DESCRIPCION -->	
-		<form action="ListCategoriasDesc">
-		   <div class="search-box" style="margin:8px;max-width:300px;position:absolute;font-size: 16px;">
-		      <input type="text" placeholder="Descripcion..." name="desc">
-		      <button type="submit"><i class="fa fa-search"></i></button>
-		   </div>
-		</form>
-	<%if(lc == null || lc.size() == 0){ %>                       
+ 	 <div class="row">	
+ 
+	<form class="example" action="ListCategoriasDesc" style="margin:10px;max-width:300px">
+	  <input type="text" placeholder="Descripcion..." name="search">
+	  <button type="submit"><i class="fa fa-search"></i></button>
+	</form>
+	
+	<%if(lc == null || lc.size() == 0){ %>  
+		<br>                     
     	<div class="alert alert-warning"> ¡Lo sentimos! No hay categorias con esa descripción.</div>                               	
 	<%} %>
-	</div>
-
 	<br>
 	<br>
 	<br>
-		
-	
-
+</div>
 
     <div class="row">
     <!--  TABLA -->	

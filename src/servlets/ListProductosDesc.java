@@ -34,9 +34,11 @@ public class ListProductosDesc extends HttpServlet {
 		LinkedList<Producto> productos= new LinkedList<Producto>();
 		LinkedList<Categoria> categorias= new LinkedList<Categoria>();
 
-		String desc= request.getParameter("desc");
-		
+		String desc= request.getParameter("search");
+	
 		productos=ctrl.listarByDesc(desc);
+			
+
 		categorias= ctrlCat.listAllCategorias();
 		
 		request.setAttribute("productos", productos);

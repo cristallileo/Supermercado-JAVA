@@ -46,7 +46,7 @@ public class ListProveedoresDesc extends HttpServlet {
 		ProveedorController ctrl= new ProveedorController();
 		LinkedList<Proveedor> proveedores= new LinkedList<Proveedor>();
 
-		String razonS= request.getParameter("razonS");
+		String razonS= request.getParameter("search");
 		
 		proveedores=ctrl.listarByDesc(razonS);
 		

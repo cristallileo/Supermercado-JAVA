@@ -41,6 +41,7 @@
 
 <% LinkedList<Producto> lprod = (LinkedList<Producto>)request.getAttribute("productos");
    LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categorias");
+   //String desc= request.getAttribute("descripcion");
 %>
 
 <script>
@@ -157,14 +158,10 @@ function w3_close() {
 	
 	<!-- SEARCH -->
 	<!-- DESCRIPCION -->
-	<form action="ListProductosDesc">
-	   <div class="search-box" style="margin:12px;max-width:400px;position:absolute;font-size: 16px;">
-	      <input type="text" placeholder="Descripcion..." name="desc">
-	      <button type="submit"><i class="fa fa-search"></i></button>
-	   </div>
+	<form class="example" action="ListProductosDesc" style="margin:10px;max-width:300px">
+	  <input type="text" placeholder="Descripción..." name="search">
+	  <button type="submit"><i class="fa fa-search"></i></button>
 	</form>
-   </div>
-</div>
    	<%if(lprod == null || lprod.size() == 0){ %>   
 		<br>
 		<br>
@@ -174,7 +171,7 @@ function w3_close() {
 <br>
 <br>
 <br>
-	
+ </div>	
 	<!--  TABLA -->	
     <div class="row">
         <div class="col-lg-12">
