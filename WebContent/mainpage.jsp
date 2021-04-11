@@ -1,3 +1,8 @@
+<%@page import="java.util.LinkedList"%>
+<%@page import="java.sql.Date" %>
+<%@page import="entidades.*"%>
+<%@ page import="java.util.Calendar"%>
+<%@page import="logic.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -13,11 +18,11 @@
 
   <!-- Bootstrap core CSS -->
   <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
-
   <!-- Custom styles for this template -->
   <link href="style/mainpage/modern-business.css" rel="stylesheet">
-  
- 
+
+
+<% LinkedList<Descuento> ld = (LinkedList<Descuento>)request.getAttribute("descuentos"); %>
 
 
 </head>
@@ -37,9 +42,6 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Productos</a>
           </li>          
-          <li class="nav-item">
-            <a class="nav-link" href="#">Descuentos</a>
-          </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Nosotros</a>
           </li>
@@ -75,52 +77,28 @@
     </div>
     <!-- /.row -->
 
-   
-
-    <!-- Content Row -->
-    <div class="row">
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <div class="card-body">
-            <h2 class="card-title">Card One</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary btn-sm">More Info</a>
-          </div>
-        </div>
-      </div>
-      <!-- /.col-md-4 -->
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <div class="card-body">
-            <h2 class="card-title">Card Two</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary btn-sm">More Info</a>
-          </div>
-        </div>
-      </div>
-      <!-- /.col-md-4 -->
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <div class="card-body">
-            <h2 class="card-title">Card Three</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary btn-sm">More Info</a>
-          </div>
-        </div>
-      </div>
-      <!-- /.col-md-4 -->
-
+  <!-- Dcto cards--> 
+  <form action="ListDescuentosCli"> 
+    <div class="row">     
+      <% for(Descuento d:ld){ %> 
+      
+	      <div class="col-md-4 mb-5">
+	        <div class="card h-100" ">
+	          <div class="card-body">
+	            <h2 class="card-title">Descuento de: <%=d.getPorcDcto()*100%>%</h2>
+	            <p class="card-text">La duración es desde el <%=d.getFechaDctoInicio() %> hasta el <%=d.getFechaDctoFin()%>. <br> Esperamos que pueda aprovecharlo.</p>   
+	         	</div>
+	             <div class="card-footer">
+	             <!-- aca estaba el boton de +info pero no hace falta poner nada -->
+         		 </div>
+	      	</div>
+	      </div>
+	     
+	   <%} %>
+     
     </div>
-    <!-- /.row -->
-
-  </div>
-  <!-- /.container -->
+   </form>	
+ </div>
 
   <!-- Footer -->
   <footer class="py-5 bg-dark">
