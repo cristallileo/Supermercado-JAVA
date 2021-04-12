@@ -22,7 +22,9 @@
    
 <title>Categorias</title>
 
-<% LinkedList<Categoria> lc = (LinkedList<Categoria>)request.getAttribute("categorias"); %>
+<% LinkedList<Categoria> lc = (LinkedList<Categoria>)request.getAttribute("categorias"); 
+String descrip= (String)request.getAttribute("descrip");
+%>
 
 </head>
 <body>
@@ -72,7 +74,11 @@
  	 <div class="row">	
  
 	<form class="example" action="ListCategoriasDesc" style="margin:10px;max-width:300px">
-	  <input type="text" placeholder="Descripcion..." name="search">
+	   <%if (descrip==null){ %>
+	  <input type="text" placeholder="Descripción..." name="search" >
+	  <%}else{ %>
+	  <input type="text" placeholder="Descripción..." name="search" value=<%=descrip%>>
+	  <%} %>
 	  <button type="submit"><i class="fa fa-search"></i></button>
 	</form>
 	

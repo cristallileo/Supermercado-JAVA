@@ -52,6 +52,7 @@ public class ListClientes extends HttpServlet {
 		clientes=ctrl.listarClientes();
 		//request.getAttribute("usuario");
 		request.setAttribute("listado", clientes);
+		request.setAttribute("descrip", null);
         request.getRequestDispatcher("listarClientes.jsp").forward(request, response);
 
         

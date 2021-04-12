@@ -41,6 +41,7 @@
 
 <% LinkedList<Producto> lprod = (LinkedList<Producto>)request.getAttribute("productos");
    LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categorias");
+   String desc= (String)request.getAttribute("descrip");
    //String desc= request.getAttribute("descripcion");
 %>
 
@@ -159,7 +160,11 @@ function w3_close() {
 	<!-- SEARCH -->
 	<!-- DESCRIPCION -->
 	<form class="example" action="ListProductosDesc" style="margin:10px;max-width:300px">
-	  <input type="text" placeholder="Descripción..." name="search">
+	  <%if (desc==null){ %>
+	  <input type="text" placeholder="Descripción..." name="search" >
+	  <%}else{ %>
+	  <input type="text" placeholder="Descripción..." name="search" value=<%=desc%>>
+	  <%} %>
 	  <button type="submit"><i class="fa fa-search"></i></button>
 	</form>
    	<%if(lprod == null || lprod.size() == 0){ %>   

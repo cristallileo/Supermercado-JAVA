@@ -50,6 +50,7 @@ public class ListCategoriasDesc extends HttpServlet {
 		
 		categorias=ctrl.listarByDesc(desc);
 		
+		request.setAttribute("descrip", desc);
 		request.setAttribute("categorias", categorias);
         request.getRequestDispatcher("listarCategorias.jsp").forward(request, response);
 		

@@ -29,6 +29,8 @@ public class ListProveedores extends HttpServlet {
 		ProveedorController ctrl= new ProveedorController();
 		LinkedList<Proveedor> proveedores= new LinkedList<Proveedor>();
 		proveedores=ctrl.listarProveedores();
+		
+		request.setAttribute("descrip", null);
 		request.setAttribute("proveedores", proveedores);
         request.getRequestDispatcher("listarProveedores.jsp").forward(request, response);
 	

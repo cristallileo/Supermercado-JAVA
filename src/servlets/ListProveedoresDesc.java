@@ -50,6 +50,7 @@ public class ListProveedoresDesc extends HttpServlet {
 		
 		proveedores=ctrl.listarByDesc(razonS);
 		
+		request.setAttribute("descrip", razonS);
 		request.setAttribute("proveedores", proveedores);
         request.getRequestDispatcher("listarProveedores.jsp").forward(request, response);
 		

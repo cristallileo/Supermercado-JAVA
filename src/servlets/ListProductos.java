@@ -38,6 +38,7 @@ public class ListProductos extends HttpServlet {
 		
 		Collections.sort(productos);
 		
+		request.setAttribute("descrip", null);
 		request.setAttribute("productos", productos);
 		request.setAttribute("categorias", categorias);
 		

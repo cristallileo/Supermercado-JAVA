@@ -34,6 +34,7 @@
 
 
 <% LinkedList<Proveedor> lp = (LinkedList<Proveedor>)request.getAttribute("proveedores");
+	String descrip= (String)request.getAttribute("descrip");
 %>
 
 </head>
@@ -87,7 +88,11 @@
  <div class="row">	
  
 <form class="example" action="ListProveedoresDesc" style="margin:10px;max-width:300px">
-  <input type="text" placeholder="Razón Social..." name="search">
+ <%if (descrip==null){ %>
+	  <input type="text" placeholder="Razon Social..." name="search" >
+	  <%}else{ %>
+	  <input type="text" placeholder="Razon Social..." name="search" value=<%=descrip%>>
+	  <%} %>
   <button type="submit"><i class="fa fa-search"></i></button>
 </form>
 	

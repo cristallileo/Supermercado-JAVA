@@ -40,7 +40,7 @@ public class ListProductosDesc extends HttpServlet {
 			
 
 		categorias= ctrlCat.listAllCategorias();
-		
+		request.setAttribute("descrip", desc);
 		request.setAttribute("productos", productos);
 		request.setAttribute("categorias", categorias);
 		

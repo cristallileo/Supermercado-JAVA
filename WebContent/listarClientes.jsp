@@ -24,7 +24,9 @@
 
 <title>Clientes</title>
 
-<% LinkedList<Persona> lc = (LinkedList<Persona>)request.getAttribute("listado");%>
+<% LinkedList<Persona> lc = (LinkedList<Persona>)request.getAttribute("listado");
+   String descrip= (String)request.getAttribute("descrip");
+ %>
 
 </head>
 <body>
@@ -72,7 +74,11 @@
  <div class="container bootstrap snippets bootdey">
     <div class="row">
     <form class="example" action="ListClientesNombre" style="margin:10px;max-width:300px">
-	  <input type="text" placeholder="Nombre..." name="search2">
+	 <%if (descrip==null){ %>
+	  <input type="text" placeholder="Nombre..." name="search2" >
+	  <%}else{ %>
+	  <input type="text" placeholder="Nombre..." name="search2" value=<%=descrip%>>
+	  <%} %>
 	  <button type="submit"><i class="fa fa-search"></i></button>
 	</form>
 	<%if(lc.size() == 0){ %>  
