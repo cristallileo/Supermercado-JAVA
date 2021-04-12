@@ -414,9 +414,10 @@ public class DataPersona {
 		return personas;
 	}
 	
-	public LinkedList<Persona> getEmpleadosNombre(String nombre){
+	
+	public LinkedList<Persona> getPersonaNombre(String nombre){
 		
-		LinkedList<Persona> empleados = new LinkedList<Persona>();
+		LinkedList<Persona> personas = new LinkedList<Persona>();
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		
@@ -443,7 +444,7 @@ public class DataPersona {
 					p.setFechaRegistro(rs.getDate("fechaRegistro"));
 					p.setCliente(rs.getBoolean("cliente"));
 					p.setEmpleado(rs.getBoolean("empleado"));
-					empleados.add(p);
+					personas.add(p);
 				}
 			}
 			
@@ -459,55 +460,6 @@ public class DataPersona {
 				e.printStackTrace();
 			}
 		}
-		return empleados;
-	}
-	
-	
-	public LinkedList<Persona> getClientesNombre(String nombre){
-		
-		LinkedList<Persona> clientes = new LinkedList<Persona>();
-		PreparedStatement stmt=null;
-		ResultSet rs=null;
-		
-		try {
-			stmt=DbConnector.getInstancia().getConn().prepareStatement("select * from persona where nombre like  '%" +nombre+"%' or apellido like  '%" +nombre+"%' ");
-			
-		
-			rs=stmt.executeQuery();
-			
-			if(rs!=null) {
-				while(rs.next()) {
-					Persona p=new Persona();
-					p.setIdPersona(rs.getInt("idPersona"));
-					p.setTipoDoc(rs.getString("tipoDoc"));
-					p.setNroDoc(rs.getString("nroDoc"));
-					p.setNombre(rs.getString("nombre"));
-					p.setApellido(rs.getString("apellido"));
-					p.setTelefono(rs.getString("telefono"));
-					p.setDireccion(rs.getString("direccion"));
-					p.setEmail(rs.getString("email"));
-					p.setPassword(rs.getString("password"));
-					p.setCuil(rs.getString("cuil"));
-					p.setFechaIngreso(rs.getDate("fechaIngreso"));
-					p.setFechaRegistro(rs.getDate("fechaRegistro"));
-					p.setCliente(rs.getBoolean("cliente"));
-					p.setEmpleado(rs.getBoolean("empleado"));
-					clientes.add(p);
-				}
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-			
-		} finally {
-			try {
-				if(rs!=null) {rs.close();}
-				if(stmt!=null) {stmt.close();}
-				DbConnector.getInstancia().releaseConn();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return clientes;
+		return personas;
 	}
 }

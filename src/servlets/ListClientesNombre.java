@@ -44,7 +44,7 @@ public class ListClientesNombre extends HttpServlet {
 		PersonaController ctrl= new PersonaController();
 		LinkedList<Persona> clientes= new LinkedList<Persona>();
 		
-		String desc= request.getParameter("search");
+		String desc= request.getParameter("search2");
 		clientes=ctrl.listarClientesNombre(desc);
 		
 		//request.getAttribute("usuario");

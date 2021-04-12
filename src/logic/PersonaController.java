@@ -33,7 +33,7 @@ public class PersonaController {
 	public LinkedList<Persona> listarEmpleadosNombre(String nombre){
 		LinkedList<Persona> personas= new LinkedList<Persona>();
 		LinkedList<Persona> emps= new LinkedList<Persona>();
-		personas= dp.getEmpleadosNombre(nombre);
+		personas= dp.getPersonaNombre(nombre);
 		for (Persona p: personas) {
 			if(p.isEmpleado()==true) {
 				emps.add(p);
@@ -45,7 +45,7 @@ public class PersonaController {
 	public LinkedList<Persona> listarClientesNombre(String nombre){
 		LinkedList<Persona> personas= new LinkedList<Persona>();
 		LinkedList<Persona> clientes= new LinkedList<Persona>();
-		personas= dp.getClientesNombre(nombre);
+		personas= dp.getPersonaNombre(nombre);
 		for (Persona p: personas) {
 			if(p.isCliente()==true) {
 				clientes.add(p);

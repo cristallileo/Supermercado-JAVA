@@ -67,13 +67,12 @@
   </div>
   
  <hr> 
- <div class="container bootstrap snippets bootdey">
-   <div class="row">
+  <div class="container bootstrap snippets bootdey">
+    <div class="row">
     <form class="example" action="ListEmpleadosNombre" style="margin:10px;max-width:300px">
 	  <input type="text" placeholder="Nombre..." name="search">
 	  <button type="submit"><i class="fa fa-search"></i></button>
 	</form>
-	  
 	<%if(le.size() == 0){ %>  
     <br>         
     <div class="alert alert-warning"> ¡Lo sentimos! No hay empleados con ese nombre.</div>                               	
@@ -83,7 +82,8 @@
 	<br>
 	<br>
 	
- </div>     
+ </div> 
+    
     <div class="row">
         <div class="col-lg-12">
             <div class="main-box no-header clearfix">

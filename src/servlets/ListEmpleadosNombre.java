@@ -15,7 +15,7 @@ import logic.PersonaController;
 /**
  * Servlet implementation class ListEmpleadosRazon
  */
-@WebServlet("/ListEmpleadosRazon")
+@WebServlet("/ListEmpleadosNombre")
 public class ListEmpleadosNombre extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
