@@ -49,6 +49,7 @@ public class ListEmpleadosNombre extends HttpServlet {
 		empleados=ctrl.listarEmpleadosNombre(desc);
 		
 		//request.getAttribute("usuario");
+		request.setAttribute("descrip", desc);
 		request.setAttribute("empleados", empleados);
         request.getRequestDispatcher("listarEmpleados.jsp").forward(request, response);
 	}

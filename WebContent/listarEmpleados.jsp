@@ -21,7 +21,9 @@
   <link href="style/clientes-admin/confirmacion.css" rel="stylesheet">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-<% LinkedList<Persona> le = (LinkedList<Persona>)request.getAttribute("empleados");%>
+<% LinkedList<Persona> le = (LinkedList<Persona>)request.getAttribute("empleados");
+   String descrip= (String)request.getAttribute("descrip");
+%>
 
 </head>
 <body>
@@ -70,7 +72,11 @@
   <div class="container bootstrap snippets bootdey">
     <div class="row">
     <form class="example" action="ListEmpleadosNombre" style="margin:10px;max-width:300px">
-	  <input type="text" placeholder="Nombre..." name="search">
+    <%if (descrip==null){ %>
+	  <input type="text" placeholder="Nombre..." name="search" >
+	  <%}else{ %>
+	  <input type="text" placeholder="Nombre..." name="search" value=<%=descrip%>>
+	  <%} %>
 	  <button type="submit"><i class="fa fa-search"></i></button>
 	</form>
 	<%if(le.size() == 0){ %>  
