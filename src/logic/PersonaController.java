@@ -30,6 +30,30 @@ public class PersonaController {
 		return dp.getAllEmpleados();
 	}
 	
+	public LinkedList<Persona> listarEmpleadosNombre(String nombre){
+		LinkedList<Persona> personas= new LinkedList<Persona>();
+		LinkedList<Persona> emps= new LinkedList<Persona>();
+		personas= dp.getEmpleadosNombre(nombre);
+		for (Persona p: personas) {
+			if(p.isEmpleado()==true) {
+				emps.add(p);
+			}
+		}
+		return emps;
+	}
+	
+	public LinkedList<Persona> listarClientesNombre(String nombre){
+		LinkedList<Persona> personas= new LinkedList<Persona>();
+		LinkedList<Persona> clientes= new LinkedList<Persona>();
+		personas= dp.getClientesNombre(nombre);
+		for (Persona p: personas) {
+			if(p.isCliente()==true) {
+				clientes.add(p);
+			}
+		}
+		return clientes;
+	}
+	
 	public Persona editPersona (Persona p) {
 		return dp.editPersona(p);
 	}

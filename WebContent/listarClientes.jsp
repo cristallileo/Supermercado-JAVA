@@ -11,6 +11,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+	 <!-- Boostrap para searchbar -->
+  <link href="style/search-bar/search-bar.css" rel="stylesheet">
+
   <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
   <link href="style/mainpage/modern-business.css" rel="stylesheet">
   <link href="style/clientes-admin/listado-clientes.css" rel="stylesheet">
@@ -64,11 +67,25 @@
    
   </nav>
 </div>
-  
-
-
+ 
  <hr> 
  <div class="container bootstrap snippets bootdey">
+    <div class="row">
+    <form class="example" action="ListClientesNombre" style="margin:10px;max-width:300px">
+	  <input type="text" placeholder="Nombre..." name="search">
+	  <button type="submit"><i class="fa fa-search"></i></button>
+	</form>
+	<%if(lc.size() == 0){ %>  
+    <br>         
+    <div class="alert alert-warning"> ¡Lo sentimos! No hay clientes con ese nombre.</div>                               	
+	<%} %>
+ 
+	<br>
+	<br>
+	<br>
+	
+ </div>  
+ 
     <div class="row">
         <div class="col-lg-12">
             <div class="main-box no-header clearfix">
