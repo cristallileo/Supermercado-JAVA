@@ -82,6 +82,9 @@ function w3_close() {
     		</div>
   		</div>
 	  <!-- <a href="#" class="w3-bar-item w3-button">Link 3</a>-->
+	  <div class="w3-dropdown-hover">
+		     <a class="w3-button w3-gray" href="ListBajoStock">Stock Bajo</a>
+	    </div>
 	</div>
 
 <!-- Page Content -->
@@ -163,7 +166,7 @@ function w3_close() {
 	  <%if (desc==null){ %>
 	  <input type="text" placeholder="Descripción..." name="search" autocomplete="off">
 	  <%}else{ %>
-	  <input type="text" placeholder="Descripción..." name="search" value=<%=desc%>>
+	  <input type="text" placeholder="Descripción..." name="search" value=<%=desc%> autocomplete="off">
 	  <%} %>
 	  <button type="submit"><i class="fa fa-search"></i></button>
 	</form>

@@ -63,4 +63,16 @@ public class ProductoController {
 		return c;
 	}
 	
+	public LinkedList<Producto> listarBajoStock(){
+		LinkedList<Producto> prods = new LinkedList<Producto>();
+		LinkedList<Producto> bajo_stock = new LinkedList<Producto>();
+		prods= this.listAllProductos();
+		for (Producto p: prods) {
+			if (p.getStock()<=p.getStockMinimo()) {
+				bajo_stock.add(p);
+			}
+		}
+		return bajo_stock;
+	}
+	
 }
