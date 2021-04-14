@@ -161,7 +161,7 @@ function w3_close() {
 	<!-- DESCRIPCION -->
 	<form class="example" action="ListProductosDesc" style="margin:10px;max-width:300px">
 	  <%if (desc==null){ %>
-	  <input type="text" placeholder="Descripción..." name="search" >
+	  <input type="text" placeholder="Descripción..." name="search" autocomplete="off">
 	  <%}else{ %>
 	  <input type="text" placeholder="Descripción..." name="search" value=<%=desc%>>
 	  <%} %>
@@ -203,7 +203,11 @@ function w3_close() {
 	                    			<tr>
 	                    			<td><%=p.getIdProducto()%></td>
 	                    			<td><%=p.getDescProducto()%></td>
+	                    			<%if (p.getStock()<=p.getStockMinimo()){ %>
+	                    			<td style="color:red"><b><%=p.getStock()%></b></td>
+	                    			<%}else{ %>
 	                    			<td><%=p.getStock()%></td>
+	                    			<%}%>
                                     <td><%=p.getStockMinimo()%></td>
                                     <td><%=p.getMarca()%></td>
                                     <%CategoriaController ctrl = new CategoriaController();

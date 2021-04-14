@@ -75,7 +75,7 @@ String descrip= (String)request.getAttribute("descrip");
  
 	<form class="example" action="ListCategoriasDesc" style="margin:10px;max-width:300px">
 	   <%if (descrip==null){ %>
-	  <input type="text" placeholder="Descripción..." name="search" >
+	  <input type="text" placeholder="Descripción..." name="search" autocomplete="off">
 	  <%}else{ %>
 	  <input type="text" placeholder="Descripción..." name="search" value=<%=descrip%>>
 	  <%} %>

@@ -89,7 +89,7 @@
  
 <form class="example" action="ListProveedoresDesc" style="margin:10px;max-width:300px">
  <%if (descrip==null){ %>
-	  <input type="text" placeholder="Razon Social..." name="search" >
+	  <input type="text" placeholder="Razon Social..." name="search" autocomplete="off">
 	  <%}else{ %>
 	  <input type="text" placeholder="Razon Social..." name="search" value=<%=descrip%>>
 	  <%} %>

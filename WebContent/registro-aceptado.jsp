@@ -58,11 +58,7 @@
       </div>
     </div>
   </nav>
-
-
   <!-- Page Content -->
-
-
 <!-- Full Page Image Header with Vertically Centered Content -->
 <header class="masthead">
   <div class="container h-100">

@@ -73,7 +73,7 @@
     <div class="row">
     <form class="example" action="ListEmpleadosNombre" style="margin:10px;max-width:300px">
     <%if (descrip==null){ %>
-	  <input type="text" placeholder="Nombre..." name="search" >
+	  <input type="text" placeholder="Nombre..." name="search" autocomplete="off">
 	  <%}else{ %>
 	  <input type="text" placeholder="Nombre..." name="search" value=<%=descrip%>>
 	  <%} %>
