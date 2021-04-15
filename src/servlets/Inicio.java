@@ -6,6 +6,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import Data.*;
 import entidades.*;
 import logic.*;
@@ -46,18 +48,16 @@ public class Inicio extends HttpServlet {
 				//VEO SI ES CLIENTE O EMPLEADO
 				
 				if(per.isCliente()) {
-					
-					request.getSession().setAttribute("usuario", per);
+					HttpSession session = request.getSession(true);
+					session.setAttribute("usuario", per);
 					request.getRequestDispatcher("mainpage.jsp").forward(request, response);
 					
 				}
 				else if(per.isEmpleado()) {
-					request.getSession().setAttribute("usuario", per);
+					HttpSession session = request.getSession();
+					session.setAttribute("usuario", per);
 					request.getRequestDispatcher("mainpage-admin.jsp").forward(request, response);
-					
-					
 				}
-				
 				
 			}
 			else {
@@ -73,7 +73,6 @@ public class Inicio extends HttpServlet {
 	
 	}
 
-	
 		private static boolean emailIsValid(String email) {
 	      String email_string = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
 	      return email.matches(email_string);

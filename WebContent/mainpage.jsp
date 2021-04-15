@@ -21,7 +21,7 @@
   <!-- Custom styles for this template -->
   <link href="style/mainpage/modern-business.css" rel="stylesheet">
 
-
+<%Persona per = (Persona)session.getAttribute("usuario");%>
 <% LinkedList<Descuento> ld = (LinkedList<Descuento>)request.getAttribute("descuentos"); %>
 
 
@@ -40,13 +40,10 @@
             <a class="nav-link" href="#">Mis pedidos</a> <!--  poner en un boton -->
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Productos</a>
+            <a class="nav-link" href="ListProductos">Productos</a>
           </li>          
           <li class="nav-item">
             <a class="nav-link" href="#">Nosotros</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contactanos</a>
           </li>
           <li class="nav-item">
               <form action="Inicio" method="get">
@@ -77,36 +74,9 @@
     </div>
     <!-- /.row -->
 
-  <!-- Dcto cards--> 
-  <form action="ListDescuentosCli"> 
-    <div class="row">     
-      <% for(Descuento d:ld){ %> 
-      
-	      <div class="col-md-4 mb-5">
-	        <div class="card h-100" ">
-	          <div class="card-body">
-	            <h2 class="card-title">Descuento de: <%=d.getPorcDcto()*100%>%</h2>
-	            <p class="card-text">La duración es desde el <%=d.getFechaDctoInicio() %> hasta el <%=d.getFechaDctoFin()%>. <br> Esperamos que pueda aprovecharlo.</p>   
-	         	</div>
-	             <div class="card-footer">
-	             <!-- aca estaba el boton de +info pero no hace falta poner nada -->
-         		 </div>
-	      	</div>
-	      </div>
-	     
-	   <%} %>
-     
-    </div>
-   </form>	
+
  </div>
 
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
-    </div>
-    <!-- /.container -->
-  </footer>
 
   
 </body>

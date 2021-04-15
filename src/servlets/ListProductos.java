@@ -38,11 +38,18 @@ public class ListProductos extends HttpServlet {
 		
 		Collections.sort(productos);
 		
+		
 		request.setAttribute("descrip", null);
 		request.setAttribute("productos", productos);
 		request.setAttribute("categorias", categorias);
 		
-        request.getRequestDispatcher("listarProductos.jsp").forward(request, response);
-
+		//Veo a donde lo direcciono:
+		Persona per= new Persona();
+		per= (Persona)request.getSession().getAttribute("usuario");
+		if(per.isCliente()==true) {
+			 request.getRequestDispatcher("productos.jsp").forward(request, response);
+		}else {
+			 request.getRequestDispatcher("listarProductos.jsp").forward(request, response);
+		}
 	}
 }
