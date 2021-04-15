@@ -23,8 +23,13 @@
 
   <!-- Custom styles for this template -->
   <link href="style/cliente/productos.css" rel="stylesheet">
+  
+  <!-- Boton para aumentar o decrementar la cantidad de productos seleccionados -->
+    
   	
   <%Persona per = (Persona)session.getAttribute("usuario");%>
+  <% LinkedList<Producto> lprod = (LinkedList<Producto>)request.getAttribute("productos");
+   LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categorias");%>
 </head>
 
 <body>
@@ -40,7 +45,7 @@
             <a class="nav-link" href="#">Mis pedidos</a> <!--  poner en un boton -->
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Productos</a>
+            <a class="nav-link" href="ListProductos">Productos</a>
              <span class="sr-only">(current)</span>
           </li>          
           <li class="nav-item">
@@ -77,52 +82,34 @@
 
 
       <div class="col-lg-9">
-		  <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-              <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="First slide">
-            </div>
-            <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Second slide">
-            </div>
-            <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Third slide">
-            </div>
-          </div>
-          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
+		  <br>
         
         <div class="row">
 
+		<%for (Producto p: lprod){ %>
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="#">Item One</a>
+                  <a href="#"><%=p.getDescProducto()%></a>
                 </h4>
-                <h5>$24.99</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                <p class="card-text"><%=p.getMarca() %></p>
+                <h5><%=p.getPrecio() %></h5>
               </div>
               <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
+                <!-- ESPACIO PARA SELECCIONAR CANTIDAD DEL PRODUCTO -->
+				  <input type="number" id="points" name="points" value="0" step="1" min="0" max="99">
+				  <small class="btn btn-primary btn-sm" style="margin-left: 75px;">Añadir</small>
+				</div>
+				
+				<!-- BOTON PAR AGREGAR AL CARRITO ESA CANTIDAD -->
+                
+              
             </div>
           </div>
 
-        
+        <%} %>
 
         </div>
         <!-- /.row -->
@@ -143,6 +130,7 @@
     </div>
     <!-- /.container -->
   </footer>
+  
   
 </body>
 
