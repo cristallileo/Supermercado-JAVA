@@ -31,7 +31,7 @@
  <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="mainpage-admin.jsp">Supermercado</a>
+      <a class="navbar-brand" href="mainpage.jsp">Supermercado</a>
 
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
