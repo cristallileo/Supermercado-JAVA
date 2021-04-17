@@ -21,9 +21,9 @@
   <!-- Custom styles for this template -->
   <link href="style/mainpage/modern-business.css" rel="stylesheet">
 
-<%Persona per = (Persona)session.getAttribute("usuario");%>
-<% LinkedList<Descuento> ld = (LinkedList<Descuento>)request.getAttribute("descuentos"); %>
 
+<% LinkedList<Descuento> ld = (LinkedList<Descuento>)request.getAttribute("descuentos"); %>
+<% Persona per = (Persona)session.getAttribute("usuario");%>
 
 </head>
 <body>
@@ -31,10 +31,11 @@
  <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="mainpage-admin.jsp">Supermercado</a>
+      <a class="navbar-brand" href="mainpage.jsp">Supermercado</a>
 
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+  
   
           <li class="nav-item">
             <a class="nav-link" href="#">Mis pedidos</a> <!--  poner en un boton -->
@@ -73,10 +74,28 @@
       <!-- /.col-md-4 -->
     </div>
     <!-- /.row -->
+    
 
-
+  <div class="row">
+	 <% if(ld.size() != 0){
+		 for (Descuento d : ld){ %>
+	      <div class="col-md-4 mb-5">
+	        <div class="card h-100">
+	          <div class="card-body">
+	            <h2 class="card-title">Le descontamos <%=d.getPorcDcto()*100%>% en su compra</h2>
+	            <p class="card-text">¡Aproveche esta increible oportunidad!</p>
+	          </div>
+	          <div class="card-footer">
+	            <!-- a href="#" class="btn btn-primary btn-sm">More Info</a -->
+	          </div>
+	        </div>
+	      </div>
+	    <%} %>
+	  <%} %>
  </div>
 
+    
+</div>
 
   
 </body>
