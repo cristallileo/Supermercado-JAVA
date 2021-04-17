@@ -1,6 +1,8 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.LinkedList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,8 +50,14 @@ public class Inicio extends HttpServlet {
 				//VEO SI ES CLIENTE O EMPLEADO
 				
 				if(per.isCliente()) {
-					HttpSession session = request.getSession(true);
+					HttpSession session = request.getSession(true);				
 					session.setAttribute("usuario", per);
+					
+					DescuentoController ctrlD= new DescuentoController();
+					LinkedList<Descuento> descuentos= new LinkedList<Descuento>();
+					descuentos=ctrlD.listarDescuentosAct();
+					request.setAttribute("descuentos", descuentos);
+					
 					request.getRequestDispatcher("mainpage.jsp").forward(request, response);
 					
 				}
