@@ -29,7 +29,8 @@
   	
   <%Persona per = (Persona)session.getAttribute("usuario");%>
   <% LinkedList<Producto> lprod = (LinkedList<Producto>)request.getAttribute("productos");
-   LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categorias");%>
+   	 LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categorias");%>
+
 </head>
 
 <body>
@@ -72,9 +73,10 @@
 
         <h1 class="my-4">Shop Name</h1>
         <div class="list-group">
-          <a href="#" class="list-group-item">Category 1</a>
-          <a href="#" class="list-group-item">Category 2</a>
-          <a href="#" class="list-group-item">Category 3</a>
+        	<%for(Categoria c:lc){ %>
+        		<a href="BuscarCatAct?id=<%=c.getIdCategoria()%>"class="list-group-item"><%=c.getDescCategoria()%></a>
+			<%}%>
+
         </div>
 
       </div>
@@ -85,7 +87,14 @@
 		  <br>
         
         <div class="row">
-
+		
+		<%if(lprod.size() == 0){ %>   
+		<br> 
+		<br>
+		<br>                   
+		<div class="alert alert-warning" > ¡Lo sentimos! No hay productos con esta categoría  </div>                               	
+		<%} %>
+		
 		<%for (Producto p: lprod){ %>
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
@@ -95,7 +104,7 @@
                   <a href="#"><%=p.getDescProducto()%></a>
                 </h4>
                 <p class="card-text"><%=p.getMarca() %></p>
-                <h5><%=p.getPrecio() %></h5>
+                <h5><%="$" + p.getPrecio() %></h5>
               </div>
               <div class="card-footer">
                 <!-- ESPACIO PARA SELECCIONAR CANTIDAD DEL PRODUCTO -->
@@ -104,7 +113,7 @@
 				</div>
 				
 				<!-- BOTON PAR AGREGAR AL CARRITO ESA CANTIDAD -->
-                
+        
               
             </div>
           </div>
@@ -123,7 +132,9 @@
   </div>
   <!-- /.container -->
 
+  <br>
   <!-- Footer -->
+  <!-- Yo esto lo saque de la mainpage, decidir si se queda o se va -->
   <footer class="py-5 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
