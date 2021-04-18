@@ -38,13 +38,13 @@
   
   
           <li class="nav-item">
-            <a class="nav-link" href="#">Mis pedidos</a> <!--  poner en un boton -->
+            <a class="nav-link" href="mis-pedidos.jsp">Mis pedidos</a> <!--  poner en un boton -->
           </li>
           <li class="nav-item">
             <a class="nav-link" href="ListProductos">Productos</a>
           </li>          
           <li class="nav-item">
-            <a class="nav-link" href="#">Nosotros</a>
+            <a class="nav-link" href="nosotros.jsp">Nosotros</a>
           </li>
           <li class="nav-item">
               <form action="Inicio" method="get">
@@ -76,25 +76,6 @@
     <!-- /.row -->
     
 
-  <div class="row">
-	 <% if(ld.size() != 0){
-		 for (Descuento d : ld){ %>
-	      <div class="col-md-4 mb-5">
-	        <div class="card h-100">
-	          <div class="card-body">
-	            <h2 class="card-title">Le descontamos <%=d.getPorcDcto()*100%>% en su compra</h2>
-	            <p class="card-text">¡Aproveche esta increible oportunidad!</p>
-	          </div>
-	          <div class="card-footer">
-	            <!-- a href="#" class="btn btn-primary btn-sm">More Info</a -->
-	          </div>
-	        </div>
-	      </div>
-	    <%} %>
-	  <%} %>
- </div>
-
-    
 </div>
 
   

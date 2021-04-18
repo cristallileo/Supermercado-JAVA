@@ -43,14 +43,14 @@
         <ul class="navbar-nav ml-auto">
   
           <li class="nav-item">
-            <a class="nav-link" href="#">Mis pedidos</a> <!--  poner en un boton -->
+            <a class="nav-link" href="mis-pedidos.jsp">Mis pedidos</a> <!--  poner en un boton -->
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="ListProductos">Productos</a>
              <span class="sr-only">(current)</span>
           </li>          
           <li class="nav-item">
-            <a class="nav-link" href="#">Nosotros</a>
+            <a class="nav-link" href="nosotros.jsp">Nosotros</a>
           </li>
           <li class="nav-item">
               <form action="Inicio" method="get">
@@ -71,7 +71,7 @@
     
     <div class="col-lg-3">
 
-        <h1 class="my-4">Shop Name</h1>
+        <br>
         <div class="list-group">
         	<%for(Categoria c:lc){ %>
         		<a href="BuscarCatAct?id=<%=c.getIdCategoria()%>"class="list-group-item"><%=c.getDescCategoria()%></a>
