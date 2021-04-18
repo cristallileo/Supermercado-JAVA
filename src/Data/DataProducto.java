@@ -328,7 +328,6 @@ public class DataProducto {
 		
 		return p;
 }	
-
 	
 	public LinkedList<Producto> getByCategoria(Categoria cat) {
 		
@@ -374,6 +373,49 @@ public class DataProducto {
 		return productos;
 	}
 
+	public LinkedList<Producto> getByCategoriaActivas(Categoria cat) {
+		
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		LinkedList<Producto> productos= new LinkedList<>();
+		
+		try {
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria,precio, fecha_hora_baja from producto where fecha_hora_baja is null and producto.id_categoria="+cat.getIdCategoria());
+			
+		
+			rs=stmt.executeQuery();
+			
+			if(rs!=null) {
+				while(rs.next()) {
+					Producto p=new Producto();
+					p.setIdProducto(rs.getInt("idProducto"));
+					p.setDescProducto(rs.getString("desc_producto"));
+					p.setStock(rs.getInt("stock"));
+					p.setStockMinimo(rs.getInt("stockMinimo"));
+					p.setMarca(rs.getString("marca"));
+					p.setId_categoria(rs.getInt("id_categoria"));
+					p.setPrecio(rs.getDouble("precio"));
+					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
+					productos.add(p);
+
+								
+					
+				}
+			} }catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if(rs!=null) {rs.close();}
+					if(stmt!=null) {stmt.close();}
+					DbConnector.getInstancia().releaseConn();
+				} catch (SQLException e) {
+					e.printStackTrace();}
+
+			}
+
+		
+		return productos;
+	}
 
 	public LinkedList<Producto> getMenosMas(){
 		

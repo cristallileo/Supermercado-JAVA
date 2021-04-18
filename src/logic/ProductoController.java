@@ -38,6 +38,10 @@ public class ProductoController {
 		return dp.getByCategoria(cat);
 	}
 	
+	public LinkedList<Producto> listarByCategoriaAct (Categoria cat){
+		return dp.getByCategoriaActivas(cat);
+	}	
+	
 	public LinkedList<Producto> listarMenosMas (){
 		return dp.getMenosMas();
 	}
