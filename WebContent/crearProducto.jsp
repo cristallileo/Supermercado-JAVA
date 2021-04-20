@@ -94,7 +94,6 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
    						<option value="<%= c.getIdCategoria() %>"><%= c.getDescCategoria()  %></option>
    				<% }} %> 
   				</select> 
- 
                 
                 <div class="form-label-group">
                   <input type="text" name="precio" id="precio" class="form-control" placeholder="Precio"  required>

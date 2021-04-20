@@ -45,7 +45,7 @@ public class ListProductos extends HttpServlet {
 		
 		//Veo a donde lo direcciono:
 		Persona per= new Persona();
-		per= (Persona)request.getSession().getAttribute("usuario");
+		per= (Persona)request.getSession(true).getAttribute("usuario");
 		if(per.isCliente()==true) {
 			 request.getRequestDispatcher("productos.jsp").forward(request, response);
 		}else {

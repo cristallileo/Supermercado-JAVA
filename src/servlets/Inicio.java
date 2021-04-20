@@ -62,7 +62,7 @@ public class Inicio extends HttpServlet {
 					
 				}
 				else if(per.isEmpleado()) {
-					HttpSession session = request.getSession();
+					HttpSession session = request.getSession(true);
 					session.setAttribute("usuario", per);
 					request.getRequestDispatcher("mainpage-admin.jsp").forward(request, response);
 				}

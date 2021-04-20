@@ -297,21 +297,20 @@ public class DataProducto {
 		ResultSet rs=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria,precio,fecha_hora_baja  from producto where idProducto=?"
-					);
-			stmt.setInt(1, prod.getIdProducto());
+					"select idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja from producto where idProducto=?");
 			
+			stmt.setInt(1, prod.getIdProducto());
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()) {
 				p=new Producto();
 				p.setIdProducto(rs.getInt("idProducto"));
-				p.setDescProducto(rs.getString("desc_Producto"));
+				p.setDescProducto(rs.getString("desc_producto"));
 				p.setStock(rs.getInt("stock"));
 				p.setStockMinimo(rs.getInt("stockMinimo"));
 				p.setMarca(rs.getString("marca"));
-				p.setId_categoria(rs.getInt("id_categoria"));
-				p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja "));
+				p.setId_categoria(rs.getInt("id_categoria"));				
 				p.setPrecio(rs.getDouble("precio"));
+				p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
 		
 			}
 		} catch (SQLException e) {
