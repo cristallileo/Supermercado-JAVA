@@ -45,6 +45,9 @@
           <li class="nav-item">
             <a class="nav-link" href="mis-pedidos.jsp">Mis pedidos</a> <!--  poner en un boton -->
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="descuentos.jsp">Descuentos</a> <!--  poner en un boton -->
+          </li>
           <li class="nav-item active">
             <a class="nav-link" href="ListProductos">Productos</a>
              <span class="sr-only">(current)</span>

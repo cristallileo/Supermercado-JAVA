@@ -27,6 +27,9 @@
             <span class="sr-only">(current)</span>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="descuentos.jsp">Descuentos</a> 
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="ListProductos">Productos</a>
              
           </li>          
