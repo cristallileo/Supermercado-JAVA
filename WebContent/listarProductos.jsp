@@ -221,7 +221,7 @@ function w3_close() {
                                     <td><%=p.getPrecio()%> </td>
        								<% if (p.getFecha_hora_baja() == null) { %> 
 	       								 <td>
-		                                      <a  href="DeshabilitarProducto?id=<%=p.getIdProducto()%>" onclick="return confirm('Desea deshabilitar este producto?');" >
+		                                      <a href="DeshabilitarProducto?id=<%=p.getIdProducto()%>" onclick="return confirm('Desea deshabilitar este producto?');" >
 		                                      	<span class="badge bg-success">Activo</span>
 		                                      </a>
 	                                    </td>

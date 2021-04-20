@@ -33,7 +33,7 @@ public class EditProducto extends HttpServlet {
 		int stock = Integer.parseInt(request.getParameter("stock"));
 		int stockMin = Integer.parseInt(request.getParameter("stockMin"));
 		String marca = request.getParameter("marca");
-		int categ = Integer.parseInt(request.getParameter("categ"));
+		int categ = Integer.parseInt(request.getParameter("id_categoria"));
 		Double precio= Double.parseDouble(request.getParameter("precio"));					
 				
 	    prod.setIdProducto(id);
@@ -42,7 +42,7 @@ public class EditProducto extends HttpServlet {
 	    prod.setStockMinimo(stockMin);
 	    prod.setMarca(marca);
 	    prod.setId_categoria(categ);
-	    prod.setPrecio(precio);	   
+	    prod.setPrecio(precio);	
 	    prod=ctrl.editProducto(prod);
 
 		request.setAttribute("producto-editado", prod);
