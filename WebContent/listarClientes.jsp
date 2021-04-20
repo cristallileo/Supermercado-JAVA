@@ -13,7 +13,6 @@
 
 	 <!-- Boostrap para searchbar -->
   <link href="style/search-bar/search-bar.css" rel="stylesheet">
-
   <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
   <link href="style/mainpage/modern-business.css" rel="stylesheet">
   <link href="style/clientes-admin/listado-clientes.css" rel="stylesheet">
@@ -33,8 +32,9 @@
 
     <div class="container">
    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="mainpage-admin.jsp">Supermercado</a>
-      
+    <div class="container">
+   		<a class="navbar-brand" href="mainpage-admin.jsp">Supermercado</a>
+   		  
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
 
@@ -66,7 +66,7 @@
           </li>
         </ul>
       </div>
-   
+   </div>
   </nav>
 </div>
  

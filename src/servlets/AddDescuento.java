@@ -36,34 +36,42 @@ public class AddDescuento extends HttpServlet {
 		
 		Descuento d = new Descuento();
 		DescuentoController ctrl = new DescuentoController();
-		MyHelper h= new MyHelper();
-		
+		//MyHelper h= new MyHelper();
 		
 		String porc= request.getParameter("porc");
 		Double porcen= Double.parseDouble(porc);
-		
-					
+			
 		String desde = request.getParameter("desde");
 	    Date fecha_desde=Date.valueOf(desde);
 	    
 		String hasta = request.getParameter("hasta");
 	    Date fecha_hasta=Date.valueOf(hasta);
 	   
-		try {
+		/*try {
 			h.verificarFechas(fecha_desde, fecha_hasta);
 		}
 		catch (CustomException e) {
 			//ce.printStackTrace();
 			request.setAttribute("message_fechas", e.getMessage());
-			request.getRequestDispatcher("crearDcto.jsp").forward(request, response);
+			request.getRequestDispatcher("crearDcto.jsp").forward(request, response); 
 		}
-		d.setPorcDcto(porcen);
-		d.setFechaDctoInicio(fecha_desde);
-		d.setFechaDctoFin(fecha_hasta);
-		d= ctrl.add(d);
+		*/
+	    if (fecha_hasta.after(fecha_desde)) {
+	    	
+	    	d.setPorcDcto(porcen);
+	    	d.setFechaDctoInicio(fecha_desde);
+	    	d.setFechaDctoFin(fecha_hasta);
+	    	d= ctrl.add(d);	
+		    
+			request.setAttribute("nuevoDesc", d);
+			request.getRequestDispatcher("ListDescuentos").forward(request, response);
+	    }
+	    else
+	    {
+	    	request.setAttribute("message_wrong_date", "La fecha de finalización de un descuento no puede ser menor o igual a su fecha de inicio");
+			request.getRequestDispatcher("crearDcto.jsp").forward(request, response);
+	    }
 
-		request.setAttribute("nuevoDesc", d);
-		request.getRequestDispatcher("ListDescuentos").forward(request, response);
 		
 
 	

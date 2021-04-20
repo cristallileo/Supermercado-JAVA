@@ -76,7 +76,7 @@
               <form action="EditCategoria?id=<%=cat.getIdCategoria()%>" method="post">
                
                 <div class="form-label-group">
-                  <input type="text" name="descrip" id="inputDescrip" class="form-control" value=<%=cat.getDescCategoria()%> required >
+                  <input type="text" name="descrip" id="inputDescrip" class="form-control" value="<%=cat.getDescCategoria()%>" required >
                   <label for="inputDescrip">Descripción</label>
                 </div>
 

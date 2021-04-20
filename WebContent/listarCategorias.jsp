@@ -19,7 +19,7 @@
   <link href="style/clientes-admin/confirmacion.css" rel="stylesheet"> 
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-   
+ 
 <title>Categorias</title>
 
 <% LinkedList<Categoria> lc = (LinkedList<Categoria>)request.getAttribute("categorias"); 
