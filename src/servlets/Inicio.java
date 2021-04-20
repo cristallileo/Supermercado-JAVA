@@ -1,7 +1,13 @@
 package servlets;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.util.Calendar;
 import java.util.LinkedList;
+//import java.util.Date;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -50,14 +56,23 @@ public class Inicio extends HttpServlet {
 				//VEO SI ES CLIENTE O EMPLEADO
 				
 				if(per.isCliente()) {
+
+					String f= (Calendar.getInstance()).getTime().toString();
+					Date fecha=Date.valueOf(f);
+					
+					Pedido ped = new Pedido();
+					PedidoController ctrlPed = new PedidoController();
+					ped.setFechaPedido(fecha);
+					ped.setPrecioTotal(0.0);
+					ped.setFechaEntrega(null);
+					ped.setDireccionEnvio(null);
+					ped.setEstado("enProceso"); // TEGO LA IDEA DE Q ME SIRVA TMB PARA CERRAR EL PEDIDO EN CASO DE Q CIERRE SESION Y NO FINALICE PEDIDO 
+					ped.setId_persona(per.getIdPersona());
+					ped.setId_dcto(0);
+								
+		
 					HttpSession session = request.getSession(true);				
 					session.setAttribute("usuario", per);
-					
-					DescuentoController ctrlD= new DescuentoController();
-					LinkedList<Descuento> descuentos= new LinkedList<Descuento>();
-					descuentos=ctrlD.listarDescuentosAct();
-					request.setAttribute("descuentos", descuentos);
-					
 					request.getRequestDispatcher("mainpage.jsp").forward(request, response);
 					
 				}
