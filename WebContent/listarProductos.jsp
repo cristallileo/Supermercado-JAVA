@@ -166,7 +166,7 @@ function w3_close() {
 	  <%if (desc==null){ %>
 	  <input type="text" placeholder="Descripción..." name="search" autocomplete="off">
 	  <%}else{ %>
-	  <input type="text" placeholder="Descripción..." name="search" value=<%=desc%> autocomplete="off">
+	  <input type="text" placeholder="Descripción..." name="search"  autocomplete="off" value=<%=desc%>>
 	  <%} %>
 	  <button type="submit"><i class="fa fa-search"></i></button>
 	</form>

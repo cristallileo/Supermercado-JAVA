@@ -179,14 +179,7 @@ function w3_close() {
   <!-- /.container -->
 
   <br>
-  <!-- Footer -->
-  <!-- Yo esto lo saque de la mainpage, decidir si se queda o se va -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
-    </div>
-    <!-- /.container -->
-  </footer>
+
   
   
 </body>
