@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entidades.Descuento;
+import entidades.Persona;
 import logic.DescuentoController;
 
 /**
@@ -44,9 +45,20 @@ public class ListDescuentos extends HttpServlet {
 		//doGet(request, response);
 		DescuentoController ctrl= new DescuentoController();
 		LinkedList<Descuento> descuentos= new LinkedList<Descuento>();
-		descuentos=ctrl.listarDescuentos();
-		request.setAttribute("descuentos", descuentos);
-        request.getRequestDispatcher("listarDescuentos.jsp").forward(request, response);
+	
+		//Veo a donde lo direcciono:
+				Persona per= new Persona();
+				per= (Persona)request.getSession(true).getAttribute("usuario");
+				if(per.isCliente()==true) {
+					descuentos=ctrl.listarDescuentosAct();
+					request.setAttribute("descuentos", descuentos);
+					 request.getRequestDispatcher("descuentos.jsp").forward(request, response);
+				}else {
+					descuentos=ctrl.listarDescuentos();
+					request.setAttribute("descuentos", descuentos);
+					 request.getRequestDispatcher("listarDescuentos.jsp").forward(request, response);
+				}
+		
 
 	}
 

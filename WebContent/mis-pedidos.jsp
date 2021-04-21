@@ -1,3 +1,8 @@
+<%@page import="java.util.LinkedList"%>
+<%@page import="java.sql.Date" %>
+<%@page import="entidades.*"%>
+<%@ page import="java.util.Calendar"%>
+<%@page import="logic.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -11,6 +16,8 @@
   <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
   <!-- Custom styles for this template -->
   <link href="style/mainpage/modern-business.css" rel="stylesheet">
+
+  <%Persona per = (Persona)session.getAttribute("usuario");%>
 
 </head>
 <body>
@@ -27,7 +34,7 @@
             <span class="sr-only">(current)</span>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="descuentos.jsp">Descuentos</a> 
+            <a class="nav-link" href="ListDescuentos">Descuentos</a> 
           </li>
           <li class="nav-item">
             <a class="nav-link" href="ListProductos">Productos</a>

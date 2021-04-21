@@ -29,14 +29,14 @@ public class CerrarSesion extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		 HttpSession sesion = request.getSession();
-		 sesion.invalidate();
-		if ( sesion== null || sesion.getAttribute("email") == null) { 
-			//response.sendRedirect("index.jsp"); // No logged-in user found, so redirect to login page. 
-			request.getRequestDispatcher("index.jsp").forward(request, response);
-			
-		} else { response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1. response.setHeader("Pragma", "no-cache"); // HTTP 1.0. response.setDateHeader("Expires", 0); chain.doFilter(req, res); } 
-		}
+		String action=(request.getPathInfo()!=null?request.getPathInfo():"");
+        HttpSession sesion = request.getSession();
+        if(action.equals("/CerrarSesion")){
+            sesion.invalidate();
+            response.sendRedirect("/index.jsp");
+        }else{
+           
+        }
 		
 	}
 

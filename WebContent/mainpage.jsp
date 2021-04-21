@@ -41,7 +41,7 @@
             <a class="nav-link" href="mis-pedidos.jsp">Mis pedidos</a> <!--  poner en un boton -->
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="descuentos.jsp">Descuentos</a> <!--  poner en un boton -->
+            <a class="nav-link" href="ListDescuentos">Descuentos</a> <!--  poner en un boton -->
           </li>
           <li class="nav-item">
             <a class="nav-link" href="ListProductos">Productos</a>
@@ -50,7 +50,7 @@
             <a class="nav-link" href="nosotros.jsp">Nosotros</a>
           </li>
           <li class="nav-item">
-              	<a class="nav-link" href="">Cerrar Sesión</a>
+              	<a class="nav-link" href="CerrarSesion">Cerrar Sesión</a>
           </li>
         </ul>
       </div>
