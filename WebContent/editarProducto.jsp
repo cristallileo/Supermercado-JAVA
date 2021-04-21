@@ -80,7 +80,7 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
               <form action="EditProducto?id=<%=prod.getIdProducto()%>" method="post">
 
                 <div class="form-label-group">
-                  <input type="text" name="descProd" id="descProd" class="form-control" value=<%=prod.getDescProducto()%> required >
+                  <input type="text" name="descProd" id="descProd" class="form-control" value="<%=prod.getDescProducto()%>" required >
                   <label for="descProd">Descripcion</label>
                 </div>
 
@@ -95,7 +95,7 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" name="marca" id="marca" class="form-control" value=<%=prod.getMarca()%> required>
+                  <input type="text" name="marca" id="marca" class="form-control" value="<%=prod.getMarca()%>" required>
                   <label for="marca">Marca</label>
                 </div>
                 
@@ -103,7 +103,7 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
   				<select id="id_categoria" name="id_categoria">
   				 <% for (Categoria c: lc) {
   					 %> 				 
-   						<option value="<%= c.getIdCategoria() %>"><%= c.getDescCategoria()  %></option>
+   						<option value="<%= c.getIdCategoria() %>"><%= c.getDescCategoria() %></option>
    				<% } %> 
   				</select> 
 

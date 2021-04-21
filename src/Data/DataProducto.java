@@ -192,7 +192,7 @@ public class DataProducto {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"UPDATE `tp_java`.`producto` SET  `desc_producto` = ?, `stock` = ?, `stockMinimo` = ?, `marca` = ?, `id_categoria` = ?, `precio` = ?, `fecha_hora_baja` = ? WHERE (`idProducto` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+							"UPDATE `tp_java`.`producto` SET `desc_producto` = ?, `stock` = ?, `stockMinimo` = ?, `marca` = ?, `id_categoria` = ?, `precio` = ?, `fecha_hora_baja` = ? WHERE (`idProducto` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
 				
 			stmt.setString(1, p.getDescProducto());
 			stmt.setInt(2, p.getStock());
@@ -208,7 +208,9 @@ public class DataProducto {
             if(keyResultSet!=null && keyResultSet.next()){
                 p.setIdProducto(keyResultSet.getInt(1));
             }
-		} catch (SQLException e) {
+		}
+		
+		catch (SQLException e) {
         e.printStackTrace();
 		} finally {
         try {
