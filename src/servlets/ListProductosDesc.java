@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import entidades.Categoria;
+import entidades.Persona;
 import entidades.Producto;
 import logic.CategoriaController;
 import logic.ProductoController;
@@ -38,14 +39,21 @@ public class ListProductosDesc extends HttpServlet {
 	
 		productos=ctrl.listarByDesc(desc);
 			
-
-		categorias= ctrlCat.listAllCategorias();
 		request.setAttribute("descrip", desc);
 		request.setAttribute("productos", productos);
-		request.setAttribute("categorias", categorias);
 		
-        request.getRequestDispatcher("listarProductos.jsp").forward(request, response);
-
+		//Veo a donde lo direcciono:
+		Persona per= new Persona();
+		per= (Persona)request.getSession(true).getAttribute("usuario");
+		if(per.isCliente()==true) {
+			categorias=ctrlCat.listCategoriasActivas();
+			request.setAttribute("categorias", categorias);
+			request.getRequestDispatcher("productos.jsp").forward(request, response);
+		}else {
+			categorias=ctrlCat.listAllCategorias();
+			request.setAttribute("categorias", categorias);
+			 request.getRequestDispatcher("listarProductos.jsp").forward(request, response);
+		}
 	
 	}
 

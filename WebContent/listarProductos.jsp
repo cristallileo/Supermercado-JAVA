@@ -134,8 +134,6 @@ function w3_close() {
   </div>
    
  	<hr> 
-	
-
     <div class="container bootstrap snippets bootdey"> 
 	
 	<!--  DROPLISTS -->

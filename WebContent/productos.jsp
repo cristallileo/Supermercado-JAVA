@@ -8,32 +8,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+
 
   <title>Productos</title>
 
-  
-  <link href="style/mainpage/modern-business.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	
   <!-- Bootstrap core CSS -->
   <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="style/cliente/productos.css" rel="stylesheet">
+  <link href="style/mainpage/modern-business.css" rel="stylesheet">
+  
+ <!-- Estilo para el listado de clientes -->
+ <link href="style/clientes-admin/listado-clientes.css" rel="stylesheet">
+ 
+ <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+ 
+     <!-- Custom styles for this template -->
+  <link href="style/clientes-admin/confirmacion.css" rel="stylesheet">
   
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   
+  <link rel="stylesheet" href="style/filtros.css">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
   
   <!-- Boton para aumentar o decrementar la cantidad de productos seleccionados -->
     
   	
   <%Persona per = (Persona)session.getAttribute("usuario");%>
   <% LinkedList<Producto> lprod = (LinkedList<Producto>)request.getAttribute("productos");
-   	 LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categorias");%>
+   	 LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categorias");
+   	 String descrip= (String)request.getAttribute("descrip");%>
 
 <script>
 function w3_open() {
@@ -104,9 +113,7 @@ function w3_close() {
     		</div>
   		</div>
 	  <!-- <a href="#" class="w3-bar-item w3-button">Link 3</a>-->
-	  <div class="w3-dropdown-hover">
-		     <a class="w3-button w3-gray" href="ListBajoStock">Stock Bajo</a>
-	    </div>
+
 	</div>
   
   <!-- Contenido de la página -->
@@ -119,48 +126,46 @@ function w3_close() {
 
         <br>
         <div class="list-group">
-        	<%for(Categoria c:lc){ %>
-        		<a href="BuscarCatAct?id=<%=c.getIdCategoria()%>"class="list-group-item"><%=c.getDescCategoria()%></a>
-			<%}%>
-
         </div>
-
       </div>
       <!-- /.col-lg-3 -->
 
 
-      <div class="col-lg-9">
+      <div class="col-lg-11">
 		  <br>
         
         <div class="row">
 		
-		<%if(lprod.size() == 0){ %>   
-		<br> 
-		<br>
-		<br>                   
-		<div class="alert alert-warning" > ¡Lo sentimos! No hay productos con esta categoría  </div>                               	
-		<%} %>
+			<!-- SEARCH -->
+		<!-- DESCRIPCION -->
+		<form class="example" action="ListProductosDesc" style="margin:10px;max-width:300px">
+		  <%if (descrip==null){ %>
+		  <input type="text" placeholder="Descripción..." name="search" autocomplete="off">
+		  <%}else{ %>
+		  <input type="text" placeholder="Descripción..." name="search"  autocomplete="off" value=<%=descrip%>>
+		  <%} %>
+		  <button type="submit"><i class="fa fa-search"></i></button>
+		</form>
+		</div>
 		
+		<!-- CARDS -->
+		<div class="row">
 		<%for (Producto p: lprod){ %>
-          <div class="col-lg-4 col-md-6 mb-4">
+          <div class="col-lg-3 col-md-6 mb-4">
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
-                  <a><%=p.getDescProducto()%></a>
+                  <a><b><%=p.getDescProducto()%></b></a>
                 </h4>
                 <p class="card-text"><%=p.getMarca() %></p>
-                <h5><%="$" + p.getPrecio() %></h5>
+                <h5><b><%="$" + p.getPrecio() %></b></h5>
               </div>
               <div class="card-footer">
                 <!-- ESPACIO PARA SELECCIONAR CANTIDAD DEL PRODUCTO -->
 				  <input type="number" id="points" name="points" value="0" step="1" min="0" max="99">
-				  <small class="btn btn-primary btn-sm" style="margin-left: 75px;">Añadir</small>
+				  <small class="btn btn-primary btn-sm" style="margin-left: 125px;">Añadir</small>
 				</div>
-				
-				<!-- BOTON PAR AGREGAR AL CARRITO ESA CANTIDAD -->
-        
-              
             </div>
           </div>
 
