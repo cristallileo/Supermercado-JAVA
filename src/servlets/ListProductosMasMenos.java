@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entidades.Categoria;
+import entidades.Persona;
 import entidades.Producto;
 import logic.CategoriaController;
 import logic.ProductoController;
@@ -51,12 +52,34 @@ public class ListProductosMasMenos extends HttpServlet {
 		LinkedList<Categoria> categorias= new LinkedList<Categoria>();
 		
 		productos=ctrl.listarMasMenos();
-		categorias= ctrlCat.listCategoriasActivas();
-		
-		request.setAttribute("productos", productos);
-		request.setAttribute("categorias", categorias);
-		
-        request.getRequestDispatcher("listarProductos.jsp").forward(request, response);
+	        
+        //Veo a donde lo direcciono:
+      		Persona per= new Persona();
+      		per= (Persona)request.getSession(true).getAttribute("usuario");
+      		
+      		// si es cliente solo me traigo las categorias y los productos activos
+      		
+      		if(per.isCliente()==true) {
+      			categorias= ctrlCat.listCategoriasActivas();
+      			request.setAttribute("categorias", categorias);
+      			
+      			LinkedList<Producto> prods_activos= new LinkedList<Producto>();
+      			for (Producto p: productos) {
+      				if (p.getFecha_hora_baja()==null) {
+      					prods_activos.add(p);
+      				}
+      			}
+      			 request.setAttribute("productos", prods_activos);
+      			 request.getRequestDispatcher("productos.jsp").forward(request, response);
+      			 
+      			 //si es empleado traigo activos y no activos
+      			
+      		}else {
+      			categorias=ctrlCat.listAllCategorias();
+      			request.setAttribute("categorias", categorias);
+      			request.setAttribute("productos", productos);
+      			request.getRequestDispatcher("listarProductos.jsp").forward(request, response);
+      		}
 	}
 
 }

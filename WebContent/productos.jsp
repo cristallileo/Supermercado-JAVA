@@ -15,7 +15,6 @@
 
   <title>Productos</title>
 
-
   
   <link href="style/mainpage/modern-business.css" rel="stylesheet">
   <!-- Bootstrap core CSS -->
@@ -24,6 +23,11 @@
   <!-- Custom styles for this template -->
   <link href="style/cliente/productos.css" rel="stylesheet">
   
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
   <!-- Boton para aumentar o decrementar la cantidad de productos seleccionados -->
     
   	
@@ -31,11 +35,24 @@
   <% LinkedList<Producto> lprod = (LinkedList<Producto>)request.getAttribute("productos");
    	 LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categorias");%>
 
+<script>
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
 </head>
 
 <body>
  <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+   <button class="w3-button w3-dark-gray w3-large" onclick="w3_open()">&#9776;</button>
     <div class="container">
       <a class="navbar-brand" href="mainpage.jsp">Supermercado</a>
 
@@ -65,6 +82,32 @@
       </div>
     </div>
   </nav>
+  
+  <!-- Sidebar -->
+	<div class="w3-sidebar w3-bar-block" style="display:none;z-index:5" id="mySidebar">
+	  <button class="w3-bar-item w3-button w3-large" onclick="w3_close()">Cerrar &times;</button>
+	  	 
+	  	<div class="w3-dropdown-hover">
+	  	  <button class="w3-button w3-gray">Precio</button>
+		    <div class="w3-dropdown-content w3-bar-block w3-border">
+		     <a class="w3-bar-item w3-button" href="ListProductosMenosMas">De menor a mayor precio</a>
+			 <a class="w3-bar-item w3-button" href="ListProductosMasMenos">De mayor a menor precio</a>
+	    	</div>
+	    </div>
+	  	<div class="w3-dropdown-hover">
+	    	<button class="w3-button w3-gray">Categoria</button>
+		    <div class="w3-dropdown-content w3-bar-block w3-border">
+		     <a class="w3-bar-item w3-button" href="ListProductos">Todos</a>
+			    <% for (Categoria c: lc) { %>
+			      <a class="w3-bar-item w3-button" href="BuscarCat?id=<%=c.getIdCategoria()%>"><%=c.getDescCategoria()%></a>
+			  	 <%} %>
+    		</div>
+  		</div>
+	  <!-- <a href="#" class="w3-bar-item w3-button">Link 3</a>-->
+	  <div class="w3-dropdown-hover">
+		     <a class="w3-button w3-gray" href="ListBajoStock">Stock Bajo</a>
+	    </div>
+	</div>
   
   <!-- Contenido de la página -->
   
@@ -104,7 +147,7 @@
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="#"><%=p.getDescProducto()%></a>
+                  <a><%=p.getDescProducto()%></a>
                 </h4>
                 <p class="card-text"><%=p.getMarca() %></p>
                 <h5><%="$" + p.getPrecio() %></h5>

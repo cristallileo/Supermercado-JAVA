@@ -50,11 +50,8 @@
             <a class="nav-link" href="nosotros.jsp">Nosotros</a>
           </li>
           <li class="nav-item">
-              <form action="Inicio" method="get">
               	<a class="nav-link" href="">Cerrar Sesión</a>
-          	  </form>
           </li>
-       
         </ul>
       </div>
     </div>
