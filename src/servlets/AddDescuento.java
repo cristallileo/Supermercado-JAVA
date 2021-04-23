@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.LinkedList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,6 +48,7 @@ public class AddDescuento extends HttpServlet {
 		String hasta = request.getParameter("hasta");
 	    Date fecha_hasta=Date.valueOf(hasta);
 	   
+		java.sql.Date timeNow = new Date(Calendar.getInstance().getTimeInMillis());
 		/*try {
 			h.verificarFechas(fecha_desde, fecha_hasta);
 		}
@@ -56,26 +58,47 @@ public class AddDescuento extends HttpServlet {
 			request.getRequestDispatcher("crearDcto.jsp").forward(request, response); 
 		}
 		*/
-	    if (fecha_hasta.after(fecha_desde)) {
+		if (fecha_hasta.after(timeNow)) {
+			
+		
+			if (fecha_hasta.after(fecha_desde)) {
 	    	
-	    	d.setPorcDcto(porcen);
-	    	d.setFechaDctoInicio(fecha_desde);
-	    	d.setFechaDctoFin(fecha_hasta);
-	    	d= ctrl.add(d);	
+				d.setPorcDcto(porcen);
+				d.setFechaDctoInicio(fecha_desde);
+				d.setFechaDctoFin(fecha_hasta);
+				d= ctrl.add(d);	
 		    
-			request.setAttribute("nuevoDesc", d);
-			request.getRequestDispatcher("ListDescuentos").forward(request, response);
-	    }
-	    else
-	    {
-	    	request.setAttribute("message_wrong_date", "La fecha de finalización de un descuento no puede ser menor o igual a su fecha de inicio");
+				request.setAttribute("nuevoDesc", d);
+				request.getRequestDispatcher("ListDescuentos").forward(request, response);
+			}
+			else {
+				request.setAttribute("message_wrong_date1", "La fecha de finalización de un descuento no puede ser menor o igual a su fecha de inicio");
+				request.getRequestDispatcher("crearDcto.jsp").forward(request, response);
+			}
+		}
+		else if (fecha_hasta.equals(timeNow)) {
+			
+			if (fecha_hasta.after(fecha_desde)) {
+		    	
+				d.setPorcDcto(porcen);
+				d.setFechaDctoInicio(fecha_desde);
+				d.setFechaDctoFin(fecha_hasta);
+				d= ctrl.add(d);	
+		    
+				request.setAttribute("nuevoDesc", d);
+				request.getRequestDispatcher("ListDescuentos").forward(request, response);
+			}
+			else {
+				request.setAttribute("message_wrong_date1", "La fecha de finalización de un descuento no puede ser menor o igual a su fecha de inicio");
+				request.getRequestDispatcher("crearDcto.jsp").forward(request, response);
+			}
+							
+		}
+		else {
+			request.setAttribute("message_wrong_date2", "La fecha de fin no puede ser anterior al dia de hoy");
 			request.getRequestDispatcher("crearDcto.jsp").forward(request, response);
-	    }
-
-		
-
-	
-		
+		}
+		/* Lo intente hacer con un or dentro del primer if pero por alguna razon no me dejaba (The target type of this expression must be a functional  error)
+		no me quedo otra que anidar if y dividir la condicion, manejar fechas con java.sql.Date es bastante problematico */
 	}
-
 }

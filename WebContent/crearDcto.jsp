@@ -92,8 +92,9 @@
                 </div>
                    
                  <!-- Mensaje de error si la fecha desde es anterior a la fecha hasta -->
-                <p>${message_wrong_date}</p>
-                
+                <p>${message_wrong_date1}</p>
+                <p>${message_wrong_date2}</p>
+                 
             	<form action="AddDescuento" method="post">
     				<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se agregará un nuevo descuento. Desea confirmar?')">Agregar</button>
  				</form> 
