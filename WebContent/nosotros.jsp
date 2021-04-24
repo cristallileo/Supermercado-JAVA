@@ -44,9 +44,7 @@
             <span class="sr-only">(current)</span>
           </li>
           <li class="nav-item">
-              <form action="Inicio" method="get">
-              	<a class="nav-link" href="">Cerrar Sesión</a>
-          	  </form>
+              	<a class="nav-link" href="CerrarSesion">Cerrar Sesión</a>
           </li>
        
         </ul>
@@ -55,7 +53,7 @@
   </nav>
   
 <div class="container">
-
+<!-- 
  <div class="row align-items-center my-5">
     <div class="col-lg-7">
         <img class="img-fluid rounded mb-4 mb-lg-0" src="style/nosotrs/nos1_a.jpg" alt="">
@@ -72,7 +70,7 @@
     <div class="col-lg-5 text-center" >
     	<img class="img-fluid rounded mb-4 mb-lg-0" src="style/nosotrs/nos2.jpg" alt="">
 	</div>
-  </div>
+  </div>-->
 </div>
   
 </body>

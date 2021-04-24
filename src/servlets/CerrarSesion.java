@@ -6,7 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class CerrarSesion
@@ -27,25 +26,14 @@ public class CerrarSesion extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		String action=(request.getPathInfo()!=null?request.getPathInfo():"");
-        HttpSession sesion = request.getSession();
-        if(action.equals("/CerrarSesion")){
-            sesion.invalidate();
-            response.sendRedirect("/index.jsp");
-        }else{
-           
-        }
 		
+		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
+		request.getSession(true).setAttribute("usuario", null);
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 		
 	}
 

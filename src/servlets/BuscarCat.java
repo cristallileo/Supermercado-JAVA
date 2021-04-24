@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entidades.Categoria;
+import entidades.Persona;
 import entidades.Producto;
 import logic.CategoriaController;
 import logic.ProductoController;
@@ -30,26 +31,44 @@ public class BuscarCat extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	//	doGet(request, response);
+		LinkedList<Producto> prods = new LinkedList<Producto>();
+		LinkedList<Categoria> categorias = new LinkedList<Categoria>();
 		CategoriaController ctrl= new CategoriaController();
 		Categoria cat= new Categoria();
+		ProductoController ctrlProd= new ProductoController();
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		
 		cat.setIdCategoria(id);
-		cat =ctrl.getOne(cat);
-		
-		LinkedList<Categoria> categorias = new LinkedList<Categoria>();
-		categorias= ctrl.listAllCategorias();
-		
-		ProductoController ctrlProd= new ProductoController();
-		
-		LinkedList<Producto> prods = new LinkedList<Producto>();
+		cat =ctrl.getOne(cat);		
 		prods= ctrlProd.listarByCategoria(cat);
 		
-		request.setAttribute("categorias", categorias);
-
-		request.setAttribute("productos", prods);
-		request.getRequestDispatcher("listarProductos.jsp").forward(request, response);
+		//Veo a donde lo direcciono:
+  		Persona per= new Persona();
+  		per= (Persona)request.getSession(true).getAttribute("usuario");
+  		
+  		// si es cliente solo me traigo las categorias y los productos activos
+  		
+  		if(per.isCliente()==true) {
+  			categorias= ctrl.listCategoriasActivas();
+  			request.setAttribute("categorias", categorias);
+  			LinkedList<Producto> prods_activos= new LinkedList<Producto>();
+  			for (Producto p: prods) {
+  				if (p.getFecha_hora_baja()==null) {
+  					prods_activos.add(p);
+  				}
+  			}
+  			 request.setAttribute("productos", prods_activos);
+  			 request.getRequestDispatcher("productos.jsp").forward(request, response);
+  			 
+  			 //si es empleado traigo activos y no activos
+  			
+  		}else {
+  			categorias= ctrl.listAllCategorias();
+  			request.setAttribute("categorias", categorias);
+  			request.setAttribute("productos", prods);
+  			request.getRequestDispatcher("listarProductos.jsp").forward(request, response);
+  		}
 	}
 
 }
