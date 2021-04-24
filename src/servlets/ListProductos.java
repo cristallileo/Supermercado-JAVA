@@ -48,6 +48,8 @@ public class ListProductos extends HttpServlet {
 		per= (Persona)request.getSession(true).getAttribute("usuario");
 		if(per.isCliente()==true) {
 			 request.getRequestDispatcher("productos.jsp").forward(request, response);
+			
+			 request.setAttribute("pedido", null);
 		}else {
 			 request.getRequestDispatcher("listarProductos.jsp").forward(request, response);
 		}

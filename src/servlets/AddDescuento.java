@@ -89,7 +89,7 @@ public class AddDescuento extends HttpServlet {
 				request.getRequestDispatcher("ListDescuentos").forward(request, response);
 			}
 			else {
-				request.setAttribute("message_wrong_date1", "La fecha de finalización de un descuento no puede ser menor o igual a su fecha de inicio");
+				request.setAttribute("message_wrong_date1", "La fecha de finalización debe ser posterior a su fecha de inicio");
 				request.getRequestDispatcher("crearDcto.jsp").forward(request, response);
 			}
 							

@@ -42,7 +42,8 @@
   <%Persona per = (Persona)session.getAttribute("usuario");%>
   <% LinkedList<Producto> lprod = (LinkedList<Producto>)request.getAttribute("productos");
    	 LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categorias");
-   	 String descrip= (String)request.getAttribute("descrip");%>
+   	 String descrip= (String)request.getAttribute("descrip");
+   	 Pedido pedido= (Pedido)request.getAttribute("pedido");%>
 
 <script>
 function w3_open() {
@@ -110,7 +111,6 @@ function w3_close() {
 			  	 <%} %>
     		</div>
   		</div>
-	  <!-- <a href="#" class="w3-bar-item w3-button">Link 3</a>-->
 
 	</div>
   
@@ -159,11 +159,23 @@ function w3_close() {
                 <p class="card-text"><%=p.getMarca() %></p>
                 <h5><b><%="$" + p.getPrecio() %></b></h5>
               </div>
+              <%if (pedido==null){ %>
+              <form action="#">
               <div class="card-footer">
                 <!-- ESPACIO PARA SELECCIONAR CANTIDAD DEL PRODUCTO -->
-				  <input type="number" id="points" name="points" value="0" step="1" min="0" max="99">
-				  <small class="btn btn-primary btn-sm" style="margin-left: 125px;">Añadir</small>
+				  <input type="number" id="cant" name="cant" value="0" step="1" min="0" max="99" disabled>
+				  <!-- <small class="btn btn-primary btn-sm"   style="margin-left: 125px;" >Añadir</small>-->
 				</div>
+			</form>
+			<%} else {%>
+			<form action="#">
+              <div class="card-footer">
+                <!-- ESPACIO PARA SELECCIONAR CANTIDAD DEL PRODUCTO -->
+				  <input type="number" id="cant" name="cant" value="0" step="1" min="0" max="99">
+				  <small class="btn btn-primary btn-sm"   style="margin-left: 125px;" >Añadir</small>
+				</div>
+			</form>
+			<%} %>
             </div>
           </div>
 
