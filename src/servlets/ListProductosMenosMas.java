@@ -44,6 +44,7 @@ public class ListProductosMenosMas extends HttpServlet {
   		// si es cliente solo me traigo las categorias y los productos activos
   		if(per.isCliente()==true) {
   			categorias= ctrlCat.listCategoriasActivas();
+			categorias=ctrlCat.listCategoriasNoVacias(categorias);
   			request.setAttribute("categorias", categorias);
   			
   			LinkedList<Producto> prods_activos= new LinkedList<Producto>();

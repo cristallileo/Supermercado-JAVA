@@ -51,6 +51,7 @@ public class BuscarCat extends HttpServlet {
   		
   		if(per.isCliente()==true) {
   			categorias= ctrl.listCategoriasActivas();
+			categorias=ctrl.listCategoriasNoVacias(categorias);
   			request.setAttribute("categorias", categorias);
   			LinkedList<Producto> prods_activos= new LinkedList<Producto>();
   			for (Producto p: prods) {

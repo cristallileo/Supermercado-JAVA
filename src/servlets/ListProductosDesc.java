@@ -46,6 +46,7 @@ public class ListProductosDesc extends HttpServlet {
 		per= (Persona)request.getSession(true).getAttribute("usuario");
 		if(per.isCliente()==true) {
 			categorias= ctrlCat.listCategoriasActivas();
+			categorias=ctrlCat.listCategoriasNoVacias(categorias);
 			LinkedList<Producto> prods_activos= new LinkedList<Producto>();
 			for (Producto prod: productos) {
 				if (prod.getFecha_hora_baja()==null) {

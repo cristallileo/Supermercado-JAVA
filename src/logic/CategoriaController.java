@@ -49,4 +49,18 @@ public class CategoriaController {
 		return dc.getByDesc(categ);
 	}
 	
+	//Toma las categorias activas y se fija cuales tienen al menos un producto cargado. No tiene sentido mostrarle la cat al cliente si viene vacia.
+	public LinkedList<Categoria> listCategoriasNoVacias(LinkedList<Categoria> cats){
+		LinkedList<Categoria> categorias= new LinkedList<Categoria>();
+		for (Categoria c: cats) {
+			LinkedList<Producto> prods= new LinkedList<Producto>();
+			ProductoController ctrl= new ProductoController();
+			prods= ctrl.listarByCategoria(c);
+			if(prods.size()>=1) {
+				categorias.add(c);
+			}
+		}
+		return categorias;
+	}
+	
 }
