@@ -151,7 +151,15 @@ function w3_close() {
   right: 0;">Comenzar pedido</button>
   		</form>
   		<%} %>
+  		<%if(lprod == null || lprod.size() == 0){ %>   
+		<br>
+		<br>
+		<br>                   
+    	<div class="alert alert-warning"> ¡Lo sentimos! No hay productos con esa descripción.</div>                               	
+	<%} %>
 		</div>
+		
+	
 		
 		<!-- CARDS -->
 		<div class="row">
