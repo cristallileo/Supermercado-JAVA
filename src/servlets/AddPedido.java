@@ -47,7 +47,7 @@ public class AddPedido extends HttpServlet {
 		//Cargo los datos iniciales del pedido
 		java.sql.Date timeNow = new Date(Calendar.getInstance().getTimeInMillis());
 		p.setFechaPedido(timeNow);
-		//estado se setea por defecto en Nuevo
+		p.setEstado("Nuevo");
 		//seteo usuario que crea el pedido
 		Persona per= new Persona();
 		per= (Persona)request.getSession(true).getAttribute("usuario");
@@ -80,6 +80,9 @@ public class AddPedido extends HttpServlet {
 			//p.setId_dcto(null);
 			// SI NO HAY NINGUN DCTO QUEDA EN NULL (LA BDD LO PONE X DEFECTO EN NULL)
 		}
+		
+		ctrl.add(p);
+		
 		//Parametros que paso a productos.jsp
 		ProductoController ctrlProd= new ProductoController();
 		CategoriaController ctrlCat= new CategoriaController();
