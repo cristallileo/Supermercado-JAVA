@@ -33,24 +33,31 @@ public class ListProductos extends HttpServlet {
 		LinkedList<Producto> productos= new LinkedList<Producto>();
 		LinkedList<Categoria> categorias= new LinkedList<Categoria>();
 		
-		productos=ctrl.listAllProductos();
-		categorias= ctrlCat.listAllCategorias();
-		
-		Collections.sort(productos);
-		
-		
 		request.setAttribute("descrip", null);
-		request.setAttribute("productos", productos);
-		request.setAttribute("categorias", categorias);
 		
 		//Veo a donde lo direcciono:
 		Persona per= new Persona();
 		per= (Persona)request.getSession(true).getAttribute("usuario");
 		if(per.isCliente()==true) {
-			 request.getRequestDispatcher("productos.jsp").forward(request, response);
+			productos= ctrl.listAllProductos();
+			categorias= ctrlCat.listCategoriasActivas();
+			LinkedList<Producto> prods_activos= new LinkedList<Producto>();
+			for (Producto prod: productos) {
+				if (prod.getFecha_hora_baja()==null) {
+					prods_activos.add(prod);
+				}
+			}	
+
+			request.setAttribute("categorias", categorias);
+			request.setAttribute("productos", prods_activos);
+			request.getRequestDispatcher("productos.jsp").forward(request, response);
 			
 			 //request.setAttribute("pedido", null);
 		}else {
+			 productos=ctrl.listAllProductos();
+			 categorias= ctrlCat.listAllCategorias();
+			 request.setAttribute("productos", productos);
+			 request.setAttribute("categorias", categorias);
 			 request.getRequestDispatcher("listarProductos.jsp").forward(request, response);
 		}
 	}

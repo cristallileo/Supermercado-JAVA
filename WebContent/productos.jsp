@@ -175,13 +175,13 @@ function w3_close() {
 				</div>
 			</form>
 			<%} else {%>
-			<form action="#">
+			<form action="AddLinea">
               <div class="card-footer">
                 <!-- ESPACIO PARA SELECCIONAR CANTIDAD DEL PRODUCTO -->
 				  <input type="number" id="cant" name="cant" value="0" step="1" min="0" max="99">
-				  <small class="btn btn-primary btn-sm"   style="margin-left: 125px;" >Añadir</small>
+				  <button class="btn btn-primary btn-sm" type="submit" style="margin-left: 125px;">Añadir</button>
 				</div>
-			</form>
+		   </form>
 			<%} %>
             </div>
           </div>

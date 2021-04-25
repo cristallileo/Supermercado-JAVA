@@ -54,6 +54,7 @@ public class DataPedido {
 	public void add(Pedido p) { 
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
+		Pedido ped = new Pedido();
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
@@ -87,7 +88,6 @@ public class DataPedido {
             	e.printStackTrace();
             }
 		}
-		
     }
 
 	public Pedido editPedido (Pedido p) {
