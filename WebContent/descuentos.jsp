@@ -23,7 +23,8 @@
 
 
 <% LinkedList<Descuento> ld = (LinkedList<Descuento>)request.getAttribute("descuentos"); %>
-<% Persona per = (Persona)session.getAttribute("usuario");%>
+<% Persona per = (Persona)session.getAttribute("usuario");
+ Pedido pedido= (Pedido)request.getAttribute("pedido");%>
 
 </head>
 <body>

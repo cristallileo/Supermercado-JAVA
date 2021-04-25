@@ -73,6 +73,7 @@ public class Inicio extends HttpServlet {
 		
 					HttpSession session = request.getSession(true);				
 					session.setAttribute("usuario", per);
+					request.setAttribute("pedido", null);
 					request.getRequestDispatcher("mainpage.jsp").forward(request, response);
 					
 				}

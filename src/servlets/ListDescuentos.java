@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entidades.Descuento;
+import entidades.Pedido;
 import entidades.Persona;
 import logic.DescuentoController;
 
@@ -52,6 +53,9 @@ public class ListDescuentos extends HttpServlet {
 				if(per.isCliente()==true) {
 					descuentos=ctrl.listarDescuentosAct();
 					request.setAttribute("descuentos", descuentos);
+					Pedido p = new Pedido();
+					p= (Pedido) request.getAttribute("pedido");
+					request.setAttribute("pedido", p);
 					 request.getRequestDispatcher("descuentos.jsp").forward(request, response);
 				}else {
 					descuentos=ctrl.listarDescuentos();

@@ -69,15 +69,15 @@ public class AddPedido extends HttpServlet {
 					valor=des.getPorcDcto();
 				}
 			}
-			d=d_max;
+			d=d_max; //tomo el dcto activo con mayor porcentaje de dcto
 			p.setId_dcto(d.getIdDcto());
 		}else if (dctos.size()==1) {
 			for(Descuento des2: dctos) {
-				d=des2;
+				d=des2; //tomo el unico que hay activo
 			}
 			p.setId_dcto(d.getIdDcto());
 		}else if (dctos.size()==0) {
-			//p.setId_dcto(null);
+			//p.setId_dcto();
 			// SI NO HAY NINGUN DCTO QUEDA EN NULL (LA BDD LO PONE X DEFECTO EN NULL)
 		}
 		
@@ -90,6 +90,7 @@ public class AddPedido extends HttpServlet {
 		LinkedList<Categoria> categorias= new LinkedList<Categoria>();
 		productos=ctrlProd.listAllProductos();
 		categorias= ctrlCat.listCategoriasActivas();
+		categorias=ctrlCat.listCategoriasNoVacias(categorias);
 		request.setAttribute("categorias", categorias);
 		LinkedList<Producto> prods_activos= new LinkedList<Producto>();
 			for (Producto prod: productos) {

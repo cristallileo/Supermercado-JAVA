@@ -48,6 +48,9 @@ public class ListProductos extends HttpServlet {
 					prods_activos.add(prod);
 				}
 			}	
+			Pedido p = new Pedido();
+			p= (Pedido) request.getAttribute("pedido");
+			request.setAttribute("pedido", p);
 
 			request.setAttribute("categorias", categorias);
 			request.setAttribute("productos", prods_activos);

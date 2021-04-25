@@ -46,9 +46,7 @@
           </li>
           
           <li class="nav-item">
-             <form action="Inicio" method="get">
-             	<a class="nav-link" href="">Cerrar Sesión</a>
-          	  </form>
+              	<a class="nav-link" href="CerrarSesion">Cerrar Sesión</a>
           </li>
         </ul>
       </div>

@@ -175,6 +175,7 @@ function w3_close() {
                 <p class="card-text"><%=p.getMarca() %></p>
                 <h5><b><%="$" + p.getPrecio() %></b></h5>
               </div>
+              
               <%if (pedido==null){ %>
               <form action="AddPedido?idProd="<%=p%>>
               <div class="card-footer">

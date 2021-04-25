@@ -59,7 +59,7 @@
             <a class="nav-link" href="ListProveedores">Proveedores</a>
           </li>
           <li class="nav-item">
-              	<a class="nav-link" href="">Cerrar Sesión</a>
+              	<a class="nav-link" href="CerrarSesion">Cerrar Sesión</a>
           </li>
         </ul>
       </div>
