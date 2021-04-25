@@ -80,6 +80,24 @@ public class AddPedido extends HttpServlet {
 			//p.setId_dcto(null);
 			// SI NO HAY NINGUN DCTO QUEDA EN NULL (LA BDD LO PONE X DEFECTO EN NULL)
 		}
+		//Parametros que paso a productos.jsp
+		ProductoController ctrlProd= new ProductoController();
+		CategoriaController ctrlCat= new CategoriaController();
+		LinkedList<Producto> productos= new LinkedList<Producto>();
+		LinkedList<Categoria> categorias= new LinkedList<Categoria>();
+		productos=ctrlProd.listAllProductos();
+		categorias= ctrlCat.listCategoriasActivas();
+		request.setAttribute("categorias", categorias);
+		LinkedList<Producto> prods_activos= new LinkedList<Producto>();
+			for (Producto prod: productos) {
+				if (prod.getFecha_hora_baja()==null) {
+					prods_activos.add(prod);
+				}
+			}	
+		request.setAttribute("productos", prods_activos);
+		request.setAttribute("descrip", null);
+		request.setAttribute("pedido", p);
+		request.getRequestDispatcher("productos.jsp").forward(request, response);
 		
 	}
 

@@ -27,6 +27,8 @@
  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
  
      <!-- Custom styles for this template -->
+     
+      <link href="style/login/login.css" rel="stylesheet">
   <link href="style/clientes-admin/confirmacion.css" rel="stylesheet">
   
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -133,8 +135,7 @@ function w3_close() {
 		  <br>
         
         <div class="row">
-		
-			<!-- SEARCH -->
+		<!-- SEARCH -->
 		<!-- DESCRIPCION -->
 		<form class="example" action="ListProductosDesc" style="margin:10px;max-width:300px">
 		  <%if (descrip==null){ %>
@@ -144,6 +145,12 @@ function w3_close() {
 		  <%} %>
 		  <button type="submit"><i class="fa fa-search"></i></button>
 		</form>
+		<%if (pedido==null){ %>
+		<form action="AddPedido">
+			<button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:10px;max-width:200px;height:50px;position: absolute;
+  right: 0;">Comenzar pedido</button>
+  		</form>
+  		<%} %>
 		</div>
 		
 		<!-- CARDS -->
@@ -160,7 +167,7 @@ function w3_close() {
                 <h5><b><%="$" + p.getPrecio() %></b></h5>
               </div>
               <%if (pedido==null){ %>
-              <form action="#">
+              <form action="AddPedido?idProd="<%=p%>>
               <div class="card-footer">
                 <!-- ESPACIO PARA SELECCIONAR CANTIDAD DEL PRODUCTO -->
 				  <input type="number" id="cant" name="cant" value="0" step="1" min="0" max="99" disabled>

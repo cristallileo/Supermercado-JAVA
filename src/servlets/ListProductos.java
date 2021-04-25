@@ -49,7 +49,7 @@ public class ListProductos extends HttpServlet {
 		if(per.isCliente()==true) {
 			 request.getRequestDispatcher("productos.jsp").forward(request, response);
 			
-			 request.setAttribute("pedido", null);
+			 //request.setAttribute("pedido", null);
 		}else {
 			 request.getRequestDispatcher("listarProductos.jsp").forward(request, response);
 		}
