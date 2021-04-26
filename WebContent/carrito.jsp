@@ -110,13 +110,14 @@
 	                <p class="card-text"><%=prod.getMarca() %></p>
 	                <h5><b><%="$" + prod.getPrecio() %></b></h5>
 	              </div>
-				<form action="AddLinea">
+				<form action="">
 	              <div class="card-footer">
 	                <!-- ESPACIO PARA SELECCIONAR CANTIDAD DEL PRODUCTO -->
-					  <input type="number" id="cant" name="cant" value="<%linea.getCantidad();%>" disabled >
+					  <input type="text" id="cant" name="cant" value="<%=linea.getCantidad()%>" disabled >
 					  <!-- PARA EDITAR step="1" min="0" max="99" -->
-					  <!-- <button class="btn btn-primary btn-sm" type="submit" style="margin-left: 125px;">Añadir</button>-->
-					 
+					  
+					  <button class="btn btn-primary btn-sm" type="submit" style="margin-left: 125px;">Editar</button>
+			
 					</div>
 			   </form>
 			   </div>
