@@ -41,7 +41,9 @@
     lp=(LinkedList<LineaDePedido>)request.getAttribute("lineas");
     ProductoController ctrlProd= new ProductoController();
     Pedido ped= new Pedido();
-	ped= (Pedido)request.getSession(true).getAttribute("pedido");%>
+	ped= (Pedido)request.getSession(true).getAttribute("pedido");
+	String descrip= null;
+	%>
   
 </head>
 <body>
@@ -92,9 +94,19 @@
       <div class="col-lg-11">
 		  <br>
         <div class="row">
-		
+		<form class="example" action="ListProductosDesc" style="margin:10px;max-width:300px">
+		  <%if (descrip==null){ %>
+		  <input type="text" placeholder="Descripción..." name="search" autocomplete="off" disabled>
+		  <%}%>
+		  <button type="submit"><i class="fa fa-search"></i></button>
+		</form>
+		<!-- BOTON CONFIRMAR -->
+	<form action="pedirDireccion.jsp" method="post">
+		 <button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:10px;max-width:200px;height:50px;position: absolute;
+  right: 0;">Confirmar pedido</button>
+  	</form>
+  	</div>
 		<!-- CARDS -->
-		
 		<div class="row">
 		<%for (LineaDePedido linea: lp){
 		      Producto prod= new Producto();
@@ -115,7 +127,6 @@
 	                <!-- ESPACIO PARA SELECCIONAR CANTIDAD DEL PRODUCTO -->
 					  <input type="text" id="cant" name="cant" value="<%=linea.getCantidad()%>" disabled >
 					  <!-- PARA EDITAR step="1" min="0" max="99" -->
-					  
 					  <button class="btn btn-primary btn-sm" type="submit" style="margin-left: 125px;">Editar</button>
 			
 					</div>

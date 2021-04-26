@@ -37,4 +37,8 @@ public class PedidoController {
 	public void add(Pedido p) {
 		 dp.add(p);
 	}
+	
+	public void confirmarPedido(Pedido p) {
+		dp.confirmarPedido(p);
+	}
 }
