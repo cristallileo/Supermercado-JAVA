@@ -18,7 +18,7 @@
   <link href="style/mainpage/modern-business.css" rel="stylesheet">
 
   <%Persona per = (Persona)session.getAttribute("usuario");
-	Pedido pedido= (Pedido)request.getAttribute("pedido");
+	//Pedido pedido= (Pedido)request.getAttribute("pedido");
   %>
 
 </head>

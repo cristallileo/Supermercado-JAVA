@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import entidades.*;
 import logic.*;
@@ -83,6 +84,9 @@ public class AddPedido extends HttpServlet {
 		
 		ctrl.add(p);
 		
+		HttpSession session = request.getSession(true);				
+		session.setAttribute("pedido", p);
+		
 		//Parametros que paso a productos.jsp
 		ProductoController ctrlProd= new ProductoController();
 		CategoriaController ctrlCat= new CategoriaController();
@@ -100,7 +104,7 @@ public class AddPedido extends HttpServlet {
 			}	
 		request.setAttribute("productos", prods_activos);
 		request.setAttribute("descrip", null);
-		request.setAttribute("pedido", p);
+		//request.setAttribute("pedido", p);
 		request.getRequestDispatcher("productos.jsp").forward(request, response);
 		
 	}

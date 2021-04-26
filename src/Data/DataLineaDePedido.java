@@ -152,4 +152,17 @@ public class DataLineaDePedido {
 		return lp;
 		}
 	
+	public LinkedList<LineaDePedido> getByPedido(Pedido ped){
+		
+		LinkedList<LineaDePedido> lineas1= new LinkedList<LineaDePedido>();
+		LinkedList<LineaDePedido> lineas2= new LinkedList<LineaDePedido>();
+		lineas1= this.getAll();
+		for (LineaDePedido lp: lineas1) {
+			if(lp.getId_pedido()==ped.getIdPedido()) {
+				lineas2.add(lp);
+			}
+		}
+		
+		return lineas2;
+	}
 }

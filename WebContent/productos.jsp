@@ -45,7 +45,7 @@
   <% LinkedList<Producto> lprod = (LinkedList<Producto>)request.getAttribute("productos");
    	 LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categorias");
    	 String descrip= (String)request.getAttribute("descrip");
-   	 Pedido pedido= (Pedido)request.getAttribute("pedido");%>
+   	 //Pedido pedido= (Pedido)request.getAttribute("pedido");%>
 
 <script>
 function w3_open() {
@@ -145,10 +145,17 @@ function w3_close() {
 		  <%} %>
 		  <button type="submit"><i class="fa fa-search"></i></button>
 		</form>
-		<%if (pedido==null){ %>
+		<%Pedido ped= new Pedido();
+		ped= (Pedido)request.getSession(true).getAttribute("pedido");
+		if (ped==null){ %>
 		<form action="AddPedido">
 			<button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:10px;max-width:200px;height:50px;position: absolute;
   right: 0;">Comenzar pedido</button>
+  		</form>
+  		<%} else{%>
+  			<form action="VerPedido" method="post">
+				<button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:10px;max-width:200px;height:50px;position: absolute;
+  right: 0;">Ver mi pedido</button>
   		</form>
   		<%} %>
   		<%if(descrip!=null){
@@ -163,6 +170,7 @@ function w3_close() {
 	
 		
 		<!-- CARDS -->
+		
 		<div class="row">
 		<%for (Producto p: lprod){ %>
           <div class="col-lg-3 col-md-6 mb-4">
@@ -176,11 +184,12 @@ function w3_close() {
                 <h5><b><%="$" + p.getPrecio() %></b></h5>
               </div>
               
-              <%if (pedido==null){ %>
-              <form action="AddPedido?idProd="<%=p%>>
+              <%if (ped==null){ %>
+              <form action="AddPedido">
               <div class="card-footer">
                 <!-- ESPACIO PARA SELECCIONAR CANTIDAD DEL PRODUCTO -->
 				  <input type="number" id="cant" name="cant" value="0" step="1" min="0" max="99" disabled>
+				  <% %>
 				  <!-- <small class="btn btn-primary btn-sm"   style="margin-left: 125px;" >Añadir</small>-->
 				</div>
 			</form>
@@ -189,9 +198,11 @@ function w3_close() {
               <div class="card-footer">
                 <!-- ESPACIO PARA SELECCIONAR CANTIDAD DEL PRODUCTO -->
 				  <input type="number" id="cant" name="cant" value="0" step="1" min="0" max="99">
+				  <input   type="hidden" id="idProd" name="idProd" value="<%=p.getIdProducto()%>"  >
 				  <button class="btn btn-primary btn-sm" type="submit" style="margin-left: 125px;">Añadir</button>
+				 
 				</div>
-		   </form>
+		 </form>
 			<%} %>
             </div>
           </div>
@@ -199,6 +210,7 @@ function w3_close() {
         <%} %>
 
         </div>
+        
         <!-- /.row -->
 
       </div>
