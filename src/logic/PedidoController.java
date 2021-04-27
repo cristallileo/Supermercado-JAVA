@@ -15,7 +15,6 @@ public class PedidoController {
 	public PedidoController() {
 		dp=new DataPedido();
 	}
-
 	
 	public LinkedList<Pedido> listarPedidos() {
 		return dp.getAll();
@@ -38,7 +37,7 @@ public class PedidoController {
 		 dp.add(p);
 	}
 	
-	public void confirmarPedido(Pedido p) {
-		dp.confirmarPedido(p);
+	public void  confirmarPedido(Pedido p) {
+		 dp.confirmarPedido(p);
 	}
 }

@@ -81,33 +81,30 @@
   <!-- Contenido de la página -->
   
 <div class="container">
-
-    <div class="row">
-    
+  <div class="row">
     <div class="col-lg-3">
-
-        <br>
-        <div class="list-group">
-        </div>
+      <br>
+      <div class="list-group">
       </div>
-      <!-- /.col-lg-3 -->
-      <div class="col-lg-11">
-		  <br>
-        <div class="row">
+    </div>
+    <!-- /.col-lg-3 -->
+    <div class="col-lg-11">
+	  <br>
+      <div class="row">
 		<form class="example" action="ListProductosDesc" style="margin:10px;max-width:300px">
 		  <%if (descrip==null){ %>
-		  <input type="text" placeholder="Descripción..." name="search" autocomplete="off" disabled>
-		  <%}%>
-		  <button type="submit"><i class="fa fa-search"></i></button>
+		  	<input type="text" placeholder="Descripción..." name="search" autocomplete="off" disabled>
+		  		<%}%>
+		  	<button type="submit"><i class="fa fa-search"></i></button>
 		</form>
 		<!-- BOTON CONFIRMAR -->
-	<form action="pedirDireccion.jsp" method="post">
-		 <button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:10px;max-width:200px;height:50px;position: absolute;
-  right: 0;">Confirmar pedido</button>
-  	</form>
-  	</div>
-		<!-- CARDS -->
-		<div class="row">
+		<form action="pedirDireccion.jsp" method="post">
+		 	<button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:10px;max-width:200px;height:50px;position: absolute;
+ 			 right: 0;">Confirmar pedido</button>
+  		</form>
+  	 </div>
+	 <!-- CARDS -->
+	 <div class="row">
 		<%for (LineaDePedido linea: lp){
 		      Producto prod= new Producto();
 		      prod.setIdProducto(linea.getId_producto());
@@ -122,15 +119,17 @@
 	                <p class="card-text"><%=prod.getMarca() %></p>
 	                <h5><b><%="$" + prod.getPrecio() %></b></h5>
 	              </div>
-				<form action="">
-	              <div class="card-footer">
-	                <!-- ESPACIO PARA SELECCIONAR CANTIDAD DEL PRODUCTO -->
-					  <input type="text" id="cant" name="cant" value="<%=linea.getCantidad()%>" disabled >
-					  <!-- PARA EDITAR step="1" min="0" max="99" -->
-					  <button class="btn btn-primary btn-sm" type="submit" style="margin-left: 125px;">Editar</button>
-			
-					</div>
-			   </form>
+               
+				  <form action="EditCarrito?idProd=<%=linea.getId_producto()%>" method="post">
+		             <div class="card-footer">
+		                <!-- ESPACIO PARA SELECCIONAR CANTIDAD DEL PRODUCTO -->
+						<input type="text" id="cant" name="cant" value="<%=linea.getCantidad()%>" step="1" min="0" max="99" disabled>
+						<!-- PARA EDITAR step="1" min="0" max="99" -->
+						<br>
+						<br>
+						<button class="btn btn-primary btn-sm" type="submit" style="margin-left: 125px;">Editar</button>
+					 </div>
+				  </form>
 			   </div>
 	         </div>
         <%} %>

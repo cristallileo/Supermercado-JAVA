@@ -119,44 +119,38 @@ function w3_close() {
   <!-- Contenido de la página -->
   
 <div class="container">
-
-    <div class="row">
-    
+  <div class="row"> 
     <div class="col-lg-3">
-
-        <br>
-        <div class="list-group">
-        </div>
+      <br>
+      <div class="list-group">
+      </div>
       </div>
       <!-- /.col-lg-3 -->
-
-
       <div class="col-lg-11">
-		  <br>
-        
+		<br>
         <div class="row">
-		<!-- SEARCH -->
-		<!-- DESCRIPCION -->
-		<form class="example" action="ListProductosDesc" style="margin:10px;max-width:300px">
-		  <%if (descrip==null){ %>
-		  <input type="text" placeholder="Descripción..." name="search" autocomplete="off">
-		  <%}else{ %>
-		  <input type="text" placeholder="Descripción..." name="search"  autocomplete="off" value=<%=descrip%>>
-		  <%} %>
-		  <button type="submit"><i class="fa fa-search"></i></button>
-		</form>
+		  <!-- SEARCH -->
+		  <!-- DESCRIPCION -->
+	      <form class="example" action="ListProductosDesc" style="margin:10px;max-width:300px">
+			  <%if (descrip==null){ %>
+			  <input type="text" placeholder="Descripción..." name="search" autocomplete="off">
+			  <%}else{ %>
+			  <input type="text" placeholder="Descripción..." name="search"  autocomplete="off" value=<%=descrip%>>
+			  <%} %>
+			  <button type="submit"><i class="fa fa-search"></i></button>
+		  </form>
 		<%Pedido ped= new Pedido();
 		ped= (Pedido)request.getSession(true).getAttribute("pedido");
 		if (ped==null){ %>
-		<form action="AddPedido">
-			<button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:10px;max-width:200px;height:50px;position: absolute;
-  right: 0;">Comenzar pedido</button>
-  		</form>
+			<form action="AddPedido">
+				<button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:10px;max-width:200px;height:50px;position: absolute;
+	  			right: 0;">Comenzar pedido</button>
+	  		</form>
   		<%} else{%>
   			<form action="VerPedido" method="post">
 				<button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:10px;max-width:200px;height:50px;position: absolute;
-  right: 0;">Ver mi pedido</button>
-  		</form>
+  				right: 0;">Ver mi pedido</button>
+  			</form>
   		<%} %>
   		<%if(descrip!=null){
 	  		if(lprod == null || lprod.size() == 0){ %>   
@@ -166,12 +160,9 @@ function w3_close() {
 	    	<div class="alert alert-warning"> ¡Lo sentimos! No hay productos con esa descripción.</div>                               	
 		<%}} %>
 		</div>
-		
 	
-		
-		<!-- CARDS -->
-		
-		<div class="row">
+	  <!-- CARDS -->
+	  <div class="row">
 		<%for (Producto p: lprod){ %>
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="card h-100">
@@ -186,41 +177,40 @@ function w3_close() {
               
               <%if (ped==null){ %>
               <form action="AddPedido">
-              <div class="card-footer">
-                <!-- ESPACIO PARA SELECCIONAR CANTIDAD DEL PRODUCTO -->
+                <div class="card-footer">
+                  <!-- ESPACIO PARA SELECCIONAR CANTIDAD DEL PRODUCTO -->
 				  <input type="number" id="cant" name="cant" value="0" step="1" min="0" max="99" disabled>
 				  <% %>
 				  <!-- <small class="btn btn-primary btn-sm"   style="margin-left: 125px;" >Añadir</small>-->
 				</div>
-			</form>
+			  </form>
 			<%} else {%>
 			<form action="AddLinea">
               <div class="card-footer">
                 <!-- ESPACIO PARA SELECCIONAR CANTIDAD DEL PRODUCTO -->
 				  <input type="number" id="cant" name="cant" value="0" step="1" min="0" max="99">
 				  <input   type="hidden" id="idProd" name="idProd" value="<%=p.getIdProducto()%>"  >
-				  <button class="btn btn-primary btn-sm" type="submit" style="margin-left: 125px;">Añadir</button>
-				 
-				</div>
-		 </form>
+				  <button class="btn btn-primary btn-sm" type="submit" style="margin-left: 125px;">Añadir</button> 
+			  </div>
+		   </form>
 			<%} %>
-            </div>
           </div>
-
-        <%} %>
-
         </div>
+
+      <%} %>
+
+     </div>
         
-        <!-- /.row -->
-
-      </div>
-      <!-- /.col-lg-9 -->
-
-    </div>
     <!-- /.row -->
+	
+   </div>
+   <!-- /.col-lg-9 -->
 
   </div>
-  <!-- /.container -->
+  <!-- /.row -->
+
+ </div>
+ <!-- /.container -->
 
   <br>
 

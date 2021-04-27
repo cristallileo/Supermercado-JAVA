@@ -86,14 +86,13 @@ public class DataLineaDePedido {
 		
     }
 
-	public LineaDePedido editLineaDePedido (LineaDePedido lp) {
+	public LineaDePedido editLineaDePedido (LineaDePedido lp) {	
 		PreparedStatement stmt= null;
 		//ResultSet keyResultSet=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"UPDATE `java`.`lineapedido` SET `cantidad` = ? WHERE (`id_pedido` = ? and `id_producto` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
-			
+							"UPDATE `tp_java`.`lineapedido` SET `cantidad` = ? WHERE (`id_pedido` = ? and `id_producto` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
 			
 			stmt.setInt(1, lp.getCantidad());
 			stmt.setInt(2, lp.getId_pedido());
@@ -165,4 +164,19 @@ public class DataLineaDePedido {
 		
 		return lineas2;
 	}
+	
+	public LineaDePedido getByPK(Pedido ped,int idProd) {
+		LineaDePedido lineap=new LineaDePedido();
+		LinkedList<LineaDePedido> lineas= new LinkedList<LineaDePedido>();
+		lineas=this.getAll();
+		for(LineaDePedido lp: lineas) {
+			if(lp.getId_pedido()==ped.getIdPedido() && lp.getId_producto()==idProd) {
+				lineap=lp;
+			}			
+		}
+
+		return lineap;
+	}
+	
+	
 }

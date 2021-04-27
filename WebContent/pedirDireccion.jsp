@@ -54,13 +54,12 @@
             <div class="col-md-9 col-lg-8 mx-auto ">
               <h3 class="login-heading mb-4 text-center">Ingrese dirección</h3>
                    
-                <div class="form-label-group">
-                  <input type="text" name="direc" id="direc" class="form-control" placeholder="Dirección de envío" required >
-                  <label for="direc">Dirección de envío</label>
-                </div>
-
-                <form action="ConfirmarPedido" method="post">
-                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Desea confirma su pedido?')">Confirmar</button>
+               <form action="ConfirmarPedido" method="post">
+	                <div class="form-label-group">
+	                  <input type="text" name="direc" id="direc" class="form-control" placeholder="Dirección de envío" required >
+	                  <label for="direc">Dirección de envío</label>
+	                </div>
+                	<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Desea confirma su pedido?')">Confirmar</button>
                 </form>
                 
       	     

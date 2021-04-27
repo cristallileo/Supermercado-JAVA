@@ -199,19 +199,29 @@ public class DataPedido {
 		return p;
 }
 	
-	public void confirmarPedido (Pedido p) {
+	public void  confirmarPedido (Pedido p) {
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
 		
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"UPDATE `tp_java`.`pedido` SET  `direccionEnvio` = ?, `estado` = ? WHERE (`idPedido` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
-			
-			stmt.setInt(1, p.getIdPedido());
+						//	"UPDATE `tp_java`.`pedido` SET  `ìdPedido`=?, `fechaPedido`=?, `precioTotal`=?,`fechaEntrega`=?, `direccionEnvio` = ?, `estado` = ?, `id_persona`=?, `id_dcto` WHERE (`idPedido` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+							"UPDATE `tp_java`.`pedido` SET `direccionEnvio` = ?, `estado` = ? WHERE (`idPedido` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+							
+			stmt.setString(1, p.getDireccionEnvio());
 			stmt.setString(2, "Confirmado");
-			stmt.setString(3, p.getDireccionEnvio());
 			
+			/*
+			stmt.setInt(1, p.getIdPedido());
+			stmt.setDate(2, p.getFechaPedido());
+			stmt.setDouble(3, p.getPrecioTotal());
+			stmt.setDate(4, p.getFechaEntrega()); 
+			stmt.setString(5, p.getDireccionEnvio());
+			stmt.setString(6, "Confirmado");
+			stmt.setInt(7, p.getId_persona());
+			stmt.setInt(8, p.getId_dcto());
+			*/
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();
@@ -228,7 +238,7 @@ public class DataPedido {
         } catch (SQLException e) {
         	e.printStackTrace();
         }
-	}
+	  } 
 	}
 
 

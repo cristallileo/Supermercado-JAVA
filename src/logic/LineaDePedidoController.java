@@ -20,6 +20,14 @@ public class LineaDePedidoController {
 	public LinkedList<LineaDePedido> getByPedido (Pedido ped) {
 		return dl.getByPedido(ped);
 	}
-
+	
+	public LineaDePedido editLineaDePedido (LineaDePedido lp) {
+		return dl.editLineaDePedido(lp);
+	}
+	
+	public LineaDePedido getByPK (Pedido ped, int idProd) {
+		return dl.getByPK(ped, idProd);
+	}
+	
 
 }
