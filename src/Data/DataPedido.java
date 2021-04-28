@@ -166,7 +166,7 @@ public class DataPedido {
 		ResultSet rs=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idPedido,fechaPedido,precioTotal,fechaEntrega, direccionEnvio,estado,id_persona,id_dcto from pedido where idPedido=? "
+					"select * from pedido where idPedido = ? "
 					);
 			stmt.setInt(1, ped.getIdPedido());
 			
@@ -207,10 +207,10 @@ public class DataPedido {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
 							"UPDATE `tp_java`.`pedido` SET  `direccionEnvio` = ?, `estado` = ? WHERE (`idPedido` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
-			
-			stmt.setInt(1, p.getIdPedido());
+						
+			stmt.setString(1, p.getDireccionEnvio());
 			stmt.setString(2, "Confirmado");
-			stmt.setString(3, p.getDireccionEnvio());
+			stmt.setInt(3, p.getIdPedido());
 			
 			stmt.executeUpdate();
 			

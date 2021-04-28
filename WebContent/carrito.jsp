@@ -94,12 +94,16 @@
       <div class="col-lg-11">
 		  <br>
         <div class="row">
+	<!-- DESCRIPCION -->
 		<form class="example" action="ListProductosDesc" style="margin:10px;max-width:300px">
 		  <%if (descrip==null){ %>
-		  <input type="text" placeholder="Descripción..." name="search" autocomplete="off" disabled>
-		  <%}%>
+		  <input type="text" placeholder="Descripción..." name="search" autocomplete="off">
+		  <%}else{ %>
+		  <input type="text" placeholder="Descripción..." name="search"  autocomplete="off" value=<%=descrip%>>
+		  <%} %>
 		  <button type="submit"><i class="fa fa-search"></i></button>
 		</form>
+		
 		<!-- BOTON CONFIRMAR -->
 	<form action="pedirDireccion.jsp" method="post">
 		 <button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:10px;max-width:200px;height:50px;position: absolute;

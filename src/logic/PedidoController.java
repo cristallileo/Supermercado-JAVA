@@ -29,9 +29,8 @@ public class PedidoController {
 	}
 	
 	public Pedido getById(Pedido p) {
-		Pedido ped=new Pedido();
-		ped=dp.getById(p);
-		return ped;
+		
+		return dp.getById(p);
 	}
 	
 	public void add(Pedido p) {

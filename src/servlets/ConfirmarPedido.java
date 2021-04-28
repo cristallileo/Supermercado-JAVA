@@ -50,6 +50,10 @@ public class ConfirmarPedido extends HttpServlet {
 		
 		ped.setDireccionEnvio(request.getParameter("direc"));
 	    ctrlPed.confirmarPedido(ped);
+	    
+	    request.getSession(true).setAttribute("pedido", null);
+	    
+	    request.setAttribute("mensaje", "Su pedido ha sido registrado con éxito.");
 		request.getRequestDispatcher("mis-pedidos.jsp").forward(request, response);
 	}
 

@@ -16,8 +16,13 @@
   <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
   <!-- Custom styles for this template -->
   <link href="style/mainpage/modern-business.css" rel="stylesheet">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 
   <%Persona per = (Persona)session.getAttribute("usuario");
+		  String mje= (String)request.getAttribute("mensaje");
 	//Pedido pedido= (Pedido)request.getAttribute("pedido");
   %>
 
@@ -54,5 +59,25 @@
       </div>
     </div>
   </nav>
+  
+  <div class="container">
+
+    <div class="row">
+    
+  
+  
+  <!-- Si viene de confirmar un pedido: -->
+  <%if(mje!=null){%>
+ 	<div class="alert alert-success alert-dismissible  center-block">
+    	<a  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+   	    <strong>Su pedido ha sido registrado con éxito.</strong> En esta sección podrá consultar el estado del mismo.
+  </div>
+  <%} else {%>
+  <p>desarrollar contenido</p>
+  <%} %>
+ 
+  </div>
+  </div>
+  
 </body>
 </html>
