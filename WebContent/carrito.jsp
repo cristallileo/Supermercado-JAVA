@@ -37,12 +37,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
     <%Persona per = (Persona)session.getAttribute("usuario");
-    LinkedList<LineaDePedido> lp= new LinkedList<LineaDePedido>();
-    lp=(LinkedList<LineaDePedido>)request.getAttribute("lineas");
+    LinkedList<LineaDePedido> lp= (LinkedList<LineaDePedido>)request.getAttribute("lineas");
     ProductoController ctrlProd= new ProductoController();
-    Pedido ped= new Pedido();
-	ped= (Pedido)request.getSession(true).getAttribute("pedido");
-	String descrip= null;
+    Pedido ped= (Pedido)request.getSession(true).getAttribute("pedido");
+	String descrip= (String)request.getAttribute("descrip");
 	%>
   
 </head>
@@ -95,7 +93,7 @@
 		  <br>
         <div class="row">
 	<!-- DESCRIPCION -->
-		<form class="example" action="ListProductosDesc" style="margin:10px;max-width:300px">
+		<form class="example" action="VerPedidoDesc" style="margin:10px;max-width:300px">
 		  <%if (descrip==null){ %>
 		  <input type="text" placeholder="Descripción..." name="search" autocomplete="off">
 		  <%}else{ %>

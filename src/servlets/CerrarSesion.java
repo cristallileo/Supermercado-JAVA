@@ -33,6 +33,7 @@ public class CerrarSesion extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession(true).setAttribute("usuario", null);
+		request.getSession(true).setAttribute("pedido", null);
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 		
 	}
