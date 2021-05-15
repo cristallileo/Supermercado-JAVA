@@ -93,7 +93,7 @@
 		  <br>
         <div class="row">
 	<!-- DESCRIPCION -->
-		<form class="example" action="VerPedidoDesc" style="margin:10px;max-width:300px">
+		<form class="example" action="#" style="margin:10px;max-width:300px">
 		  <%if (descrip==null){ %>
 		  <input type="text" placeholder="Descripción..." name="search" autocomplete="off">
 		  <%}else{ %>
@@ -116,7 +116,14 @@
 		      prod= ctrlProd.getById(prod);%>
 	          <div class="col-lg-3 col-md-6 mb-4">
 	            <div class="card h-100">
-	              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+	              <!-- a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a-->
+	             <div class="card-img-top"></div>
+	             <% if(prod.getImagen() != null){
+	            	 	prod.getImagen(); 
+	             }else{%>  
+	             	<a><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<% } %>  </div>
+	             
 	              <div class="card-body">
 	                <h4 class="card-title">
 	                  <a><b><%=prod.getDescProducto()%></b></a>

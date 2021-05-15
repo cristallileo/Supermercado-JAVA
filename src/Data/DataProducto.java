@@ -2,10 +2,12 @@ package Data;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -71,7 +73,7 @@ public class DataProducto {
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja from producto");
+			rs= stmt.executeQuery("select idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja, imagen from producto");
 			if(rs!=null) {
 				while(rs.next()) {
 					Producto p=new Producto();
@@ -83,7 +85,16 @@ public class DataProducto {
 					p.setId_categoria(rs.getInt("id_categoria"));
 					p.setPrecio(rs.getDouble("precio"));
 					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
+					p.setImagen(rs.getBlob("imagen"));
+					
+					/*
+					Blob blob = rs.getBlob("imagen");
+					int blobLength = (int) blob.length();  
+					byte[] blobAsBytes = blob.getBytes(1, blobLength);
+					*/
+					
 					productos.add(p);
+	
 				}
 			}
 			
@@ -299,7 +310,7 @@ public class DataProducto {
 		ResultSet rs=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja from producto where idProducto=?");
+					"select idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja, imagen from producto where idProducto=?");
 			
 			stmt.setInt(1, prod.getIdProducto());
 			rs=stmt.executeQuery();
@@ -313,6 +324,13 @@ public class DataProducto {
 				p.setId_categoria(rs.getInt("id_categoria"));				
 				p.setPrecio(rs.getDouble("precio"));
 				p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
+				
+				//p.setImagen(rs.getBlob("imagen"));
+				//Blob blob = rs.getBlob("imagen");
+				//byte byteArray[] = blob.getBytes(1,(int)blob.length());
+				
+				
+
 		
 			}
 		} catch (SQLException e) {

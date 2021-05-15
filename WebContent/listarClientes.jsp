@@ -128,21 +128,21 @@
                              
                                     <td><%=per.getFechaRegistro()%></td>
                                      <td style="width: 10%;">
-                                        
-                                        <a href="BuscarCliente?id=<%=per.getIdPersona()%>" class="table-link text-info">
+                                       <!-- 
+                                        <a href="BuscarCliente?id=<%//=per.getIdPersona()%>" class="table-link text-info">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                             </span>
                                         </a>
-                                        <a  href="DeleteClientes?id=<%=per.getIdPersona()%>" class="table-link danger" onclick="return confirm('Are you sure you want to delete this item?');" >
+                                        <a  href="DeleteClientes?id=<%//=per.getIdPersona()%>" class="table-link danger" onclick="return confirm('Are you sure you want to delete this item?');" >
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
                                             </span>
                                             
                                         </a>
-                                    
+                                    	 --> 
                                     </td>
                                    
     
