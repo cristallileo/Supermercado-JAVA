@@ -71,7 +71,7 @@ public class DataProducto {
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja from producto");
+			rs= stmt.executeQuery("select idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja, imagen from producto");
 			if(rs!=null) {
 				while(rs.next()) {
 					Producto p=new Producto();
@@ -83,6 +83,7 @@ public class DataProducto {
 					p.setId_categoria(rs.getInt("id_categoria"));
 					p.setPrecio(rs.getDouble("precio"));
 					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
+					p.setImagen(rs.getBytes("imagen"));					
 					productos.add(p);
 				}
 			}
@@ -127,6 +128,7 @@ public class DataProducto {
 					p.setId_categoria(rs.getInt("id_categoria"));
 					p.setPrecio(rs.getDouble("precio"));
 					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
+					p.setImagen(rs.getBytes("imagen"));	
 					productos.add(p);
 				}
 			}
@@ -147,7 +149,7 @@ public class DataProducto {
 		return productos;
 	}
 
-	public void add(Producto p) { 
+	public void add(Producto p) {  //AGREGAR IMAGEN, SE HACE DE OTRA MANERA
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
 		try {
@@ -192,7 +194,7 @@ public class DataProducto {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"UPDATE `tp_java`.`producto` SET `desc_producto` = ?, `stock` = ?, `stockMinimo` = ?, `marca` = ?, `id_categoria` = ?, `precio` = ?, `fecha_hora_baja` = ? WHERE (`idProducto` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+							"UPDATE `tp_java`.`producto` SET `desc_producto` = ?, `stock` = ?, `stockMinimo` = ?, `marca` = ?, `id_categoria` = ?, `precio` = ?, `fecha_hora_baja` = ?, `imagen` = ? WHERE (`idProducto` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
 				
 			stmt.setString(1, p.getDescProducto());
 			stmt.setInt(2, p.getStock());
@@ -202,6 +204,7 @@ public class DataProducto {
 			stmt.setDouble(6, p.getPrecio());
 			stmt.setTimestamp(7, p.getFecha_hora_baja());
 			stmt.setInt(8, p.getIdProducto());
+			stmt.setBytes(9, p.getImagen());	
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();
@@ -263,7 +266,7 @@ public class DataProducto {
 		ResultSet rs=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja from producto where precio<= ?"
+					"select idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja, imagen from producto where precio<= ?"
 					);
 			stmt.setDouble(1, max);
 			rs=stmt.executeQuery();
@@ -277,6 +280,7 @@ public class DataProducto {
 				p.setId_categoria(rs.getInt("id_categoria"));
 				p.setPrecio(rs.getDouble("precio"));
 				p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja "));
+				p.setImagen(rs.getBytes("imagen"));		
 				productos.add(p);
 			}
 		} catch (SQLException e) {
@@ -299,7 +303,7 @@ public class DataProducto {
 		ResultSet rs=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja from producto where idProducto=?");
+					"select idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja, imagen from producto where idProducto=?");
 			
 			stmt.setInt(1, prod.getIdProducto());
 			rs=stmt.executeQuery();
@@ -313,6 +317,7 @@ public class DataProducto {
 				p.setId_categoria(rs.getInt("id_categoria"));				
 				p.setPrecio(rs.getDouble("precio"));
 				p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
+				p.setImagen(rs.getBytes("imagen"));		
 		
 			}
 		} catch (SQLException e) {
@@ -337,7 +342,7 @@ public class DataProducto {
 		LinkedList<Producto> productos= new LinkedList<>();
 		
 		try {
-			stmt=DbConnector.getInstancia().getConn().prepareStatement("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria,precio, fecha_hora_baja from producto where producto.id_categoria="+cat.getIdCategoria());
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria,precio, fecha_hora_baja, imagen from producto where producto.id_categoria="+cat.getIdCategoria());
 			
 		
 			rs=stmt.executeQuery();
@@ -353,6 +358,7 @@ public class DataProducto {
 					p.setId_categoria(rs.getInt("id_categoria"));
 					p.setPrecio(rs.getDouble("precio"));
 					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
+					p.setImagen(rs.getBytes("imagen"));		
 					productos.add(p);
 
 								
@@ -381,7 +387,7 @@ public class DataProducto {
 		LinkedList<Producto> productos= new LinkedList<>();
 		
 		try {
-			stmt=DbConnector.getInstancia().getConn().prepareStatement("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria,precio, fecha_hora_baja from producto where fecha_hora_baja is null and producto.id_categoria="+cat.getIdCategoria());
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria,precio, fecha_hora_baja, imagen from producto where fecha_hora_baja is null and producto.id_categoria="+cat.getIdCategoria());
 			
 		
 			rs=stmt.executeQuery();
@@ -397,6 +403,7 @@ public class DataProducto {
 					p.setId_categoria(rs.getInt("id_categoria"));
 					p.setPrecio(rs.getDouble("precio"));
 					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
+					p.setImagen(rs.getBytes("imagen"));		
 					productos.add(p);
 
 								
@@ -426,7 +433,7 @@ public class DataProducto {
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria, precio,fecha_hora_baja from producto order by precio");
+			rs= stmt.executeQuery("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria, precio,fecha_hora_baja,imagen from producto order by precio");
 			if(rs!=null) {
 				while(rs.next()) {
 					Producto p=new Producto();
@@ -438,6 +445,7 @@ public class DataProducto {
 					p.setId_categoria(rs.getInt("id_categoria"));
 					p.setPrecio(rs.getDouble("precio"));
 					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
+					p.setImagen(rs.getBytes("imagen"));		
 					productos.add(p);
 				}
 			}
@@ -467,7 +475,7 @@ public class DataProducto {
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria, precio, fecha_hora_baja from producto order by precio DESC");
+			rs= stmt.executeQuery("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria, precio, fecha_hora_baja,imagen from producto order by precio DESC");
 			if(rs!=null) {
 				while(rs.next()) {
 					Producto p=new Producto();
@@ -479,6 +487,7 @@ public class DataProducto {
 					p.setId_categoria(rs.getInt("id_categoria"));
 					p.setPrecio(rs.getDouble("precio"));
 					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
+					p.setImagen(rs.getBytes("imagen"));		
 					productos.add(p);
 				}
 			}
@@ -509,7 +518,7 @@ public class DataProducto {
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja  from producto where fecha_hora_baja is null");
+			rs= stmt.executeQuery("select idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja, imagen  from producto where fecha_hora_baja is null");
 			if(rs!=null) {
 				while(rs.next()) {
 					Producto p=new Producto();
@@ -521,6 +530,7 @@ public class DataProducto {
 					p.setId_categoria(rs.getInt("id_categoria"));
 					p.setPrecio(rs.getDouble("precio"));
 					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja "));
+					p.setImagen(rs.getBytes("imagen"));		
 					productosActivos.add(p);
 				}
 			}
@@ -540,49 +550,5 @@ public class DataProducto {
 		return productosActivos;
 	}
 
-
-/*
-public LinkedList<Producto> getAllconImg(){
-		
-		Statement stmt=null;
-		ResultSet rs=null;
-		LinkedList<Producto> productos= new LinkedList<>();
-		
-		try {
-			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja, imagen from producto");
-			if(rs!=null) {
-				while(rs.next()) {
-					Producto p=new Producto();
-					p.setIdProducto(rs.getInt("idProducto"));
-					p.setDescProducto(rs.getString("desc_producto"));
-					p.setStock(rs.getInt("stock"));
-					p.setStockMinimo(rs.getInt("stockMinimo"));
-					p.setMarca(rs.getString("marca"));
-					p.setId_categoria(rs.getInt("id_categoria"));
-					p.setPrecio(rs.getDouble("precio"));
-					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
-					p.setImagen(rs.getBlob("imagen"));
-					productos.add(p);
-				}
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-			
-		} finally {
-			try {
-				if(rs!=null) {rs.close();}
-				if(stmt!=null) {stmt.close();}
-				DbConnector.getInstancia().releaseConn();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-
-		return productos;
-	}
-
-*/
 	
 }

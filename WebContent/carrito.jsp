@@ -2,6 +2,7 @@
 <%@page import="java.sql.Date" %>
 <%@page import="entidades.*"%>
 <%@ page import="java.util.Calendar"%>
+<%@page import="java.util.Base64"%>
 <%@page import="logic.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -108,10 +109,15 @@
 		<%for (LineaDePedido linea: lp){
 		      Producto prod= new Producto();
 		      prod.setIdProducto(linea.getId_producto());
-		      prod= ctrlProd.getById(prod);%>
+		      prod= ctrlProd.getById(prod);
+		      String imag=Base64.getEncoder().encodeToString(prod.getImagen());
+		      %>
 	          <div class="col-lg-3 col-md-6 mb-4">
 	            <div class="card h-100">
-	              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+	              
+                  <a ><img class="card-img-top" src="data:image/png;base64,<%=imag%>"/></a>
+	              <!-- a href><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a-->
+
 	              <div class="card-body">
 	                <h4 class="card-title">
 	                  <a><b><%=prod.getDescProducto()%></b></a>
