@@ -72,7 +72,7 @@ function w3_close() {
         <ul class="navbar-nav ml-auto">
   
           <li class="nav-item">
-            <a class="nav-link" href="mis-pedidos.jsp">Mis pedidos</a> <!--  poner en un boton -->
+            <a class="nav-link" href="ListPedidos">Mis pedidos</a> <!--  poner en un boton -->
           </li>
           <li class="nav-item">
             <a class="nav-link" href="ListDescuentos">Descuentos</a> <!--  poner en un boton -->

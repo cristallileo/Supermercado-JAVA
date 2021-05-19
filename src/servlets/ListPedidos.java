@@ -40,16 +40,26 @@ public class ListPedidos extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
-		PedidoController ctrl= new PedidoController();
-
-		LinkedList<Pedido> pedidos= new LinkedList<Pedido>();
-		//response.getWriter().append("Served at: ").append("A");
-		pedidos=ctrl.listarPedidos();
 		
-		request.setAttribute("pedidos", pedidos);
-        request.getRequestDispatcher("listarPedidos.jsp").forward(request, response);
+		PedidoController ctrl= new PedidoController();
+		LinkedList<Pedido> pedidos= new LinkedList<Pedido>();
+		        
+		//Veo a donde lo direcciono:
+      		Persona per= new Persona();
+      		per= (Persona)request.getSession(true).getAttribute("usuario");
+      		if(per.isCliente()==true) {
+      			pedidos=ctrl.getByCliente(per);
+      			request.setAttribute("pedidos", pedidos);
+      			request.setAttribute("mensaje", null);
+      			request.getRequestDispatcher("mis-pedidos.jsp").forward(request, response);
+      			
+      		}else {
+      			pedidos=ctrl.listarPedidos();
+      			request.setAttribute("pedidos", pedidos);
+      			request.setAttribute("pedido", null);
+      			//request.setAttribute("mensaje", null);
+      	        request.getRequestDispatcher("listarPedidos.jsp").forward(request, response);
+      		}
 	}
 	
 

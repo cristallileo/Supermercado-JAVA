@@ -222,5 +222,44 @@ public class DataPedido {
 	}
 	}
 
+	public LinkedList<Pedido> getByCliente(Persona per) {
+		LinkedList<Pedido> pedidos= new LinkedList<Pedido>();
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		try {
+			stmt=DbConnector.getInstancia().getConn().prepareStatement(
+					"select * from pedido where id_persona = ?");
+			stmt.setInt(1, per.getIdPersona());
+			
+			rs=stmt.executeQuery();
+			if(rs!=null && rs.next()) {
+				Pedido p = new Pedido();
+				p.setId_dcto(rs.getInt("idPedido"));
+				p.setFechaPedido(rs.getDate("fechaPedido"));
+				p.setPrecioTotal(rs.getDouble("precioTotal"));
+				p.setFechaEntrega(rs.getDate("fechaEntrega"));
+				p.setDireccionEnvio(rs.getString("direccionEnvio"));
+				p.setEstado(rs.getString("estado"));
+				p.setId_persona(rs.getInt("id_persona"));
+				p.setId_dcto(rs.getInt("id_dcto"));
+				
+				pedidos.add(p);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return pedidos;
+	}
+
 
 }

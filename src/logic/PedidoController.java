@@ -21,6 +21,7 @@ public class PedidoController {
 		return dp.getAll();
 	}
 
+	//Calcula el valor del atributo precioTotal de los pedidos
 	public Pedido editTotal (Pedido p) {
 		return dp.editTotal(p);
 	}
@@ -29,7 +30,6 @@ public class PedidoController {
 	}
 	
 	public Pedido getById(Pedido p) {
-		
 		return dp.getById(p);
 	}
 	
@@ -39,5 +39,9 @@ public class PedidoController {
 	
 	public void confirmarPedido(Pedido p) {
 		dp.confirmarPedido(p);
+	}
+
+	public LinkedList<Pedido> getByCliente(Persona per) {
+		return dp.getByCliente(per);
 	}
 }
