@@ -25,8 +25,8 @@
 
   <%Persona per = (Persona)session.getAttribute("usuario");
     String mje= (String)request.getAttribute("mensaje");
-	Pedido ped= (Pedido)request.getSession(true).getAttribute("pedido");
-	LinkedList<Pedido> pedidos = (LinkedList<Pedido>)request.getAttribute("pedidos");
+	Pedido ped= (Pedido)session.getAttribute("pedido");
+	LinkedList<Pedido> lp = (LinkedList<Pedido>)request.getAttribute("pedidos");
   %>
 
 </head>
@@ -73,7 +73,8 @@
    	    <strong>Su pedido ha sido registrado con éxito.</strong> En esta sección podrá consultar el estado del mismo.
   </div>
   <%}%>
-  <%for (Pedido p: pedidos){%>
+  </div>
+  <%for (Pedido p: lp){%>
   			<div class="col-lg-4">
 	        <div class="card card-margin">
 	            <div class="card-header no-border">
@@ -82,17 +83,17 @@
 	                <div class="widget-49">
 	                    <div class="widget-49-title-wrapper">
 	                        <div class="widget-49-date-primary">
-	                            <span class="widget-49-date-day">09</span>
+	                            <span class="widget-49-date-day"><%=p.getFechaPedido()%></span>
 	                            <span class="widget-49-date-month">apr</span>
 	                        </div>
 	                        <div class="widget-49-meeting-info">
 	                            <span class="widget-49-pro-title"></span>
-	                            <span class="widget-49-meeting-time"><%=p.getIdPedido() %></span>
+	                            <span class="widget-49-meeting-time"><%=p.getIdPedido()%></span>
 	                        </div>
 	                    </div>
 	                    <ol class="widget-49-meeting-points">
-	                        <li class="widget-49-meeting-item"><span>Expand module is removed</span></li>
-	                        <li class="widget-49-meeting-item"><span>Data migration is in scope</span></li>
+	                        <li class="widget-49-meeting-item"><span>Estado: <%=p.getEstado() %></span></li>
+	                        <li class="widget-49-meeting-item"><span><%=p.getDireccionEnvio() %></span></li>
 	                        <li class="widget-49-meeting-item"><span>Session timeout increase to 30 minutes</span></li>
 	                    </ol>
 	                    <div class="widget-49-meeting-action">
@@ -104,7 +105,7 @@
 	 </div>
 	   <%} %>
  
-</div>
+
 </div>
 
   

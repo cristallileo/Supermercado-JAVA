@@ -165,8 +165,7 @@ public class DataPedido {
 			if(rs!=null && rs.next()) {
 				p=new Pedido();
 				p.setIdPedido(rs.getInt("idPedido"));
-				p.setFechaPedido(rs.getDate("fechaPedido"));
-				
+				p.setFechaPedido(rs.getDate("fechaPedido"));	
 				p.setPrecioTotal(rs.getDouble("precioTotal"));
 				p.setFechaEntrega(rs.getDate("fechaEntrega"));
 				p.setDireccionEnvio(rs.getString("direccionEnvio"));

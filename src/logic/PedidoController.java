@@ -42,6 +42,15 @@ public class PedidoController {
 	}
 
 	public LinkedList<Pedido> getByCliente(Persona per) {
-		return dp.getByCliente(per);
+		//return dp.getByCliente(per);
+		LinkedList<Pedido> pedidos1= new LinkedList<Pedido>();
+		LinkedList<Pedido> pedidos2= new LinkedList<Pedido>();
+		pedidos1= this.listarPedidos();
+		for (Pedido p: pedidos1) {
+			if(p.getId_persona()==per.getIdPersona()) {
+				pedidos2.add(p);
+			}
+		}
+		return pedidos2;
 	}
 }

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import entidades.LineaDePedido;
 import entidades.Pedido;
+import entidades.Persona;
 import logic.LineaDePedidoController;
 import logic.PedidoController;
 
@@ -44,15 +45,21 @@ public class ConfirmarPedido extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		PedidoController ctrlPed= new PedidoController();
-		Pedido ped= new Pedido();	
+		LinkedList<Pedido> peds= new LinkedList<Pedido>();
+		Pedido ped= new Pedido();
+		Persona per = new Persona();
+		
 		ped=(Pedido)request.getSession(true).getAttribute("pedido");
 		ped= ctrlPed.getById(ped);
-		
 		ped.setDireccionEnvio(request.getParameter("direc"));
 	    ctrlPed.confirmarPedido(ped);
 	    
-	    request.getSession(true).setAttribute("pedido", null);
+	    per= (Persona)request.getSession(true).getAttribute("usuario");
+	    peds= ctrlPed.getByCliente(per);
 	    
+	    request.getSession(true).setAttribute("pedido", null);
+	    //request.setAttribute("usuario", o);
+	    request.setAttribute("pedidos", peds);
 	    request.setAttribute("mensaje", "Su pedido ha sido registrado con éxito.");
 		request.getRequestDispatcher("mis-pedidos.jsp").forward(request, response);
 	}
