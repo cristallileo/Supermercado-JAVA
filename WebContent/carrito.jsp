@@ -110,6 +110,8 @@
 		      Producto prod= new Producto();
 		      prod.setIdProducto(linea.getId_producto());
 		      prod= ctrlProd.getById(prod);
+		      //Probar si me trae la imagne
+		      //tal vez no funciona porq la imagen no es 700x400
 		      String imag=Base64.getEncoder().encodeToString(prod.getImagen());
 		      %>
 	          <div class="col-lg-3 col-md-6 mb-4">
