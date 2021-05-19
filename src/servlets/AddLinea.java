@@ -63,6 +63,13 @@ public class AddLinea extends HttpServlet {
 		
 		ctrl.addLinea(lp);
 		
+		//HAGO CALCULOS DE PRECIOS PARA SUMAR AL SUBTOTAL DE Pedido
+	
+		double subtot= cant* p.getPrecio();
+		ped.setPrecioTotal(ped.getPrecioTotal()+subtot);
+		ctrlPed.editTotal(ped);
+		
+		
 		LinkedList<Producto> productos= new LinkedList<Producto>();
 		LinkedList<Categoria> categorias= new LinkedList<Categoria>();
 		productos= ctrlProd.listAllProductos();
@@ -79,6 +86,8 @@ public class AddLinea extends HttpServlet {
 		
 		request.setAttribute("categorias", categorias);
 		request.setAttribute("productos", prods_activos);
+		HttpSession session = request.getSession(true);				
+		session.setAttribute("pedido", ped);
 		//request.setAttribute("agregado",true);
 		request.getRequestDispatcher("productos.jsp").forward(request, response);
 	}

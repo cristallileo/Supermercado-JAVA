@@ -25,9 +25,7 @@ public class ProductoController {
 	}
 	
 	public Producto getById(Producto p) {
-		Producto prod=new Producto();
-		prod=dp.getById(p);
-		return prod;
+		return dp.getById(p);
 	}
 	
 	public void addProducto(Producto p) {

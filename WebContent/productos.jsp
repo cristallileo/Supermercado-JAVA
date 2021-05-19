@@ -45,7 +45,7 @@
   <% LinkedList<Producto> lprod = (LinkedList<Producto>)request.getAttribute("productos");
    	 LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categorias");
    	 String descrip= (String)request.getAttribute("descrip");
-   	 //Pedido pedido= (Pedido)request.getAttribute("pedido");%>
+ 	Pedido ped= (Pedido)request.getSession(true).getAttribute("pedido");%>
 
 <script>
 function w3_open() {
@@ -145,8 +145,7 @@ function w3_close() {
 		  <%} %>
 		  <button type="submit"><i class="fa fa-search"></i></button>
 		</form>
-		<%Pedido ped= new Pedido();
-		ped= (Pedido)request.getSession(true).getAttribute("pedido");
+		<%
 		if (ped==null){ %>
 		<form action="AddPedido">
 			<button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:10px;max-width:200px;height:50px;position: absolute;

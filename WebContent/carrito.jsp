@@ -23,11 +23,12 @@
  <!-- Estilo para el listado de clientes -->
  <link href="style/clientes-admin/listado-clientes.css" rel="stylesheet">
  
+ 
  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
  
      <!-- Custom styles for this template -->
      
-      <link href="style/login/login.css" rel="stylesheet">
+  <link href="style/login/login.css" rel="stylesheet">
   <link href="style/clientes-admin/confirmacion.css" rel="stylesheet">
   
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -93,14 +94,13 @@
 		  <br>
         <div class="row">
 	<!-- DESCRIPCION -->
-		<form class="example" action="#" style="margin:10px;max-width:300px">
-		  <%if (descrip==null){ %>
-		  <input type="text" placeholder="Descripción..." name="search" autocomplete="off">
-		  <%}else{ %>
-		  <input type="text" placeholder="Descripción..." name="search"  autocomplete="off" value=<%=descrip%>>
-		  <%} %>
-		  <button type="submit"><i class="fa fa-search"></i></button>
-		</form>
+		<div class="w3-container">
+		    <div class="w3-panel w3-leftbar w3-sand w3-large w3-serif" >
+   			 <p>Código de Pedido: <%=ped.getIdPedido()%></p>
+		    <p>Subtotal: $<%=ped.getPrecioTotal()%></p>
+  			</div>
+				
+		  </div>		
 		
 		<!-- BOTON CONFIRMAR -->
 	<form action="pedirDireccion.jsp" method="post">
@@ -123,6 +123,7 @@
 	             }else{%>  
 	             	<a><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
 						<% } %>  </div>
+						
 	             
 	              <div class="card-body">
 	                <h4 class="card-title">

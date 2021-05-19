@@ -91,25 +91,16 @@ public class DataPedido {
     }
 
 	//esta mal este edit
-	public Pedido editPedido (Pedido p) {
+	public Pedido editTotal (Pedido p) {
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"UPDATE `java`.`pedido` SET `fechaPedido` = ?,`precioTotal` = ?,`fechaEntrega` = ?, `direccionEnvio` = ?, `estado` = ? WHERE (`idProveedor` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+							"UPDATE `tp_java`.`pedido` SET  `precioTotal` = ? WHERE (`idPedido` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
 			
-			stmt.setDate(1, p.getFechaPedido());
-			stmt.setDouble(2, p.getPrecioTotal());
-			stmt.setDate(3, p.getFechaEntrega());
-			stmt.setString(4, p.getDireccionEnvio());
-			stmt.setString(5, p.getEstado());
-			//stmt.setInt(6, p.getId_persona()); Es necesario hacer q se pueda modificar esto? pq ya esta logueada la persona
-			//stmt.setInt(7, p.getId_dcto());
-			stmt.setInt(8, p.getIdPedido());
-				
-			
-			
+			stmt.setDouble(1, p.getPrecioTotal());
+			stmt.setInt(2, p.getIdPedido());
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();
