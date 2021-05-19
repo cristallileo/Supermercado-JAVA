@@ -27,6 +27,7 @@
     String mje= (String)request.getAttribute("mensaje");
 	Pedido ped= (Pedido)session.getAttribute("pedido");
 	LinkedList<Pedido> lp = (LinkedList<Pedido>)request.getAttribute("pedidos");
+	String MES[] = {"Enero", "Feb", "Marzo", "Abril", "Mayo", "Jun", "Jul", "Agosto", "Sept", "Oct", "Nov", "Dic"};
   %>
 
 </head>
@@ -74,8 +75,16 @@
   </div>
   <%}%>
   </div>
-  <%for (Pedido p: lp){%>
-  			<div class="col-lg-4">
+  <div class="row">
+  <%for (Pedido p: lp){
+	Date fec= p.getFechaPedido();
+	Calendar cal = Calendar.getInstance();
+	cal.setTime(fec);
+	int year = cal.get(Calendar.YEAR); 
+	String month = MES[cal.get(Calendar.MONTH)];
+	int day = cal.get(Calendar.DAY_OF_MONTH);%>
+  			<!-- <div class="col-lg-4">-->
+  		<div class="col-lg-3 col-md-5 mb-4">
 	        <div class="card card-margin">
 	            <div class="card-header no-border">
 	            </div>
@@ -83,18 +92,23 @@
 	                <div class="widget-49">
 	                    <div class="widget-49-title-wrapper">
 	                        <div class="widget-49-date-primary">
-	                            <span class="widget-49-date-day"><%=p.getFechaPedido()%></span>
-	                            <span class="widget-49-date-month">apr</span>
+	                            <span class="widget-49-date-day"><%=day%></span>
+	                            <span class="widget-49-date-month"><%=month%></span>
+	                            <span class="widget-49-date-month"><%=year%></span>
 	                        </div>
 	                        <div class="widget-49-meeting-info">
 	                            <span class="widget-49-pro-title"></span>
-	                            <span class="widget-49-meeting-time"><%=p.getIdPedido()%></span>
+	                            <span class="widget-49-meeting-time">Número de Pedido: #<%=p.getIdPedido()%></span>
 	                        </div>
 	                    </div>
 	                    <ol class="widget-49-meeting-points">
-	                        <li class="widget-49-meeting-item"><span>Estado: <%=p.getEstado() %></span></li>
-	                        <li class="widget-49-meeting-item"><span><%=p.getDireccionEnvio() %></span></li>
-	                        <li class="widget-49-meeting-item"><span>Session timeout increase to 30 minutes</span></li>
+	                        <a>Estado: <%=p.getEstado()%></a>
+	                        <br>
+	                        <a>Dirección: <%=p.getDireccionEnvio()%></a>
+	                        <br>
+	                        <a>Fecha de Entrega: <%=p.getFechaEntrega() %></a>
+	                        <br>
+	                        <a>Precio Total: <%=p.getPrecioTotal()%></a>
 	                    </ol>
 	                    <div class="widget-49-meeting-action">
 	                        <a href="#" class="btn btn-sm btn-flash-border-primary">Ver más</a>
@@ -103,13 +117,8 @@
 	            </div>
 	     </div>
 	 </div>
-	   <%} %>
- 
-
-</div>
-
-  
-	
-  
+	 <%} %>
+</div>	
+ </div>
 </body>
 </html>

@@ -166,8 +166,6 @@ function w3_close() {
 		<%}} %>
 		</div>
 		
-	
-		
 		<!-- CARDS -->
 		
 		<div class="row">
