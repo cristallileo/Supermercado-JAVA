@@ -69,6 +69,16 @@ java.sql.Date timeNow = new Date(Calendar.getInstance().getTimeInMillis());
  <div class="container bootstrap snippets bootdey">
     <div class="row">
         <div class="col-lg-12">
+           <span style="text-align: right; vertical-align: bottom;">
+			
+			<div class="w3-container">	 
+			<form action="crearDcto.jsp" method="post">
+				<button class="w3-button w3-xlarge w3-circle w3-teal" type="submit" >+</button>
+				<a href="crearDcto.jsp"> Agregar Descuento</a>
+			</form>
+			</div>			
+			<br>			
+			</span>
             <div class="main-box no-header clearfix">
                 <div class="main-box-body clearfix">
                     <div class="table-responsive">
@@ -135,16 +145,7 @@ java.sql.Date timeNow = new Date(Calendar.getInstance().getTimeInMillis());
                     </div>
                 </div>
             </div>
-            <span style="text-align: right; vertical-align: bottom;">
-			
-			<div class="w3-container">	 
-			<form action="crearDcto.jsp" method="post">
-				<button class="w3-button w3-xlarge w3-circle w3-teal" type="submit" >+</button>
-				<a href="crearDcto.jsp"> Agregar descuento</a>
-			</form>
-			</div>
-			
-			</span>
+          
         </div>
     </div>
 </div>

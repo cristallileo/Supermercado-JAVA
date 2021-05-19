@@ -46,8 +46,7 @@ public class ListCategoriasDesc extends HttpServlet {
 		CategoriaController ctrl= new CategoriaController();
 		LinkedList<Categoria> categorias= new LinkedList<Categoria>();
 
-		String desc= request.getParameter("search");
-		
+		String desc= request.getParameter("search");		
 		categorias=ctrl.listarByDesc(desc);
 		
 		request.setAttribute("descrip", desc);
