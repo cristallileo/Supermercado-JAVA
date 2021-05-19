@@ -59,9 +59,8 @@ public class ListProductosDesc extends HttpServlet {
 			request.getRequestDispatcher("productos.jsp").forward(request, response);
 			
 			 //request.setAttribute("pedido", null);
-		}else {
-			 productos=ctrl.listAllProductos();
-			 categorias= ctrlCat.listAllCategorias();
+		}else {			
+
 			 request.setAttribute("productos", productos);
 			 request.setAttribute("categorias", categorias);
 			 request.getRequestDispatcher("listarProductos.jsp").forward(request, response);

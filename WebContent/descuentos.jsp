@@ -61,27 +61,46 @@
   </nav>
 
   <!-- Page Content -->
-  <div class="container">
-
+  <div class="container bootstrap snippets bootdey">
     <!-- Heading Row -->
     <div class="row align-items-center my-5">
-      <div class="col-lg-7">
-        <img class="img-fluid rounded mb-4 mb-lg-0" src="style/mainpage/6.jpg" alt="">
-      </div>
-      <!-- /.col-lg-8 -->
-      <div class="col-lg-5 text-center" >
+   
+      <div class="col" align="center" >
         <h1 class="font-weight-light"><b>Ahora también disfrutar de nuestros descuentos.</b> </h1>
-        <p>. </p>
+        <h2 class="font-weight-light"> Se aplica sobre el monto total </h2>
        <!--  <a class="btn btn-primary" href="#">Call to Action!</a>  -->
       </div>
-      <!-- /.col-md-4 -->
     </div>
-    <!-- /.row -->
+    
+  	<div class="col-lg-12">
+  		<div class="main-box no-header clearfix">
+                <div class="main-box-body clearfix">
+                    <div class="table-responsive">
+                        <table class="table user-list">
+                            <thead>
+                                <tr>                                
+                                <th align="center"><span>Porcentaje</span></th>
+                                <th align="center"><span>Fecha Fin</span></th>                             
+                                <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+	                           <% for (Descuento d : ld) { %>
+	                    			<tr>	                    			
+                                    <td><%=d.getPorcDcto()%></td>
+                                    <td><%=d.getFechaDctoFin()%> </td>
+                               <%} %>
+                            </tbody>	
+                        </table>
+       
+  	</div>
  
  <!-- ACA VA LAS CARDS (ERROR LD IS NULL) -->
 
 </div>
-
+</div>
+</div>
+</div>
   
 </body>
 </html>

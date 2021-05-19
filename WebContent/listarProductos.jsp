@@ -10,56 +10,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	
-  <!-- Bootstrap core CSS -->
-  <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="style/mainpage/modern-business.css" rel="stylesheet">
-  
- <!-- Estilo para el listado de clientes -->
- <link href="style/clientes-admin/listado-clientes.css" rel="stylesheet">
+	<meta charset="ISO-8859-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
+	<link href="style/mainpage/modern-business.css" rel="stylesheet">
+  	<!-- Estilo para el listado de clientes -->
+ 	<link href="style/clientes-admin/listado-clientes.css" rel="stylesheet">
+ 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+ 	<link href="style/clientes-admin/confirmacion.css" rel="stylesheet">
+  	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  	<link rel="stylesheet" href="style/filtros.css">
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  
- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
- 
-     <!-- Custom styles for this template -->
-  <link href="style/clientes-admin/confirmacion.css" rel="stylesheet">
-  
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  
-  <link rel="stylesheet" href="style/filtros.css">
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
-	
-  
-<title>Productos</title>
+	<title>Productos</title>
 
-<% LinkedList<Producto> lprod = (LinkedList<Producto>)request.getAttribute("productos");
+	<% LinkedList<Producto> lprod = (LinkedList<Producto>)request.getAttribute("productos");
    LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categorias");
    String desc= (String)request.getAttribute("descrip");
    //String desc= request.getAttribute("descripcion");
-%>
+	%>
 
-<script>
-function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("myOverlay").style.display = "block";
-}
+	<script>
+		function w3_open() {
+  			document.getElementById("mySidebar").style.display = "block";
+  			document.getElementById("myOverlay").style.display = "block";
+		}
 
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("myOverlay").style.display = "none";
-}
-</script>
-
+		function w3_close() {
+ 			document.getElementById("mySidebar").style.display = "none";
+  			document.getElementById("myOverlay").style.display = "none";
+		}
+	</script>
 </head>
-<body>
 
+<body>
 
 	<!-- Sidebar -->
 	<div class="w3-sidebar w3-bar-block" style="display:none;z-index:5" id="mySidebar">
@@ -87,13 +72,12 @@ function w3_close() {
 	    </div>
 	</div>
 
-<!-- Page Content -->
-  <div class="container">
-  
- <!-- Navigation -->
-
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-   <button class="w3-button w3-dark-gray w3-large" onclick="w3_open()">&#9776;</button>
+ 	<!-- Page Content -->
+  	<div class="container">
+  	
+ 		<!-- Navigation -->
+  		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+   		<button class="w3-button w3-dark-gray w3-large" onclick="w3_open()">&#9776;</button>
     <div class="container">
       <a class="navbar-brand" href="mainpage-admin.jsp">Supermercado</a>
 
@@ -132,16 +116,11 @@ function w3_close() {
     </div>
   </nav>
   </div>
-   
- 	<hr> 
-    <div class="container bootstrap snippets bootdey"> 
+  
+  <hr> 
+  <div class="container bootstrap snippets bootdey"> 
+  	<div class="row">
 	
-	<!--  DROPLISTS -->
-	<!-- CATEGORIAS -->
-	<div class="w3-container">
-	<div class="row">
-	
-
   	<!-- precio -->
   	<!-- 
   	<div class="w3-dropdown-hover">
@@ -155,28 +134,36 @@ function w3_close() {
 		  %>
 
       </div>
-	</div>
-	 -->
+	</div> -->
 	
-	<!-- SEARCH -->
-	<!-- DESCRIPCION -->
-	<form class="example" action="ListProductosDesc" style="margin:10px;max-width:300px">
-	  <%if (desc==null){ %>
-	  <input type="text" placeholder="Descripción..." name="search" autocomplete="off">
-	  <%}else{ %>
-	  <input type="text" placeholder="Descripción..." name="search"  autocomplete="off" value=<%=desc%>>
-	  <%} %>
-	  <button type="submit"><i class="fa fa-search"></i></button>
-	</form>
-   	<%if(lprod == null || lprod.size() == 0){ %>   
-		<br>
-		<br>
-		<br>                   
-    	<div class="alert alert-warning"> ¡Lo sentimos! No hay productos con esa descripción.</div>                               	
-	<%} %>
-<br>
-<br>
-<br>
+		<!-- SEARCH -->
+		<!-- DESCRIPCION -->
+		<div class="col">
+				<form class="example" action="ListProductosDesc" style="margin:10px;max-width:300px">
+	  				<%if (desc==null){ %>
+	 					<input type="text" placeholder="Descripción..." name="search" autocomplete="off">
+	  				<%}else{ %>
+	  					<input type="text" placeholder="Descripción..." name="search"  autocomplete="off" value="<%=desc%>">
+	 				<%} %>
+	 				<button type="submit"><i class="fa fa-search"></i></button>
+				</form>
+   				<%if(lprod == null || lprod.size() == 0){ %>                      
+   					<br>
+    				<div class="alert alert-warning"> ¡Lo sentimos! No hay productos con esa descripción.</div>                               	
+					<%} %>
+			</div>
+				
+			<div class="col">
+				<span style="text-align: right; vertical-align: bottom;">            	
+				<div class="w3-container">	 
+					<form action="AddProductoDropList" method="post">
+						<button class="w3-button w3-xlarge w3-circle w3-teal" type="submit" >+</button>
+						<a href="AddProductoDropList"> Agregar producto</a>
+					</form>
+				</div>			
+				</span>	
+			</div>
+ <br>
  </div>	
 	<!--  TABLA -->	
     <div class="row">
@@ -254,21 +241,12 @@ function w3_close() {
                     </div>
                 </div>
             </div>
-            <span style="text-align: right; vertical-align: bottom;">
-            	
-			<div class="w3-container">	 
-			<form action="AddProductoDropList" method="post">
-				<button class="w3-button w3-xlarge w3-circle w3-teal" type="submit" >+</button>
-				<a href="AddProductoDropList"> Agregar producto</a>
-			</form>
-			</div>
-			
-			</span>            
+                        
             
           
         </div>
     </div>
 </div>
-
+</div>
 </body>
 </html>

@@ -7,26 +7,24 @@
 <html>
 <head>
 
-<meta charset="ISO-8859-1">
+	<meta charset="ISO-8859-1">
 	 <!-- Boostrap para searchbar -->
- <link href="style/search-bar/search-bar.css" rel="stylesheet">
+ 	<link href="style/search-bar/search-bar.css" rel="stylesheet">
  
  
-  <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
-  <link href="style/mainpage/modern-business.css" rel="stylesheet">
-  <link href="style/clientes-admin/listado-clientes.css" rel="stylesheet"> 
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="style/clientes-admin/confirmacion.css" rel="stylesheet"> 
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
- 
-<title>Categorias</title>
-
-<% LinkedList<Categoria> lc = (LinkedList<Categoria>)request.getAttribute("categorias"); 
-String descrip= (String)request.getAttribute("descrip");
-%>
+ 	 <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
+  	<link href="style/mainpage/modern-business.css" rel="stylesheet">
+  	<link href="style/clientes-admin/listado-clientes.css" rel="stylesheet"> 
+  	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  	<link href="style/clientes-admin/confirmacion.css" rel="stylesheet"> 
+  	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+	<title>Categorias</title>
+	<% LinkedList<Categoria> lc = (LinkedList<Categoria>)request.getAttribute("categorias"); 
+	String descrip= (String)request.getAttribute("descrip");
+	%>
 
 </head>
+
 <body>
 
   <div class="container">
@@ -71,26 +69,35 @@ String descrip= (String)request.getAttribute("descrip");
  <hr> 
  
  <div class="container bootstrap snippets bootdey">
- 	 <div class="row">	
- 
-	<form class="example" action="ListCategoriasDesc" style="margin:10px;max-width:300px">
-	   <%if (descrip==null){ %>
-	  <input type="text" placeholder="Descripción..." name="search" autocomplete="off">
-	  <%}else{ %>
-	  <input type="text" placeholder="Descripción..." name="search" value=<%=descrip%>>
-	  <%} %>
-	  <button type="submit"><i class="fa fa-search"></i></button>
-	</form>
-	
-	<%if(lc == null || lc.size() == 0){ %>  
-		<br>                     
-    	<div class="alert alert-warning"> ¡Lo sentimos! No hay categorias con esa descripción.</div>                               	
-	<%} %>
+ 	
+ 	<div class="row">
+ 		 
+ 		<div class="col"> 		
+			<form class="example" action="ListCategoriasDesc" style="margin:10px;max-width:300px;">
+	   			<%if (descrip==null){ %>
+	  				<input type="text" placeholder="Descripción..." name="search" autocomplete="off">
+	  			<%}else{ %>
+	  				<input type="text" placeholder="Descripción..." name="search" value="<%=descrip%>">
+	  			<%} %>
+	  			<button type="submit"><i class="fa fa-search"></i></button>	  	
+			</form>			
+			<%if(lc == null || lc.size() == 0){ %>		  
+				<br>                     
+    			<div class="alert alert-warning"> ¡Lo sentimos! No hay categorias con esa descripción.</div>    	                               
+			<%} %>
+		</div>
+		
+		<div class="col">
+			<span style="text-align: right; vertical-align: bottom;">           					
+			<form action="crearCategoria.jsp" method="post"> 
+				<button class="w3-button w3-xlarge w3-circle w3-teal" type="submit" >+</button>
+				<a href="crearCategoria.jsp"> Agregar Categoria</a>
+			</form>		
+			</span>	
+		</div>
+		
+	</div>
 	<br>
-	<br>
-	<br>
-</div>
-
     <div class="row">
     <!--  TABLA -->	
         <div class="col-lg-12">
@@ -148,14 +155,7 @@ String descrip= (String)request.getAttribute("descrip");
                     </div>
                 </div>
             </div>
-           <span style="text-align: right; vertical-align: bottom;">           
-			<div class="w3-container">	
-			<form action="crearCategoria.jsp" method="post"> 
-						<button class="w3-button w3-xlarge w3-circle w3-teal" type="submit" >+</button>
-						<a href="crearCategoria.jsp"> Agregar Categoria</a>
-			</form>
-			</div>
-			</span>
+          
 		
         </div>
     </div>
