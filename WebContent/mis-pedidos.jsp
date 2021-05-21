@@ -75,7 +75,11 @@
   </div>
   <%}%>
   </div>
+  <br>
+  <h3>Historial de Pedidos</h2>
+  <br>  
   <div class="row">
+
   <%for (Pedido p: lp){
 	Date fec= p.getFechaPedido();
 	Calendar cal = Calendar.getInstance();
