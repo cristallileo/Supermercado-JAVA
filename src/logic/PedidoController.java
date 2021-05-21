@@ -1,5 +1,6 @@
 package logic;
 
+import java.util.Collections;
 import java.util.LinkedList;
 
 import Data.*;
@@ -51,6 +52,7 @@ public class PedidoController {
 				pedidos2.add(p);
 			}
 		}
-		return pedidos2;
+		Collections.reverse(pedidos2);
+		 return pedidos2;
 	}
 }
