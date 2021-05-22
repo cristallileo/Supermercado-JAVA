@@ -72,6 +72,9 @@ public class QuitarProducto extends HttpServlet {
 				linea=ctrlLinea.darDeBaja(linea);
 			}
 		}
+		
+		request.setAttribute("lineas",lineas );
+		request.getRequestDispatcher("carrito.jsp").forward(request, response);
 	}
 
 }

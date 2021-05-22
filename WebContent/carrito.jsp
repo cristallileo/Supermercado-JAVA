@@ -41,7 +41,7 @@
     LinkedList<LineaDePedido> lp= (LinkedList<LineaDePedido>)request.getAttribute("lineas");
     ProductoController ctrlProd= new ProductoController();
     Pedido ped= (Pedido)request.getSession(true).getAttribute("pedido");
-    Producto prodEditar = (Producto)request.getAttribute("prodEditar");
+    //Producto prodEditar = (Producto)request.getAttribute("prodEditar");
 	%>
   
 </head>
@@ -118,13 +118,8 @@
 	            <div class="card h-100">
 	              <!-- a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a-->
 	             <div class="card-img-top"></div>
-	             <% if(prod.getImagen() != null){
-	            	 	prod.getImagen(); 
-	             }else{%>  
-	             	<a><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-						<% } %>  </div>
-						
-	             
+	            
+	             	<a><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>	
 	              <div class="card-body">
 	                <h4 class="card-title">
 	                  <a><b><%=prod.getDescProducto()%></b></a>
@@ -138,7 +133,7 @@
 					  <input type="text" id="cant" name="cant" value="<%=linea.getCantidad()%>" disabled >
 					  <input   type="hidden" id="idProd" name="idProd" value="<%=prod.getIdProducto()%>"  >
 					  <!-- PARA EDITAR step="1" min="0" max="99" -->
-					  <button class="btn btn-primary btn-sm" type="submit" style="margin-left: 125px;">Editar</button>
+					  <button class="btn btn-primary btn-sm" type="submit" style="margin-left: 125px;">Eliminar</button>
 			
 					</div>
 			   </form>

@@ -92,22 +92,16 @@ public class DataLineaDePedido {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"UPDATE `tp_java`.`proveedor` SET `telefono` = ?,`email` = ?,`razonSocial` = ?, `fechaBaja` = ? WHERE (`idProveedor` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+							"UPDATE `tp_java`.`lineapedido` SET `cantidad` = ?,`fecha_hora_baja` = CURDATE() WHERE `id_pedido` = ? AND `id_producto` = ?", PreparedStatement.RETURN_GENERATED_KEYS);
 			
 			
-			stmt.setString(1, p.getTelefono());
-			stmt.setString(2, p.getMail());
-			stmt.setString(3, p.getRazonSocial());
-			stmt.setDate(4, p.getFechaBaja());
-			stmt.setInt(5, p.getIdProveedor());
-			
-			
+			stmt.setInt(1, 0);
+			stmt.setInt(2, linea.getId_pedido());
+			stmt.setInt(3, linea.getId_producto());
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();
-            if(keyResultSet!=null && keyResultSet.next()){
-                p.setIdProveedor(keyResultSet.getInt(1));
-            }
+            
 		} catch (SQLException e) {
         e.printStackTrace();
 		} finally {
@@ -119,7 +113,7 @@ public class DataLineaDePedido {
         	e.printStackTrace();
         }
 	}
-	return p;
+	return linea;
 	}
 
 	public LineaDePedido deleteLineaDePedido (LineaDePedido lp) {
