@@ -86,38 +86,40 @@ public class DataLineaDePedido {
 		
     }
 
-	public LineaDePedido editLineaDePedido (LineaDePedido lp) {
+	public LineaDePedido darDeBaja (LineaDePedido linea) {
 		PreparedStatement stmt= null;
-		//ResultSet keyResultSet=null;
+		ResultSet keyResultSet=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"UPDATE `java`.`lineapedido` SET `cantidad` = ? WHERE (`id_pedido` = ? and `id_producto` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+							"UPDATE `tp_java`.`proveedor` SET `telefono` = ?,`email` = ?,`razonSocial` = ?, `fechaBaja` = ? WHERE (`idProveedor` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
 			
 			
-			stmt.setInt(1, lp.getCantidad());
-			stmt.setInt(2, lp.getId_pedido());
-			stmt.setInt(3, lp.getId_producto());
-						
+			stmt.setString(1, p.getTelefono());
+			stmt.setString(2, p.getMail());
+			stmt.setString(3, p.getRazonSocial());
+			stmt.setDate(4, p.getFechaBaja());
+			stmt.setInt(5, p.getIdProveedor());
+			
+			
 			stmt.executeUpdate();
 			
-			/*keyResultSet=stmt.getGeneratedKeys();
+			keyResultSet=stmt.getGeneratedKeys();
             if(keyResultSet!=null && keyResultSet.next()){
-                d.setIdDcto(keyResultSet.getInt(1));
-            }*/
-			
+                p.setIdProveedor(keyResultSet.getInt(1));
+            }
 		} catch (SQLException e) {
         e.printStackTrace();
 		} finally {
         try {
-        	 //if(keyResultSet!=null)keyResultSet.close();
+        	 if(keyResultSet!=null)keyResultSet.close();
             if(stmt!=null) stmt.close();
             DbConnector.getInstancia().releaseConn();
         } catch (SQLException e) {
         	e.printStackTrace();
         }
 	}
-	return lp;
+	return p;
 	}
 
 	public LineaDePedido deleteLineaDePedido (LineaDePedido lp) {

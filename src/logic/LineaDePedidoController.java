@@ -21,5 +21,8 @@ public class LineaDePedidoController {
 		return dl.getByPedido(ped);
 	}
 
+	public LineaDePedido darDeBaja (LineaDePedido linea) {
+		return dl.darDeBaja(linea);
+	}
 
 }

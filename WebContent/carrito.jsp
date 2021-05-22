@@ -41,7 +41,7 @@
     LinkedList<LineaDePedido> lp= (LinkedList<LineaDePedido>)request.getAttribute("lineas");
     ProductoController ctrlProd= new ProductoController();
     Pedido ped= (Pedido)request.getSession(true).getAttribute("pedido");
-	String descrip= (String)request.getAttribute("descrip");
+    Producto prodEditar = (Producto)request.getAttribute("prodEditar");
 	%>
   
 </head>
@@ -132,7 +132,7 @@
 	                <p class="card-text"><%=prod.getMarca() %></p>
 	                <h5><b><%="$" + prod.getPrecio() %></b></h5>
 	              </div>
-				<form action="EditPedido">
+				<form action="QuitarProducto">
 	              <div class="card-footer">
 	                <!-- ESPACIO PARA SELECCIONAR CANTIDAD DEL PRODUCTO -->
 					  <input type="text" id="cant" name="cant" value="<%=linea.getCantidad()%>" disabled >

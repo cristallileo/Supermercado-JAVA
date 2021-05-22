@@ -1,9 +1,12 @@
 package entidades;
 
+import java.sql.Date;
+
 public class LineaDePedido {
 
 	private int id_pedido,id_producto;
 	private int cantidad;
+	private Date fecha_hora_baja;
 	
 	public int getCantidad() {
 		return cantidad;
@@ -24,6 +27,13 @@ public class LineaDePedido {
 	public void setId_producto(int id_producto) {
 		this.id_producto = id_producto;
 	}
+	public Date getFecha_hora_baja() {
+		return fecha_hora_baja;
+	}
+	public void setFecha_hora_baja(Date fecha_hora_baja) {
+		this.fecha_hora_baja = fecha_hora_baja;
+	}
+	
 	
 	
 }
