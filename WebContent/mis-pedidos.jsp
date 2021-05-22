@@ -88,7 +88,7 @@
 	String month = MES[cal.get(Calendar.MONTH)];
 	int day = cal.get(Calendar.DAY_OF_MONTH);%>
   			<!-- <div class="col-lg-4">-->
-  		<div class="col-lg-3 col-md-5 mb-4">
+  		<div class="col-lg-4 col-md-5 mb-4">
 	        <div class="card card-margin">
 	            <div class="card-header no-border">
 	            </div>
@@ -110,7 +110,11 @@
 	                        <br>
 	                        <a>Dirección: <%=p.getDireccionEnvio()%></a>
 	                        <br>
-	                        <a>Fecha de Entrega: <%=p.getFechaEntrega() %></a>
+	                        <%if (p.getFechaEntrega()==null){ %>
+	                        <a>Fecha de Entrega: A definir.</a>
+	                        <%}else{ %>
+	                         <a>Fecha de Entrega: <%=p.getFechaEntrega() %></a>
+	                        <% }%>
 	                        <br>
 	                        <a>Precio Total: <%=p.getPrecioTotal()%></a>
 	                    </ol>

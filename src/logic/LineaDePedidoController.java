@@ -18,7 +18,7 @@ public class LineaDePedidoController {
 	}
 	
 	public LinkedList<LineaDePedido> getByPedido (Pedido ped) {
-		LinkedList<LineaDePedido> lineas= new  LinkedList<LineaDePedido>();
+		/*LinkedList<LineaDePedido> lineas= new  LinkedList<LineaDePedido>();
 		LinkedList<LineaDePedido> lineas2= new  LinkedList<LineaDePedido>();
 		lineas= dl.getByPedido(ped);
 		for (LineaDePedido linea: lineas) {
@@ -26,11 +26,12 @@ public class LineaDePedidoController {
 				lineas2.add(linea);
 			}
 		}
-		return lineas2;
+		return lineas2;*/
+		return dl.getByPedido(ped);
 	}
 
-	public LineaDePedido darDeBaja (LineaDePedido linea) {
-		return dl.darDeBaja(linea);
+	public LineaDePedido deleteLineaDePedido (LineaDePedido linea) {
+		return dl.deleteLineaDePedido(linea);
 	}
 
 }

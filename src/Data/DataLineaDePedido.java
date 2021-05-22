@@ -86,7 +86,7 @@ public class DataLineaDePedido {
 		
     }
 
-	public LineaDePedido darDeBaja (LineaDePedido linea) {
+/*	public LineaDePedido darDeBaja (LineaDePedido linea) {
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
 		try {
@@ -114,7 +114,8 @@ public class DataLineaDePedido {
         }
 	}
 	return linea;
-	}
+	}*/
+	
 
 	public LineaDePedido deleteLineaDePedido (LineaDePedido lp) {
 			

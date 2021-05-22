@@ -16,6 +16,7 @@ import entidades.LineaDePedido;
 import entidades.Pedido;
 import entidades.Producto;
 import logic.LineaDePedidoController;
+import logic.PedidoController;
 import logic.ProductoController;
 
 /**
@@ -48,6 +49,7 @@ public class QuitarProducto extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ProductoController ctrlProd= new ProductoController();
+		PedidoController ctrlPed = new PedidoController();
 		Producto prod= new Producto();
 		LineaDePedidoController ctrlLinea = new LineaDePedidoController();
 		LinkedList<LineaDePedido> lineas= new LinkedList<LineaDePedido>();
@@ -67,11 +69,17 @@ public class QuitarProducto extends HttpServlet {
 		//veo cual el la linea que tengo q eliminar
 		for(LineaDePedido linea: lineas) {
 			if(linea.getId_producto()==prod.getIdProducto()) {
-				java.sql.Date timeNow = new Date(Calendar.getInstance().getTimeInMillis());
-				linea.setFecha_hora_baja(timeNow);
-				linea=ctrlLinea.darDeBaja(linea);
+				//java.sql.Date timeNow = new Date(Calendar.getInstance().getTimeInMillis());
+				//linea.setFecha_hora_baja(timeNow);
+				linea=ctrlLinea.deleteLineaDePedido(linea);
+				lineas.remove(linea);
+				int cant= linea.getCantidad();
+				double total_prod= cant* prod.getPrecio(); // lo que tengo q descontar dle total del pedido
+				ped.setPrecioTotal(ped.getPrecioTotal()-total_prod);
+				ctrlPed.editTotal(ped);
 			}
 		}
+		
 		
 		request.setAttribute("lineas",lineas );
 		request.getRequestDispatcher("carrito.jsp").forward(request, response);
