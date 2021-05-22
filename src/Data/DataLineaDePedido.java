@@ -86,37 +86,6 @@ public class DataLineaDePedido {
 		
     }
 
-/*	public LineaDePedido darDeBaja (LineaDePedido linea) {
-		PreparedStatement stmt= null;
-		ResultSet keyResultSet=null;
-		try {
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"UPDATE `tp_java`.`lineapedido` SET `cantidad` = ?,`fecha_hora_baja` = CURDATE() WHERE `id_pedido` = ? AND `id_producto` = ?", PreparedStatement.RETURN_GENERATED_KEYS);
-			
-			
-			stmt.setInt(1, 0);
-			stmt.setInt(2, linea.getId_pedido());
-			stmt.setInt(3, linea.getId_producto());
-			stmt.executeUpdate();
-			
-			keyResultSet=stmt.getGeneratedKeys();
-            
-		} catch (SQLException e) {
-        e.printStackTrace();
-		} finally {
-        try {
-        	 if(keyResultSet!=null)keyResultSet.close();
-            if(stmt!=null) stmt.close();
-            DbConnector.getInstancia().releaseConn();
-        } catch (SQLException e) {
-        	e.printStackTrace();
-        }
-	}
-	return linea;
-	}*/
-	
-
 	public LineaDePedido deleteLineaDePedido (LineaDePedido lp) {
 			
 			PreparedStatement stmt= null;
