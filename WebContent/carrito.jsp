@@ -41,6 +41,7 @@
     LinkedList<LineaDePedido> lp= (LinkedList<LineaDePedido>)request.getAttribute("lineas");
     ProductoController ctrlProd= new ProductoController();
     Pedido ped= (Pedido)request.getSession(true).getAttribute("pedido");
+    String mje= (String)request.getAttribute("mensaje");
     //Producto prodEditar = (Producto)request.getAttribute("prodEditar");
 	%>
   
@@ -83,8 +84,15 @@
 
     <div class="row">
     
+  <!-- Si no hay productos en el carrito aun -->
+  <%if(lp.size()==0){%>
+ 	<div class="alert alert-danger alert-dismissible  center-block">
+    	<a  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+   	    <strong>Aún no hay productos.</strong>  Seleccione los productos y podrá consultar su pedido en esta sección. 
+  </div>
+  <%}%>
+    
     <div class="col-lg-3">
-
         <br>
         <div class="list-group">
         </div>
@@ -94,19 +102,25 @@
 		  <br>
         <div class="row">
 	<!-- DESCRIPCION -->
+	<%if (lp.size()!=0){ %>
 		<div class="w3-container">
 		    <div class="w3-panel w3-leftbar w3-sand w3-large w3-serif" >
    			 <p>Código de Pedido: <%=ped.getIdPedido()%></p>
 		    <p>Subtotal: $<%=ped.getPrecioTotal()%></p>
   			</div>
 				
-		  </div>		
+		  </div>	
+    <%} %>	
+		<!-- BOTON Cancelar -->
+		
 		
 		<!-- BOTON CONFIRMAR -->
+	<%if (lp.size()!=0){ %>
 	<form action="pedirDireccion.jsp" method="post">
 		 <button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:10px;max-width:200px;height:50px;position: absolute;
   right: 0;">Confirmar pedido</button>
   	</form>
+  	<%}%>
   	</div>
 		<!-- CARDS -->
 		<div class="row">

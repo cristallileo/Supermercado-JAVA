@@ -51,6 +51,7 @@ public class VerPedido extends HttpServlet {
 		lineas= ctrlLinea.getByPedido(ped);
 		
 		request.setAttribute("lineas",lineas );
+		//request.setAttribute("mensaje", "Aún no hay productos.");
 		request.getRequestDispatcher("carrito.jsp").forward(request, response);
 		
 	}
