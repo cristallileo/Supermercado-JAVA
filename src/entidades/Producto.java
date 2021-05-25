@@ -13,8 +13,9 @@ public class Producto implements Comparable <Producto>{
 	private int id_categoria;
 	private Double precio;
 	private Timestamp fecha_hora_baja; 
-	private Blob imagen;
+	private byte[] imagen;
 
+	
 	
 	public int getIdProducto() {
 		return idProducto;
@@ -69,10 +70,11 @@ public class Producto implements Comparable <Producto>{
 		this.fecha_hora_baja = fecha_hora_baja;
 	}
 	
-	public Blob getImagen() {
+	public byte[] getImagen() {
 		return imagen;
 	}
-	public void setImagen(Blob imagen) {
+
+	public void setImagen(byte[] imagen){
 		this.imagen = imagen;
 	}
 	
