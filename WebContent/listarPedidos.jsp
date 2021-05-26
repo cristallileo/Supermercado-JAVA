@@ -83,10 +83,10 @@
                                 <tr>
                                 <th align="center"><span>ID</span></th>
                                 <th align="center"><span>Fecha</span></th>
+                                <th align="center"><span>Estado</span></th>
                                 <th align="center"><span>Precio Total</span></th>
                                 <th align="center"><span>Fecha Entrega</span></th>
                                 <th align="center"><span>Dirección Envío</span></th>
-                                <th align="center"><span>Estado</span></th>
                                 <th align="center"><span>ID Cliente</span></th>
                                 <th align="center"><span>ID Descuento</span></th>
                                 
@@ -100,10 +100,18 @@
 	                    			<tr>
 	                    			<td><%=p.getIdPedido()%></td>
                                     <td><%=p.getFechaPedido()%></td>
-                                    <td><%=p.getPrecioTotal()%></td>
-                                    <td><%=p.getFechaEntrega()%> </td>
-                                    <td><%=p.getDireccionEnvio()%> </td>
                                     <td><%=p.getEstado()%> </td>
+                                    <td><%=p.getPrecioTotal()%></td>
+                                    <%if (p.getFechaEntrega()==null){ %>
+                                    <td>A definir</td>
+                                    <%}else{ %>
+                                    <td><%=p.getFechaEntrega()%> </td>
+                                    <%} %>
+                                    <%if (p.getDireccionEnvio()==null){ %>
+                                    <td>A definir </td>
+                                    <%}else{ %>
+                                    <td><%=p.getDireccionEnvio()%> </td>
+                                    <%} %>
                                     <td><%=p.getId_persona()%> </td>
                                     <td><%=p.getId_dcto()%> </td>
        
@@ -115,13 +123,13 @@
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                             </span>
                                         </a>
-                                        <a  href="DeletePedido?id=<%=p.getIdPedido()%>" class="table-link danger" onclick="return confirm('Desea eliminar este pedido?');" >
+                                        <!--<a  href="DeletePedido?id=<%//p.getIdPedido()%>" class="table-link danger" onclick="return confirm('Desea eliminar este pedido?');" >
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
                                             </span>
                                             
-                                        </a>
+                                        </a>-->
                                     
                                     </td>
                                    

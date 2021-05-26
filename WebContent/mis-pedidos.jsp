@@ -108,7 +108,11 @@
 	                    <ol class="widget-49-meeting-points">
 	                        <a>Estado: <%=p.getEstado()%></a>
 	                        <br>
+	                        <%if (p.getDireccionEnvio()==null){ %>
+	                        <a>Dirección: A definir.</a>
+	                        <%}else{ %>
 	                        <a>Dirección: <%=p.getDireccionEnvio()%></a>
+	                          <% }%>
 	                        <br>
 	                        <%if (p.getFechaEntrega()==null){ %>
 	                        <a>Fecha de Entrega: A definir.</a>
@@ -116,10 +120,9 @@
 	                         <a>Fecha de Entrega: <%=p.getFechaEntrega() %></a>
 	                        <% }%>
 	                        <br>
-	                        <a>Precio Total: <%=p.getPrecioTotal()%></a>
+	                        <a>Precio Total: <b>$<%=p.getPrecioTotal()%></b></a>
 	                    </ol>
 	                    <div class="widget-49-meeting-action">
-	                        <a href="#" class="btn btn-sm btn-flash-border-primary">Ver más</a>
 	                    </div>
 	                </div>
 	            </div>

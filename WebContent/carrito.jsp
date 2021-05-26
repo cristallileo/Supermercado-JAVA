@@ -89,7 +89,7 @@
   <%if(lp.size()==0){%>
  	<div class="alert alert-danger alert-dismissible  center-block">
     	<a  class="close" data-dismiss="alert" aria-label="close">&times;</a>
-   	    <strong>Aún no hay productos.</strong>  Seleccione los productos y podrá consultar su pedido en esta sección. 
+   	    <strong>Aún no hay productos.</strong>  Seleccione los productos y podrá consultar su pedido en esta sección.<a href="ListProductos"><b> Volver</b></a>
   </div>
   <%}%>
     
