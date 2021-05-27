@@ -45,9 +45,18 @@ public class EditPedido extends HttpServlet {
 		Producto prod= new Producto();
 		LinkedList<LineaDePedido> lineas= new LinkedList<LineaDePedido>();
 		LineaDePedidoController ctrlLinea= new LineaDePedidoController();
-		Pedido ped= new Pedido();		
+		Pedido ped= new Pedido();	
+		Persona per= new Persona();
+		per= (Persona)request.getSession(true).getAttribute("usuario");
 		
-		ped=(Pedido)request.getSession(true).getAttribute("pedido");
+		if(per.isCliente()==true) {
+			
+			
+		}else {
+			
+		}
+		
+		/*ped=(Pedido)request.getSession(true).getAttribute("pedido");
 		lineas= ctrlLinea.getByPedido(ped);
 		
 		int id = Integer.parseInt(request.getParameter("idProd"));
@@ -55,7 +64,9 @@ public class EditPedido extends HttpServlet {
 		prod=ctrlProd.getById(prod);
 		
 		request.setAttribute("lineas",lineas );
-		request.setAttribute("prodEditar", prod);
+		request.setAttribute("prodEditar", prod);*/
+		
+		
 	}
 
 }
