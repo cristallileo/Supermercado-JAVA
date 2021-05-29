@@ -1,6 +1,7 @@
 <%@page import="java.util.LinkedList"%>
 <%@page import="entidades.*"%>
 <%@page import="logic.*"%>
+<%@ page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -20,6 +21,8 @@
 
 	<% LinkedList<Persona> le = (LinkedList<Persona>)request.getAttribute("empleados");
    String descrip= (String)request.getAttribute("descrip");
+   Calendar cal = Calendar.getInstance();
+   String MES[] = {"Enero", "Feb", "Mar", "Abril", "Mayo", "Jun", "Jul", "Agosto", "Sept", "Oct", "Nov", "Dic"};
 	%>
 </head>
 
@@ -119,6 +122,10 @@
                             <tbody>
 	                           <% for (Persona per : le) { %>
 	                    			<tr>
+	                    			<%cal.setTime(per.getFechaIngreso());
+	                    			int year = cal.get(Calendar.YEAR); 
+	                    			String month = MES[cal.get(Calendar.MONTH)];
+	                    			int day = cal.get(Calendar.DAY_OF_MONTH); %>
 	                    			<td><%=per.getIdPersona() %></td>
                                     <td><%=per.getNombre()%></td>
                                     <td><%=per.getApellido() %></td>
@@ -128,7 +135,7 @@
                                     <td><%=per.getDireccion()%> </td>
                                     <td><%=per.getEmail()%> </td>
                                     <td><%=per.getCuil()%> </td>
-                                    <td><%=per.getFechaIngreso()%></td>
+                                    <td><%=day%> <%=month %> <%=year %></td>
                                      <td style="width: 10%;">
                                         
                                         <a href="BuscarEmpleado?id=<%=per.getIdPersona()%>" class="table-link text-info">

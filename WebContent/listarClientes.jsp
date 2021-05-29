@@ -1,6 +1,7 @@
 <%@page import="java.util.LinkedList"%>
 <%@page import="entidades.*"%>
 <%@page import="logic.*"%>
+<%@ page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset= ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -25,6 +26,8 @@
 
 <% LinkedList<Persona> lc = (LinkedList<Persona>)request.getAttribute("listado");
    String descrip= (String)request.getAttribute("descrip");
+   Calendar cal = Calendar.getInstance();
+   String MES[] = {"Enero", "Feb", "Marzo", "Abril", "Mayo", "Jun", "Jul", "Agosto", "Sept", "Oct", "Nov", "Dic"};
  %>
 
 </head>
@@ -117,6 +120,10 @@
                             <tbody>
 	                           <% for (Persona per : lc) { %>
 	                    			<tr>
+	                    			<%cal.setTime(per.getFechaRegistro());
+	                    			int year = cal.get(Calendar.YEAR); 
+	                    			String month = MES[cal.get(Calendar.MONTH)];
+	                    			int day = cal.get(Calendar.DAY_OF_MONTH);%>
 	                    			<td><%=per.getIdPersona() %></td>
                                     <td><%=per.getNombre()%></td>
                                     <td><%=per.getApellido() %></td>
@@ -126,7 +133,7 @@
                                     <td><%=per.getDireccion()%> </td>
                                     <td><%=per.getEmail()%> </td>
                              
-                                    <td><%=per.getFechaRegistro()%></td>
+                                    <td><%=day%> <%=month %> <%=year %></td>
                                      <td style="width: 10%;">
                                        <!-- 
                                         <a href="BuscarCliente?id=<%//=per.getIdPersona()%>" class="table-link text-info">
@@ -134,7 +141,7 @@
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                             </span>
-                                        </a>
+                                        </a>-->
                                         <a  href="DeleteClientes?id=<%//=per.getIdPersona()%>" class="table-link danger" onclick="return confirm('Are you sure you want to delete this item?');" >
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
@@ -142,10 +149,8 @@
                                             </span>
                                             
                                         </a>
-                                    	 --> 
                                     </td>
                                    
-    
 	                    		</tr>
 	                    		   
 	                    		
