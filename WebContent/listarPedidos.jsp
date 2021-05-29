@@ -1,6 +1,7 @@
 <%@page import="java.util.LinkedList"%>
 <%@page import="entidades.*"%>
 <%@page import="logic.*"%>
+<%@ page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -27,6 +28,13 @@
 <title>Pedidos</title>
 
 <% LinkedList<Pedido> lp = (LinkedList<Pedido>)request.getAttribute("pedidos");
+Calendar cal = Calendar.getInstance();
+String MES[] = {"Enero", "Feb", "Marzo", "Abril", "Mayo", "Jun", "Jul", "Agosto", "Sept", "Oct", "Nov", "Dic"};
+Persona cliente = new Persona();
+PersonaController ctrl = new PersonaController();
+Descuento des = new Descuento();
+DescuentoController ctrlD= new DescuentoController();
+
 %>
 
 </head>
@@ -87,8 +95,8 @@
                                 <th align="center"><span>Precio Total</span></th>
                                 <th align="center"><span>Fecha Entrega</span></th>
                                 <th align="center"><span>Dirección Envío</span></th>
-                                <th align="center"><span>ID Cliente</span></th>
-                                <th align="center"><span>ID Descuento</span></th>
+                                <th align="center"><span>Cliente</span></th>
+                                <th align="center"><span>Descuento</span></th>
                                 
                                
                                
@@ -99,7 +107,18 @@
 	                           <% for (Pedido p: lp) { %>
 	                    			<tr>
 	                    			<td><%=p.getIdPedido()%></td>
-                                    <td><%=p.getFechaPedido()%></td>
+	                    			<%cal.setTime(p.getFechaPedido());
+	                    			int year = cal.get(Calendar.YEAR); 
+	                    			String month = MES[cal.get(Calendar.MONTH)];
+	                    			int day = cal.get(Calendar.DAY_OF_MONTH);
+	                    			int id = p.getId_persona();
+	                    			cliente.setIdPersona(id);
+	                    			cliente=ctrl.getById(cliente);
+	                    			int id_d= p.getId_dcto();
+	                    			des.setIdDcto(id_d);
+	                    			des=ctrlD.getById(des);
+	                    			%>
+                                    <td><%=day%> <%=month%> <%=year%></td>
                                     <td><%=p.getEstado()%> </td>
                                     <td><%=p.getPrecioTotal()%></td>
                                     <%if (p.getFechaEntrega()==null){ %>
@@ -112,8 +131,8 @@
                                     <%}else{ %>
                                     <td><%=p.getDireccionEnvio()%> </td>
                                     <%} %>
-                                    <td><%=p.getId_persona()%> </td>
-                                    <td><%=p.getId_dcto()%> </td>
+                                    <td><%=cliente.getNombre()%> <%=cliente.getApellido() %> </td>
+                                    <td><%=des.getPorcDcto()%> </td>
        
                                      <td style="width: 10%;">
                                         
