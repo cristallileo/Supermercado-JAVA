@@ -74,7 +74,6 @@
   				<select id="estado1" name="estado1">
   					<option value="Confirmado">Confirmado</option>
   					<option value="Despachado">Despachado</option>
-  					<option value="Entregado">Entregado</option>
   				</select>
   				<%}else if (est.equals("Despachado")) {%>
   				

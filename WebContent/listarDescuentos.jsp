@@ -23,7 +23,8 @@
 
 <% LinkedList<Descuento> ld = (LinkedList<Descuento>)request.getAttribute("descuentos");
 java.sql.Date timeNow = new Date(Calendar.getInstance().getTimeInMillis());
-
+String MES[] = {"Enero", "Feb", "Marzo", "Abril", "Mayo", "Jun", "Jul", "Agosto", "Sept", "Oct", "Nov", "Dic"};
+Calendar cal = Calendar.getInstance();
 %>
 
 </head>
@@ -97,10 +98,21 @@ java.sql.Date timeNow = new Date(Calendar.getInstance().getTimeInMillis());
                             <tbody>
 	                           <% for (Descuento d : ld) { %>
 	                    			<tr>
+	                    			<%Date fec1= d.getFechaDctoInicio();
+	                    			cal.setTime(fec1);
+	                    			int year1 = cal.get(Calendar.YEAR); 
+	                    			String month1 = MES[cal.get(Calendar.MONTH)];
+	                    			int day1 = cal.get(Calendar.DAY_OF_MONTH);
+	                    			Date fec2= d.getFechaDctoFin();
+	                    			cal.setTime(fec2);
+	                    			int year2 = cal.get(Calendar.YEAR); 
+	                    			String month2 = MES[cal.get(Calendar.MONTH)];
+	                    			int day2 = cal.get(Calendar.DAY_OF_MONTH);
+	                    			%>
 	                    			<td><%=d.getIdDcto() %></td>
                                     <td><%=d.getPorcDcto()%></td>
-                                    <td><%=d.getFechaDctoInicio()%></td>
-                                    <td><%=d.getFechaDctoFin()%> </td>
+                                    <td><%=day1%> <%=month1 %> <%=year1 %></td>
+                                    <td><%=day2%> <%=month2 %> <%=year2 %> </td>
        								 <%if (d.getFechaDctoInicio().before(timeNow) && d.getFechaDctoFin().after(timeNow)){%>
                                     <td>
                                     <a>

@@ -123,8 +123,12 @@ DescuentoController ctrlD= new DescuentoController();
                                     <td><%=p.getPrecioTotal()%></td>
                                     <%if (p.getFechaEntrega()==null){ %>
                                     <td>A definir</td>
-                                    <%}else{ %>
-                                    <td><%=p.getFechaEntrega()%> </td>
+                                    <%}else{
+                                    	cal.setTime(p.getFechaEntrega());
+	                    				int year2 = cal.get(Calendar.YEAR); 
+	                    				String month2 = MES[cal.get(Calendar.MONTH)];
+	                    				int day2 = cal.get(Calendar.DAY_OF_MONTH);%>
+                                    <td><%=day2%> <%=month2 %> <%=year2 %> </td>
                                     <%} %>
                                     <%if (p.getDireccionEnvio()==null){ %>
                                     <td>A definir </td>
