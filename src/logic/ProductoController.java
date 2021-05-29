@@ -77,4 +77,9 @@ public class ProductoController {
 		return bajo_stock;
 	}
 	
+	public int contarBajoStock() {
+		LinkedList<Producto> prods = new LinkedList<Producto>();
+		prods=this.listarBajoStock();
+		return prods.size();
+	}
 }

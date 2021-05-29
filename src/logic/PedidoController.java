@@ -58,4 +58,23 @@ public class PedidoController {
 	public Pedido editEstado(Pedido p) {
 		return dp.editEstado(p);
 	}
+	
+	public LinkedList<Pedido> listarPendientes() {
+		LinkedList<Pedido> pedidos= new LinkedList<Pedido>();
+		LinkedList<Pedido> pedidos2= new LinkedList<Pedido>();
+		pedidos= this.listarPedidos();
+		for(Pedido p: pedidos) {
+			if(p.getEstado().equals("Despachado")) {
+				pedidos2.add(p);
+			}
+		}
+		return pedidos2;
+	}
+	
+	public int contarPendientes() {
+		LinkedList<Pedido> pedidos= new LinkedList<Pedido>();
+		pedidos=this.listarPendientes();
+		return pedidos.size();
+	}
+
 }

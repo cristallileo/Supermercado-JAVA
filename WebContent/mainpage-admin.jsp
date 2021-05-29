@@ -86,11 +86,13 @@
           <div class="card-body">
             <h2 class="card-title">Gestión de <br>
             Stock</h2>
-            <p class="card-text">Productos que alcanzaron stock mínimo: <b>0</b></p>
+            <%ProductoController ct = new ProductoController();
+            int cantidad = ct.contarBajoStock();%>
+            <p class="card-text">Productos que alcanzaron stock mínimo: <b><%=cantidad %></b></p>
   
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary btn-sm">Ver más</a>
+            <a href="ListBajoStock" class="btn btn-primary btn-sm">Ver más</a>
           </div>
         </div>
       </div>
@@ -98,12 +100,14 @@
       <div class="col-md-4 mb-5">
         <div class="card h-100">
           <div class="card-body">
+          <%PedidoController con = new PedidoController();
+          int cant_peds = con.contarPendientes();%>
             <h2 class="card-title">Gestión de Pedidos</h2>
-            <p class="card-text">Pedidos pendientes de envio: <b>0</b></p>
+            <p class="card-text">Pedidos pendientes de envio: <b><%=cant_peds %></b></p>
             <p></p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary btn-sm">Ver más</a>
+            <a href="ListPedidos" class="btn btn-primary btn-sm">Ver más</a>
           </div>
         </div>
       </div>
