@@ -43,7 +43,7 @@ public class ListPedidos extends HttpServlet {
 		
 		PedidoController ctrl= new PedidoController();
 		LinkedList<Pedido> pedidos= new LinkedList<Pedido>();
-		        
+		LinkedList<Pedido> pedidos2= new LinkedList<Pedido>();        
 		//Veo a donde lo direcciono:
       		Persona per= new Persona();
       		per= (Persona)request.getSession(true).getAttribute("usuario");
@@ -55,7 +55,13 @@ public class ListPedidos extends HttpServlet {
       			
       		}else {
       			pedidos=ctrl.listarPedidos();
-      			request.setAttribute("pedidos", pedidos);
+      			for(Pedido p: pedidos) {
+      				if(!p.getEstado().equals("Nuevo")) {
+      					pedidos2.add(p);
+      				}
+      			
+      		}
+      			request.setAttribute("pedidos", pedidos2);
       			request.setAttribute("pedido", null);
       			//request.setAttribute("mensaje", null);
       	        request.getRequestDispatcher("listarPedidos.jsp").forward(request, response);
