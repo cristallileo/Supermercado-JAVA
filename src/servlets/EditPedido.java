@@ -69,7 +69,7 @@ public class EditPedido extends HttpServlet {
 					//ver
 				}else {
 					Date fec_env = Date.valueOf(fecha_envio);
-					ped.setEstado(est1);
+					ped.setEstado(est2);
 					ped.setFechaEntrega(fec_env);
 				}
 			}else {
@@ -79,17 +79,7 @@ public class EditPedido extends HttpServlet {
 			ctrlPed.editEstado(ped);			
 		}
 		
-		/*ped=(Pedido)request.getSession(true).getAttribute("pedido");
-		lineas= ctrlLinea.getByPedido(ped);
-		
-		int id = Integer.parseInt(request.getParameter("idProd"));
-		prod.setIdProducto(id);
-		prod=ctrlProd.getById(prod);
-		
-		request.setAttribute("lineas",lineas );
-		request.setAttribute("prodEditar", prod);*/
-		
-		
+		request.getRequestDispatcher("ListPedidos").forward(request, response);		
 	}
 
 }

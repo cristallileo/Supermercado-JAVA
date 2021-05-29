@@ -267,10 +267,11 @@ public class DataPedido {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"UPDATE `tp_java`.`pedido` SET  `estado` = ? WHERE (`idPedido` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+							"UPDATE `tp_java`.`pedido` SET  `estado` = ?, `fechaEntrega` = ? WHERE (`idPedido` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
 			
 			stmt.setString(1, p.getEstado());
-			stmt.setInt(2, p.getIdPedido());
+			stmt.setDate(2, p.getFechaEntrega());
+			stmt.setInt(3, p.getIdPedido());
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();
