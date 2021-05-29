@@ -17,7 +17,6 @@ public class PedidoController {
 		dp=new DataPedido();
 	}
 
-	
 	public LinkedList<Pedido> listarPedidos() {
 		return dp.getAll();
 	}
@@ -54,5 +53,9 @@ public class PedidoController {
 		}
 		Collections.reverse(pedidos2);
 		 return pedidos2;
+	}
+	
+	public Pedido editEstado(Pedido p) {
+		return dp.editEstado(p);
 	}
 }

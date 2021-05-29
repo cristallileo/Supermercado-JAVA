@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.LinkedList;
 
 import javax.servlet.ServletException;
@@ -41,11 +42,16 @@ public class EditPedido extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ProductoController ctrlProd= new ProductoController();
-		Producto prod= new Producto();
-		LinkedList<LineaDePedido> lineas= new LinkedList<LineaDePedido>();
-		LineaDePedidoController ctrlLinea= new LineaDePedidoController();
-		Pedido ped= new Pedido();	
+		//ProductoController ctrlProd= new ProductoController();
+		//Producto prod= new Producto();
+		//LinkedList<LineaDePedido> lineas= new LinkedList<LineaDePedido>();
+		//LineaDePedidoController ctrlLinea= new LineaDePedidoController();
+		Pedido ped= new Pedido();
+		PedidoController ctrlPed= new PedidoController();
+		int id = Integer.parseInt(request.getParameter("id"));
+		ped.setIdPedido(id);
+		ped= ctrlPed.getById(ped);
+		
 		Persona per= new Persona();
 		per= (Persona)request.getSession(true).getAttribute("usuario");
 		
@@ -54,6 +60,23 @@ public class EditPedido extends HttpServlet {
 			
 		}else {
 			
+			String est1 = request.getParameter("estado1");
+			String est2 = request.getParameter("estado2");
+			String fecha_envio = request.getParameter("fechaenvio");
+			
+			if(est1==null) {
+				if(est2==null) {
+					//ver
+				}else {
+					Date fec_env = Date.valueOf(fecha_envio);
+					ped.setEstado(est1);
+					ped.setFechaEntrega(fec_env);
+				}
+			}else {
+				ped.setEstado(est1);
+			}
+			
+			ctrlPed.editEstado(ped);			
 		}
 		
 		/*ped=(Pedido)request.getSession(true).getAttribute("pedido");

@@ -90,7 +90,7 @@ public class DataPedido {
 		}
     }
 
-	//esta mal este edit
+	
 	public Pedido editTotal (Pedido p) {
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
@@ -261,4 +261,33 @@ public class DataPedido {
 	}
 
 
+	public Pedido editEstado (Pedido p) {
+		PreparedStatement stmt= null;
+		ResultSet keyResultSet=null;
+		try {
+			stmt=DbConnector.getInstancia().getConn().
+					prepareStatement(
+							"UPDATE `tp_java`.`pedido` SET  `estado` = ? WHERE (`idPedido` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+			
+			stmt.setString(1, p.getEstado());
+			stmt.setInt(2, p.getIdPedido());
+			stmt.executeUpdate();
+			
+			keyResultSet=stmt.getGeneratedKeys();
+            if(keyResultSet!=null && keyResultSet.next()){
+                p.setIdPedido(keyResultSet.getInt(1));
+            }
+		} catch (SQLException e) {
+        e.printStackTrace();
+		} finally {
+        try {
+        	 if(keyResultSet!=null)keyResultSet.close();
+            if(stmt!=null) stmt.close();
+            DbConnector.getInstancia().releaseConn();
+        } catch (SQLException e) {
+        	e.printStackTrace();
+        }
+	}
+	return p;
+	}
 }
