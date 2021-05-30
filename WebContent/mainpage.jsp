@@ -34,7 +34,7 @@
  <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="mainpage.jsp">Supermercado</a>
+      <a class="navbar-brand" href="ListDescuentos">Supermercado</a>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
@@ -91,7 +91,7 @@
 	            <p>Hasta: <b><%=day2%> <%=month2 %> <%=year2 %></b></p>
 	          </div>
 	          <div class="card-footer">
-	          <a href="ListProductos" class="btn btn-primary btn-sm">Comenzar</a>
+	          <a href="ListProductos" class="btn btn-primary btn-sm">Ir a comprar</a>
 	          </div>
 	        </div>
 	      </div>
