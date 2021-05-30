@@ -38,7 +38,7 @@ public class ListDescuentos extends HttpServlet {
 					Pedido p = new Pedido();
 					p= (Pedido) request.getAttribute("pedido");
 					request.setAttribute("pedido", p);
-					request.getRequestDispatcher("listardcto.jsp").forward(request, response); //el otro es descuentos.jsp
+					request.getRequestDispatcher("mainpage.jsp").forward(request, response); //el otro es descuentos.jsp
 				}else {
 					descuentos=ctrl.listarDescuentos();
 					request.setAttribute("descuentos", descuentos);

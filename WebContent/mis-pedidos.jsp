@@ -35,7 +35,7 @@
 <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="mainpage.jsp">Supermercado</a>
+      <a class="navbar-brand" href="ListDescuentos">Supermercado</a>
 
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
@@ -43,9 +43,6 @@
           <li class="nav-item active">
             <a class="nav-link" href="ListPedidos">Mis pedidos</a> <!--  poner en un boton -->
             <span class="sr-only">(current)</span>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="ListDescuentos">Descuentos</a> 
           </li>
           <li class="nav-item">
             <a class="nav-link" href="ListProductos">Productos</a>

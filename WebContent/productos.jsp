@@ -66,16 +66,13 @@ function w3_close() {
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
    <button class="w3-button w3-dark-gray w3-large" onclick="w3_open()">&#9776;</button>
     <div class="container">
-      <a class="navbar-brand" href="mainpage.jsp">Supermercado</a>
+      <a class="navbar-brand" href="ListDescuentos">Supermercado</a>
 
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
   
           <li class="nav-item">
             <a class="nav-link" href="ListPedidos">Mis pedidos</a> <!--  poner en un boton -->
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="ListDescuentos">Descuentos</a> <!--  poner en un boton -->
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="ListProductos">Productos</a>
