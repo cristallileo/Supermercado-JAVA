@@ -86,6 +86,7 @@
  <hr> 
  <div class="container bootstrap snippets bootdey">
  <div class="row">	
+ 
 	<div class="col"> 
 	<form class="example" action="ListProveedoresDesc" style="margin:10px;max-width:300px">
 	 <%if (descrip==null){ %>
@@ -95,6 +96,10 @@
 		  <%} %>
 	  <button type="submit"><i class="fa fa-search"></i></button>
 	</form>
+	<%if(lp.size() == 0){ %>  
+    <br>         
+    <div class="alert alert-warning"> ¡Lo sentimos! No hay proveedores con esa descripción.</div>                               	
+<%} %>
 	</div>
 
 		<div class="col">
@@ -107,25 +112,9 @@
 				</div>			
 				</span>	
 	   </div>
-	
-	
-		<!-- DESCRIPCION -->	
-		<!-- <form action="ListProveedoresDesc">
-		   <div class="search-box" style="margin:8px;max-width:300px;position:absolute;font-size: 16px;">
-		      <input type="text" placeholder="Razon social..." name="razonS">
-		      <button type="submit"><i class="fa fa-search"></i></button>
-		   </div>
-		</form>-->
-
-<%if(lp.size() == 0){ %>  
-    <br>         
-    <div class="alert alert-warning"> ¡Lo sentimos! No hay proveedores con esa descripción.</div>                               	
-<%} %>
- 
 	<br>
 	<br>
 	<br>
-	
  </div>
     <div class="row">
         <div class="col-lg-12">
