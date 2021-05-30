@@ -27,7 +27,7 @@
   <link href="style/clientes-admin/confirmacion.css" rel="stylesheet">
   
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+  <link href="style/login/login.css" rel="stylesheet">
   
   
 <title>Proveedores</title>
@@ -86,15 +86,28 @@
  <hr> 
  <div class="container bootstrap snippets bootdey">
  <div class="row">	
- 
-<form class="example" action="ListProveedoresDesc" style="margin:10px;max-width:300px">
- <%if (descrip==null){ %>
-	  <input type="text" placeholder="Razon Social..." name="search" autocomplete="off">
-	  <%}else{ %>
-	  <input type="text" placeholder="Razon Social..." name="search" value=<%=descrip%>>
-	  <%} %>
-  <button type="submit"><i class="fa fa-search"></i></button>
-</form>
+	<div class="col"> 
+	<form class="example" action="ListProveedoresDesc" style="margin:10px;max-width:300px">
+	 <%if (descrip==null){ %>
+		  <input type="text" placeholder="Razon Social..." name="search" autocomplete="off">
+		  <%}else{ %>
+		  <input type="text" placeholder="Razon Social..." name="search" value=<%=descrip%>>
+		  <%} %>
+	  <button type="submit"><i class="fa fa-search"></i></button>
+	</form>
+	</div>
+
+		<div class="col">
+				<span style="text-align: right; vertical-align: bottom;">            	
+				<div class="w3-container">	 
+					<form action="crearProveedor.jsp" method="post">
+		 	<button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:12px;max-width:230px;height:50px;position: absolute;
+  right: 0;">Agregar Proveedor</button>
+  			</form>
+				</div>			
+				</span>	
+	   </div>
+	
 	
 		<!-- DESCRIPCION -->	
 		<!-- <form action="ListProveedoresDesc">
@@ -185,12 +198,7 @@
             </div>
             <span style="text-align: right; vertical-align: bottom;">
 			
-			<div class="w3-container">	 
-			<form action="crearProveedor.jsp" method="post">
-				<button class="w3-button w3-xlarge w3-circle w3-teal" type="submit" >+</button>
-				<a href="crearProveedor.jsp"> Agregar proveedor</a>
-			</form>
-			</div>
+			
 			
 			</span>
         </div>

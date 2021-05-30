@@ -18,6 +18,7 @@
   	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
   	<link href="style/clientes-admin/confirmacion.css" rel="stylesheet">
   	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  	<link href="style/login/login.css" rel="stylesheet">
 
 	<% LinkedList<Persona> le = (LinkedList<Persona>)request.getAttribute("empleados");
    String descrip= (String)request.getAttribute("descrip");
@@ -89,10 +90,10 @@
 		
 		<div class="col">
 			<span style="text-align: right; vertical-align: bottom;">           					
-			<form action="crearEmpleado.jsp" method="post"> 
-				<button class="w3-button w3-xlarge w3-circle w3-teal" type="submit" >+</button>
-				<a href="crearEmpleado.jsp"> Agregar Empleado</a>
-			</form>		
+			<form action="crearEmpleado.jsp" method="post">
+		 	<button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:12px;max-width:250px;height:50px;position: absolute;
+  right: 0;">Agregar Empleado</button>
+  			</form>
 			</span>		
 		</div>
  	</div> 

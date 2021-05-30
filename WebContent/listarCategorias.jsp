@@ -11,13 +11,19 @@
 	 <!-- Boostrap para searchbar -->
  	<link href="style/search-bar/search-bar.css" rel="stylesheet">
  
- 
  	 <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
   	<link href="style/mainpage/modern-business.css" rel="stylesheet">
   	<link href="style/clientes-admin/listado-clientes.css" rel="stylesheet"> 
   	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
   	<link href="style/clientes-admin/confirmacion.css" rel="stylesheet"> 
   	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+
+	 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	
+     <!-- Custom styles for this template -->
+     
+   <link href="style/login/login.css" rel="stylesheet">
+  
 	<title>Categorias</title>
 	<% LinkedList<Categoria> lc = (LinkedList<Categoria>)request.getAttribute("categorias"); 
 	String descrip= (String)request.getAttribute("descrip");
@@ -88,11 +94,11 @@
 		</div>
 		
 		<div class="col">
-			<span style="text-align: right; vertical-align: bottom;">           					
-			<form action="crearCategoria.jsp" method="post"> 
-				<button class="w3-button w3-xlarge w3-circle w3-teal" type="submit" >+</button>
-				<a href="crearCategoria.jsp"> Agregar Categoria</a>
-			</form>		
+			<span style="text-align: right; vertical-align: bottom;">           	
+			<form action="crearCategoria.jsp" method="post">
+		 	<button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:12px;max-width:270px;height:50px;position: absolute;
+  right: 0;">Agregar Categoria</button>
+  	</form>	
 			</span>	
 		</div>
 		

@@ -73,9 +73,9 @@
               
               <form action="AddProveedor" method="post">
                
-                <div class="form-label-group">
-                  <input type="text" name="tel" id="tel" class="form-control" placeholder="Teléfono" required >
-                  <label for="tel">Teléfono</label>
+               <div class="form-label-group">
+                  <input type="text" name="razonS" id="razonS" class="form-control" placeholder="Razon Social" required>
+                  <label for="razonS">Razón Social</label>
                 </div>
                 
                 <div class="form-label-group">
@@ -84,9 +84,13 @@
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" name="razonS" id="razonS" class="form-control" placeholder="Razon Social" required>
-                  <label for="razonS">Razón Social</label>
+                  <input type="text" name="tel" id="tel" class="form-control" placeholder="Teléfono" required >
+                  <label for="tel">Teléfono</label>
                 </div>
+                
+                
+                
+                
                 
                 <!--  <div class="form-label-group">
                   <input type="text" name="baja" id="baja" class="form-control" placeholder="Fecha de Baja" >

@@ -22,6 +22,7 @@
   	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   	<link rel="stylesheet" href="style/filtros.css">
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  	<link href="style/login/login.css" rel="stylesheet">
  
 	<title>Productos</title>
 
@@ -157,9 +158,9 @@
 				<span style="text-align: right; vertical-align: bottom;">            	
 				<div class="w3-container">	 
 					<form action="AddProductoDropList" method="post">
-						<button class="w3-button w3-xlarge w3-circle w3-teal" type="submit" >+</button>
-						<a href="AddProductoDropList"> Agregar producto</a>
-					</form>
+		 			<button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:12px;max-width:230px;height:50px;position: absolute;
+  right: 0;">Agregar Empleado</button>
+  			</form>
 				</div>			
 				</span>	
 			</div>
