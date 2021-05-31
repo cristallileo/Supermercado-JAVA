@@ -5,6 +5,9 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%> 
 <%@page import="java.util.Collections"%> 
+<%@page import="java.awt.image.BufferedImage"%>
+<%@page import="javax.swing.ImageIcon"%>
+<%@page import="java.util.Base64"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -159,7 +162,7 @@
 				<div class="w3-container">	 
 					<form action="AddProductoDropList" method="post">
 		 			<button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:12px;max-width:230px;height:50px;position: absolute;
-  right: 0;">Agregar Empleado</button>
+  right: 0;">Agregar Producto</button>
   			</form>
 				</div>			
 				</span>	
@@ -176,6 +179,7 @@
                             <thead>
                                 <tr>
                                 <th align="center"><span>ID</span></th>
+                                <th align="center"><span>Foto</span></th>
                                 <th align="center"><span>Descripción</span></th>
                                 <th align="center"><span>Stock</span></th>
                                 <th align="center"><span>Stock Mínimo</span></th>
@@ -191,7 +195,9 @@
 	                           <% for (Producto p: lprod) { %>
 	                    			<tr>
 	                    			<td><%=p.getIdProducto()%></td>
-	                    			<td><%=p.getDescProducto()%></td>
+	                    			<%String img=Base64.getEncoder().encodeToString(p.getImagen()); %> 
+                    				<td><img src="data:image/png;base64,<%=img%>"/></td>
+                    				<td><%=p.getDescProducto()%></td>
 	                    			<%if (p.getStock()<=p.getStockMinimo()){ %>
 	                    			<td style="color:red"><b><%=p.getStock()%></b></td>
 	                    			<%}else{ %>

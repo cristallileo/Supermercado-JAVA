@@ -97,8 +97,12 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
                   <input type="text" name="precio" id="precio" class="form-control" placeholder="Precio"  required>
                   <label for="precio">Precio</label>
                 </div>
+
+                <!-- IMAGEN DE CARGA -->
+                <input type="file" name="img" id="img" class="form-control" placeholder="Imagen"  required>
+                <label for="img">Imagen</label>
                 
-            	<form action="AddProducto" method="post">
+          	   <form action="AddProducto" method="post">
     				<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se agregará un nuevo producto. Desea confirmar?')">Agregar</button>
  				</form> 
  				                

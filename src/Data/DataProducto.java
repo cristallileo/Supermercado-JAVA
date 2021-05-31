@@ -161,7 +161,7 @@ public class DataProducto {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into producto(idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja) values(?,?,?,?,?,?,?,?)",
+							"insert into producto(idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja, imagen) values(?,?,?,?,?,?,?,?,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
 			stmt.setInt(1, p.getIdProducto());
@@ -172,6 +172,7 @@ public class DataProducto {
 			stmt.setInt(6, p.getId_categoria());
 			stmt.setDouble(7, p.getPrecio());
 			stmt.setTimestamp(8, p.getFecha_hora_baja());
+			stmt.setBlob(9, p.getImagen_carga());
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();

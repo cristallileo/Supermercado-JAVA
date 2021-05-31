@@ -1,5 +1,6 @@
 package entidades;
 
+import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.Timestamp;
 
@@ -14,8 +15,7 @@ public class Producto implements Comparable <Producto>{
 	private Double precio;
 	private Timestamp fecha_hora_baja; 
 	private byte[] imagen;
-
-	
+	private InputStream imagen_carga;
 	
 	public int getIdProducto() {
 		return idProducto;
@@ -78,6 +78,13 @@ public class Producto implements Comparable <Producto>{
 		this.imagen = imagen;
 	}
 	
+	public InputStream getImagen_carga() {
+		return imagen_carga;
+	}
+	
+	public void setImagen_carga(InputStream imagen_carga) {
+		this.imagen_carga = imagen_carga;
+	}
 	@Override
 	public int compareTo(Producto p) {
 		return precio.compareTo(p.getPrecio());	

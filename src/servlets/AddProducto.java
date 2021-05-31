@@ -6,8 +6,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+
+import javax.servlet.http.Part;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.servlet.annotation.MultipartConfig;
 import entidades.Producto;
 import logic.ProductoController;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 @WebServlet("/AddProducto")
 
@@ -33,16 +45,18 @@ public class AddProducto extends HttpServlet {
 		int stockMin = Integer.parseInt(request.getParameter("stockMin"));
 		String marca = request.getParameter("marca");
 		int id_categoria = Integer.parseInt(request.getParameter("id_categoria"));
-		Double precio= Double.parseDouble(request.getParameter("precio"));					
-				
+		Double precio= Double.parseDouble(request.getParameter("precio"));	
+		//IMAGEN CARGA
+		String img = request.getParameter("img");	
+		InputStream image = new ByteArrayInputStream(img.getBytes(StandardCharsets.UTF_8));
+	
 		prod.setDescProducto(descProd);
 		prod.setStock(stock);
 		prod.setStockMinimo(stockMin);
 		prod.setMarca(marca);
-		
 		prod.setId_categoria(id_categoria);
-		
-		prod.setPrecio(precio);
+		prod.setPrecio(precio);		
+		prod.setImagen_carga(image);
 
 		ctrl.addProducto(prod);
 		
@@ -50,5 +64,6 @@ public class AddProducto extends HttpServlet {
 		request.setAttribute("productos", ctrl.listAllProductos());
 		request.getRequestDispatcher("ListProductos").forward(request, response);
 	}
+
 
 }

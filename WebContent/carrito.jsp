@@ -1,5 +1,7 @@
 <%@page import="java.util.LinkedList"%>
 <%@page import="java.sql.Date" %>
+<%@page import="java.awt.image.BufferedImage"%>
+<%@page import="javax.swing.ImageIcon"%>
 <%@page import="java.util.Base64"%>
 <%@page import="entidades.*"%>
 <%@ page import="java.util.Calendar"%>
@@ -128,17 +130,16 @@
 		<%for (LineaDePedido linea: lp){
 		      Producto prod= new Producto();
 		      prod.setIdProducto(linea.getId_producto());
-		      prod= ctrlProd.getById(prod);
-		      String imag=Base64.getEncoder().encodeToString(prod.getImagen());
+		      prod= ctrlProd.getById(prod);	      
 		      %>
 	          <div class="col-lg-3 col-md-6 mb-4">
 	            <div class="card h-100">	
 	            <div class="card-img-top">
-	              <a ><img class="card-img-top" src="data:image/png;base64,<%=imag%>"/></a>
+	              <%String img=Base64.getEncoder().encodeToString(prod.getImagen()); %> 
+	              <a ><img  src="data:image/png;base64,<%=img%>"/></a>
 	              <!-- a><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a-->   
 	            </div>
-
-
+      			
 	             <div class="card-body">
 	                <h4 class="card-title">
 	                  <a><b><%=prod.getDescProducto()%></b></a>
