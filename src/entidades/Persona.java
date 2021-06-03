@@ -8,7 +8,13 @@ public class Persona {
 	private String tipoDoc;
 	private String nroDoc;
 	private String nombre, apellido, telefono, direccion, email, password, cuil;
-	private Date fechaIngreso, fechaRegistro;
+	private Date fechaIngreso, fechaRegistro, fecha_hora_baja;
+	public Date getFecha_hora_baja() {
+		return fecha_hora_baja;
+	}
+	public void setFecha_hora_baja(Date fecha_hora_baja) {
+		this.fecha_hora_baja = fecha_hora_baja;
+	}
 	private boolean cliente, empleado;
 	
 	public int getIdPersona() {

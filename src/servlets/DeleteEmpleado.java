@@ -51,7 +51,7 @@ public class DeleteEmpleado extends HttpServlet {
 		//response.getWriter().append("Served at: ").append(id);
 		per.setIdPersona(id);
 		per =ctrl.getById(per);
-		per=ctrl.deletePersona(per);
+		per=ctrl.deleteEmpleado(per);
 		request.setAttribute("empleados", ctrl.listarEmpleados());
 		request.getRequestDispatcher("ListEmpleados").forward(request, response);
 	

@@ -28,7 +28,7 @@ public class DataPersona {
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idPersona,tipoDoc,nroDoc,nombre,apellido,telefono,direccion,email,password,cuil,fechaIngreso,fechaRegistro,cliente, empleado from persona");
+			rs= stmt.executeQuery("select * from persona");
 			if(rs!=null) {
 				while(rs.next()) {
 					Persona p=new Persona();
@@ -46,6 +46,7 @@ public class DataPersona {
 					p.setFechaRegistro(rs.getDate("fechaRegistro"));
 					p.setCliente(rs.getBoolean("cliente"));
 					p.setEmpleado(rs.getBoolean("empleado"));
+					p.setFecha_hora_baja(rs.getDate("fecha_hora_baja"));
 					
 					personas.add(p);
 				}
@@ -72,7 +73,7 @@ public class DataPersona {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into persona( tipoDoc, nroDoc, nombre, apellido, telefono, direccion, email, password, cuil, fechaIngreso, fechaRegistro, cliente,empleado) values(?,?,?,?,?,?,?,?,?,?,?,1,0)",
+							"insert into persona( tipoDoc, nroDoc, nombre, apellido, telefono, direccion, email, password, cuil, fechaIngreso, fechaRegistro, cliente,empleado, fecha_hora_baja) values(?,?,?,?,?,?,?,?,?,?,?,?,1,0)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
 			
@@ -88,6 +89,8 @@ public class DataPersona {
 			stmt.setString(9, p.getCuil());
 			stmt.setDate(10, p.getFechaIngreso());
 			stmt.setDate(11, p.getFechaRegistro());
+			stmt.setDate(12, p.getFecha_hora_baja());
+			
 	
 			stmt.executeUpdate();
 			
@@ -120,7 +123,7 @@ public class DataPersona {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into persona( tipoDoc, nroDoc, nombre, apellido, telefono, direccion, email, password, cuil, fechaIngreso, fechaRegistro, cliente,empleado) values(?,?,?,?,?,?,?,?,?,?,?,0,1)",
+							"insert into persona( tipoDoc, nroDoc, nombre, apellido, telefono, direccion, email, password, cuil, fechaIngreso, fechaRegistro, cliente,empleado, fecha_hora_baja) values(?,?,?,?,?,?,?,?,?,?,?,0,1,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
 			
@@ -136,6 +139,7 @@ public class DataPersona {
 			stmt.setString(9, p.getCuil());
 			stmt.setDate(10, p.getFechaIngreso());
 			stmt.setDate(11, p.getFechaRegistro());
+			stmt.setDate(12, p.getFecha_hora_baja());
 			
 			stmt.executeUpdate();
 			
@@ -168,7 +172,7 @@ public class DataPersona {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"UPDATE `tp_java`.`persona` SET `tipoDoc` = ?,`nroDoc` = ?,`nombre` = ?, `apellido` = ?, `telefono` = ?, `direccion` = ?, `email` = ?, `password` = ? WHERE (`idPersona` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+							"UPDATE `tp_java`.`persona` SET `tipoDoc` = ?,`nroDoc` = ?,`nombre` = ?, `apellido` = ?, `telefono` = ?, `direccion` = ?, `email` = ?, `password` = ?, `fecha_hora_baja`= ? WHERE (`idPersona` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
 			//NO PERMITIMOS EDITAR FECHAS DE INGRESO DE EMPLEADOS NI FEHCA DE REGISTRO DE CLIENTES PORQ ES DE INGRESO AUTOMATICO, NO INGRESO HUMANO.
 			stmt.setString(1, p.getTipoDoc());
 			stmt.setString(2, p.getNroDoc());
@@ -178,7 +182,9 @@ public class DataPersona {
 			stmt.setString(6, p.getDireccion());
 			stmt.setString(7, p.getEmail());
 			stmt.setString(8, p.getPassword());
-			stmt.setInt(9, p.getIdPersona());
+			stmt.setDate(9, p.getFecha_hora_baja());
+			stmt.setInt(10, p.getIdPersona());
+			
 			
 			stmt.executeUpdate();
 			
@@ -200,7 +206,7 @@ public class DataPersona {
 	return p;
 	}
 	
-	public Persona deletePersona(Persona p) {
+	public Persona deleteEmpleado(Persona p) {
 		
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
@@ -237,8 +243,7 @@ public class DataPersona {
 		ResultSet rs=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idPersona,tipoDoc,nroDoc,nombre,apellido,telefono,direccion,email,password,cuil,fechaIngreso,fechaRegistro,cliente, empleado from persona where email=? and password=?"
-					);
+					"select * from persona where email=? and password=?");
 			stmt.setString(1, per.getEmail());
 			stmt.setString(2, per.getPassword());
 			rs=stmt.executeQuery();
@@ -259,6 +264,7 @@ public class DataPersona {
 				p.setFechaRegistro(rs.getDate("fechaRegistro"));
 				p.setCliente(rs.getBoolean("cliente"));
 				p.setEmpleado(rs.getBoolean("empleado"));
+				p.setFecha_hora_baja(rs.getDate("fecha_hora_baja"));
 				
 			}
 		} catch (SQLException e) {
@@ -282,7 +288,7 @@ public class DataPersona {
 		ResultSet rs=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idPersona,tipoDoc,nroDoc,nombre,apellido,telefono,direccion,email,password,cuil,fechaIngreso,fechaRegistro,cliente, empleado from persona where idPersona=? "
+					"select * from persona where idPersona=? "
 					);
 			stmt.setInt(1, per.getIdPersona());
 			
@@ -303,6 +309,7 @@ public class DataPersona {
 				p.setFechaRegistro(rs.getDate("fechaRegistro"));
 				p.setCliente(rs.getBoolean("cliente"));
 				p.setEmpleado(rs.getBoolean("empleado"));
+				p.setFecha_hora_baja(rs.getDate("fecha_hora_baja"));
 				
 			}
 		} catch (SQLException e) {
@@ -322,14 +329,13 @@ public class DataPersona {
 
 	public LinkedList<Persona> getAllClientes(){
 		
-
 	Statement stmt=null;
 	ResultSet rs=null;
 	LinkedList<Persona> personas= new LinkedList<>();
 	
 	try {
 		stmt= DbConnector.getInstancia().getConn().createStatement();
-		rs= stmt.executeQuery("select idPersona,tipoDoc,nroDoc,nombre,apellido,telefono,direccion,email,password,cuil,fechaIngreso,fechaRegistro,cliente, empleado from persona where cliente=1");
+		rs= stmt.executeQuery("select * from persona where cliente=1");
 		if(rs!=null) {
 			while(rs.next()) {
 				Persona p=new Persona();
@@ -347,6 +353,7 @@ public class DataPersona {
 				p.setFechaRegistro(rs.getDate("fechaRegistro"));
 				p.setCliente(rs.getBoolean("cliente"));
 				p.setEmpleado(rs.getBoolean("empleado"));
+				p.setFecha_hora_baja(rs.getDate("fecha_hora_baja"));
 				
 				personas.add(p);
 			}
@@ -368,7 +375,6 @@ public class DataPersona {
 }
 
 	public LinkedList<Persona> getAllEmpleados(){
-		
 
 		Statement stmt=null;
 		ResultSet rs=null;
@@ -376,7 +382,7 @@ public class DataPersona {
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idPersona,tipoDoc,nroDoc,nombre,apellido,telefono,direccion,email,password,cuil,fechaIngreso,fechaRegistro,cliente, empleado from persona where empleado=1");
+			rs= stmt.executeQuery("select * from persona where empleado=1");
 			if(rs!=null) {
 				while(rs.next()) {
 					Persona p=new Persona();
@@ -394,6 +400,7 @@ public class DataPersona {
 					p.setFechaRegistro(rs.getDate("fechaRegistro"));
 					p.setCliente(rs.getBoolean("cliente"));
 					p.setEmpleado(rs.getBoolean("empleado"));
+					p.setFecha_hora_baja(rs.getDate("fecha_hora_baja"));
 					
 					personas.add(p);
 				}
@@ -414,7 +421,7 @@ public class DataPersona {
 		return personas;
 	}
 	
-	
+	//PARA QUE SE USA?
 	public LinkedList<Persona> getPersonaNombre(String nombre){
 		
 		LinkedList<Persona> personas = new LinkedList<Persona>();
@@ -423,8 +430,6 @@ public class DataPersona {
 		
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement("select * from persona where nombre like  '%" +nombre+"%' or apellido like  '%" +nombre+"%' ");
-			
-		
 			rs=stmt.executeQuery();
 			
 			if(rs!=null) {
@@ -444,6 +449,7 @@ public class DataPersona {
 					p.setFechaRegistro(rs.getDate("fechaRegistro"));
 					p.setCliente(rs.getBoolean("cliente"));
 					p.setEmpleado(rs.getBoolean("empleado"));
+					p.setFecha_hora_baja(rs.getDate("fecha_hora_baja"));
 					personas.add(p);
 				}
 			}
@@ -461,5 +467,67 @@ public class DataPersona {
 			}
 		}
 		return personas;
+	}
+
+	public Persona deshabilitarCliente (Persona p) {
+		PreparedStatement stmt= null;
+		ResultSet keyResultSet=null;
+		try {
+			stmt=DbConnector.getInstancia().getConn().
+					prepareStatement(
+							"UPDATE `tp_java`.`persona` SET `fecha_hora_baja`= ? WHERE (`idPersona` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+			
+			stmt.setDate(1, p.getFecha_hora_baja());
+			stmt.setInt(2, p.getIdPersona());
+			
+			stmt.executeUpdate();
+			
+			keyResultSet=stmt.getGeneratedKeys();
+            if(keyResultSet!=null && keyResultSet.next()){
+                p.setIdPersona(keyResultSet.getInt(1));
+            }
+		} catch (SQLException e) {
+        e.printStackTrace();
+		} finally {
+        try {
+        	 if(keyResultSet!=null)keyResultSet.close();
+            if(stmt!=null) stmt.close();
+            DbConnector.getInstancia().releaseConn();
+        } catch (SQLException e) {
+        	e.printStackTrace();
+        }
+	}
+	return p;
+	}
+
+	public Persona habilitarCliente (Persona p) {
+		PreparedStatement stmt= null;
+		ResultSet keyResultSet=null;
+		try {
+			stmt=DbConnector.getInstancia().getConn().
+					prepareStatement(
+							"UPDATE `tp_java`.`persona` SET `fecha_hora_baja`= ? WHERE (`idPersona` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+			
+			stmt.setDate(1, null);
+			stmt.setInt(2, p.getIdPersona());
+			
+			stmt.executeUpdate();
+			
+			keyResultSet=stmt.getGeneratedKeys();
+            if(keyResultSet!=null && keyResultSet.next()){
+                p.setIdPersona(keyResultSet.getInt(1));
+            }
+		} catch (SQLException e) {
+        e.printStackTrace();
+		} finally {
+        try {
+        	 if(keyResultSet!=null)keyResultSet.close();
+            if(stmt!=null) stmt.close();
+            DbConnector.getInstancia().releaseConn();
+        } catch (SQLException e) {
+        	e.printStackTrace();
+        }
+	}
+	return p;
 	}
 }

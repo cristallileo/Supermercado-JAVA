@@ -81,7 +81,6 @@
   				<select id="estado2" name="estado2">
   					<option value="Despachado">Despachado</option>
   					<option value="Entregado">Entregado</option>
-  					<option value="Confirmado">Confirmado</option>
   				</select>
   				
                 <div class="form-label-group">

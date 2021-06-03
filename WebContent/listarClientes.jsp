@@ -111,10 +111,9 @@
                                 <th align="center"><span>Telefono</span></th>
                                 <th align="center"><span>Dirección</span></th>
                                 <th align="center"><span>Email</span></th>
-                               
                                 <th align="center"><span>Registro</span></th>
+                                <th align="center"><span>Estado</span></th>
                                
-                                <th>&nbsp;</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -132,25 +131,22 @@
                                     <td><%=per.getTelefono() %> </td>
                                     <td><%=per.getDireccion()%> </td>
                                     <td><%=per.getEmail()%> </td>
-                             
                                     <td><%=day%> <%=month %> <%=year %></td>
-                                     <td style="width: 10%;">
-                                       <!-- 
-                                        <a href="BuscarCliente?id=<%//=per.getIdPersona()%>" class="table-link text-info">
-                                            <span class="fa-stack">
-                                                <i class="fa fa-square fa-stack-2x"></i>
-                                                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                            </span>
-                                        </a>-->
-                                        <a  href="DeleteClientes?id=<%//=per.getIdPersona()%>" class="table-link danger" onclick="return confirm('Are you sure you want to delete this item?');" >
-                                            <span class="fa-stack">
-                                                <i class="fa fa-square fa-stack-2x"></i>
-                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                                            </span>
-                                            
-                                        </a>
-                                    </td>
-                                   
+                                    <% if (per.getFecha_hora_baja() == null) { %> 
+	       								 <td>
+		                                      <a href="DeshabilitarCliente?id=<%=per.getIdPersona()%>" onclick="return confirm('Desea deshabilitar este cliente?');" >
+		                                      	<span class="badge bg-success">Activo</span>
+		                                      </a>
+	                                    </td>
+       								<% } else { %>
+       								 	<td>
+	                                       <a href="HabilitarCliente?id=<%=per.getIdPersona()%>" onclick="return confirm('Desea habilitar este cliente?');">
+	                                       	<span class="badge bg-danger">Inactivo</span>
+	                                       </a>
+                                       </td>
+       								<% } %>
+                                  
+                                                                           
 	                    		</tr>
 	                    		   
 	                    		
@@ -161,15 +157,6 @@
                     </div>
                 </div>
             </div>
-           <!--  <span style="text-align: right; vertical-align: bottom;">
-            <form action="" method=post">
-					<div class="w3-container">	 
-						<button class="w3-button w3-xlarge w3-circle w3-teal" type="submit" >+</button>
-						<a href=""> Agregar cliente</a>
-					</div>
-			</form>
-			</span>
-			-->
         </div>
     </div>
 </div>

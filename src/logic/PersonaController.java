@@ -57,24 +57,31 @@ public class PersonaController {
 	public Persona editPersona (Persona p) {
 		return dp.editPersona(p);
 	}
-	public Persona deletePersona (Persona p) {
-		return dp.deletePersona(p);
+
+	public Persona deshabilitarCliente (Persona p ) {
+		return dp.deshabilitarCliente(p);
 	}
 	
 	public Persona getById(Persona per) {
-		Persona p=new Persona();
-		p= dp.getById(per);
-		return p;
+		return dp.getById(per);
 	}
 	
 	public Persona addPersona(Persona per) {
 		 return dp.add(per);
 	}
 
-
-	public Persona addEmpleado(Persona per) {
-		
+	public Persona addEmpleado(Persona per) {	
 		return dp.addEmpleado(per);
+	}
+
+
+	public Persona deleteEmpleado(Persona per) {
+		return dp.deleteEmpleado(per);
+	}
+
+
+	public Persona habilitarCliente(Persona p) {
+		return dp.habilitarCliente(p);
 	}
 	
 	 
