@@ -15,7 +15,7 @@
   
    <!--  <link href="style/login/login.css" rel="stylesheet"> -->
     
-   <link href="style/empleados-admin/create-empleados.css" rel="stylesheet">
+   <link href="style/login/login.css" rel="stylesheet">
   
 <% Categoria cat = (Categoria)request.getAttribute("categoriaEditar");
 %> 

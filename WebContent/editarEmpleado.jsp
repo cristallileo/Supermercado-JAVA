@@ -11,7 +11,7 @@
 
   <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
   <link href="style/mainpage/modern-business.css" rel="stylesheet">
-  <link href="style/empleados-admin/create-empleados.css" rel="stylesheet">
+  <link href="style/login/login.css" rel="stylesheet">
   
 <% Persona per = (Persona)request.getAttribute("empleadoEditar");%> 
 </head>

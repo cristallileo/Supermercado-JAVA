@@ -113,7 +113,7 @@ Calendar cal = Calendar.getInstance();
 	                    			int day2 = cal.get(Calendar.DAY_OF_MONTH);
 	                    			%>
 	                    			<td><%=d.getIdDcto() %></td>
-                                    <td><%=d.getPorcDcto()%></td>
+                                    <td><%=d.getPorcDcto()*100%>%</td>
                                     <td><%=day1%> <%=month1 %> <%=year1 %></td>
                                     <td><%=day2%> <%=month2 %> <%=year2 %> </td>
        								 <%if (d.getFechaDctoInicio().before(timeNow) && d.getFechaDctoFin().after(timeNow)){%>
