@@ -43,6 +43,7 @@
     ProductoController ctrlProd= new ProductoController();
     Pedido ped= (Pedido)request.getSession(true).getAttribute("pedido");
     String mje= (String)request.getAttribute("mensaje");
+    Boolean prod_eliminado= (Boolean)request.getAttribute("prod_eliminado");
     //Producto prodEditar = (Producto)request.getAttribute("prodEditar");
 	%>
   
@@ -83,16 +84,25 @@
   
 <div class="container">
 
-    <div class="row">
+   <div class="row">
+   <div class="col-lg-6"> 
+
     
   <!-- Si no hay productos en el carrito aun -->
-  <%if(lp.size()==0){%>
+  <%if(lp.size()==0 && prod_eliminado==false){%>
  	<div class="alert alert-danger alert-dismissible  center-block">
     	<a  class="close" data-dismiss="alert" aria-label="close">&times;</a>
    	    <strong>Aún no hay productos.</strong>  Seleccione los productos y podrá consultar su pedido en esta sección.<a href="ListProductos"><b> Volver</b></a>
   </div>
-  <%}%>
-    
+  <%}else if (prod_eliminado==true){%>
+	<div class="alert alert-success alert-dismissible align-items-center" >
+	<a  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	    <strong>Producto eliminado con éxito!</strong>  
+</div>
+
+<%} %>
+</div>
+  
     <div class="col-lg-3">
         <br>
         <div class="list-group">

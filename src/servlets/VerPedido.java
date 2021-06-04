@@ -43,14 +43,15 @@ public class VerPedido extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LinkedList<LineaDePedido> lineas= new LinkedList<LineaDePedido>();
 		LineaDePedidoController ctrlLinea= new LineaDePedidoController();
-		PedidoController ctrlPed= new PedidoController();
-		LineaDePedido lp= new LineaDePedido();
+		//PedidoController ctrlPed= new PedidoController();
+		//LineaDePedido lp= new LineaDePedido();
 		Pedido ped= new Pedido();		
 		
 		ped=(Pedido)request.getSession(true).getAttribute("pedido");
 		lineas= ctrlLinea.getByPedido(ped);
 		
 		request.setAttribute("lineas",lineas );
+		request.setAttribute("prod_eliminado", false );
 		//request.setAttribute("mensaje", "Aún no hay productos.");
 		request.getRequestDispatcher("carrito.jsp").forward(request, response);
 		
