@@ -3,6 +3,17 @@
 <%@page import="entidades.*"%>
 <%@ page import="java.util.Calendar"%>
 <%@page import="logic.*"%>
+<!-- IMAGENES -->
+
+<%@page import="java.io.FileOutputStream"%>
+<%@page import="java.io.OutputStream"%>
+<%@page import="javax.swing.ImageIcon"%>
+<%@page import="java.io.InputStream"%>
+<%@page import="java.awt.image.BufferedImage"%>
+<%@page import="java.io.ByteArrayInputStream"%>
+<%@page import="java.awt.image.BufferedImage"%>
+<%@page import="java.util.Base64"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -166,10 +177,12 @@ function w3_close() {
 		<!-- CARDS -->
 		
 		<div class="row">
-		<%for (Producto p: lprod){ %>
+		<%for (Producto p: lprod){ 
+		String photo=Base64.getEncoder().encodeToString(p.getImagen());%>
+		
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <img src="data:image/png;base64,<%=photo%>" alt="">
               <div class="card-body">
                 <h4 class="card-title">
                   <a><b><%=p.getDescProducto()%></b></a>

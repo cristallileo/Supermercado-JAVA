@@ -63,7 +63,7 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
             <div class="col-md-9 col-lg-8 mx-auto ">
               <h3 class="login-heading mb-4 text-center">Nuevo Producto</h3>
               
-  				<form action="AddProducto" method="post">
+  				<form action="AddProducto" method="post" enctype="multipart/form-data">
   				
   				<div class="form-label-group">
                   <input type="text" name="descProd" id="descProd" class="form-control" placeholder="Descripcion" required >
@@ -85,7 +85,7 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
                   <label for="marca">Marca</label>
                 </div>
                 
-				<label for="id_cateogria">Categoria</label>
+				<label for="id_cateogria">Categoría</label>
   				<select id="id_categoria" name="id_categoria">
   				 <% for (Categoria c: lc) {
   					 if(c.getFecha_hora_baja()==null){%> 				 
@@ -97,6 +97,13 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
                   <input type="text" name="precio" id="precio" class="form-control" placeholder="Precio"  required>
                   <label for="precio">Precio</label>
                 </div>
+                
+                <div class="form-group">
+				  <label for="foto">Subir Imagen</label>  
+				  <div class="col-md-12">
+				  <input id="foto" name="foto" type="file" class="form-control input-md" required>
+				  </div>
+				</div>
                 
             	<form action="AddProducto" method="post">
     				<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se agregará un nuevo producto. Desea confirmar?')">Agregar</button>

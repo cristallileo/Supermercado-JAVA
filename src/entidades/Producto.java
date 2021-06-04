@@ -1,5 +1,6 @@
 package entidades;
 
+import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.Timestamp;
 
@@ -14,6 +15,7 @@ public class Producto implements Comparable <Producto>{
 	private Double precio;
 	private Timestamp fecha_hora_baja; 
 	private byte[] imagen;
+	private InputStream imagen_carga;
 
 	
 	
@@ -74,8 +76,14 @@ public class Producto implements Comparable <Producto>{
 		return imagen;
 	}
 
-	public void setImagen(byte[] imagen){
+	public InputStream getImagen_carga() {
+		return imagen_carga;
+	}
+	public void setImagen(byte[] imagen) {
 		this.imagen = imagen;
+	}
+	public void setImagen_carga(InputStream imagen_carga) {
+		this.imagen_carga = imagen_carga;
 	}
 	
 	@Override

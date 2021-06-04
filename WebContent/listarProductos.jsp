@@ -5,6 +5,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%> 
 <%@page import="java.util.Collections"%> 
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -159,7 +160,7 @@
 				<div class="w3-container">	 
 					<form action="AddProductoDropList" method="post">
 		 			<button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:12px;max-width:230px;height:50px;position: absolute;
-  right: 0;">Agregar Empleado</button>
+  right: 0;">Agregar Producto</button>
   			</form>
 				</div>			
 				</span>	
@@ -188,7 +189,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-	                           <% for (Producto p: lprod) { %>
+	                           <% for (Producto p: lprod) { 
+                    			 %>
 	                    			<tr>
 	                    			<td><%=p.getIdProducto()%></td>
 	                    			<td><%=p.getDescProducto()%></td>

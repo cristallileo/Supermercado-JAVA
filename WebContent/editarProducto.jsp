@@ -75,12 +75,20 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
             <div class="col-md-9 col-lg-8 mx-auto ">
               <h3 class="login-heading mb-4 text-center">Editar producto</h3>
               
-              <form action="EditProducto?id=<%=prod.getIdProducto()%>" method="post">
+              <form action="EditProducto?id=<%=prod.getIdProducto()%>" method="post" enctype="multipart/form-data">
 
                 <div class="form-label-group">
                   <input type="text" name="descProd" id="descProd" class="form-control" value="<%=prod.getDescProducto()%>" required >
                   <label for="descProd">Descripcion</label>
                 </div>
+                
+                <label for="id_categoria">Categoria</label>
+  				<select id="id_categoria" name="id_categoria">
+  				 <% for (Categoria c: lc) {
+  					 %> 				 
+   						<option value="<%= c.getIdCategoria() %>"><%= c.getDescCategoria() %></option>
+   				<% } %> 
+  				</select> 
 
                 <div class="form-label-group">
                   <input type="text" name="stock" id="stock" class="form-control" value=<%=prod.getStock()%> required>
@@ -97,20 +105,19 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
                   <label for="marca">Marca</label>
                 </div>
                 
-                <label for="id_categoria">Categoria</label>
-  				<select id="id_categoria" name="id_categoria">
-  				 <% for (Categoria c: lc) {
-  					 %> 				 
-   						<option value="<%= c.getIdCategoria() %>"><%= c.getDescCategoria() %></option>
-   				<% } %> 
-  				</select> 
-
                 <div class="form-label-group">
                   <input type="text" name="precio" id="precio" class="form-control" value=<%=prod.getPrecio()%> required>
                   <label for="precio">Precio</label>
                 </div>
                 
-                	<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se editará el producto. Desea confirmar?')">Guardar cambios</button>
+                <div class="form-group">
+				  <label for="foto">Nueva Imagen</label>  
+				  <div class="col-md-12">
+				  <input id="foto" name="foto" type="file" class="form-control input-md" required>
+				  </div>
+				</div>
+				
+				<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se editará el producto. Desea confirmar?')">Guardar cambios</button>
                 
          
               </form>

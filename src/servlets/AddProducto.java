@@ -1,16 +1,25 @@
 package servlets;
 
 import java.io.IOException;
+import java.io.InputStream;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
 import entidades.Producto;
 import logic.ProductoController;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+
+import javax.servlet.annotation.MultipartConfig;
 
 @WebServlet("/AddProducto")
-
+@MultipartConfig
 public class AddProducto extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -43,6 +52,10 @@ public class AddProducto extends HttpServlet {
 		prod.setId_categoria(id_categoria);
 		
 		prod.setPrecio(precio);
+		
+		Part Archivo =  request.getPart("foto");
+		InputStream inputstream = Archivo.getInputStream();
+		prod.setImagen_carga(inputstream);
 
 		ctrl.addProducto(prod);
 		

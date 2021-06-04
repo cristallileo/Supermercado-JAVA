@@ -25,7 +25,7 @@ import logic.*;
 public class DataProducto {
 	
 	//not used
-	public LinkedList<Producto> getByDescCat(Categoria cat){
+	/*public LinkedList<Producto> getByDescCat(Categoria cat){
 		
 		LinkedList<Producto> productos = new LinkedList <> ();
 		Producto p=null;
@@ -65,7 +65,7 @@ public class DataProducto {
 		
 		return productos;
 		
-	}
+	}*/
  
 	public LinkedList<Producto> getAll(){
 		
@@ -75,7 +75,7 @@ public class DataProducto {
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja, imagen from producto");
+			rs= stmt.executeQuery("select * from producto");
 			if(rs!=null) {
 				while(rs.next()) {
 					Producto p=new Producto();
@@ -88,9 +88,7 @@ public class DataProducto {
 					p.setPrecio(rs.getDouble("precio"));
 					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
 					p.setImagen(rs.getBytes("imagen"));
-	
 					productos.add(p);
-	
 				}
 			}
 			
@@ -161,7 +159,7 @@ public class DataProducto {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into producto(idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja) values(?,?,?,?,?,?,?,?)",
+							"insert into producto(idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja, imagen) values(?,?,?,?,?,?,?,?,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
 			stmt.setInt(1, p.getIdProducto());
@@ -172,6 +170,7 @@ public class DataProducto {
 			stmt.setInt(6, p.getId_categoria());
 			stmt.setDouble(7, p.getPrecio());
 			stmt.setTimestamp(8, p.getFecha_hora_baja());
+			stmt.setBlob(9, p.getImagen_carga());
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();
@@ -233,37 +232,7 @@ public class DataProducto {
 	return p;
 	}
 	
-	public Producto deleteProducto(Producto p) {
-		
-		PreparedStatement stmt= null;
-		ResultSet keyResultSet=null;
-		try {
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"delete from producto where producto.idProducto=? ", PreparedStatement.RETURN_GENERATED_KEYS);
-			stmt.setInt(1, p.getIdProducto());
-			
-			stmt.executeUpdate();
-			
-			keyResultSet=stmt.getGeneratedKeys();
-            if(keyResultSet!=null && keyResultSet.next()){
-                p.setIdProducto(keyResultSet.getInt(1));
-            }
-		} catch (SQLException e) {
-        e.printStackTrace();
-		} finally {
-        try {
-        	 if(keyResultSet!=null)keyResultSet.close();
-            if(stmt!=null) stmt.close();
-            DbConnector.getInstancia().releaseConn();
-        } catch (SQLException e) {
-        	e.printStackTrace();
-        }
-	}
-	return p;
-	}
-
-	//not used
+	//ver si se usa
 	public LinkedList<Producto> getByPrecio (int max) {
 		
 		LinkedList<Producto> productos = new LinkedList <> ();
@@ -309,7 +278,7 @@ public class DataProducto {
 		ResultSet rs=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja, imagen from producto where idProducto=?");
+					"select * from producto where idProducto=?");
 			
 			stmt.setInt(1, prod.getIdProducto());
 			rs=stmt.executeQuery();
@@ -393,7 +362,7 @@ public class DataProducto {
 		LinkedList<Producto> productos= new LinkedList<>();
 		
 		try {
-			stmt=DbConnector.getInstancia().getConn().prepareStatement("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria,precio, fecha_hora_baja from, imagen producto where fecha_hora_baja is null and producto.id_categoria="+cat.getIdCategoria());
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select * producto where fecha_hora_baja is null and producto.id_categoria="+cat.getIdCategoria());
 			
 		
 			rs=stmt.executeQuery();
@@ -524,7 +493,7 @@ public class DataProducto {
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja, imagen from producto where fecha_hora_baja is null");
+			rs= stmt.executeQuery("select* from producto where fecha_hora_baja is null");
 			if(rs!=null) {
 				while(rs.next()) {
 					Producto p=new Producto();

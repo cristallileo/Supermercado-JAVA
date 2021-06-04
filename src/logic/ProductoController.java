@@ -19,11 +19,7 @@ public class ProductoController {
 	public Producto editProducto (Producto p) {
 		return dp.editProducto(p);
 	}
-	
-	public Producto deleteProducto (Producto p) {
-		return dp.deleteProducto(p);
-	}
-	
+		
 	public Producto getById(Producto p) {
 		return dp.getById(p);
 	}
