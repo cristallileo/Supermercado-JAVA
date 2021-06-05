@@ -67,8 +67,15 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
   				
   				<div class="form-label-group">
                   <input type="text" name="descProd" id="descProd" class="form-control" placeholder="Descripcion" required >
-                  <label for="descProd">Descripcion</label>
+                  <label for="descProd">Descripción</label>
                 </div>
+                
+                <label for="id_cateogria">Categoría</label>
+  				<select id="id_categoria" name="id_categoria">
+  				 <% for (Categoria c: lc) {%> 				 
+   						<option value="<%= c.getIdCategoria() %>"><%= c.getDescCategoria()  %></option>
+   				<% } %> 
+  				</select> 
 
                 <div class="form-label-group">
                   <input type="text" name="stock" id="stock" class="form-control" placeholder="Stock" required>
@@ -77,21 +84,13 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
 				
 				<div class="form-label-group">
                   <input type="text" name="stockMin" id="stockMin" class="form-control" placeholder="Stock Minimo" required>
-                  <label for="stockMin">Stock Minimo</label>
+                  <label for="stockMin">Stock Mínimo</label>
                 </div>
                 
                 <div class="form-label-group">
                   <input type="text" name="marca" id="marca" class="form-control" placeholder="Marca" required>
                   <label for="marca">Marca</label>
                 </div>
-                
-				<label for="id_cateogria">Categoría</label>
-  				<select id="id_categoria" name="id_categoria">
-  				 <% for (Categoria c: lc) {
-  					 if(c.getFecha_hora_baja()==null){%> 				 
-   						<option value="<%= c.getIdCategoria() %>"><%= c.getDescCategoria()  %></option>
-   				<% }} %> 
-  				</select> 
                 
                 <div class="form-label-group">
                   <input type="text" name="precio" id="precio" class="form-control" placeholder="Precio"  required>

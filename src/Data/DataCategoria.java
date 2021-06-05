@@ -225,7 +225,7 @@ public class DataCategoria {
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idCategoria, desc_categoria from categoria where fecha_hora_baja is null");
+			rs= stmt.executeQuery("select * from categoria where fecha_hora_baja is null");
 			if(rs!=null) {
 				while(rs.next()) {
 					
@@ -233,6 +233,7 @@ public class DataCategoria {
 					
 					c.setIdCategoria(rs.getInt("idCategoria"));
 					c.setDescCategoria(rs.getString("desc_categoria"));
+					c.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
 					
 					categoriasActivas.add(c);
 				}
