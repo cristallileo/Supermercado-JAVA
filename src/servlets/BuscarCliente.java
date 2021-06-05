@@ -29,7 +29,7 @@ public class BuscarCliente extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		per.setIdPersona(id);
 		per =ctrl.getById(per);
-		request.setAttribute("clienteEditar", per);
+		request.setAttribute("cliente", per);
 		request.getRequestDispatcher("editarCliente.jsp").forward(request, response);
 	}
 

@@ -41,6 +41,9 @@
             <a class="nav-link" href="nosotros.jsp">Nosotros</a>
             <span class="sr-only">(current)</span>
           </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="BuscarCliente?id=<%=per.getIdPersona()%>">Mi cuenta</a>
+          </li>
           <li class="nav-item">
               	<a class="nav-link" href="CerrarSesion">Cerrar Sesión</a>
           </li>

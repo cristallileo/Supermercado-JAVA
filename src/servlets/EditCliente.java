@@ -49,7 +49,7 @@ public class EditCliente extends HttpServlet {
 		per.setDireccion(direccion);
 		per.setEmail(email);
 		per.setPassword(pass);
-		//per.setCuit("");
+		//per.setCuil("");
 		//per.setFechaIngreso(null);
 		//per.setCliente(true);
 		//per.setEmpleado(false);
@@ -60,9 +60,9 @@ public class EditCliente extends HttpServlet {
 				
 		per=ctrl.editPersona(per);
 	
-		request.setAttribute("cliente-editado", per);
+		request.setAttribute("usuario", per);
 		request.setAttribute("listado", ctrl.listarClientes());
-		request.getRequestDispatcher("listarClientes.jsp").forward(request, response);
+		request.getRequestDispatcher("BuscarCliente?id="+per.getIdPersona()).forward(request, response);
 			
 	}	
 }

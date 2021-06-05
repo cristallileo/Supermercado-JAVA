@@ -14,48 +14,43 @@
   <link href="style/mainpage/modern-business.css" rel="stylesheet">    
   <link href="style/login/login.css" rel="stylesheet">
   
-<% Persona per = (Persona)request.getAttribute("clienteEditar");%> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+<% Persona per = (Persona)request.getAttribute("cliente");%> 
 </head>
 <body>
 
+<!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="mainpage-admin.jsp">Supermercado</a>
+      <a class="navbar-brand" href="ListDescuentos">Supermercado</a>
 
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-
+  
           <li class="nav-item">
-            <a class="nav-link" href="ListCategorias">Categorías</a>
-          </li>        
-          <li class="nav-item">
-           <a class="nav-link" href="ListDescuentos">Descuentos</a>
+            <a class="nav-link" href="ListPedidos">Mis pedidos</a> <!--  poner en un boton -->
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="ListProductos">Productos</a>
+          </li>          
           <li class="nav-item ">
-	            <a class="nav-link" href="ListClientes">Clientes</a>
-	         
+            <a class="nav-link" href="nosotros.jsp">Nosotros</a>
           </li>
-          <li class="nav-item ">
-	            <a class="nav-link" href="ListEmpleados">Empleados</a>
-	             
-          </li>
-           <li class="nav-item">
-              <a class="nav-link" href="ListProductos">Productos</a>
-          </li>
-          <li class="nav-item">
-             <a class="nav-link" href="ListPedidos">Pedidos</a>
-              <li class="nav-item ">
-            <a class="nav-link" href="ListProveedores">Proveedores</a>
-          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="BuscarCliente?id=<%=per.getIdPersona()%>">Mi cuenta</a>
+             <span class="sr-only">(current)</span>
           </li>
           <li class="nav-item">
               	<a class="nav-link" href="CerrarSesion">Cerrar Sesión</a>
           </li>
+       
         </ul>
       </div>
     </div>
   </nav>
-
+  
   
   <div class="container-fluid">
   <div class="row no-gutter">
@@ -65,7 +60,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto ">
-              <h3 class="login-heading mb-4 text-center">Editar cliente</h3>
+              <h3 class="login-heading mb-4 text-center">Mi Cuenta</h3>
               
               <form action="EditCliente?id=<%=per.getIdPersona()%>" method="post">
                
@@ -104,7 +99,7 @@
   				<% break; 
   				} %>				
 
-                 </select>   
+                </select>   
                      
                                   
                 <div class="form-label-group">
@@ -118,7 +113,7 @@
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" name="direc" id="direc" class="form-control" value=<%=per.getDireccion() %> required>
+                  <input type="text" name="direc" id="direc" class="form-control" value=<%=per.getDireccion()%> required>
                   <label for="direc">Dirección</label>
                 </div>
                 
@@ -132,11 +127,8 @@
                   <label for="pass">Contraseña</label>
                 </div>
                 
-                
-                	<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se editará el cliente. Desea confirmar?')">Guardar cambios</button>
-                
-                
-         
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se actualizarán sus datos. Desea confirmar?')">Guardar cambios</button>
+                       
               </form>
             </div>
           </div>
