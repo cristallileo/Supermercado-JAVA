@@ -107,7 +107,7 @@
             <p></p>
           </div>
           <div class="card-footer">
-            <a href="ListPedidos" class="btn btn-primary btn-sm">Ver más</a>
+            <a href="ListPedidosPendientes" class="btn btn-primary btn-sm">Ver más</a>
           </div>
         </div>
       </div>
