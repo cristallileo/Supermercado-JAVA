@@ -76,6 +76,12 @@
     	<a  class="close" data-dismiss="alert" aria-label="close">&times;</a>
    	    <strong>Pedido cancelado con éxito.</strong> 
   </div>
+  <%} 
+  if (lp.size()==0){%>
+     	<div class="alert alert-warning alert-dismissible  center-block" style="min-width: 300px;">
+    	<a  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+   	    <strong>Aún no hay pedidos.</strong> Cuando realice pedidos los podrá consultar en esta sección. 
+  </div>
   <%} %>
   </div>
   <br>

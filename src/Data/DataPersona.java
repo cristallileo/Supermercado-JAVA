@@ -73,7 +73,7 @@ public class DataPersona {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into persona( tipoDoc, nroDoc, nombre, apellido, telefono, direccion, email, password, cuil, fechaIngreso, fechaRegistro, cliente,empleado, fecha_hora_baja) values(?,?,?,?,?,?,?,?,?,?,?,?,1,0)",
+							"insert into persona( tipoDoc, nroDoc, nombre, apellido, telefono, direccion, email, password, cuil, fechaIngreso, fechaRegistro, cliente,empleado, fecha_hora_baja) values(?,?,?,?,?,?,?,?,?,?,?,1,0,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
 			
@@ -421,7 +421,7 @@ public class DataPersona {
 		return personas;
 	}
 	
-	//PARA QUE SE USA?
+	
 	public LinkedList<Persona> getPersonaNombre(String nombre){
 		
 		LinkedList<Persona> personas = new LinkedList<Persona>();

@@ -76,23 +76,17 @@ public class AddCliente extends HttpServlet {
 		per.setPassword(pass);
 		per.setCuil("");
 		per.setFechaIngreso(null);
+		per.setFecha_hora_baja(null);
 
 		java.sql.Date timeNow = new Date(Calendar.getInstance().getTimeInMillis());
 		per.setFechaRegistro(timeNow);
-
-		//String pass2= request.getParameter("psw-repeat");
-		//per.setPassword(pass2);
-		
-		//DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-		  // LocalDateTime now = LocalDateTime.now(); 
+ 
 		cli=ctrl.addPersona(per);
 		
 		request.setAttribute("nuevoCliente", cli);
 		request.getRequestDispatcher("registro-aceptado.jsp").forward(request, response);
 					
 		}
-	
-			//cartel de q esta mal
 		
 	}
 
