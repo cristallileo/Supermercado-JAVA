@@ -54,7 +54,7 @@
                   <input type="password" name="pass" id="inputPassword" class="form-control" placeholder="Contraseña" required>
                   <label for="inputPassword">Contraseña</label>
                 </div>
-                
+                <p>${message_hab}</p>
 				<p>${message_def}</p>
 				<p>${message_sec}</p>
              

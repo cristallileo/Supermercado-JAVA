@@ -52,10 +52,13 @@ public class Inicio extends HttpServlet {
 			per= ctrl.validate(per);
 			
 			if (per!=null) {
-				
+								
 				//VEO SI ES CLIENTE O EMPLEADO
 				
 				if(per.isCliente()) {
+					
+					//VEO SI ESTÁ HABILITADO O NO.
+					if(per.getFecha_hora_baja()==null) {
 					DescuentoController ctrlDcto= new DescuentoController();
 					LinkedList<Descuento> descuentos= new LinkedList<Descuento>();
 					descuentos=ctrlDcto.listarDescuentosAct();
@@ -64,7 +67,10 @@ public class Inicio extends HttpServlet {
 					session.setAttribute("usuario", per);
 					request.setAttribute("pedido", null);
 					request.getRequestDispatcher("mainpage.jsp").forward(request, response);
-					
+					}else {
+						request.setAttribute("message_hab", "El usuario no está habilitado para operar.");
+						request.getRequestDispatcher("login.jsp").forward(request, response);
+					}
 				}
 				else if(per.isEmpleado()) {
 					HttpSession session = request.getSession(true);
