@@ -50,7 +50,8 @@ public class ListPedidos extends HttpServlet {
       		if(per.isCliente()==true) {
       			pedidos=ctrl.getByCliente(per);
       			request.setAttribute("pedidos", pedidos);
-      			request.setAttribute("mensaje", null);
+      			request.setAttribute("confirmado", false);
+      			request.setAttribute("cancelado", false);
       			request.getRequestDispatcher("mis-pedidos.jsp").forward(request, response);
       			
       		}else {
@@ -63,7 +64,7 @@ public class ListPedidos extends HttpServlet {
       		}
       			request.setAttribute("pedidos", pedidos2);
       			request.setAttribute("pedido", null);
-      			//request.setAttribute("mensaje", null);
+      			//request.setAttribute("confirmado", false);
       	        request.getRequestDispatcher("listarPedidos.jsp").forward(request, response);
       		}
 	}

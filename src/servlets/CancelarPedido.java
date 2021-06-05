@@ -9,36 +9,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import entidades.*;
-import logic.*;
+import entidades.Pedido;
+import entidades.Persona;
+import logic.PedidoController;
 
 /**
- * Servlet implementation class ConfirmarPedido
+ * Servlet implementation class CancelarPedido
  */
-@WebServlet("/ConfirmarPedido")
-public class ConfirmarPedido extends HttpServlet {
+@WebServlet("/CancelarPedido")
+public class CancelarPedido extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ConfirmarPedido() {
+    
+    public CancelarPedido() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		PedidoController ctrlPed= new PedidoController();
@@ -48,18 +41,19 @@ public class ConfirmarPedido extends HttpServlet {
 		
 		ped=(Pedido)request.getSession(true).getAttribute("pedido");
 		ped= ctrlPed.getById(ped);
-		ped.setDireccionEnvio(request.getParameter("direc"));
-	    ctrlPed.confirmarPedido(ped);
+		ped.setEstado("Cancelado");
+		ped.setFechaEntrega(null);
+	    ctrlPed.editEstado(ped);
 	    
 	    per= (Persona)request.getSession(true).getAttribute("usuario");
 	    peds= ctrlPed.getByCliente(per);
 	    
 	    request.getSession(true).setAttribute("pedido", null);
-	    //request.setAttribute("usuario", o);
 	    request.setAttribute("pedidos", peds);
-	    request.setAttribute("confirmado", true);
-	    request.setAttribute("cancelado", false);
+	    request.setAttribute("confirmado", false);
+	    request.setAttribute("cancelado", true);
 		request.getRequestDispatcher("mis-pedidos.jsp").forward(request, response);
+		
 	}
 
 }

@@ -38,6 +38,9 @@
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
     <%Persona per = (Persona)session.getAttribute("usuario");
     LinkedList<LineaDePedido> lp= (LinkedList<LineaDePedido>)request.getAttribute("lineas");
     ProductoController ctrlProd= new ProductoController();
@@ -85,33 +88,27 @@
 <div class="container">
 
    <div class="row">
-   <div class="col-lg-6"> 
+   <div class="col-lg-9"> 
 
     
   <!-- Si no hay productos en el carrito aun -->
-  <%if(lp.size()==0 && prod_eliminado==false){%>
+  <%if(lp.size()==0){%>
  	<div class="alert alert-danger alert-dismissible  center-block">
     	<a  class="close" data-dismiss="alert" aria-label="close">&times;</a>
    	    <strong>Aún no hay productos.</strong>  Seleccione los productos y podrá consultar su pedido en esta sección.<a href="ListProductos"><b> Volver</b></a>
   </div>
-  <%}else if (prod_eliminado==true){%>
-	<div class="alert alert-success alert-dismissible align-items-center" >
+  <%}else if (lp.size()>=1 && prod_eliminado==true){%>
+	<div class="alert alert-success alert-dismissible " >
 	<a  class="close" data-dismiss="alert" aria-label="close">&times;</a>
-	    <strong>Producto eliminado con éxito!</strong>  
+	    <strong>Producto eliminado con éxito!</strong> El producto se ha retirado del carrito.
 </div>
 
 <%} %>
 </div>
-  
-    <div class="col-lg-3">
-        <br>
-        <div class="list-group">
-        </div>
-      </div>
-      <!-- /.col-lg-3 -->
-      <div class="col-lg-11">
-		  <br>
-        <div class="row">
+    
+    <div class="col-lg-11">
+	<br>
+    <div class="row">
 	<!-- DESCRIPCION -->
 	<%if (lp.size()!=0){ %>
 		<div class="w3-container">
@@ -127,6 +124,10 @@
 		
 		<!-- BOTON CONFIRMAR -->
 	<%if (lp.size()!=0){ %>
+	
+	<form action="CancelarPedido" method="post">
+		 <button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2 " type="submit" style="margin:10px;max-width:200px;height:50px;position: absolute; right: 210px;">Cancelar pedido</button>
+  	</form>
 	<form action="pedirDireccion.jsp" method="post">
 		 <button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:10px;max-width:200px;height:50px;position: absolute;
   right: 0;">Confirmar pedido</button>

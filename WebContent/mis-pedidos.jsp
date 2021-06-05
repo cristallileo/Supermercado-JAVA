@@ -24,7 +24,8 @@
 
 
   <%Persona per = (Persona)session.getAttribute("usuario");
-    String mje= (String)request.getAttribute("mensaje");
+  	Boolean confirmado= (Boolean)request.getAttribute("confirmado");
+  	Boolean cancelado= (Boolean)request.getAttribute("cancelado");
 	Pedido ped= (Pedido)session.getAttribute("pedido");
 	LinkedList<Pedido> lp = (LinkedList<Pedido>)request.getAttribute("pedidos");
 	String MES[] = {"Enero", "Feb", "Marzo", "Abril", "Mayo", "Jun", "Jul", "Agosto", "Sept", "Oct", "Nov", "Dic"};
@@ -65,12 +66,17 @@
     <div class="row">
  
   <!-- Si viene de confirmar un pedido: -->
-  <%if(mje!=null){%>
+  <%if(confirmado==true){%>
  	<div class="alert alert-success alert-dismissible  center-block">
     	<a  class="close" data-dismiss="alert" aria-label="close">&times;</a>
    	    <strong>Su pedido ha sido registrado con éxito.</strong> En esta sección podrá consultar el estado del mismo.
   </div>
-  <%}%>
+  <%}else if (cancelado==true){%>
+   	<div class="alert alert-success alert-dismissible  center-block" style="min-width: 300px;">
+    	<a  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+   	    <strong>Pedido cancelado con éxito.</strong> 
+  </div>
+  <%} %>
   </div>
   <br>
   <h3>Historial de Pedidos</h2>

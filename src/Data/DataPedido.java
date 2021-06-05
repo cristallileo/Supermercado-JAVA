@@ -54,7 +54,6 @@ public class DataPedido {
 	public void add(Pedido p) { 
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
-		Pedido ped = new Pedido();
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
@@ -221,6 +220,7 @@ public class DataPedido {
 	}
 	}
 
+	
 	public LinkedList<Pedido> getByCliente(Persona per) {
 		LinkedList<Pedido> pedidos= new LinkedList<Pedido>();
 		PreparedStatement stmt=null;

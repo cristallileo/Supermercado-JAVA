@@ -1,9 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.util.Calendar;
 import java.util.LinkedList;
 
 import javax.servlet.ServletException;
