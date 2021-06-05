@@ -6,6 +6,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import entidades.Categoria;
 import entidades.Producto;
 import logic.CategoriaController;
 import logic.ProductoController;
@@ -43,11 +45,14 @@ public class BuscarProducto extends HttpServlet {
 		
 		ProductoController ctrl= new ProductoController();
 		CategoriaController ctrlCat= new CategoriaController();
+		Categoria cat= new Categoria();
 		Producto prod= new Producto();
 		int id= Integer.parseInt(request.getParameter("id"));
 		prod.setIdProducto(id);
 		prod =ctrl.getById(prod);
+		cat= ctrl.getCategoria(prod);
 			
+		request.setAttribute("cat",	cat);
 		request.setAttribute("productoEditar", prod);
 		request.setAttribute("categorias", ctrlCat.listAllCategorias() );
 		request.getRequestDispatcher("editarProducto.jsp").forward(request, response);

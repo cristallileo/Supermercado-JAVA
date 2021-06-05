@@ -11,7 +11,6 @@ import javax.servlet.http.Part;
 
 import entidades.Producto;
 import logic.ProductoController;
-import java.io.IOException;
 import java.io.InputStream;
 
 
@@ -35,14 +34,16 @@ public class EditProducto extends HttpServlet {
 		ProductoController ctrl= new ProductoController();
 		
 		int id = Integer.parseInt(request.getParameter("id"));
+		prod.setIdProducto(id);
+		prod= ctrl.getById(prod);
+		
 		String descProd= request.getParameter("descProd");
 		int stock = Integer.parseInt(request.getParameter("stock"));
 		int stockMin = Integer.parseInt(request.getParameter("stockMin"));
 		String marca = request.getParameter("marca");
 		int categ = Integer.parseInt(request.getParameter("id_categoria"));
-		Double precio= Double.parseDouble(request.getParameter("precio"));					
-				
-	    prod.setIdProducto(id);
+		Double precio= Double.parseDouble(request.getParameter("precio"));		
+		
 	    prod.setDescProducto(descProd);
 	    prod.setStock(stock);
 	    prod.setStockMinimo(stockMin);
@@ -50,11 +51,18 @@ public class EditProducto extends HttpServlet {
 	    prod.setId_categoria(categ);
 	    prod.setPrecio(precio);	
 
-		Part Archivo =  request.getPart("foto");
+	    boolean isthereafile = false;
+	    Part Archivo =  request.getPart("foto");
+		if(Archivo.getSize()>0){
+		isthereafile = true;
 		InputStream inputstream = Archivo.getInputStream();
 		prod.setImagen_carga(inputstream);
-		
-	    prod=ctrl.editProducto(prod);
+		}
+		if(Archivo.getSize()<=0){
+		isthereafile = false;
+		}
+				
+	    prod=ctrl.editProducto(prod, isthereafile);
 
 		request.setAttribute("producto-editado", prod);
 		request.setAttribute("productos", ctrl.listAllProductos());

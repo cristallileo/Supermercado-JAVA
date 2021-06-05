@@ -43,7 +43,7 @@ public class HabilitarCategorias extends HttpServlet {
 		prods= ctrlProd.listarByCategoria(c);
 		for (Producto p: prods) {
 			p.setFecha_hora_baja(null);
-			p=ctrlProd.editProducto(p);
+			p=ctrlProd.actualizarProducto(p);
 		}
 		
 		request.setAttribute("categorias", ctrl.listAllCategorias());

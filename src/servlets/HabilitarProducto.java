@@ -38,7 +38,7 @@ public class HabilitarProducto extends HttpServlet {
 		c= ctrl.getCategoria(p);
 		if (c.getFecha_hora_baja()==null) {
 			p.setFecha_hora_baja(null);
-			p=ctrl.editProducto(p);
+			p=ctrl.actualizarProducto(p);
 			//request.setAttribute("catDeshabilitada", c);
 			request.setAttribute("productos", ctrl.listAllProductos());
 			request.setAttribute("categorias", ctrlCat.listAllCategorias());

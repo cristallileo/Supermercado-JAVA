@@ -21,6 +21,7 @@
    <link href="style/login/login.css" rel="stylesheet">
   
 <% Producto prod = (Producto)request.getAttribute("productoEditar");
+		  Categoria cat= (Categoria)request.getAttribute("cat");
 LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categorias");
 %> 
 </head>
@@ -84,9 +85,9 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
                 
                 <label for="id_categoria">Categoria</label>
   				<select id="id_categoria" name="id_categoria">
-  				 <% for (Categoria c: lc) {
-  					 %> 				 
-   						<option value="<%= c.getIdCategoria() %>"><%= c.getDescCategoria() %></option>
+  					<option value="<%=cat.getIdCategoria()%>" selected><%=cat.getDescCategoria()%></option>
+  				 <% for (Categoria c: lc) { %> 				 
+   					<option value="<%=c.getIdCategoria() %>"><%= c.getDescCategoria() %></option>
    				<% } %> 
   				</select> 
 
@@ -113,7 +114,7 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
                 <div class="form-group">
 				  <label for="foto">Nueva Imagen</label>  
 				  <div class="col-md-12">
-				  <input id="foto" name="foto" type="file" class="form-control input-md" required>
+				  <input id="foto" name="foto" type="file" class="form-control input-md" >
 				  </div>
 				</div>
 				

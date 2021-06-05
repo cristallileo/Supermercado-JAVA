@@ -66,7 +66,7 @@ public class DeshabilitarCategoria extends HttpServlet {
 			java.sql.Date ts2 = new Date(Calendar.getInstance().getTimeInMillis());
 			Timestamp timeNow2=new Timestamp(ts2.getTime());  
 			p.setFecha_hora_baja(timeNow2);
-			p=ctrlProd.editProducto(p);
+			p=ctrlProd.actualizarProducto(p);
 		}
 		//request.setAttribute("catDeshabilitada", c);
 		request.setAttribute("categorias", ctrl.listAllCategorias());

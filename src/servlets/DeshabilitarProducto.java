@@ -58,7 +58,7 @@ public class DeshabilitarProducto extends HttpServlet {
 		java.sql.Date ts = new Date(Calendar.getInstance().getTimeInMillis());
 		Timestamp timeNow=new Timestamp(ts.getTime());  
 		p.setFecha_hora_baja(timeNow);
-		p=ctrl.editProducto(p);
+		p=ctrl.actualizarProducto(p);
 		//request.setAttribute("catDeshabilitada", c);
 		request.setAttribute("productos", ctrl.listAllProductos());
 		request.setAttribute("categorias", ctrlCat.listAllCategorias());

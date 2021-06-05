@@ -110,24 +110,24 @@ public class DataProducto {
 		return productos;
 	}
 
-	public void add(Producto p) {  //SE AGREGA DISTINTO LA IMG
+	public void add(Producto p) { 
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into producto(idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja, imagen) values(?,?,?,?,?,?,?,?,?)",
+							"insert into producto(desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja, imagen) values(?,?,?,?,?,?,?,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
-			stmt.setInt(1, p.getIdProducto());
-			stmt.setString(2, p.getDescProducto());
-			stmt.setInt(3, p.getStock());
-			stmt.setInt(4, p.getStockMinimo());
-			stmt.setString(5, p.getMarca());
-			stmt.setInt(6, p.getId_categoria());
-			stmt.setDouble(7, p.getPrecio());
-			stmt.setTimestamp(8, p.getFecha_hora_baja());
-			stmt.setBlob(9, p.getImagen_carga());
+			//stmt.setInt(1, p.getIdProducto());
+			stmt.setString(1, p.getDescProducto());
+			stmt.setInt(2, p.getStock());
+			stmt.setInt(3, p.getStockMinimo());
+			stmt.setString(4, p.getMarca());
+			stmt.setInt(5, p.getId_categoria());
+			stmt.setDouble(6, p.getPrecio());
+			stmt.setTimestamp(7, p.getFecha_hora_baja());
+			stmt.setBlob(8, p.getImagen_carga());
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();
@@ -149,11 +149,14 @@ public class DataProducto {
 		}
 		
     }
-
-	public Producto editProducto (Producto p) {
+	
+	//Para la edicion del producto desde el admin
+	public Producto editProducto (Producto p,Boolean isthereafile) {
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
 		try {
+		if(isthereafile==true) {
+		
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
 							"UPDATE `tp_java`.`producto` SET `desc_producto` = ?, `stock` = ?, `stockMinimo` = ?, `marca` = ?, `id_categoria` = ?, `precio` = ?, `fecha_hora_baja` = ?, `imagen` = ? WHERE (`idProducto` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
@@ -167,15 +170,68 @@ public class DataProducto {
 			stmt.setTimestamp(7, p.getFecha_hora_baja());
 			stmt.setBlob(8, p.getImagen_carga());
 			stmt.setInt(9, p.getIdProducto());
-
-			stmt.executeUpdate();
 			
+			stmt.executeUpdate();
+		}else {
+			stmt=DbConnector.getInstancia().getConn().
+					prepareStatement(
+							"UPDATE `tp_java`.`producto` SET `desc_producto` = ?, `stock` = ?, `stockMinimo` = ?, `marca` = ?, `id_categoria` = ?, `precio` = ?, `fecha_hora_baja` = ? WHERE (`idProducto` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+				
+			stmt.setString(1, p.getDescProducto());
+			stmt.setInt(2, p.getStock());
+			stmt.setInt(3, p.getStockMinimo());
+			stmt.setString(4, p.getMarca());
+			stmt.setInt(5, p.getId_categoria());
+			stmt.setDouble(6, p.getPrecio());
+			stmt.setTimestamp(7, p.getFecha_hora_baja());
+			stmt.setInt(8, p.getIdProducto());
+			
+			stmt.executeUpdate();			
+		}
 			keyResultSet=stmt.getGeneratedKeys();
             if(keyResultSet!=null && keyResultSet.next()){
                 p.setIdProducto(keyResultSet.getInt(1));
             }
 		}
+		catch (SQLException e) {
+        e.printStackTrace();
+		} finally {
+        try {
+        	 if(keyResultSet!=null)keyResultSet.close();
+            if(stmt!=null) stmt.close();
+            DbConnector.getInstancia().releaseConn();
+        } catch (SQLException e) {
+        	e.printStackTrace();
+        }
+	}
+	return p;
+	}
+	
+	//Para los cambios que se van haciendo del producto (habilitación/deshabilitación/etc) que no son hechos por el admin
+	public Producto actualizarProducto (Producto p) {
+		PreparedStatement stmt= null;
+		ResultSet keyResultSet=null;
+		try {		
+			stmt=DbConnector.getInstancia().getConn().
+					prepareStatement(
+							"UPDATE `tp_java`.`producto` SET `desc_producto` = ?, `stock` = ?, `stockMinimo` = ?, `marca` = ?, `id_categoria` = ?, `precio` = ?, `fecha_hora_baja` = ? WHERE (`idProducto` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+				
+			stmt.setString(1, p.getDescProducto());
+			stmt.setInt(2, p.getStock());
+			stmt.setInt(3, p.getStockMinimo());
+			stmt.setString(4, p.getMarca());
+			stmt.setInt(5, p.getId_categoria());
+			stmt.setDouble(6, p.getPrecio());
+			stmt.setTimestamp(7, p.getFecha_hora_baja());
+			stmt.setInt(8, p.getIdProducto());
+			
+			stmt.executeUpdate();
 		
+			keyResultSet=stmt.getGeneratedKeys();
+            if(keyResultSet!=null && keyResultSet.next()){
+                p.setIdProducto(keyResultSet.getInt(1));
+            }
+		}
 		catch (SQLException e) {
         e.printStackTrace();
 		} finally {

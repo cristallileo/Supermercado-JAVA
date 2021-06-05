@@ -15,11 +15,17 @@ public class ProductoController {
 	public LinkedList<Producto> listAllProductos() {
 		return dp.getAll();
 	}
-
-	public Producto editProducto (Producto p) {
-		return dp.editProducto(p);
+	
+	//Para la edicion del producto desde el admin
+	public Producto editProducto (Producto p, Boolean isthereafile) {
+		return dp.editProducto(p,isthereafile);
 	}
-		
+	
+	//Para los cambios que se van haciendo del producto (habilitación/deshabilitación/etc) que no son hechos por el admin
+	public Producto actualizarProducto (Producto p) {
+		return dp.actualizarProducto(p);
+	}
+	
 	public Producto getById(Producto p) {
 		return dp.getById(p);
 	}
