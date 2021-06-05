@@ -23,50 +23,7 @@ import logic.*;
 @SuppressWarnings("unused")
 
 public class DataProducto {
-	
-	//not used
-	/*public LinkedList<Producto> getByDescCat(Categoria cat){
-		
-		LinkedList<Producto> productos = new LinkedList <> ();
-		Producto p=null;
-		PreparedStatement stmt=null;
-		ResultSet rs=null;
-		try {
-			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select p.idProducto, p.desc_producto, p.stock, p.stockMinimo, p.marca, p.id_categoria, p.precio, p.fecha_hora_baja imagen from producto p inner join categoria c on c.idCategoria=p.id_categoria where c.desc_categoria=?"
-					);
-			stmt.setString(1, cat.getDescCategoria());
-			rs=stmt.executeQuery();
-			if(rs!=null && rs.next()) {
-				p=new Producto();
-				p.setIdProducto(rs.getInt("idProducto"));
-				p.setDescProducto(rs.getString("desc_producto"));
-				p.setStock(rs.getInt("stock"));
-				p.setStockMinimo(rs.getInt("stockMinimo"));
-				p.setMarca(rs.getString("marca"));
-				p.setId_categoria(rs.getInt("id_categoria"));
-				p.setPrecio(rs.getDouble("precio"));
-				p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
-				p.setImagen(rs.getBytes("imagen"));	
-				productos.add(p);
-				
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				if(rs!=null) {rs.close();}
-				if(stmt!=null) {stmt.close();}
-				DbConnector.getInstancia().releaseConn();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return productos;
-		
-	}*/
- 
+	 
 	public LinkedList<Producto> getAll(){
 		
 		Statement stmt=null;
@@ -208,8 +165,9 @@ public class DataProducto {
 			stmt.setInt(5, p.getId_categoria());
 			stmt.setDouble(6, p.getPrecio());
 			stmt.setTimestamp(7, p.getFecha_hora_baja());
-			stmt.setInt(8, p.getIdProducto());
-			stmt.setBytes(9, p.getImagen());
+			stmt.setBlob(8, p.getImagen_carga());
+			stmt.setInt(9, p.getIdProducto());
+
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();

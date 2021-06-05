@@ -49,9 +49,11 @@ public class EditProducto extends HttpServlet {
 	    prod.setMarca(marca);
 	    prod.setId_categoria(categ);
 	    prod.setPrecio(precio);	
+
 		Part Archivo =  request.getPart("foto");
 		InputStream inputstream = Archivo.getInputStream();
 		prod.setImagen_carga(inputstream);
+		
 	    prod=ctrl.editProducto(prod);
 
 		request.setAttribute("producto-editado", prod);
