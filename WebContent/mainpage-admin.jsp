@@ -77,7 +77,7 @@
             <p class="card-text">Descuentos activos actualmente: <b><%=cant %></b></p>
           </div>
           <div class="card-footer">
-            <a href="ListDescuentos" class="btn btn-primary btn-sm">Ver más</a>
+            <a href="ListDescuentosActivos" class="btn btn-primary btn-sm">Ver más</a>
           </div>
         </div>
       </div>
