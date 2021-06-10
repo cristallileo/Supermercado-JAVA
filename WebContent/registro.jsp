@@ -25,7 +25,9 @@
 	            <a class="nav-link" href="registro.jsp">Registrarse</a>
 	             <span class="sr-only">(current)</span>
 	          </li>
-	          
+	          <li class="nav-item">
+	           <a class="nav-link" href="consulta.jsp">Contacto</a>
+	          </li>
 	        </ul>
 	      </div>
 	    </div>

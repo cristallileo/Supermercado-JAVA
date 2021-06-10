@@ -28,7 +28,9 @@
 	          <li class="nav-item">
 	            <a class="nav-link" href="registro.jsp">Registrarse</a>
 	          </li>
-	          
+	          <li class="nav-item">
+	           	<a class="nav-link" href="consulta.jsp">Contacto</a>
+	          </li>
 	        </ul>
 	      </div>
 	    </div>

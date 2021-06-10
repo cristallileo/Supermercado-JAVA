@@ -35,8 +35,8 @@
           <li class="nav-item">
             <a class="nav-link" href="ListProductos">Productos</a>
           </li>          
-          <li class="nav-item ">
-            <a class="nav-link" href="nosotros.jsp">Nosotros</a>
+          <li class="nav-item">
+            <a class="nav-link" href="contacto.jsp">Contacto</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="BuscarCliente?id=<%=per.getIdPersona()%>">Mi cuenta</a>
@@ -74,8 +74,12 @@
                   <label for="surname">Apellido</label>
                 </div>
 				
+				
+				
 				<label for="tipoDoc">Elegir Tipo Doc:</label>
   				<select id="inputTipoDoc" name="tipoDoc">
+  				
+  				
   				
   				<% switch (per.getTipoDoc()) 
   				{ 
