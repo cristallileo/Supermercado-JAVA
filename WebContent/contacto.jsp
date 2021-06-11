@@ -61,7 +61,7 @@
             <div class="col-md-9 col-lg-8 mx-auto ">
               <h3 class="login-heading mb-4 text-center">Dejanos tu consulta</h3>
               
-              <form action="EnviarConsulta" method="post">
+              <form action="EnviarCorreo" method="post">
                <!--  <div class="form-label-group">
                   <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Correo electrónico" required >
                   <label for="inputEmail">Correo electrónico</label>
@@ -73,7 +73,7 @@
                 </div>
 
 			  <label for="mensaje">Mensaje</label>
-			  <textarea id="mensaje" name="mensaje" class="form-control" rows="5" cols="50" placeholder="Dejá tu consulta aquí.">
+			  <textarea id="mensaje" name="mensaje" class="form-control" rows="5" cols="50" placeholder="Dejá tu consulta aquí." required>
 			  </textarea>           
 			  <br>  
               <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Enviar</button>

@@ -33,8 +33,9 @@ public class DbConnector {
 	public Connection getConn() {
 		try {
 			if(conn==null || conn.isClosed()) {
-				//conn=DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+db, user, password);
+				//conn=DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+ db +"?user="+ user + "&password=" + password +"&useSSL=false" );
 				conn=DriverManager.getConnection("jdbc:mysql://" +host+":"+port+"/"+ db, user, password);
+				//conn=DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + db + "?user=" + user + "&password=" + password + "&useSSL=true");
 				conectados=0;
 			}
 		} catch (SQLException e) {
