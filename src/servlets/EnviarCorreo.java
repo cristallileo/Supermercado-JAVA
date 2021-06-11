@@ -61,10 +61,10 @@ public class EnviarCorreo extends HttpServlet {
 		System.out.println("1");
 		Session session = Session.getDefaultInstance(props);
 		
-		String mail_emisor = "anelisabruno@gmail.com";
-		String pass_emisor="anelisaingeniera";
+		String mail_emisor = "@gmail.com";
+		String pass_emisor="";
 		
-		String mail_receptor= "testing.kodear@gmail.com";
+		String mail_receptor= "@gmail.com";
 		
 		
 		MimeMessage message = new MimeMessage(session);
