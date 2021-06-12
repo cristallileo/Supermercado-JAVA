@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import entidades.*;
 import logic.LineaDePedidoController;
-import logic.PedidoController;
 
 /**
  * Servlet implementation class VerPedido

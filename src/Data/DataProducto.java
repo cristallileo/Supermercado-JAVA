@@ -538,6 +538,28 @@ public class DataProducto {
 		}			
 		return productosActivos;
 	}
-
 	
+	public void actualizarStock(int id_prod, int cant) {
+		PreparedStatement stmt= null;
+		ResultSet keyResultSet=null;
+		try {
+			stmt = DbConnector.getInstancia().getConn().prepareStatement("UPDATE tp_java.producto SET stock = stock - ? WHERE (idProducto = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+			
+			stmt.setInt(1, cant);
+			stmt.setInt(2, id_prod);
+			
+			stmt.executeUpdate();
+		}
+		catch (SQLException e) {
+	        e.printStackTrace();
+			} finally {
+	        try {
+	        	 if(keyResultSet!=null)keyResultSet.close();
+	            if(stmt!=null) stmt.close();
+	            DbConnector.getInstancia().releaseConn();
+	        } catch (SQLException e) {
+	        	e.printStackTrace();
+	        }
+		}
+	}	
 }
