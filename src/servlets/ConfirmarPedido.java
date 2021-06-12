@@ -42,6 +42,9 @@ public class ConfirmarPedido extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		PedidoController ctrlPed= new PedidoController();
+		ProductoController ctrlPro = new ProductoController();
+		LineaDePedidoController ctrlLinea = new LineaDePedidoController();
+		LinkedList<LineaDePedido> lineas= new LinkedList<LineaDePedido>();
 		LinkedList<Pedido> peds= new LinkedList<Pedido>();
 		Pedido ped= new Pedido();
 		Persona per = new Persona();
@@ -49,7 +52,9 @@ public class ConfirmarPedido extends HttpServlet {
 		ped=(Pedido)request.getSession(true).getAttribute("pedido");
 		ped= ctrlPed.getById(ped);
 		ped.setDireccionEnvio(request.getParameter("direc"));
-	    ctrlPed.confirmarPedido(ped);
+	    ctrlPed.confirmarPedido(ped);	    
+	    lineas = ctrlLinea.getByPedido(ped);
+	    ctrlPro.actualizarStock(lineas);
 	    
 	    per= (Persona)request.getSession(true).getAttribute("usuario");
 	    peds= ctrlPed.getByCliente(per);

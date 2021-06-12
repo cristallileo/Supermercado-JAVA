@@ -84,4 +84,11 @@ public class ProductoController {
 		prods=this.listarBajoStock();
 		return prods.size();
 	}
+	
+	public void actualizarStock(LinkedList<LineaDePedido> lineas) {
+		for(LineaDePedido linea: lineas) {
+			dp.actualizarStock(linea.getId_producto(), linea.getCantidad());
+		}
+	}
+	
 }

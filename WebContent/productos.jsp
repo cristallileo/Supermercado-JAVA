@@ -218,24 +218,15 @@ function w3_close() {
           </div>
 
         <%} %>
-
         </div>
         
-        <!-- /.row -->
 
       </div>
-      <!-- /.col-lg-9 -->
 
     </div>
-    <!-- /.row -->
 
   </div>
-  <!-- /.container -->
-
-  <br>
-
-  
-  
+  <br> 
 </body>
 
 </html>
