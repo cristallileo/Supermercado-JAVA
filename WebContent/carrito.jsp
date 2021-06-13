@@ -126,7 +126,7 @@
 	<%if (lp.size()!=0){ %>
 	
 	<form action="CancelarPedido" method="post">
-		 <button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2 " type="submit" style="margin:10px;max-width:200px;height:50px;position: absolute; right: 210px;">Cancelar pedido</button>
+		 <button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2 " type="submit" style="margin:10px;max-width:200px;height:50px;position: absolute; right: 210px;" onclick="return confirm('Se cancelará el pedido. Desea confirmar?')">Cancelar pedido</button>
   	</form>
 	<form action="pedirDireccion.jsp" method="post">
 		 <button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:10px;max-width:200px;height:50px;position: absolute;

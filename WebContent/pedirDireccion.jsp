@@ -61,7 +61,7 @@
                 </div>
 
                 
-                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Desea confirma su pedido?')">Confirmar</button>
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit"  onclick="return confirm('Se confirmará el pedido. Desea confirmar?')">Confirmar</button>
                 </form>
                 
       	     
