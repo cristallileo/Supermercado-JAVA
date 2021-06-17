@@ -67,6 +67,8 @@ public class ProductoController {
 		return c;
 	}
 	
+
+	
 	public LinkedList<Producto> listarBajoStock(){
 		LinkedList<Producto> prods = new LinkedList<Producto>();
 		LinkedList<Producto> bajo_stock = new LinkedList<Producto>();
@@ -90,5 +92,6 @@ public class ProductoController {
 			dp.actualizarStock(linea.getId_producto(), linea.getCantidad());
 		}
 	}
+	
 	
 }

@@ -52,23 +52,24 @@ public class AddLinea extends HttpServlet {
 		int idProd= Integer.parseInt(request.getParameter("idProd"));
 		p.setIdProducto(idProd);
 		p= ctrlProd.getById(p);
-		lp.setId_producto(p.getIdProducto());
 		
 		ped= (Pedido)request.getSession(true).getAttribute("pedido");
 		ped=ctrlPed.getById(ped);
-		lp.setId_pedido(ped.getIdPedido());
 		
 		int cant= Integer.parseInt(request.getParameter("cant"));
+		
+		//CHEQUEO SI HAY ESA CANTIDAD EN STOCK
+		
+		lp.setId_producto(p.getIdProducto());
+		lp.setId_pedido(ped.getIdPedido());
 		lp.setCantidad(cant);
-		
+			
 		ctrl.addLinea(lp);
-		
+			
 		//HAGO CALCULOS DE PRECIOS PARA SUMAR AL SUBTOTAL DE Pedido
-	
 		double subtot= cant* p.getPrecio();
 		ped.setPrecioTotal(ped.getPrecioTotal()+subtot);
 		ctrlPed.editTotal(ped);
-		
 		
 		LinkedList<Producto> productos= new LinkedList<Producto>();
 		LinkedList<Categoria> categorias= new LinkedList<Categoria>();

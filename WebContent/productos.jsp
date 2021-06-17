@@ -56,7 +56,8 @@
   <% LinkedList<Producto> lprod = (LinkedList<Producto>)request.getAttribute("productos");
    	 LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categorias");
    	 String descrip= (String)request.getAttribute("descrip");
- 	Pedido ped= (Pedido)request.getSession(true).getAttribute("pedido");%>
+ 	Pedido ped= (Pedido)request.getSession(true).getAttribute("pedido");
+ 	%>
 
 <script>
 function w3_open() {
@@ -207,7 +208,7 @@ function w3_close() {
 			<form action="AddLinea">
               <div class="card-footer">
                 <!-- ESPACIO PARA SELECCIONAR CANTIDAD DEL PRODUCTO -->
-				  <input type="number" id="cant" name="cant" value="0" step="1" min="0" max="99">
+				  <input type="number" id="cant" name="cant" value="0" step="1" min="0" max="<%=p.getStock()%>">
 				  <input   type="hidden" id="idProd" name="idProd" value="<%=p.getIdProducto()%>"  >
 				  <button class="btn btn-primary btn-sm" type="submit" style="margin-left: 125px;">Añadir</button>
 				 
