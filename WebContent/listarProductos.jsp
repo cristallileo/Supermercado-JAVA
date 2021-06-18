@@ -158,9 +158,13 @@
 			<div class="col">
 				<span style="text-align: right; vertical-align: bottom;">            	
 				<div class="w3-container">	 
-					<form action="AddProductoDropList" method="post">
+				<form action="AddProductoDropList" method="post">
 		 			<button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:12px;max-width:230px;height:50px;position: absolute;
   right: 0;">Agregar Producto</button>
+  			</form>
+  			<form action="ingresarStock.jsp" method="post">
+		 		<button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:12px;max-width:230px;height:50px;position: absolute;
+  right: 0;">Ingresar stock</button>
   			</form>
 				</div>			
 				</span>	

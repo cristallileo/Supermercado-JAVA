@@ -64,7 +64,7 @@ public class PedidoController {
 		LinkedList<Pedido> pedidos2= new LinkedList<Pedido>();
 		pedidos= this.listarPedidos();
 		for(Pedido p: pedidos) {
-			if(p.getEstado().equals("Despachado")) {
+			if(p.getEstado().equals("Confirmado")) {
 				pedidos2.add(p);
 			}
 		}
@@ -76,5 +76,17 @@ public class PedidoController {
 		pedidos=this.listarPendientes();
 		return pedidos.size();
 	}
+	
+	/*public int contarDespachados() {
+		LinkedList<Pedido> pedidos= new LinkedList<Pedido>();
+		LinkedList<Pedido> pedidos2= new LinkedList<Pedido>();
+		pedidos= this.listarPedidos();
+		for(Pedido p: pedidos) {
+			if(p.getEstado().equals("Despachado")) {
+				pedidos2.add(p);
+			}
+		}
+		return pedidos2.size();
+	}*/
 
 }

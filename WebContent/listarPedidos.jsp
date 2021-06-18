@@ -69,7 +69,9 @@ DescuentoController ctrlD= new DescuentoController();
              <span class="sr-only">(current)</span>
               <li class="nav-item ">
             <a class="nav-link" href="ListProveedores">Proveedores</a>
-       
+       <li class="nav-item ">
+            <a class="nav-link" href="ingresarStock.jsp">Stock</a>
+          </li>
           <li class="nav-item">
               	<a class="nav-link" href="CerrarSesion">Cerrar Sesión</a>
           </li>
