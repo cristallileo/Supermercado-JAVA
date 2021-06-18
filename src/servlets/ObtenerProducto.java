@@ -11,41 +11,39 @@ import entidades.Producto;
 import logic.ProductoController;
 
 /**
- * Servlet implementation class IngresarStock
+ * Servlet implementation class ObtenerProducto
  */
-@WebServlet("/IngresarStock")
-public class IngresarStock extends HttpServlet {
+@WebServlet("/ObtenerProducto")
+public class ObtenerProducto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public IngresarStock() {
+	
+    public ObtenerProducto() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 		doPost(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Producto prod= new Producto();		
 		ProductoController ctrl= new ProductoController();
-		
+		Producto prod= new Producto();
 		int id= Integer.parseInt(request.getParameter("id"));
 		prod.setIdProducto(id);
 		prod =ctrl.getById(prod);
-	
 		
-		int stock = Integer.parseInt(request.getParameter("stock"));
-		int cant= stock + prod.getStock();
-		prod.setStock(cant);
+		if(prod==null) {
+			request.setAttribute("encontrado", false);
+		}else {
+			request.setAttribute("encontrado", true);
+			request.setAttribute("prod", prod);
+		}
 			
-		ctrl.agregoStock(prod);
-		
-		request.getRequestDispatcher("ingresarStock.jsp").forward(request, response);
-		
+		request.getRequestDispatcher("ingresarStock2.jsp").forward(request, response);
 	}
 
 }

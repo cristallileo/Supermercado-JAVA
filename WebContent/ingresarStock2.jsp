@@ -20,6 +20,9 @@
     
    <link href="style/login/login.css" rel="stylesheet">
   
+  
+  <%Producto prod = (Producto)request.getAttribute("prod"); %>
+  
 </head>
 <body>
 <!-- Navigation -->
@@ -75,14 +78,25 @@
             <div class="col-md-9 col-lg-8 mx-auto ">
               <h3 class="login-heading mb-4 text-center">Ingresar stock</h3>
 
-				<form action="ObtenerProducto" method="post">
-	                <div class="form-label-group">
-	                  <input type="text" name="id" id="id" class="form-control" placeholder="ID del producto" required >
-	                  <label for="id">ID Producto</label>
+            
+				<form action="IngresarStock" method="post" >
+				
+	               <div class="form-label-group">
+	                  <input type="text" name="desc" id="desc" class="form-control" value="<%=prod.getDescProducto() %>" placeholder="Producto" disabled >
+	                  <label for="desc">Producto</label>
+	              </div>
+	              <div class="form-label-group">
+                 	 <input type="text" name="stock" id="stock" class="form-control" placeholder="Cantidad" >
+	                  <label for="stock">Cantidad a ingresar</label>
+                  </div>
+                  <div class="form-label-group">
+	                  <input type="hidden" name="id" id="id" value="<%=prod.getIdProducto() %>" class="form-control"  >
+	               
 	                </div>
-                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Buscar</button>
                 
-              </form>			
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Guardar</button>
+                
+              </form>		
 				
             </div>
           </div>

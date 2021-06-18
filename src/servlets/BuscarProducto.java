@@ -42,20 +42,22 @@ public class BuscarProducto extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// doGet(request, response);
-		
 		ProductoController ctrl= new ProductoController();
-		CategoriaController ctrlCat= new CategoriaController();
-		Categoria cat= new Categoria();
 		Producto prod= new Producto();
 		int id= Integer.parseInt(request.getParameter("id"));
 		prod.setIdProducto(id);
 		prod =ctrl.getById(prod);
+	
+		CategoriaController ctrlCat= new CategoriaController();
+		Categoria cat= new Categoria();
+		
 		cat= ctrl.getCategoria(prod);
-			
+		
 		request.setAttribute("cat",	cat);
 		request.setAttribute("productoEditar", prod);
 		request.setAttribute("categorias", ctrlCat.listAllCategorias() );
 		request.getRequestDispatcher("editarProducto.jsp").forward(request, response);
+				
 		
 	}
 

@@ -93,5 +93,9 @@ public class ProductoController {
 		}
 	}
 	
+	public void agregoStock (Producto prod) {
+		dp.agregoStock(prod);
+	}
+	
 	
 }

@@ -110,6 +110,9 @@
            <li class="nav-item ">
             <a class="nav-link" href="ListProveedores">Proveedores</a>
           </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="ingresarStock.jsp">Stock</a>
+          </li>
           <li class="nav-item">
               	<a class="nav-link" href="CerrarSesion">Cerrar Sesión</a>
           </li>
@@ -162,10 +165,10 @@
 		 			<button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:12px;max-width:230px;height:50px;position: absolute;
   right: 0;">Agregar Producto</button>
   			</form>
-  			<form action="ingresarStock.jsp" method="post">
+  			<!-- <form action="ingresarStock.jsp" method="post">
 		 		<button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:12px;max-width:230px;height:50px;position: absolute;
   right: 0;">Ingresar stock</button>
-  			</form>
+  			</form>-->
 				</div>			
 				</span>	
 			</div>

@@ -561,5 +561,31 @@ public class DataProducto {
 	        	e.printStackTrace();
 	        }
 		}
+	}
+
+	public void agregoStock(Producto prod) {
+		PreparedStatement stmt= null;
+		ResultSet keyResultSet=null;
+		try {
+			stmt = DbConnector.getInstancia().getConn().prepareStatement("UPDATE tp_java.producto SET stock =  ? WHERE (idProducto = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+			
+			stmt.setInt(1, prod.getStock());
+			stmt.setInt(2, prod.getIdProducto());
+			
+			stmt.executeUpdate();
+		}
+		catch (SQLException e) {
+	        e.printStackTrace();
+			} finally {
+	        try {
+	        	 if(keyResultSet!=null)keyResultSet.close();
+	            if(stmt!=null) stmt.close();
+	            DbConnector.getInstancia().releaseConn();
+	        } catch (SQLException e) {
+	        	e.printStackTrace();
+	        }
+		}
+		
+		
 	}	
 }
