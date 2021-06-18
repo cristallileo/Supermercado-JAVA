@@ -44,8 +44,11 @@ public class ListProductos extends HttpServlet {
 			categorias=ctrlCat.listCategoriasNoVacias(categorias);
 			LinkedList<Producto> prods_activos= new LinkedList<Producto>();
 			for (Producto prod: productos) {
+				//Mostrarle al cliente solo los prods activos y que tengan al menos una unidad en stock
 				if (prod.getFecha_hora_baja()==null) {
+					if(prod.getStock()>=1) {
 					prods_activos.add(prod);
+					}
 				}
 			}	
 			Pedido p = new Pedido();
