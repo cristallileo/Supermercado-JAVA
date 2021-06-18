@@ -91,11 +91,6 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
    				<% } %> 
   				</select> 
 
-                <div class="form-label-group">
-                  <input type="text" name="stock" id="stock" class="form-control" value=<%=prod.getStock()%> required>
-                  <label for="stock">Stock</label>
-                </div>
-				
 				<div class="form-label-group">
                   <input type="text" name="stockMin" id="stockMin" class="form-control" value=<%=prod.getStockMinimo()%> required>
                   <label for="stockMin">Stock Minimo</label>

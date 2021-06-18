@@ -38,14 +38,12 @@ public class EditProducto extends HttpServlet {
 		prod= ctrl.getById(prod);
 		
 		String descProd= request.getParameter("descProd");
-		int stock = Integer.parseInt(request.getParameter("stock"));
 		int stockMin = Integer.parseInt(request.getParameter("stockMin"));
 		String marca = request.getParameter("marca");
 		int categ = Integer.parseInt(request.getParameter("id_categoria"));
 		Double precio= Double.parseDouble(request.getParameter("precio"));		
 		
 	    prod.setDescProducto(descProd);
-	    prod.setStock(stock);
 	    prod.setStockMinimo(stockMin);
 	    prod.setMarca(marca);
 	    prod.setId_categoria(categ);
