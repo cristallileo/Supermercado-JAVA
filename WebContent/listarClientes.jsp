@@ -84,14 +84,17 @@
 	  <input type="text" placeholder="Nombre..." name="search2" autocomplete="off">
 	  <%}else{ %>
 	  <input type="text" placeholder="Nombre..." name="search2" value=<%=descrip%>>
+	  <%if(lc.size() == 0){ %>  
+	        
+	    <div class="alert alert-warning"  style="margin:10px;max-width:400px;height:50px;position: absolute; right: 200px;"> ¡Lo sentimos! No hay clientes con ese nombre.</div>     
+	                              	
+		<%} %>
+		  
 	  <%} %>
 	  <button type="submit"><i class="fa fa-search"></i></button>
+	
 	</form>
-	<%if(lc.size() == 0){ %>  
-    <br>         
-    <div class="alert alert-warning"> ¡Lo sentimos! No hay clientes con ese nombre.</div>                               	
-	<%} %>
- 
+	<br>
 	<br>
 	<br>
 	<br>
