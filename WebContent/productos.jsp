@@ -179,7 +179,7 @@ function w3_close() {
 		</div>
 		
 		<!-- CARDS -->
-		
+	
 		<div class="row">
 		<%for (Producto p: lprod){ 
 		String photo=Base64.getEncoder().encodeToString(p.getImagen());%>

@@ -36,13 +36,15 @@ public class IngresarStock extends HttpServlet {
 		int id= Integer.parseInt(request.getParameter("id"));
 		prod.setIdProducto(id);
 		prod =ctrl.getById(prod);
-	
 		
-		int stock = Integer.parseInt(request.getParameter("stock"));
-		int cant= stock + prod.getStock();
-		prod.setStock(cant);
+			int stock = Integer.parseInt(request.getParameter("stock"));
+			int cant= stock + prod.getStock();
+			prod.setStock(cant);
+				
+			ctrl.agregoStock(prod);
 			
-		ctrl.agregoStock(prod);
+		
+		
 		
 		request.getRequestDispatcher("ingresarStock.jsp").forward(request, response);
 		

@@ -40,6 +40,9 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
              <a class="nav-link" href="ListEmpleados">Empleados</a>
           </li>
           <li class="nav-item">
+              <a class="nav-link" href="ListProductos">Productos</a>
+          </li>
+          <li class="nav-item">
              <a class="nav-link" href="ListPedidos">Pedidos</a>
           </li>
            <li class="nav-item ">
@@ -76,11 +79,6 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
    						<option value="<%= c.getIdCategoria() %>"><%= c.getDescCategoria()  %></option>
    				<% } %> 
   				</select> 
-
-                <div class="form-label-group">
-                  <input type="text" name="stock" id="stock" class="form-control" placeholder="Stock" required>
-                  <label for="stock">Stock</label>
-                </div>
 				
 				<div class="form-label-group">
                   <input type="text" name="stockMin" id="stockMin" class="form-control" placeholder="Stock Minimo" required>

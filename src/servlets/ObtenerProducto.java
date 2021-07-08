@@ -37,13 +37,15 @@ public class ObtenerProducto extends HttpServlet {
 		prod =ctrl.getById(prod);
 		
 		if(prod==null) {
-			request.setAttribute("encontrado", false);
+			
+			request.getRequestDispatcher("error-consulta.jsp").forward(request, response);
 		}else {
 			request.setAttribute("encontrado", true);
 			request.setAttribute("prod", prod);
+			request.getRequestDispatcher("ingresarStock2.jsp").forward(request, response);
 		}
 			
-		request.getRequestDispatcher("ingresarStock2.jsp").forward(request, response);
+		
 	}
 
 }

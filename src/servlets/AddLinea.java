@@ -43,6 +43,8 @@ public class AddLinea extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LineaDePedido lp= new LineaDePedido();
 		LineaDePedidoController ctrl= new LineaDePedidoController();
+		LinkedList<LineaDePedido> lineas= new LinkedList<LineaDePedido>();
+		LineaDePedidoController ctrlLinea= new LineaDePedidoController();
 		ProductoController ctrlProd= new ProductoController();
 		CategoriaController ctrlCat= new CategoriaController();
 		PedidoController ctrlPed= new PedidoController();
@@ -64,13 +66,21 @@ public class AddLinea extends HttpServlet {
 		lp.setId_pedido(ped.getIdPedido());
 		lp.setCantidad(cant);
 			
-		ctrl.addLinea(lp);
+		//CHEQUEO SI ya esta en el pedido
+		lineas= ctrlLinea.getByPedido(ped);
+		if(lineas.contains(lp)) {
+			request.setAttribute("ya_existe",true );
+		}else {
+			ctrl.addLinea(lp);
 			
-		//HAGO CALCULOS DE PRECIOS PARA SUMAR AL SUBTOTAL DE Pedido
-		double subtot= cant* p.getPrecio();
-		ped.setPrecioTotal(ped.getPrecioTotal()+subtot);
-		ctrlPed.editTotal(ped);
-		
+			//HAGO CALCULOS DE PRECIOS PARA SUMAR AL SUBTOTAL DE Pedido
+			double subtot= cant* p.getPrecio();
+			ped.setPrecioTotal(ped.getPrecioTotal()+subtot);
+			ctrlPed.editTotal(ped);
+			
+			
+		}
+							
 		LinkedList<Producto> productos= new LinkedList<Producto>();
 		LinkedList<Categoria> categorias= new LinkedList<Categoria>();
 		productos= ctrlProd.listAllProductos();
