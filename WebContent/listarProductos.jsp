@@ -191,6 +191,7 @@
                                 <th align="center"><span>Categoría</span></th>
                                 <th align="center"><span>Precio</span></th>
                                 <th align="center"><span>Estado</span></th>
+                                <th align="center"><span>Proveedor</span></th>
         
                                 <th >&nbsp;</th>
                                 </tr>
@@ -227,7 +228,11 @@
 	                                       </a>
                                        </td>
        								<% } %>
-       								
+       								<%if(p.getId_proveedor()==null){ %>
+       								 	<td>-</td>
+       								<%} else{%>
+       								<td><%=p.getId_proveedor()%></td>
+       								<%} %>
                                      <td style="width: 6%;">
                                         
                                          <a  href="BuscarProducto?id=<%=p.getIdProducto()%>"  class="table-link text-info">

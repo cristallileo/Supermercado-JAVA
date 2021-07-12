@@ -100,8 +100,7 @@
   				
                   <div class="form-label-group">
 	                  <input type="hidden" name="id" id="id" value="<%=prod.getIdProducto() %>" class="form-control"  >
-	               
-	                </div>
+	              </div>
                 
                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Guardar</button>
                

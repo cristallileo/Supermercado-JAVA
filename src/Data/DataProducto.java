@@ -570,7 +570,7 @@ public class DataProducto {
 			stmt = DbConnector.getInstancia().getConn().prepareStatement("UPDATE tp_java.producto SET stock =  ?, id_proveedor = ? WHERE (idProducto = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
 			
 			stmt.setInt(1, prod.getStock());
-			stmt.setInt(2, prod.getId_provedor());
+			stmt.setInt(2, prod.getId_proveedor());
 			stmt.setInt(3, prod.getIdProducto());
 			
 			stmt.executeUpdate();

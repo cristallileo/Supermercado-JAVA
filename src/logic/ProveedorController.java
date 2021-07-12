@@ -29,9 +29,8 @@ public class ProveedorController {
 	}
 	
 	public Proveedor getById(Proveedor p) {
-		Proveedor prov=new Proveedor();
-		prov=dp.getById(p);
-		return prov;
+		
+		return dp.getById(p);
 	}
 	
 	public Proveedor add(Proveedor p) {

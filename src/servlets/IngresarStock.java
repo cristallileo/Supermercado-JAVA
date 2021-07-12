@@ -54,8 +54,8 @@ public class IngresarStock extends HttpServlet {
 		int cant= stock2 + prod.getStock();
 		prod.setStock(cant);
 		
-		int id_prov = Integer.parseInt(request.getParameter("prov"));
-		prod.setId_provedor(id_prov);
+		Integer id_prov = Integer.parseInt(request.getParameter("prov"));
+		prod.setId_proveedor(id_prov);
 		
 		ctrl.agregoStock(prod);
 		

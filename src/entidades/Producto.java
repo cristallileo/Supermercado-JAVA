@@ -4,6 +4,10 @@ import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.Timestamp;
 
+/**
+ * @author Bruno
+ *
+ */
 public class Producto implements Comparable <Producto>{
 	
 	private int idProducto;
@@ -11,12 +15,12 @@ public class Producto implements Comparable <Producto>{
 	private int stock;
 	private int stockMinimo;
 	private String marca;
-	private int id_categoria, id_provedor;
+	private int id_categoria;
 	private Double precio;
 	private Timestamp fecha_hora_baja; 
 	private byte[] imagen;
 	private InputStream imagen_carga;
-
+	private Integer id_proveedor;
 	
 	
 	public int getIdProducto() {
@@ -90,13 +94,13 @@ public class Producto implements Comparable <Producto>{
 	public int compareTo(Producto p) {
 		return precio.compareTo(p.getPrecio());	
 	}
-	public int getId_provedor() {
-		return id_provedor;
+	public Integer getId_proveedor() {
+		return id_proveedor;
 	}
-	public void setId_provedor(int id_provedor) {
-		this.id_provedor = id_provedor;
+	public void setId_proveedor(Integer id_proveedor) {
+		this.id_proveedor = id_proveedor;
 	}
-	
+
 	
 	
 }
