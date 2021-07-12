@@ -83,6 +83,8 @@
 	                  <input type="text" name="id" id="id" class="form-control" placeholder="ID del producto" required >
 	                  <label for="id">ID Producto</label>
 	                </div>
+	                
+	                 <p>${message_cantidad}</p>
                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Buscar</button>
                 
               </form>			

@@ -90,6 +90,15 @@ public class MyHelper {
 			throw new CustomException("El campo teléfono debe ser numérico.");
 		}
 	}
+	public  void cantIsNumeric(String cadena) throws CustomException{
+		try {
+			Integer.parseInt(cadena);
+	
+		} catch (NumberFormatException nfe){
+			throw new CustomException("El campo cantidad debe ser numérico.");
+		}
+	}
+	
 	}
 	
 	

@@ -255,7 +255,7 @@ public class DataProducto {
 		ResultSet rs=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idProducto, desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja, imagen from producto where precio<= ?"
+					"select * from producto where precio<= ?"
 					);
 			stmt.setDouble(1, max);
 			rs=stmt.executeQuery();
@@ -331,7 +331,7 @@ public class DataProducto {
 		LinkedList<Producto> productos= new LinkedList<>();
 		
 		try {
-			stmt=DbConnector.getInstancia().getConn().prepareStatement("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria,precio, fecha_hora_baja, imagen from producto where producto.id_categoria="+cat.getIdCategoria());
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select * from producto where producto.id_categoria="+cat.getIdCategoria());
 			
 		
 			rs=stmt.executeQuery();
@@ -422,7 +422,7 @@ public class DataProducto {
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria, precio,fecha_hora_baja, imagen from producto order by precio");
+			rs= stmt.executeQuery("select * from producto order by precio");
 			if(rs!=null) {
 				while(rs.next()) {
 					Producto p=new Producto();
@@ -464,7 +464,7 @@ public class DataProducto {
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idProducto,desc_producto,stock,stockMinimo,marca,id_categoria, precio, fecha_hora_baja, imagen from producto order by precio DESC");
+			rs= stmt.executeQuery("select * from producto order by precio DESC");
 			if(rs!=null) {
 				while(rs.next()) {
 					Producto p=new Producto();
@@ -567,10 +567,11 @@ public class DataProducto {
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
 		try {
-			stmt = DbConnector.getInstancia().getConn().prepareStatement("UPDATE tp_java.producto SET stock =  ? WHERE (idProducto = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+			stmt = DbConnector.getInstancia().getConn().prepareStatement("UPDATE tp_java.producto SET stock =  ?, id_proveedor = ? WHERE (idProducto = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
 			
 			stmt.setInt(1, prod.getStock());
-			stmt.setInt(2, prod.getIdProducto());
+			stmt.setInt(2, prod.getId_provedor());
+			stmt.setInt(3, prod.getIdProducto());
 			
 			stmt.executeUpdate();
 		}

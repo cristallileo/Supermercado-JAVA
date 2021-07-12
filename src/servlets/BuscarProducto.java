@@ -1,6 +1,8 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.LinkedList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import entidades.Categoria;
 import entidades.Producto;
+import entidades.Proveedor;
 import logic.CategoriaController;
 import logic.ProductoController;
+import logic.ProveedorController;
 
 /**
  * Servlet implementation class BuscarProducto
@@ -44,6 +48,8 @@ public class BuscarProducto extends HttpServlet {
 		// doGet(request, response);
 		ProductoController ctrl= new ProductoController();
 		Producto prod= new Producto();
+		
+		
 		int id= Integer.parseInt(request.getParameter("id"));
 		prod.setIdProducto(id);
 		prod =ctrl.getById(prod);
@@ -52,6 +58,7 @@ public class BuscarProducto extends HttpServlet {
 		Categoria cat= new Categoria();
 		
 		cat= ctrl.getCategoria(prod);
+		
 		
 		request.setAttribute("cat",	cat);
 		request.setAttribute("productoEditar", prod);

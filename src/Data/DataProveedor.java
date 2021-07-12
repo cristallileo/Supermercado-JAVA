@@ -18,7 +18,7 @@ public class DataProveedor {
 			
 			try {
 				stmt= DbConnector.getInstancia().getConn().createStatement();
-				rs= stmt.executeQuery("select idProveedor,telefono ,email , razonSocial ,fechaBaja from proveedor ");
+				rs= stmt.executeQuery("select * from proveedor ");
 				if(rs!=null) {
 					while(rs.next()) {
 						Proveedor p=new Proveedor();

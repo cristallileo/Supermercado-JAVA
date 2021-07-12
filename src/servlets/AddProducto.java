@@ -45,7 +45,7 @@ public class AddProducto extends HttpServlet {
 		Double precio= Double.parseDouble(request.getParameter("precio"));					
 				
 		prod.setDescProducto(descProd);
-		prod.setStock(stock);
+		prod.setStock(0);
 		prod.setStockMinimo(stockMin);
 		prod.setMarca(marca);
 		

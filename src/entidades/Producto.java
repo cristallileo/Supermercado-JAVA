@@ -11,7 +11,7 @@ public class Producto implements Comparable <Producto>{
 	private int stock;
 	private int stockMinimo;
 	private String marca;
-	private int id_categoria;
+	private int id_categoria, id_provedor;
 	private Double precio;
 	private Timestamp fecha_hora_baja; 
 	private byte[] imagen;
@@ -90,5 +90,13 @@ public class Producto implements Comparable <Producto>{
 	public int compareTo(Producto p) {
 		return precio.compareTo(p.getPrecio());	
 	}
+	public int getId_provedor() {
+		return id_provedor;
+	}
+	public void setId_provedor(int id_provedor) {
+		this.id_provedor = id_provedor;
+	}
+	
+	
 	
 }

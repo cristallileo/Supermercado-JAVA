@@ -16,6 +16,18 @@ public class ProveedorController {
 			return dp.getAll();
 	}
 	
+	public  LinkedList<Proveedor> listarActivos() {
+		LinkedList<Proveedor> p= new LinkedList<Proveedor>();
+		LinkedList<Proveedor> p1= new LinkedList<Proveedor>();
+		p= this.listarProveedores();
+		for (Proveedor prov: p) {
+			if(prov.getFechaBaja()==null) {
+				p1.add(prov);
+			}
+		}
+		return p1;
+	}
+	
 	public Proveedor getById(Proveedor p) {
 		Proveedor prov=new Proveedor();
 		prov=dp.getById(p);

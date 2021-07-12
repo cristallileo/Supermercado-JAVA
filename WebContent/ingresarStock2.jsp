@@ -21,7 +21,8 @@
    <link href="style/login/login.css" rel="stylesheet">
   
   
-  <%Producto prod = (Producto)request.getAttribute("prod"); %>
+  <%Producto prod = (Producto)request.getAttribute("prod");
+	LinkedList<Proveedor> lprov = (LinkedList<Proveedor>)request.getAttribute("proveedores");%>
   
 </head>
 <body>
@@ -87,16 +88,23 @@
 	                  <label for="desc">Producto</label>
 	              </div>
 	              <div class="form-label-group">
-                 	 <input type="text" name="stock" id="stock" class="form-control" placeholder="Cantidad" >
+                 	 <input type="text" name="stock" id="stock" class="form-control" placeholder="Cantidad" required>
 	                  <label for="stock">Cantidad a ingresar</label>
                   </div>
+                  <label for="prov">Proveedor</label>
+	  				<select id="prov" name="prov" required>
+	  				 <% for (Proveedor p: lprov) { %> 				 
+	   					<option value="<%=p.getIdProveedor()%>"><%=p.getRazonSocial()%></option>
+	   				<% } %> 
+  				</select> 
+  				
                   <div class="form-label-group">
 	                  <input type="hidden" name="id" id="id" value="<%=prod.getIdProducto() %>" class="form-control"  >
 	               
 	                </div>
                 
                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Guardar</button>
-                
+               
               </form>		
 				
             </div>

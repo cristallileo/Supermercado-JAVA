@@ -57,6 +57,9 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
            <li class="nav-item ">
             <a class="nav-link" href="ListProveedores">Proveedores</a>
           </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="ingresarStock.jsp">Stock</a>
+          </li>
           <li class="nav-item">
               	<a class="nav-link" href="CerrarSesion">Cerrar Sesión</a>
           </li>
@@ -114,7 +117,7 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
 				</div>
 				
 				<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se editará el producto. Desea confirmar?')">Guardar cambios</button>
-                
+                 
          
               </form>
             </div>
