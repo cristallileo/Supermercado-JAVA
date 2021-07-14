@@ -96,7 +96,12 @@
 	cal.setTime(fec);
 	int year = cal.get(Calendar.YEAR); 
 	String month = MES[cal.get(Calendar.MONTH)];
-	int day = cal.get(Calendar.DAY_OF_MONTH);%>
+	int day = cal.get(Calendar.DAY_OF_MONTH);
+	Descuento des = new Descuento();
+	DescuentoController ctrldes= new DescuentoController();
+	des.setIdDcto(p.getId_dcto());
+	des=ctrldes.getById(des);
+	%>
   			<!-- <div class="col-lg-4">-->
   		<div class="col-lg-4 col-md-5 mb-4">
 	        <div class="card card-margin">
@@ -130,6 +135,10 @@
 	                         <a>Fecha de Entrega: <%=p.getFechaEntrega() %></a>
 	                        <% }%>
 	                        <br>
+	                        <%if(p.getId_dcto()!=0){ %>
+	                        <a>Descuento: <%=des.getPorcDcto()*100%>% </a>
+	                         <br>
+	                        <%} %>	                       
 	                        <a>Precio Total: <b>$<%=p.getPrecioTotal()%></b></a>
 	                    </ol>
 	                    <div class="widget-49-meeting-action">
