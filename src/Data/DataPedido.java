@@ -4,7 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.LinkedList;
+
 
 import entidades.*;
 
@@ -18,7 +20,7 @@ public class DataPedido {
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idPedido,fechaPedido,precioTotal,fechaEntrega,direccionEnvio,estado,id_persona,id_dcto from pedido");
+			rs= stmt.executeQuery("select * from pedido");
 			if(rs!=null) {
 				while(rs.next()) {
 					Pedido p=new Pedido();
@@ -66,7 +68,12 @@ public class DataPedido {
 			stmt.setString(4, p.getDireccionEnvio());
 			stmt.setString(5, p.getEstado());
 			stmt.setInt(6, p.getId_persona());
-			stmt.setInt(7, p.getId_dcto());
+			if(p.getId_dcto()!=0) {
+				stmt.setInt(7, p.getId_dcto());
+			}else {
+				 stmt.setNull(7, Types.INTEGER);
+			}
+			
 				
 			stmt.executeUpdate();
 			

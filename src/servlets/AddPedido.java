@@ -77,7 +77,8 @@ public class AddPedido extends HttpServlet {
 				d=des2; //tomo el unico que hay activo
 			}
 			p.setId_dcto(d.getIdDcto());
-		}else if (dctos.size()==0) {
+		}else if (dctos==null || dctos.size()==0) {
+			//lprod == null || lprod.size() == 0
 			//p.setId_dcto();
 			// SI NO HAY NINGUN DCTO QUEDA EN NULL (LA BDD LO PONE X DEFECTO EN NULL)
 			p.setId_dcto(0);//VER SI FUNCIONA, NO TESTEADO AUN

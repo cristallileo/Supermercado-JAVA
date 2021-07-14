@@ -56,6 +56,16 @@ public class ConfirmarPedido extends HttpServlet {
 		ped=(Pedido)request.getSession(true).getAttribute("pedido");
 		ped= ctrlPed.getById(ped);
 		ped.setDireccionEnvio(request.getParameter("direc"));
+		if(ped.getId_dcto()!=0) {
+			Descuento d= new Descuento();
+			DescuentoController ctrldes= new DescuentoController();
+			d.setIdDcto(ped.getId_dcto());
+			d= ctrldes.getById(d);
+			double total= ped.getPrecioTotal() * (1- d.getPorcDcto());
+			ped.setPrecioTotal(total);
+			ctrlPed.editTotal(ped);
+		}
+		//ped.getPrecioTotal()
 	    ctrlPed.confirmarPedido(ped);	    
 	    lineas = ctrlLinea.getByPedido(ped);
 	    ctrlPro.actualizarStock(lineas);

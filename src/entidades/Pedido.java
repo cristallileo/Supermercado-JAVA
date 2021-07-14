@@ -8,7 +8,8 @@ public class Pedido {
 	private Date fechaPedido, fechaEntrega;
 	private Double precioTotal;
 	private String estado, direccionEnvio;
-	private int id_persona, id_dcto;
+	private int id_persona;
+	private int id_dcto;
 	
 	public int getIdPedido() {
 		return idPedido;
@@ -58,6 +59,7 @@ public class Pedido {
 	public void setId_dcto(int id_dcto) {
 		this.id_dcto = id_dcto;
 	}
+
 	
 	
 }
