@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import entidades.LineaDePedido;
 import entidades.Pedido;
+import entidades.Persona;
 import entidades.Producto;
 import logic.LineaDePedidoController;
 import logic.PedidoController;
@@ -50,7 +51,12 @@ public class QuitarProducto extends HttpServlet {
 		Producto prod= new Producto();
 		LineaDePedidoController ctrlLinea = new LineaDePedidoController();
 		LinkedList<LineaDePedido> lineas= new LinkedList<LineaDePedido>();
-		Pedido ped= new Pedido();		
+		Pedido ped= new Pedido();	
+		Persona per= new Persona();
+		per= (Persona)request.getSession(true).getAttribute("usuario");
+		if(per==null){
+			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
+		}
 		
 		//Busco en la bdd cual es el producto que quiero sacar del pedido 
 		int id = Integer.parseInt(request.getParameter("idProd"));

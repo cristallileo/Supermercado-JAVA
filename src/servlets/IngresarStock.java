@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entidades.Persona;
 import entidades.Producto;
 import logic.CustomException;
 import logic.MyHelper;
@@ -35,6 +36,12 @@ public class IngresarStock extends HttpServlet {
 		Producto prod= new Producto();		
 		ProductoController ctrl= new ProductoController();
 		MyHelper h = new MyHelper();
+		
+		Persona per= new Persona();
+		per= (Persona)request.getSession(true).getAttribute("usuario");
+		if(per==null){
+			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
+		}
 		
 		int id= Integer.parseInt(request.getParameter("id"));
 		prod.setIdProducto(id);

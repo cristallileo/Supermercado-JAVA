@@ -45,6 +45,11 @@ public class VerPedido extends HttpServlet {
 		//PedidoController ctrlPed= new PedidoController();
 		//LineaDePedido lp= new LineaDePedido();
 		Pedido ped= new Pedido();		
+		Persona per= new Persona();
+		per= (Persona)request.getSession(true).getAttribute("usuario");
+		if(per==null){
+			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
+		}
 		
 		ped=(Pedido)request.getSession(true).getAttribute("pedido");
 		lineas= ctrlLinea.getByPedido(ped);

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entidades.Persona;
 import entidades.Producto;
 import entidades.Proveedor;
 import logic.ProductoController;
@@ -34,6 +35,11 @@ public class ObtenerProducto extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		Persona per= new Persona();
+		per= (Persona)request.getSession(true).getAttribute("usuario");
+		if(per==null){
+			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
+		}
 		ProductoController ctrl= new ProductoController();
 		Producto prod= new Producto();
 		LinkedList<Proveedor> lprov = new LinkedList<Proveedor>();

@@ -28,6 +28,11 @@ public class ListCategorias extends HttpServlet {
 	
 		CategoriaController ctrl= new CategoriaController();
 		LinkedList<Categoria> categorias= new LinkedList<Categoria>();
+		Persona per= new Persona();
+		per= (Persona)request.getSession(true).getAttribute("usuario");
+		if(per==null){
+			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
+		}
 		categorias=ctrl.listAllCategorias();
 		
 		request.setAttribute("descrip", null);

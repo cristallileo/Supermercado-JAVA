@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entidades.Pedido;
+import entidades.Persona;
 import logic.PedidoController;
 
 /**
@@ -41,7 +42,12 @@ public class ListPedidosPendientes extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PedidoController ctrl= new PedidoController();
 		LinkedList<Pedido> pedidos= new LinkedList<Pedido>();
-		LinkedList<Pedido> pedidos2= new LinkedList<Pedido>();        
+		LinkedList<Pedido> pedidos2= new LinkedList<Pedido>();   
+		Persona per= new Persona();
+		per= (Persona)request.getSession(true).getAttribute("usuario");
+		if(per==null){
+			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
+		}
 
       	pedidos=ctrl.listarPedidos();
       	for(Pedido p: pedidos) {

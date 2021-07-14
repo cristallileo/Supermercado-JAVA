@@ -29,7 +29,6 @@ public class CerrarSesion extends HttpServlet {
 		
 		doPost(request, response);
 	}
-
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession(true).setAttribute("usuario", null);

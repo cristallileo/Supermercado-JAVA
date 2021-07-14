@@ -28,6 +28,11 @@ public class ListProveedores extends HttpServlet {
 
 		ProveedorController ctrl= new ProveedorController();
 		LinkedList<Proveedor> proveedores= new LinkedList<Proveedor>();
+		Persona per= new Persona();
+		per= (Persona)request.getSession(true).getAttribute("usuario");
+		if(per==null){
+			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
+		}
 		proveedores=ctrl.listarProveedores();
 		
 		request.setAttribute("descrip", null);

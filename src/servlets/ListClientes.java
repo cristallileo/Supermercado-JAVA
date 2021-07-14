@@ -49,6 +49,11 @@ public class ListClientes extends HttpServlet {
 		PersonaController ctrl= new PersonaController();
 		//LinkedList<Persona> personas= new LinkedList<Persona>();
 		LinkedList<Persona> clientes= new LinkedList<Persona>();
+		Persona per= new Persona();
+		per= (Persona)request.getSession(true).getAttribute("usuario");
+		if(per==null){
+			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
+		}
 		clientes=ctrl.listarClientes();
 		//request.getAttribute("usuario");
 		request.setAttribute("listado", clientes);

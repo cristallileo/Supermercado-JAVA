@@ -46,6 +46,9 @@ public class BuscarCat extends HttpServlet {
 		//Veo a donde lo direcciono:
   		Persona per= new Persona();
   		per= (Persona)request.getSession(true).getAttribute("usuario");
+  		if(per==null){
+			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
+		}else
   		
   		// si es cliente solo me traigo las categorias y los productos activos
   		

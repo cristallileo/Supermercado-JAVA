@@ -38,6 +38,10 @@ public class CancelarPedido extends HttpServlet {
 		LinkedList<Pedido> peds= new LinkedList<Pedido>();
 		Pedido ped= new Pedido();
 		Persona per = new Persona();
+		per= (Persona)request.getSession(true).getAttribute("usuario");
+		if(per==null){
+			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
+		}
 		
 		ped=(Pedido)request.getSession(true).getAttribute("pedido");
 		ped= ctrlPed.getById(ped);

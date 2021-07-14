@@ -46,7 +46,11 @@ public class ListPedidos extends HttpServlet {
 		LinkedList<Pedido> pedidos2= new LinkedList<Pedido>();        
 		//Veo a donde lo direcciono:
       		Persona per= new Persona();
+      		
       		per= (Persona)request.getSession(true).getAttribute("usuario");
+      		if(per==null){
+    			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
+    		}else 
       		if(per.isCliente()==true) {
       			pedidos=ctrl.getByCliente(per);
       			request.setAttribute("pedidos", pedidos);

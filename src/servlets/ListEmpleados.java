@@ -27,6 +27,11 @@ public class ListEmpleados extends HttpServlet {
 		
 		PersonaController ctrl= new PersonaController();
 		LinkedList<Persona> empleados= new LinkedList<Persona>();
+		Persona per= new Persona();
+		per= (Persona)request.getSession(true).getAttribute("usuario");
+		if(per==null){
+			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
+		}
 		empleados=ctrl.listarEmpleados();
 		
 		//request.getAttribute("usuario");

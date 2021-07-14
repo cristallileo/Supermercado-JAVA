@@ -48,6 +48,7 @@ public class ListProductosMasMenos extends HttpServlet {
 		ProductoController ctrl= new ProductoController();
 		CategoriaController ctrlCat= new CategoriaController();
 		
+		
 		LinkedList<Producto> productos= new LinkedList<Producto>();
 		LinkedList<Categoria> categorias= new LinkedList<Categoria>();
 		

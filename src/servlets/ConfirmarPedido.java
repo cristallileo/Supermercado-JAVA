@@ -48,6 +48,10 @@ public class ConfirmarPedido extends HttpServlet {
 		LinkedList<Pedido> peds= new LinkedList<Pedido>();
 		Pedido ped= new Pedido();
 		Persona per = new Persona();
+		per= (Persona)request.getSession(true).getAttribute("usuario");
+		if(per==null){
+			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
+		}
 		
 		ped=(Pedido)request.getSession(true).getAttribute("pedido");
 		ped= ctrlPed.getById(ped);
@@ -56,7 +60,6 @@ public class ConfirmarPedido extends HttpServlet {
 	    lineas = ctrlLinea.getByPedido(ped);
 	    ctrlPro.actualizarStock(lineas);
 	    
-	    per= (Persona)request.getSession(true).getAttribute("usuario");
 	    peds= ctrlPed.getByCliente(per);
 	    
 	    request.getSession(true).setAttribute("pedido", null);

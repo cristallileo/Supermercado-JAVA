@@ -25,6 +25,9 @@
 <% LinkedList<Descuento> ld = (LinkedList<Descuento>)request.getAttribute("descuentos");
    java.sql.Date timeNow = new Date(Calendar.getInstance().getTimeInMillis());
    Persona per = (Persona)session.getAttribute("usuario");
+   if(per==null){
+		request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
+   }
    Calendar cal = Calendar.getInstance();
    String MES[] = {"Enero", "Feb", "Mar", "Abril", "Mayo", "Jun", "Jul", "Agosto", "Sept", "Oct", "Nov", "Dic"};%>
 

@@ -32,6 +32,9 @@ public class ListDescuentos extends HttpServlet {
 		//Veo a donde lo direcciono:
 				Persona per= new Persona();
 				per= (Persona)request.getSession(true).getAttribute("usuario");
+				if(per==null){
+					request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
+				}else 
 				if(per.isCliente()==true) {
 					descuentos=ctrl.listarDescuentosAct();
 					request.setAttribute("descuentos", descuentos);

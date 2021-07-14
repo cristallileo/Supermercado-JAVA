@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>Inicie Sesión</title>
+<title>Error</title>
 
   <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
   <link href="style/mainpage/modern-business.css" rel="stylesheet">  

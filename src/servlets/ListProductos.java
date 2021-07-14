@@ -25,6 +25,7 @@ public class ListProductos extends HttpServlet {
 		doPost(request, response);
 	}
 
+	@SuppressWarnings("unused")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		ProductoController ctrl= new ProductoController();
@@ -38,6 +39,9 @@ public class ListProductos extends HttpServlet {
 		//Veo a donde lo direcciono:
 		Persona per= new Persona();
 		per= (Persona)request.getSession(true).getAttribute("usuario");
+		if(per==null){
+			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
+		}else 
 		if(per.isCliente()==true) {
 			productos= ctrl.listAllProductos();
 			categorias= ctrlCat.listCategoriasActivas();
@@ -60,12 +64,12 @@ public class ListProductos extends HttpServlet {
 			request.getRequestDispatcher("productos.jsp").forward(request, response);
 			
 			 //request.setAttribute("pedido", null);
-		}else {
+		}else if (per.isEmpleado()==true){
 			 productos=ctrl.listAllProductos();
 			 categorias= ctrlCat.listAllCategorias();
 			 request.setAttribute("productos", productos);
 			 request.setAttribute("categorias", categorias);
 			 request.getRequestDispatcher("listarProductos.jsp").forward(request, response);
 		}
-	}
+}
 }

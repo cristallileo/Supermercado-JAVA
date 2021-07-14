@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entidades.Categoria;
+import entidades.Persona;
 import entidades.Producto;
 import logic.CategoriaController;
 import logic.ProductoController;
@@ -51,6 +52,11 @@ public class ListBajoStock extends HttpServlet {
 		LinkedList<Producto> productos= new LinkedList<Producto>();
 		LinkedList<Categoria> categorias= new LinkedList<Categoria>();
 		
+		Persona per= new Persona();
+		per= (Persona)request.getSession(true).getAttribute("usuario");
+		if(per==null){
+			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
+		}
 		productos=ctrl.listarBajoStock();
 		categorias= ctrlCat.listAllCategorias();
 		

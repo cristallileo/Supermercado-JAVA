@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entidades.Persona;
 import entidades.Proveedor;
 import logic.ProveedorController;
 
@@ -45,6 +46,11 @@ public class ListProveedoresDesc extends HttpServlet {
 		
 		ProveedorController ctrl= new ProveedorController();
 		LinkedList<Proveedor> proveedores= new LinkedList<Proveedor>();
+		Persona per= new Persona();
+		per= (Persona)request.getSession(true).getAttribute("usuario");
+		if(per==null){
+			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
+		}
 
 		String razonS= request.getParameter("search");
 		

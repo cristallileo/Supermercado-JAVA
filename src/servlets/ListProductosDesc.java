@@ -44,6 +44,9 @@ public class ListProductosDesc extends HttpServlet {
 		//Veo a donde lo direcciono:
 		Persona per= new Persona();
 		per= (Persona)request.getSession(true).getAttribute("usuario");
+		if(per==null){
+			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
+		}else 
 		if(per.isCliente()==true) {
 			categorias= ctrlCat.listCategoriasActivas();
 			categorias=ctrlCat.listCategoriasNoVacias(categorias);

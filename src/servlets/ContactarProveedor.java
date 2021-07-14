@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entidades.Persona;
 import entidades.Proveedor;
 import logic.ProveedorController;
 
@@ -44,6 +45,11 @@ public class ContactarProveedor extends HttpServlet {
 		ProveedorController ctrl= new ProveedorController();
 		LinkedList<Proveedor> proveedores= new LinkedList<Proveedor>();
 		Proveedor prov= new Proveedor();
+		Persona per= new Persona();
+		per= (Persona)request.getSession(true).getAttribute("usuario");
+		if(per==null){
+			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
+		}
 		int id= Integer.parseInt(request.getParameter("id"));
 		prov.setIdProveedor(id);
 		prov =ctrl.getById(prov);
