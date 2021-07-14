@@ -230,8 +230,13 @@
        								<% } %>
        								<%if(p.getId_proveedor()==null){ %>
        								 	<td>-</td>
-       								<%} else{%>
-       								<td><%=p.getId_proveedor()%></td>
+       								<%} else{
+       								ProveedorController ctrlP = new ProveedorController();
+                                    Proveedor prov= new Proveedor();
+                                    prov.setIdProveedor(p.getId_proveedor());
+                                    prov=ctrlP.getById(prov);
+                                    %>
+       								<td><a href="ContactarProveedor?id=<%=p.getId_proveedor()%>"><%=prov.getRazonSocial()%></a></td>
        								<%} %>
                                      <td style="width: 6%;">
                                         
@@ -241,14 +246,8 @@
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                             </span>
                                         </a>
-                                        
-                                    
                                     </td>
-                                   
-    
 	                    		</tr>
-	                    		   
-	                    		
 	                    		<% } %>
 	                    		
                     		</tbody>	

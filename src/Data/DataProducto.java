@@ -45,6 +45,7 @@ public class DataProducto {
 					p.setPrecio(rs.getDouble("precio"));
 					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
 					p.setImagen(rs.getBytes("imagen"));
+					p.setId_proveedor(rs.getInt("id_proveedor"));
 					productos.add(p);
 				}
 			}
@@ -90,6 +91,7 @@ public class DataProducto {
 					p.setPrecio(rs.getDouble("precio"));
 					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
 					p.setImagen(rs.getBytes("imagen"));	
+					p.setId_proveedor(rs.getInt("id_proveedor"));
 					productos.add(p);
 				}
 			}
@@ -116,7 +118,7 @@ public class DataProducto {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into producto(desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja, imagen) values(?,?,?,?,?,?,?,?)",
+							"insert into producto(desc_producto, stock, stockMinimo, marca, id_categoria, precio, fecha_hora_baja, imagen, id_proveedor) values(?,?,?,?,?,?,?,?,null)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
 			//stmt.setInt(1, p.getIdProducto());
@@ -270,6 +272,7 @@ public class DataProducto {
 				p.setPrecio(rs.getDouble("precio"));
 				p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja "));
 				p.setImagen(rs.getBytes("imagen"));	
+				p.setId_proveedor(rs.getInt("id_proveedor"));
 				productos.add(p);
 			}
 		} catch (SQLException e) {
@@ -307,6 +310,7 @@ public class DataProducto {
 				p.setPrecio(rs.getDouble("precio"));
 				p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
 				p.setImagen(rs.getBytes("imagen"));	
+				p.setId_proveedor(rs.getInt("id_proveedor"));
 				
 			}
 		} catch (SQLException e) {
@@ -348,6 +352,7 @@ public class DataProducto {
 					p.setPrecio(rs.getDouble("precio"));
 					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
 					p.setImagen(rs.getBytes("imagen"));	
+					p.setId_proveedor(rs.getInt("id_proveedor"));
 					productos.add(p);
 
 								
@@ -393,6 +398,7 @@ public class DataProducto {
 					p.setPrecio(rs.getDouble("precio"));
 					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
 					p.setImagen(rs.getBytes("imagen"));	
+					p.setId_proveedor(rs.getInt("id_proveedor"));
 					productos.add(p);
 
 								
@@ -435,6 +441,7 @@ public class DataProducto {
 					p.setPrecio(rs.getDouble("precio"));
 					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
 					p.setImagen(rs.getBytes("imagen"));	
+					p.setId_proveedor(rs.getInt("id_proveedor"));
 					productos.add(p);
 				}
 			}
@@ -477,6 +484,7 @@ public class DataProducto {
 					p.setPrecio(rs.getDouble("precio"));
 					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
 					p.setImagen(rs.getBytes("imagen"));	
+					p.setId_proveedor(rs.getInt("id_proveedor"));
 					productos.add(p);
 				}
 			}
@@ -520,6 +528,7 @@ public class DataProducto {
 					p.setPrecio(rs.getDouble("precio"));
 					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja "));
 					p.setImagen(rs.getBytes("imagen"));	
+					p.setId_proveedor(rs.getInt("id_proveedor"));
 					productosActivos.add(p);
 				}
 			}

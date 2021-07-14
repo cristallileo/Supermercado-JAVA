@@ -40,7 +40,6 @@ public class BuscarProveedor extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-	
 		ProveedorController ctrl= new ProveedorController();
 		Proveedor prov= new Proveedor();
 		int id= Integer.parseInt(request.getParameter("id"));

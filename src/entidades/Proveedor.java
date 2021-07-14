@@ -3,16 +3,17 @@ package entidades;
 import java.sql.Date;
 
 public class Proveedor {
-	private int idProveedor;
+	private Integer idProveedor;
 	private String razonSocial;
 	private String telefono;
 	private String mail;
 	private Date fechaBaja;
 	
-	public int getIdProveedor() {
+	
+	public Integer getIdProveedor() {
 		return idProveedor;
 	}
-	public void setIdProveedor(int idProveedor) {
+	public void setIdProveedor(Integer idProveedor) {
 		this.idProveedor = idProveedor;
 	}
 	public String getRazonSocial() {

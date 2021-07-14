@@ -1,7 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.LinkedList;
 
 import javax.servlet.ServletException;
@@ -10,22 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import entidades.Categoria;
-import entidades.Producto;
-import logic.CategoriaController;
-import logic.ProductoController;
+import entidades.Proveedor;
+import logic.ProveedorController;
 
 /**
- * Servlet implementation class ListBajoStock
+ * Servlet implementation class ContactarProveedor
  */
-@WebServlet("/ListBajoStock")
-public class ListBajoStock extends HttpServlet {
+@WebServlet("/ContactarProveedor")
+public class ContactarProveedor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListBajoStock() {
+    public ContactarProveedor() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,26 +40,18 @@ public class ListBajoStock extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
-		ProductoController ctrl= new ProductoController();
-		CategoriaController ctrlCat= new CategoriaController();
 		
-		LinkedList<Producto> productos= new LinkedList<Producto>();
-		LinkedList<Categoria> categorias= new LinkedList<Categoria>();
-		
-		productos=ctrl.listarBajoStock();
-		categorias= ctrlCat.listAllCategorias();
-		
-		//Collections.sort(productos);
-		
+		ProveedorController ctrl= new ProveedorController();
+		LinkedList<Proveedor> proveedores= new LinkedList<Proveedor>();
+		Proveedor prov= new Proveedor();
+		int id= Integer.parseInt(request.getParameter("id"));
+		prov.setIdProveedor(id);
+		prov =ctrl.getById(prov);
+		proveedores.add(prov);
 		request.setAttribute("descrip", null);
-		request.setAttribute("productos", productos);
-		request.setAttribute("categorias", categorias);
+		request.setAttribute("proveedores", proveedores);
+		request.getRequestDispatcher("listarProveedores.jsp").forward(request, response);
 		
-        request.getRequestDispatcher("listarProductos.jsp").forward(request, response);
-        
-        
 	}
 
 }
