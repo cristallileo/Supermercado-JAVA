@@ -2,7 +2,7 @@ package logic;
 
 import java.util.Properties;
 
-import javax.mail.Session;
+//import javax.mail.Session;
 
 @SuppressWarnings("unused")
 public class Mails {
@@ -14,7 +14,7 @@ public class Mails {
 		props.setProperty("mail.smtp.port", "587");
 		props.setProperty("mail.smtp.auth", "true");
 		
-		Session session = Session.getDefaultInstance(props);
+		//Session session = Session.getDefaultInstance(props);
 	}
 	
 	

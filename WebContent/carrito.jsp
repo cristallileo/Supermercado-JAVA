@@ -57,7 +57,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
    <button class="w3-button w3-dark-gray w3-large" onclick="w3_open()">&#9776;</button>
     <div class="container">
-      <a class="navbar-brand" href="mainpage.jsp">Supermercado</a>
+      <a class="navbar-brand" href="ListDescuentos">Supermercado</a>
 
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">

@@ -67,19 +67,20 @@ public class AddLinea extends HttpServlet {
 		lp.setCantidad(cant);
 			
 		//CHEQUEO SI ya esta en el pedido
-		lineas= ctrlLinea.getByPedido(ped);
-		if(lineas.contains(lp)) {
-			request.setAttribute("ya_existe",true );
-		}else {
-			ctrl.addLinea(lp);
+		//lineas= ctrlLinea.getByPedido(ped);
+		//if(lineas.contains(lp)) {
+			//request.setAttribute("ya_existe",true );
+		//}else {
+			boolean band=ctrl.addLinea(lp);
+			if(band==false) {
+				//HAGO CALCULOS DE PRECIOS PARA SUMAR AL SUBTOTAL DE Pedido
+				double subtot= cant* p.getPrecio();
+				ped.setPrecioTotal(ped.getPrecioTotal()+subtot);
+				ctrlPed.editTotal(ped);
+			}
 			
-			//HAGO CALCULOS DE PRECIOS PARA SUMAR AL SUBTOTAL DE Pedido
-			double subtot= cant* p.getPrecio();
-			ped.setPrecioTotal(ped.getPrecioTotal()+subtot);
-			ctrlPed.editTotal(ped);
 			
-			
-		}
+		//}
 							
 		LinkedList<Producto> productos= new LinkedList<Producto>();
 		LinkedList<Categoria> categorias= new LinkedList<Categoria>();
