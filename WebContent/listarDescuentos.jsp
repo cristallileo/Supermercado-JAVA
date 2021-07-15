@@ -73,10 +73,18 @@ Calendar cal = Calendar.getInstance();
  <hr> 
  <div class="container bootstrap snippets bootdey">
     <div class="row">
+		<div class="col"> 
+   				 <%if(ld == null || ld.size() == 0){ %>                      
+   					<br>
+    				<div class="alert alert-warning"> ¡Lo sentimos! No hay resultados disponibles.</div>                               	
+					<%} %>
+    
+    		</div>
         <div class="col-lg-12">
            <span style="text-align: right; vertical-align: bottom;">
 			
-			<div class="w3-container">	 
+			<div class="w3-container">
+			 
 			<form action="crearDcto.jsp" method="post">
 		 	<button class="btn btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" style="margin:12px;max-width:250px;height:50px;position: absolute;
   right: 0;">Agregar Descuento</button>

@@ -83,7 +83,7 @@
 	  		<%}else{ %>
 	  			<input type="text" placeholder="Nombre..." name="search" value="<%=descrip%>">
 	  			<%if (le.size() == 0){ %>  
-    			<div class="alert alert-warning" style="margin:0px; max-width:450px; height:50px; position:fixed; ; right: 500px;"> ¡Lo sentimos! No hay empleados con ese nombre.</div>       
+    			<div class="alert alert-warning" style="margin:0px; max-width:450px; height:50px; position:fixed; ; right: 500px;"> ¡Lo sentimos! No hay resultados disponibles..</div>       
     			<!--   -->                    	
 			<%} %>
 	  		<%} %>

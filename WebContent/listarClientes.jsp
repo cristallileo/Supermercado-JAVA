@@ -86,7 +86,7 @@
 	  <input type="text" placeholder="Nombre..." name="search2" value=<%=descrip%>>
 	  <%if(lc.size() == 0){ %>  
 	        
-	    <div class="alert alert-warning"  style="margin:10px;max-width:400px;height:50px;position: absolute; right: 200px;"> ¡Lo sentimos! No hay clientes con ese nombre.</div>     
+	    <div class="alert alert-warning"  style="margin:10px;max-width:400px;height:50px;position: absolute; right: 200px;"> ¡Lo sentimos! No hay resultados disponibles.</div>     
 	                              	
 		<%} %>
 		  

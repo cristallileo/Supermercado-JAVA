@@ -101,7 +101,7 @@
 	</form>
 	<%if(lp.size() == 0){ %>  
     <br>         
-    <div class="alert alert-warning"> ¡Lo sentimos! No hay proveedores con esa descripción.</div>                               	
+    <div class="alert alert-warning"> ¡Lo sentimos! No hay resultados disponibles.</div>                               	
 <%} %>
 	</div>
 

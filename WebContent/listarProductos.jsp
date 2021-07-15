@@ -154,7 +154,7 @@
 				</form>
    				<%if(lprod == null || lprod.size() == 0){ %>                      
    					<br>
-    				<div class="alert alert-warning"> ¡Lo sentimos! No hay productos con esa descripción.</div>                               	
+    				<div class="alert alert-warning"> ¡Lo sentimos! No hay resultados disponibles.</div>                               	
 					<%} %>
 			</div>
 				
