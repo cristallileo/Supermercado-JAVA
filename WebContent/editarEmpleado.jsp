@@ -102,36 +102,37 @@
   				<option value="Libreta Civica">Libreta Cívica</option>  				
   				<% break; 
   				} %>				
-
                  </select>
-                
+                 
+                            
                 <div class="form-label-group">
-                  <input type="text" name="nroDoc" id="nroDoc" class="form-control" value=<%=per.getNroDoc() %> required>
+                  <input type="text" name="nroDoc" id="nroDoc" class="form-control" value="<%=per.getNroDoc()%>" required>
                   <label for="nroDoc">Nro Documento</label>
                 </div>
              
                 <div class="form-label-group">
-                  <input type="text" name="tel" id="tel" class="form-control" value=<%=per.getTelefono()%> required >
+                  <input type="text" name="tel" id="tel" class="form-control" value="<%=per.getTelefono()%>" required >
                   <label for="tel">Teléfono</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" name="direc" id="direc" class="form-control" value=<%=per.getDireccion() %> required>
+                  <input type="text" name="direc" id="direc" class="form-control" value="<%=per.getDireccion()%>" required>
                   <label for="direc">Dirección</label>
                 </div>
                 
+                             
                 <div class="form-label-group">
-                  <input type="text" name="cuil" id="cuil" class="form-control" value=<%=per.getCuil()%> required>
+                  <input type="text" name="cuil" id="cuil" class="form-control" value="<%=per.getCuil()%>" required>
                   <label for="cuil">CUIL</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="email" name="email" id="email" class="form-control" value=<%=per.getEmail() %> required>
+                  <input type="email" name="email" id="email" class="form-control" value="<%=per.getEmail()%>" required>
                   <label for="email">Email</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="password" name="pass" id="pass" class="form-control" value=<%=per.getPassword() %> required>
+                  <input type="password" name="pass" id="pass" class="form-control" value="<%=per.getPassword()%>" required>
                   <label for="pass">Contraseña</label>
                 </div>
                 

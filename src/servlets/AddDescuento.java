@@ -41,6 +41,11 @@ public class AddDescuento extends HttpServlet {
 		
 		String porc= request.getParameter("porc");
 		Double porcen= Double.parseDouble(porc);
+				
+		if(porcen>=1) {
+			request.setAttribute("message_porc", "El descuento debe ser un valor entre 0 y 1.");
+			request.getRequestDispatcher("crearDcto.jsp").forward(request, response);
+		}else {
 			
 		String desde = request.getParameter("desde");
 	    Date fecha_desde=Date.valueOf(desde);
@@ -100,5 +105,5 @@ public class AddDescuento extends HttpServlet {
 		}
 		/* Lo intente hacer con un or dentro del primer if pero por alguna razon no me dejaba (The target type of this expression must be a functional  error)
 		no me quedo otra que anidar if y dividir la condicion, manejar fechas con java.sql.Date es bastante problematico */
-	}
+	}}
 }

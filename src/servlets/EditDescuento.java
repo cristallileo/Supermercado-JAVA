@@ -33,7 +33,15 @@ public class EditDescuento extends HttpServlet {
 		request.setAttribute("message_fechas", null);
 		
 		int id = Integer.parseInt(request.getParameter("id"));
+		dcto.setIdDcto(id);
+		dcto=ctrl.getById(dcto);
 		Double porcentaje= Double.parseDouble(request.getParameter("porc"));
+		
+		if(porcentaje>=1) {
+			request.setAttribute("message_porc", "El descuento debe ser un valor entre 0 y 1.");
+			request.setAttribute("descuentoEditar", dcto);
+			request.getRequestDispatcher("editarDescuento.jsp").forward(request, response);
+		}else {
 							
 		String desde = request.getParameter("fechaIni");
 	    Date fecha_desde=Date.valueOf(desde);
@@ -60,4 +68,4 @@ public class EditDescuento extends HttpServlet {
 		request.setAttribute("descuentos", ctrl.listarDescuentos());
 		request.getRequestDispatcher("listarDescuentos.jsp").forward(request, response);
 	}
-}
+}}

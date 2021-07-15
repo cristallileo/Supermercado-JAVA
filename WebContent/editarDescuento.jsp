@@ -72,24 +72,24 @@
               <form action="EditDescuento?id=<%=dcto.getIdDcto()%>" method="post" >
                
                 <div class="form-label-group" >
-                  <input type="text" name="porc" id="porc" class="form-control" value=<%=dcto.getPorcDcto()%> required>
+                  <input type="text" name="porc" id="porc" class="form-control" value="<%=dcto.getPorcDcto()%>" required>
                   <label for="porc">Porcentaje</label>
                 </div>
                 
                 <div class="form-label-group"  >
-                  <input type="date" name="fechaIni" id="fechaIni" class="form-control" value=<%=dcto.getFechaDctoInicio()%> required >
+                  <input type="date" name="fechaIni" id="fechaIni" class="form-control" value="<%=dcto.getFechaDctoInicio()%>" required >
                   <label for="fechaIni">Fecha inicio</label>
                 </div>
                 
 				
                 <div class="form-label-group">
-                  <input type="date" name="fechaFin" id="fechaFin" class="form-control" value=<%=dcto.getFechaDctoFin()%> required>
+                  <input type="date" name="fechaFin" id="fechaFin" class="form-control" value="<%=dcto.getFechaDctoFin()%>" required>
                   <label for="fechaFin">Fecha fin</label>
                 </div>
               
                 <!-- fecha de incio no puede sewr posterior a la de fin -->
               	<p>${message_fechas}</p>              	
-              	
+              	<p>${message_porc}</p>
                 <!-- NO HACE FALTA PQ LA FECHA SE INGRESA POR CALENDARIO
                 <p>${message_iae}</p>
                 -->
