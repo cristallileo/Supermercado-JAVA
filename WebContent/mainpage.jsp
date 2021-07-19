@@ -45,10 +45,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="ListProductos">Productos</a>
-          </li>          
-          <li class="nav-item">
-            <a class="nav-link" href="contacto.jsp">Contacto</a>
-          </li>
+          </li>   
           <li class="nav-item ">
             <a class="nav-link" href="BuscarCliente?id=<%=per.getIdPersona()%>">Mi cuenta</a>
           </li>

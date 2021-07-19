@@ -89,9 +89,6 @@ function w3_close() {
           <li class="nav-item active">
             <a class="nav-link" href="ListProductos">Productos</a>
              <span class="sr-only">(current)</span>
-          </li>          
-          <li class="nav-item">
-            <a class="nav-link" href="contacto.jsp">Contacto</a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="BuscarCliente?id=<%=per.getIdPersona()%>">Mi cuenta</a>

@@ -59,6 +59,8 @@ public class Pedido {
 	public void setId_dcto(int id_dcto) {
 		this.id_dcto = id_dcto;
 	}
+	
+
 
 	
 	

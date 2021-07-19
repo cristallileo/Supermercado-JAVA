@@ -32,9 +32,6 @@
             <a class="nav-link" href="ListProductos">Productos</a>
           </li>          
           <li class="nav-item">
-            <a class="nav-link" href="contacto.jsp">Contacto</a>
-          </li>
-          <li class="nav-item">
               	<a class="nav-link" href="CerrarSesion">Cerrar Sesión</a>
           </li>
        

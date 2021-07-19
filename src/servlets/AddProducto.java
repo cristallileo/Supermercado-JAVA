@@ -38,7 +38,7 @@ public class AddProducto extends HttpServlet {
 		ProductoController ctrl= new ProductoController();	
 		
 		String descProd= request.getParameter("descProd");
-		int stock = Integer.parseInt(request.getParameter("stock"));
+		//int stock = Integer.parseInt(request.getParameter("stock"));
 		int stockMin = Integer.parseInt(request.getParameter("stockMin"));
 		String marca = request.getParameter("marca");
 		int id_categoria = Integer.parseInt(request.getParameter("id_categoria"));
@@ -50,6 +50,7 @@ public class AddProducto extends HttpServlet {
 		prod.setMarca(marca);
 		
 		prod.setId_categoria(id_categoria);
+		prod.setId_proveedor(null);
 		
 		prod.setPrecio(precio);
 		

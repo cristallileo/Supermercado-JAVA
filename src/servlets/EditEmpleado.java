@@ -56,7 +56,7 @@ public class EditEmpleado extends HttpServlet {
 		
 		String direccion= request.getParameter("direc");
 		
-		String email= request.getParameter("email");
+	//	String email= request.getParameter("email");
 
 		String pass= request.getParameter("pass");
 		
@@ -73,7 +73,7 @@ public class EditEmpleado extends HttpServlet {
 		per.setApellido(apellido);
 		per.setTelefono(telefono);
 		per.setDireccion(direccion);
-		per.setEmail(email);
+		//per.setEmail(email);
 		per.setPassword(pass);
 		per.setCuil(cuil);
 		//per.setFechaIngreso(null);

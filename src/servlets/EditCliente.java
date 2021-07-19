@@ -35,7 +35,7 @@ public class EditCliente extends HttpServlet {
 		String nDoc= request.getParameter("nroDoc");		
 		String telefono= request.getParameter("tel");		
 		String direccion= request.getParameter("direc");		
-		String email= request.getParameter("email");
+		//String email= request.getParameter("email");
 		String pass= request.getParameter("pass");
 				
 		int id = Integer.parseInt(request.getParameter("id"));
@@ -47,7 +47,7 @@ public class EditCliente extends HttpServlet {
 		per.setApellido(apellido);
 		per.setTelefono(telefono);
 		per.setDireccion(direccion);
-		per.setEmail(email);
+		//per.setEmail(email);
 		per.setPassword(pass);
 		//per.setCuil("");
 		//per.setFechaIngreso(null);

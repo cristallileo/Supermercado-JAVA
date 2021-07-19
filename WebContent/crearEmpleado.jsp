@@ -59,12 +59,12 @@
               <form action="AddEmpleado" method="post">
                
                 <div class="form-label-group">
-                  <input type="text" name="name" id="name" class="form-control" placeholder="Nombre" required >
+                  <input type="text" name="name" id="name" class="form-control" placeholder="Nombre" required  autocomplete="off" >
                   <label for="name">Nombre</label>
                 </div>
 
                 <div class="form-label-group">
-                  <input type="text" name="surname" id="surname" class="form-control" placeholder="Apellido" required>
+                  <input type="text" name="surname" id="surname" class="form-control" placeholder="Apellido" required  autocomplete="off" >
                   <label for="surname">Apellido</label>
                 </div>
 
@@ -76,23 +76,23 @@
   				</select>	
             
                 <div class="form-label-group">
-                  <input type="text" name="nroDoc" id="nroDoc" class="form-control" placeholder="Nro doc" required>
+                  <input type="text" name="nroDoc" id="nroDoc" class="form-control" placeholder="Nro doc" required  autocomplete="off" >
                   <label for="nroDoc">Nro Documento</label>
                 </div>
              
                 <div class="form-label-group">
-                  <input type="text" name="tel" id="tel" class="form-control" placeholder="Telefono" required>
+                  <input type="text" name="tel" id="tel" class="form-control" placeholder="Telefono" required  autocomplete="off" >
                   <label for="tel">Teléfono</label>
                 </div>
                
                 
                 <div class="form-label-group">
-                  <input type="text" name="direc" id="direc" class="form-control" placeholder="Dirección" required>
+                  <input type="text" name="direc" id="direc" class="form-control" placeholder="Dirección" required  autocomplete="off" >
                   <label for="direc">Dirección</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
+                  <input type="email" name="email" id="email" class="form-control" placeholder="Email" required  autocomplete="off" >
                   <label for="email">Email</label>
                 </div>
                 
@@ -102,7 +102,7 @@
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" name="cuil" id="cuil" class="form-control" placeholder="CUIL" required>
+                  <input type="text" name="cuil" id="cuil" class="form-control" placeholder="CUIL" required  autocomplete="off" >
                   <label for="cuil">CUIL</label>
                 </div>
                 

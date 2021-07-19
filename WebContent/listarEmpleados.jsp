@@ -81,7 +81,7 @@
     		<%if (descrip==null){ %>
 	 			<input type="text" placeholder="Nombre..." name="search" autocomplete="off">
 	  		<%}else{ %>
-	  			<input type="text" placeholder="Nombre..." name="search" value="<%=descrip%>">
+	  			<input type="text" placeholder="Nombre..." name="search"  autocomplete="off"  value="<%=descrip%>">
 	  			<%if (le.size() == 0){ %>  
     			<div class="alert alert-warning" style="margin:0px; max-width:450px; height:50px; position:fixed; ; right: 500px;"> ¡Lo sentimos! No hay resultados disponibles..</div>       
     			<!--   -->                    	

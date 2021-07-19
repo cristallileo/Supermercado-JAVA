@@ -228,8 +228,8 @@
 	                                       </a>
                                        </td>
        								<% } %>
-       								<%if(p.getId_proveedor()==null){ %>
-       								 	<td>-</td>
+       								<%if(p.getId_proveedor()<1){ %>
+       								 	<td style="color:red"><a href="ObtenerProducto?id=<%=p.getIdProducto()%>">Ingresar stock</a></td>
        								<%} else{
        								ProveedorController ctrlP = new ProveedorController();
                                     Proveedor prov= new Proveedor();

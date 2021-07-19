@@ -116,7 +116,7 @@ DescuentoController ctrlD= new DescuentoController();
 	                    			int id = p.getId_persona();
 	                    			cliente.setIdPersona(id);
 	                    			cliente=ctrl.getById(cliente);
-	                    			int id_d= p.getId_dcto();
+	                    			Integer id_d= p.getId_dcto();
 	                    			des.setIdDcto(id_d);
 	                    			des=ctrlD.getById(des);
 	                    			%>
@@ -132,47 +132,36 @@ DescuentoController ctrlD= new DescuentoController();
 	                    				int day2 = cal.get(Calendar.DAY_OF_MONTH);%>
                                     <td><%=day2%> <%=month2 %> <%=year2 %> </td>
                                     <%} %>
-                                    <%if (p.getDireccionEnvio()==null){ %>
+                                    <%if(p.getDireccionEnvio()==null){ %>
                                     <td>A definir </td>
                                     <%}else{ %>
                                     <td><%=p.getDireccionEnvio()%> </td>
                                     <%} %>
                                     <td><%=cliente.getNombre()%> <%=cliente.getApellido() %> </td>
-                                    <td><%=des.getPorcDcto()%> </td>
-       
+                                    <%if(p.getId_dcto()!=0){ %>
+                                    <td><%=des.getPorcDcto()%></td>
+       								<%}else { %>
+       								<td>-</td>
+       								<%}%>
+       								
+       								                     
                                      <td style="width: 10%;">
-                                        
                                         <a href="BuscarPedido?id=<%=p.getIdPedido()%>" class="table-link text-info">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                             </span>
                                         </a>
-                                        <!--<a  href="DeletePedido?id=<%//p.getIdPedido()%>" class="table-link danger" onclick="return confirm('Desea eliminar este pedido?');" >
-                                            <span class="fa-stack">
-                                                <i class="fa fa-square fa-stack-2x"></i>
-                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                                            </span>
-                                            
-                                        </a>-->
-                                    
                                     </td>
-                                   
-    
 	                    		</tr>
-	                    		   
-	                    		
-	                    		<% } %>
-	                    		
+	                    		<%} %>
                     		</tbody>	
                         </table>
                     </div>
                 </div>
             </div>
-            
         </div>
     </div>
 </div>
-
 </body>
 </html>

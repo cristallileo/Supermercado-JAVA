@@ -172,7 +172,7 @@ public class DataPersona {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"UPDATE `tp_java`.`persona` SET `tipoDoc` = ?,`nroDoc` = ?,`nombre` = ?, `apellido` = ?, `telefono` = ?, `direccion` = ?, `email` = ?, `password` = ?, `fecha_hora_baja`= ? WHERE (`idPersona` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+							"UPDATE `tp_java`.`persona` SET `tipoDoc` = ?,`nroDoc` = ?,`nombre` = ?, `apellido` = ?, `telefono` = ?, `direccion` = ?, `password` = ?, `fecha_hora_baja`= ? WHERE (`idPersona` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
 			//NO PERMITIMOS EDITAR FECHAS DE INGRESO DE EMPLEADOS NI FEHCA DE REGISTRO DE CLIENTES PORQ ES DE INGRESO AUTOMATICO, NO INGRESO HUMANO.
 			stmt.setString(1, p.getTipoDoc());
 			stmt.setString(2, p.getNroDoc());
@@ -180,10 +180,10 @@ public class DataPersona {
 			stmt.setString(4, p.getApellido());
 			stmt.setString(5, p.getTelefono());
 			stmt.setString(6, p.getDireccion());
-			stmt.setString(7, p.getEmail());
-			stmt.setString(8, p.getPassword());
-			stmt.setDate(9, p.getFecha_hora_baja());
-			stmt.setInt(10, p.getIdPersona());
+			//stmt.setString(7, p.getEmail());
+			stmt.setString(7, p.getPassword());
+			stmt.setDate(8, p.getFecha_hora_baja());
+			stmt.setInt(9, p.getIdPersona());
 			
 			
 			stmt.executeUpdate();

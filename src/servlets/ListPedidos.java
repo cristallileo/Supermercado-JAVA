@@ -61,7 +61,7 @@ public class ListPedidos extends HttpServlet {
       		}else {
       			pedidos=ctrl.listarPedidos();
       			for(Pedido p: pedidos) {
-      				if(!p.getEstado().equals("Nuevo")) {
+      				if(!p.getEstado().equals("Nuevo") && !p.getEstado().equals("Cancelado")) {
       					pedidos2.add(p);
       				}
       			

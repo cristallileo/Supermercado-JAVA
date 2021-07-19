@@ -69,12 +69,12 @@
               <form action="EditEmpleado?id=<%=per.getIdPersona()%>" method="post">
                
                 <div class="form-label-group">
-                  <input type="text" name="name" id="name" class="form-control" value=<%=per.getNombre()%> required >
+                  <input type="text" name="name" id="name" class="form-control" autocomplete="off" value=<%=per.getNombre()%> required  >
                   <label for="name">Nombre</label>
                 </div>
 
                 <div class="form-label-group">
-                  <input type="text" name="surname" id="surname" class="form-control" value=<%=per.getApellido()%> required>
+                  <input type="text" name="surname" id="surname" class="form-control" autocomplete="off" value=<%=per.getApellido()%> required>
                   <label for="surname">Apellido</label>
                 </div>
 				
@@ -106,17 +106,17 @@
                  
                             
                 <div class="form-label-group">
-                  <input type="text" name="nroDoc" id="nroDoc" class="form-control" value="<%=per.getNroDoc()%>" required>
+                  <input type="text" name="nroDoc" id="nroDoc" class="form-control" autocomplete="off" value="<%=per.getNroDoc()%>" required>
                   <label for="nroDoc">Nro Documento</label>
                 </div>
              
                 <div class="form-label-group">
-                  <input type="text" name="tel" id="tel" class="form-control" value="<%=per.getTelefono()%>" required >
+                  <input type="text" name="tel" id="tel" class="form-control" autocomplete="off" value="<%=per.getTelefono()%>" required >
                   <label for="tel">Teléfono</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" name="direc" id="direc" class="form-control" value="<%=per.getDireccion()%>" required>
+                  <input type="text" name="direc" id="direc" class="form-control" autocomplete="off" value="<%=per.getDireccion()%>" required>
                   <label for="direc">Dirección</label>
                 </div>
                 
@@ -127,7 +127,7 @@
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="email" name="email" id="email" class="form-control" value="<%=per.getEmail()%>" required>
+                  <input type="email" name="email" id="email" class="form-control" value="<%=per.getEmail()%>" disabled>
                   <label for="email">Email</label>
                 </div>
                 
