@@ -48,7 +48,10 @@ public class PedidoController {
 		pedidos1= this.listarPedidos();
 		for (Pedido p: pedidos1) {
 			if(p.getId_persona()==per.getIdPersona()) {
-				pedidos2.add(p);
+				if(p.getEstado().equals("Confirmado") || p.getEstado().equals("Despachado") || p.getEstado().equals("Entregado")) {
+					pedidos2.add(p);
+				}
+				
 			}
 		}
 		Collections.reverse(pedidos2);

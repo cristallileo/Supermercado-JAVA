@@ -127,7 +127,7 @@ Calendar cal = Calendar.getInstance();
                                     <td><%=d.getPorcDcto()*100%>%</td>
                                     <td><%=day1%> <%=month1 %> <%=year1 %></td>
                                     <td><%=day2%> <%=month2 %> <%=year2 %> </td>
-       								 <%if (d.getFechaDctoInicio().before(timeNow) && d.getFechaDctoFin().after(timeNow)){%>
+       								 <%if ((d.getFechaDctoInicio().before(timeNow) || d.getFechaDctoInicio().equals(timeNow)) && (d.getFechaDctoFin().equals(timeNow) || d.getFechaDctoFin().after(timeNow) )){%>
                                     <td>
                                     <a>
                                     	<span class="badge bg-success">Activo</span>
@@ -141,16 +141,9 @@ Calendar cal = Calendar.getInstance();
                                      </td>
                                     <%} %>
        
-       
                                      <td style="width: 10%;">
                                         
-                                        <a href="BuscarDescuento?id=<%=d.getIdDcto()%>" class="table-link text-info">
-                                            <span class="fa-stack">
-                                                <i class="fa fa-square fa-stack-2x"></i>
-                                                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                            </span>
-                                        </a>
-                                        <a  href="DeleteDescuento?id=<%=d.getIdDcto()%>" class="table-link danger" onclick="return confirm('Desea eliminar este descuento?');" >
+                                        <a  href="DeleteDescuento?id=<%=d.getIdDcto()%>" class="table-link danger" onclick="return confirm('Desea deshabilitar este descuento?');" >
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>

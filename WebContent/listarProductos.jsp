@@ -126,21 +126,7 @@
   <div class="container bootstrap snippets bootdey"> 
   	<div class="row">
 	
-  	<!-- precio -->
-  	<!-- 
-  	<div class="w3-dropdown-hover">
-  	<button class="w3-button w3-black">Precio</button>
-	  <div class="w3-dropdown-content w3-bar-block w3-border">
-	     <a class="w3-bar-item w3-button" onclick=<%//Collections.sort(lprod);%> >De menor a mayor precio</a>
-		 <a class="w3-bar-item w3-button" onclick=<%//Collections.sort(lprod,Collections.reverseOrder());%>>De mayor a menor precio</a>
-		 
-		 <% //  Collections.sort(lprod); //de menor a mayor
-			// Collections.sort(lprod,Collections.reverseOrder()); //de mayor a menor
-		  %>
-
-      </div>
-	</div> -->
-	
+  	
 		<!-- SEARCH -->
 		<!-- DESCRIPCION -->
 		<div class="col">

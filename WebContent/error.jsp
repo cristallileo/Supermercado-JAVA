@@ -1,5 +1,3 @@
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -66,9 +64,9 @@
         <div class="container">
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto text-center ">
-              <h3 class="login-heading mb-4 text-center">Este producto pertenece a una categoría inactiva.</h3>
-              <p>Reactive esta categoría o reasigne el producto a otra.</p>
-              <a href="ListProductos"  style="text-align:center;">Volver</a>
+              <h3 class="login-heading mb-4 text-center">Ha ocurrido un error</h3>
+              <p>Intente de nuevo</p>
+              <a href="" style="text-align:center;">Volver</a>
           
             </div>
           </div>

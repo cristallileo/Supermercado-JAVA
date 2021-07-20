@@ -74,7 +74,7 @@
   
   <form action="AddDescuento" method="post">
   				<div class="form-label-group">
-                  <input type="text" name="porc" id="porc" class="form-control" placeholder="Porcentaje" required >
+                  <input type="text" name="porc" id="porc" class="form-control" placeholder="Porcentaje" required autocomplete="off">
                   <label for="porc">Porcentaje</label>
                 </div>
 
@@ -85,7 +85,7 @@
 
 				
                 <div class="form-label-group">
-                  <input type="date" name="hasta" id="hasta" class="form-control" placeholder="Hasta-dd/mm/yyyy" >
+                  <input type="date" name="hasta" id="hasta" class="form-control" placeholder="Hasta-dd/mm/yyyy" required >
                   <label for="hasta">Hasta</label>
                 </div>
                    

@@ -74,36 +74,25 @@
               <form action="AddProveedor" method="post">
                
                <div class="form-label-group">
-                  <input type="text" name="razonS" id="razonS" class="form-control" placeholder="Razon Social" required>
+                  <input type="text" name="razonS" id="razonS" class="form-control" placeholder="Razon Social" required autocomplete="off">
                   <label for="razonS">Razón Social</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" name="email" id="email" class="form-control" placeholder="Email" required >
+                  <input type="email" name="email" id="email" class="form-control" placeholder="Email" required autocomplete="off">
                   <label for="email">Email</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" name="tel" id="tel" class="form-control" placeholder="Teléfono" required >
+                  <input type="text" name="tel" id="tel" class="form-control" placeholder="Teléfono" required autocomplete="off">
                   <label for="tel">Teléfono</label>
                 </div>
                 
-                
-                
-                
-                
-                <!--  <div class="form-label-group">
-                  <input type="text" name="baja" id="baja" class="form-control" placeholder="Fecha de Baja" >
-                  <label for="baja">Fecha Baja</label>
-                </div>  --> 
-
                 <p>${message_categoria}</p>
  
-                <form action="AddCategoria" method="post">
                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se agregará un nuevo proveedor. Desea confirmar?')">Agregar</button>
                 </form>
                 
-      	     </form>
             </div>
           </div>
         </div>

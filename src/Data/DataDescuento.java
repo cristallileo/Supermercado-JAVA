@@ -18,7 +18,7 @@ import entidades.*;
 			
 			try {
 				stmt= DbConnector.getInstancia().getConn().createStatement();
-				rs= stmt.executeQuery("select idDcto,porcDcto,fechaDctoInicio, fechaDctoFin from descuento");
+				rs= stmt.executeQuery("select * from descuento");
 				if(rs!=null) {
 					while(rs.next()) {
 						Descuento d=new Descuento();
@@ -26,6 +26,7 @@ import entidades.*;
 						d.setPorcDcto(rs.getDouble("porcDcto"));
 						d.setFechaDctoInicio(rs.getDate("fechaDctoInicio"));
 						d.setFechaDctoFin(rs.getDate("fechaDctoFin"));
+						d.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
 						
 						descuentos.add(d);
 					}
@@ -53,7 +54,7 @@ import entidades.*;
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into descuento( porcDcto, fechaDctoInicio, fechaDctoFin) values(?,?,?)",
+							"insert into descuento( porcDcto, fechaDctoInicio, fechaDctoFin,fecha_hora_baja) values(?,?,?,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
 			
@@ -61,6 +62,7 @@ import entidades.*;
 			stmt.setDouble(1, d.getPorcDcto());
 			stmt.setDate(2, d.getFechaDctoInicio());
 			stmt.setDate(3, d.getFechaDctoFin());
+			stmt.setTimestamp(4, d.getFecha_hora_baja());
 						
 			stmt.executeUpdate();
 			
@@ -87,19 +89,18 @@ import entidades.*;
     return d;
 	}
 
-	public Descuento editDescuento (Descuento d) {
+	public Descuento deshabilitarDescuento (Descuento d) {
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"UPDATE `tp_java`.`descuento` SET `porcDcto` = ?,`fechaDctoInicio` = ?,`fechaDctoFin` = ? WHERE (`idDcto` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+							"UPDATE `tp_java`.`descuento` SET `fecha_hora_baja` = ? WHERE (`idDcto` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
 			
 			
-			stmt.setDouble(1, d.getPorcDcto());
-			stmt.setDate(2, d.getFechaDctoInicio());
-			stmt.setDate(3, d.getFechaDctoFin());
-			stmt.setInt(4, d.getIdDcto());
+			
+			stmt.setTimestamp(1, d.getFecha_hora_baja());
+			stmt.setInt(2, d.getIdDcto());
 						
 			stmt.executeUpdate();
 			
@@ -121,74 +122,14 @@ import entidades.*;
 	return d;
 	}
 
-	public Proveedor deleteProveedor(Proveedor p) {
-			
-			PreparedStatement stmt= null;
-			ResultSet keyResultSet=null;
-			try {
-				stmt=DbConnector.getInstancia().getConn().
-						prepareStatement(
-								"delete from proveedor where proveedor.idProveedor=? ", PreparedStatement.RETURN_GENERATED_KEYS);
-				stmt.setInt(1, p.getIdProveedor());
-				
-				stmt.executeUpdate();
-				
-				keyResultSet=stmt.getGeneratedKeys();
-	            if(keyResultSet!=null && keyResultSet.next()){
-	                p.setIdProveedor(keyResultSet.getInt(1));
-	            }
-			} catch (SQLException e) {
-	        e.printStackTrace();
-			} finally {
-	        try {
-	        	 if(keyResultSet!=null)keyResultSet.close();
-	            if(stmt!=null) stmt.close();
-	            DbConnector.getInstancia().releaseConn();
-	        } catch (SQLException e) {
-	        	e.printStackTrace();
-	        }
-		}
-		return p;
-		}
 	
-	public void deleteDescuento(Descuento d) {
-		
-		PreparedStatement stmt= null;
-		ResultSet keyResultSet=null;
-		try {
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"delete from descuento where descuento.idDcto=? ", PreparedStatement.RETURN_GENERATED_KEYS);
-			stmt.setInt(1, d.getIdDcto());
-			
-			stmt.executeUpdate();
-			
-			keyResultSet=stmt.getGeneratedKeys();
-            if(keyResultSet!=null && keyResultSet.next()){
-                d.setIdDcto(keyResultSet.getInt(1));
-            }
-		} catch (SQLException e) {
-        e.printStackTrace();
-		} finally {
-        try {
-        	 if(keyResultSet!=null)keyResultSet.close();
-            if(stmt!=null) stmt.close();
-            DbConnector.getInstancia().releaseConn();
-        } catch (SQLException e) {
-        	e.printStackTrace();
-        }
-	}
-	
-	}
-
-
 	public Descuento getById(Descuento des) {
 		Descuento d=null;
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idDcto,porcDcto,fechaDctoInicio,fechaDctoFin from descuento where idDcto=? "
+					"select * from descuento where idDcto=? "
 					);
 			stmt.setInt(1, des.getIdDcto());
 			
@@ -199,6 +140,7 @@ import entidades.*;
 				d.setPorcDcto(rs.getDouble("porcDcto"));
 				d.setFechaDctoInicio(rs.getDate("fechaDctoInicio"));
 				d.setFechaDctoFin(rs.getDate("fechaDctoFin"));
+				d.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
 
 				
 			}
@@ -225,7 +167,7 @@ import entidades.*;
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idDcto,porcDcto,fechaDctoInicio, fechaDctoFin from descuento where fechaDctoInicio<=curdate() and fechaDctoFin>=curdate()");
+			rs= stmt.executeQuery("select * from descuento where fechaDctoInicio<=curdate() and fechaDctoFin>=curdate()");
 			if(rs!=null) {
 				while(rs.next()) {
 					Descuento d=new Descuento();
@@ -233,6 +175,7 @@ import entidades.*;
 					d.setPorcDcto(rs.getDouble("porcDcto"));
 					d.setFechaDctoInicio(rs.getDate("fechaDctoInicio"));
 					d.setFechaDctoFin(rs.getDate("fechaDctoFin"));
+					d.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
 					
 					descuentos.add(d);
 				}
@@ -252,4 +195,46 @@ import entidades.*;
 		}
 		return descuentos;
 	}
+	
+	public LinkedList<Descuento> getAllHabilitados() {
+		Statement stmt=null;
+		ResultSet rs=null;
+		LinkedList<Descuento> descuentos= new LinkedList<Descuento>();
+		
+		try {
+			stmt= DbConnector.getInstancia().getConn().createStatement();
+			rs= stmt.executeQuery("select * from descuento  where fecha_hora_baja is null");
+			if(rs!=null) {
+				while(rs.next()) {
+					Descuento d=new Descuento();
+					d.setIdDcto(rs.getInt("idDcto"));
+					d.setPorcDcto(rs.getDouble("porcDcto"));
+					d.setFechaDctoInicio(rs.getDate("fechaDctoInicio"));
+					d.setFechaDctoFin(rs.getDate("fechaDctoFin"));
+					d.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
+					
+					descuentos.add(d);
+				}
+			}
+			
+		} catch (SQLException e) {
+				e.printStackTrace();
+			
+		} finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return descuentos;
 	}
+	
+	
+
+			}
+	
+			
+		

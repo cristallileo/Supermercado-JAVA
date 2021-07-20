@@ -95,7 +95,7 @@
 	 <%if (descrip==null){ %>
 		  <input type="text" placeholder="Razon Social..." name="search" autocomplete="off">
 		  <%}else{ %>
-		  <input type="text" placeholder="Razon Social..." name="search" value=<%=descrip%>>
+		  <input type="text" placeholder="Razon Social..." name="search" autocomplete="off" value=<%=descrip%>>
 		  <%} %>
 	  <button type="submit"><i class="fa fa-search"></i></button>
 	</form>

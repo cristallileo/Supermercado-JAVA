@@ -25,11 +25,12 @@ public class DescuentoController {
 		return dd.getAllActivos();
 	}
 
-	public Descuento editDescuento (Descuento d) {
-		return dd.editDescuento(d);
+	public LinkedList<Descuento> listarDescuentosHabilitados() {
+		return dd.getAllHabilitados();
 	}
-	public void deleteDescuento (Descuento d) {
-		 dd.deleteDescuento(d);
+	
+	public Descuento deshabilitarDescuento (Descuento d) {
+		return dd.deshabilitarDescuento(d);
 	}
 	
 	public Descuento getById(Descuento d) {

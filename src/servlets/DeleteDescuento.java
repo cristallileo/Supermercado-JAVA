@@ -1,6 +1,11 @@
 package servlets;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.LinkedList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,13 +48,16 @@ public class DeleteDescuento extends HttpServlet {
 
 		DescuentoController ctrl= new DescuentoController();
 		Descuento d= new Descuento();
-		//response.getWriter().append("Served at: ").append(id);
 		int id = Integer.parseInt(request.getParameter("id"));
 		d.setIdDcto(id);
 		d =ctrl.getById(d);
-		ctrl.deleteDescuento(d);
 		
-		request.setAttribute("descuentos", ctrl.listarDescuentos());
+		java.sql.Date ts = new Date(Calendar.getInstance().getTimeInMillis());
+		Timestamp timeNow=new Timestamp(ts.getTime());  
+		d.setFecha_hora_baja(timeNow);
+		d=ctrl.deshabilitarDescuento(d);
+		
+		
 		request.getRequestDispatcher("ListDescuentos").forward(request, response);
 	
 	}

@@ -191,7 +191,7 @@ public class DataCategoria {
 	
 	try {
 		stmt= DbConnector.getInstancia().getConn().createStatement();
-		rs= stmt.executeQuery("select idCategoria,desc_categoria, fecha_hora_baja from categoria");
+		rs= stmt.executeQuery("select * from categoria");
 		if(rs!=null) {
 			while(rs.next()) {
 				Categoria c=new Categoria();
