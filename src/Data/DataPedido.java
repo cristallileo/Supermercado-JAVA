@@ -12,7 +12,7 @@ import entidades.*;
 
 public class DataPedido {
 	
-	public LinkedList<Pedido> getAll(){
+public LinkedList<Pedido> getAll(){
 		
 		Statement stmt=null;
 		ResultSet rs=null;
@@ -20,7 +20,7 @@ public class DataPedido {
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select * from pedido");
+			rs= stmt.executeQuery("select idPedido,fechaPedido,precioTotal,fechaEntrega,direccionEnvio,estado,id_persona,id_dcto from pedido");
 			if(rs!=null) {
 				while(rs.next()) {
 					Pedido p=new Pedido();
@@ -53,6 +53,10 @@ public class DataPedido {
 		return pedidos;
 	}
 
+	
+
+	
+	
 	public void add(Pedido p) { 
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;

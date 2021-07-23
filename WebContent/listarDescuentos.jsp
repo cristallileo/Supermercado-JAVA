@@ -127,7 +127,9 @@ Calendar cal = Calendar.getInstance();
                                     <td><%=d.getPorcDcto()*100%>%</td>
                                     <td><%=day1%> <%=month1 %> <%=year1 %></td>
                                     <td><%=day2%> <%=month2 %> <%=year2 %> </td>
-       								 <%if ((d.getFechaDctoInicio().before(timeNow) || d.getFechaDctoInicio().equals(timeNow)) && (d.getFechaDctoFin().equals(timeNow) || d.getFechaDctoFin().after(timeNow) )){%>
+       								 <%if ((d.getFechaDctoInicio().equals(d.getFechaDctoFin()) && d.getFechaDctoInicio().equals(timeNow)) 
+       										 || (d.getFechaDctoInicio().before(timeNow) || d.getFechaDctoInicio().equals(timeNow))
+       										 && (d.getFechaDctoFin().equals(timeNow) || d.getFechaDctoFin().after(timeNow) )){%>
                                     <td>
                                     <a>
                                     	<span class="badge bg-success">Activo</span>

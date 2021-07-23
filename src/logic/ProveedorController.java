@@ -37,10 +37,6 @@ public class ProveedorController {
 		return dp.add(p);	
 	}	
 	
-	public void deleteProveedor(Proveedor p) {
-		 dp.deleteProveedor(p);
-	}
-	
 	public Proveedor editProveedor (Proveedor p) {
 		return dp.editProveedor(p);
 	}

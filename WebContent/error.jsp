@@ -66,7 +66,7 @@
             <div class="col-md-9 col-lg-8 mx-auto text-center ">
               <h3 class="login-heading mb-4 text-center">Ha ocurrido un error</h3>
               <p>Intente de nuevo</p>
-              <a href="" style="text-align:center;">Volver</a>
+              <a href="ListProductos" style="text-align:center;">Volver</a>
           
             </div>
           </div>

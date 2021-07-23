@@ -167,13 +167,6 @@
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                             </span>
                                         </a>
-                                        <a  href="DeleteProveedor?id=<%=p.getIdProveedor()%>" class="table-link danger" onclick="return confirm('Desea eliminar este proveedor?');" >
-                                            <span class="fa-stack">
-                                                <i class="fa fa-square fa-stack-2x"></i>
-                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                                            </span>
-                                            
-                                        </a>
                                     
                                     </td>
                                    

@@ -122,35 +122,7 @@ public class DataProveedor {
 	return p;
 	}
 
-	public void deleteProveedor(Proveedor p) {
-			
-			PreparedStatement stmt= null;
-			ResultSet keyResultSet=null;
-			try {
-				stmt=DbConnector.getInstancia().getConn().
-						prepareStatement(
-								"delete from proveedor where proveedor.idProveedor=? ", PreparedStatement.RETURN_GENERATED_KEYS);
-				stmt.setInt(1, p.getIdProveedor());
-				
-				stmt.executeUpdate();
-				
-				keyResultSet=stmt.getGeneratedKeys();
-	            if(keyResultSet!=null && keyResultSet.next()){
-	                p.setIdProveedor(keyResultSet.getInt(1));
-	            }
-			} catch (SQLException e) {
-	        e.printStackTrace();
-			} finally {
-	        try {
-	        	 if(keyResultSet!=null)keyResultSet.close();
-	            if(stmt!=null) stmt.close();
-	            DbConnector.getInstancia().releaseConn();
-	        } catch (SQLException e) {
-	        	e.printStackTrace();
-	        }
-		}
-			
-		}
+	
 
 	public Proveedor getById(Proveedor prov) {
 		Proveedor p=null;

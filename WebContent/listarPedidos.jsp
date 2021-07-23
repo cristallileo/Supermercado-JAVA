@@ -25,6 +25,8 @@
   
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   
+  <link href="style/login/login.css" rel="stylesheet">
+    	
 <title>Pedidos</title>
 
 <% LinkedList<Pedido> lp = (LinkedList<Pedido>)request.getAttribute("pedidos");
@@ -98,10 +100,7 @@ DescuentoController ctrlD= new DescuentoController();
                                 <th align="center"><span>Fecha Entrega</span></th>
                                 <th align="center"><span>Dirección Envío</span></th>
                                 <th align="center"><span>Cliente</span></th>
-                                <th align="center"><span>Descuento</span></th>
                                 
-                               
-                               
                                 <th>&nbsp;</th>
                                 </tr>
                             </thead>
@@ -122,7 +121,7 @@ DescuentoController ctrlD= new DescuentoController();
 	                    			%>
                                     <td><%=day%> <%=month%> <%=year%></td>
                                     <td><%=p.getEstado()%> </td>
-                                    <td><%=p.getPrecioTotal()%></td>
+                                    <td>$<%=p.getPrecioTotal()%></td>
                                     <%if (p.getFechaEntrega()==null){ %>
                                     <td>A definir</td>
                                     <%}else{
@@ -132,27 +131,24 @@ DescuentoController ctrlD= new DescuentoController();
 	                    				int day2 = cal.get(Calendar.DAY_OF_MONTH);%>
                                     <td><%=day2%> <%=month2 %> <%=year2 %> </td>
                                     <%} %>
-                                    <%if(p.getDireccionEnvio()==null){ %>
+                                    <%if((p.getDireccionEnvio())==null){ %>
                                     <td>A definir </td>
                                     <%}else{ %>
                                     <td><%=p.getDireccionEnvio()%> </td>
                                     <%} %>
                                     <td><%=cliente.getNombre()%> <%=cliente.getApellido() %> </td>
-                                    <%if(p.getId_dcto()!=0){ %>
-                                    <td><%=des.getPorcDcto()%></td>
-       								<%}else { %>
-       								<td>-</td>
-       								<%}%>
-       								
-       								                     
-                                     <td style="width: 10%;">
+                                          
+                                     <td style="width: 8%;">
                                         <a href="BuscarPedido?id=<%=p.getIdPedido()%>" class="table-link text-info">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                             </span>
                                         </a>
+                                    
                                     </td>
+                                    
+                                  
 	                    		</tr>
 	                    		<%} %>
                     		</tbody>	
@@ -165,3 +161,5 @@ DescuentoController ctrlD= new DescuentoController();
 </div>
 </body>
 </html>
+
+                                        

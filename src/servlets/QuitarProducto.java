@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ConcurrentModificationException;
 import java.util.LinkedList;
 
 import javax.servlet.ServletException;
@@ -70,17 +71,25 @@ public class QuitarProducto extends HttpServlet {
 		lineas= ctrlLinea.getByPedido(ped);
 		
 		//veo cual el la linea que tengo q eliminar
+		try{
 		for(LineaDePedido linea: lineas) {
 			if(linea.getId_producto()==prod.getIdProducto()) {
 				//java.sql.Date timeNow = new Date(Calendar.getInstance().getTimeInMillis());
 				//linea.setFecha_hora_baja(timeNow);
+				
+				
 				linea=ctrlLinea.deleteLineaDePedido(linea);
 				lineas.remove(linea);
 				int cant= linea.getCantidad();
 				double total_prod= cant* prod.getPrecio(); // lo que tengo q descontar dle total del pedido
 				ped.setPrecioTotal(ped.getPrecioTotal()-total_prod);
 				ctrlPed.editTotal(ped);
+				
+				
 			}
+		}
+		}catch(ConcurrentModificationException e1) {
+			request.getRequestDispatcher("error.jsp").forward(request, response);
 		}
 		
 		

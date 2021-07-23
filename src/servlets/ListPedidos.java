@@ -61,14 +61,11 @@ public class ListPedidos extends HttpServlet {
       		}else {
       			pedidos=ctrl.listarPedidos();
       			for(Pedido p: pedidos) {
-      				if(!p.getEstado().equals("Nuevo") && !p.getEstado().equals("Cancelado")) {
+      				if(p.getEstado().equals("Confirmado") && p.getEstado().equals("Despachado")&& p.getEstado().equals("Entregado")) {
       					pedidos2.add(p);
-      				}
-      			
-      		}
+      				} 
+      			}
       			request.setAttribute("pedidos", pedidos2);
-      			request.setAttribute("pedido", null);
-      			//request.setAttribute("confirmado", false);
       	        request.getRequestDispatcher("listarPedidos.jsp").forward(request, response);
       		}
 	}
