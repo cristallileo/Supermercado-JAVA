@@ -2,7 +2,6 @@
 <%@page import="java.sql.Date" %>
 <%@page import="java.util.Base64"%>
 <%@page import="entidades.*"%>
-<%@ page import="java.util.Calendar"%>
 <%@page import="logic.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>

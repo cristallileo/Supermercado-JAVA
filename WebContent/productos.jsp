@@ -1,7 +1,6 @@
 <%@page import="java.util.LinkedList"%>
 <%@page import="java.sql.Date" %>
 <%@page import="entidades.*"%>
-<%@ page import="java.util.Calendar"%>
 <%@page import="logic.*"%>
 <!-- IMAGENES -->
 

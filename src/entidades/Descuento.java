@@ -5,15 +5,15 @@ import java.sql.Date;
 
 public class Descuento {
 
-	private int idDcto;
+	private Integer idDcto;
 	private Date fechaDctoFin, fechaDctoInicio;
 	private Timestamp fecha_hora_baja;
 	private Double porcDcto;
 	
-	public int getIdDcto() {
+	public Integer getIdDcto() {
 		return idDcto;
 	}
-	public void setIdDcto(int idDcto) {
+	public void setIdDcto(Integer idDcto) {
 		this.idDcto = idDcto;
 	}
 	public Date getFechaDctoFin() {

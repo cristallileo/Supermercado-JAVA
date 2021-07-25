@@ -75,7 +75,9 @@ public class MyHelper {
 	
 	public  void cuilIsNumeric(String cadena) throws CustomException{
 		try {
-			Integer.parseInt(cadena);
+			//Integer.parseInt(cadena);
+			cadena.matches("-?\\d+(\\.\\d+)?");
+			//return str.matches("-?\\d+(\\.\\d+)?");
 	
 		} catch (NumberFormatException nfe){
 			throw new CustomException("El campo CUIL debe ser numérico. No incluir guiones.");

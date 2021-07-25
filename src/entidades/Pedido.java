@@ -9,7 +9,7 @@ public class Pedido {
 	private Double precioTotal;
 	private String estado, direccionEnvio;
 	private int id_persona;
-	private int id_dcto;
+	private Integer id_dcto;
 	
 	public int getIdPedido() {
 		return idPedido;
@@ -53,10 +53,10 @@ public class Pedido {
 	public void setId_persona(int id_persona) {
 		this.id_persona = id_persona;
 	}
-	public int getId_dcto() {
+	public Integer getId_dcto() {
 		return id_dcto;
 	}
-	public void setId_dcto(int id_dcto) {
+	public void setId_dcto(Integer id_dcto) {
 		this.id_dcto = id_dcto;
 	}
 	

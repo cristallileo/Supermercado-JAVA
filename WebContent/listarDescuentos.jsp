@@ -1,7 +1,7 @@
 <%@page import="java.util.LinkedList"%>
 <%@page import="java.sql.Date" %>
 <%@page import="entidades.*"%>
-<%@ page import="java.util.Calendar"%>
+<%@ page import="java.util.*"%>
 <%@page import="logic.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -123,7 +123,7 @@ Calendar cal = Calendar.getInstance();
 	                    			String month2 = MES[cal.get(Calendar.MONTH)];
 	                    			int day2 = cal.get(Calendar.DAY_OF_MONTH);
 	                    			%>
-	                    			<td><%=d.getIdDcto() %></td>
+	                    			<td><%=d.getIdDcto()%></td>
                                     <td><%=d.getPorcDcto()*100%>%</td>
                                     <td><%=day1%> <%=month1 %> <%=year1 %></td>
                                     <td><%=day2%> <%=month2 %> <%=year2 %> </td>

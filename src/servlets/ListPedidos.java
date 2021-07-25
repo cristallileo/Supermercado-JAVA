@@ -27,18 +27,12 @@ public class ListPedidos extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		PedidoController ctrl= new PedidoController();
@@ -50,25 +44,24 @@ public class ListPedidos extends HttpServlet {
       		per= (Persona)request.getSession(true).getAttribute("usuario");
       		if(per==null){
     			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
-    		}else 
-      		if(per.isCliente()==true) {
+    		}else if(per.isCliente()==true) {
       			pedidos=ctrl.getByCliente(per);
       			request.setAttribute("pedidos", pedidos);
       			request.setAttribute("confirmado", false);
       			request.setAttribute("cancelado", false);
       			request.getRequestDispatcher("mis-pedidos.jsp").forward(request, response);
       			
-      		}else {
+      		}else  if (per.isEmpleado()==true){
       			pedidos=ctrl.listarPedidos();
       			for(Pedido p: pedidos) {
-      				if(p.getEstado().equals("Confirmado") && p.getEstado().equals("Despachado")&& p.getEstado().equals("Entregado")) {
+      				if(p.getEstado().equals("Confirmado") || p.getEstado().equals("Despachado")|| p.getEstado().equals("Entregado")) {
       					pedidos2.add(p);
       				} 
       			}
-      			request.setAttribute("pedidos", pedidos2);
-      	        request.getRequestDispatcher("listarPedidos.jsp").forward(request, response);
+      	      	request.setAttribute("pedidos", pedidos2);
+      	      	request.getRequestDispatcher("listarPedidos.jsp").forward(request, response);
       		}
-	}
-	
 
+
+	}
 }

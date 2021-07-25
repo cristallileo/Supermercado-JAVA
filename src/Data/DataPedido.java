@@ -32,8 +32,6 @@ public LinkedList<Pedido> getAll(){
 					p.setEstado(rs.getString("estado"));
 					p.setId_persona(rs.getInt("id_persona"));
 					p.setId_dcto(rs.getInt("id_dcto"));
-					
-				
 					pedidos.add(p);
 				}
 			}

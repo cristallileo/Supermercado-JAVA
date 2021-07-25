@@ -1,7 +1,7 @@
 <%@page import="java.util.LinkedList"%>
 <%@page import="entidades.*"%>
 <%@page import="logic.*"%>
-<%@ page import="java.util.Calendar"%>
+<%@ page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -100,7 +100,7 @@ DescuentoController ctrlD= new DescuentoController();
                                 <th align="center"><span>Fecha Entrega</span></th>
                                 <th align="center"><span>Dirección Envío</span></th>
                                 <th align="center"><span>Cliente</span></th>
-                                
+                                <th align="center"><span>Estado</span></th>
                                 <th>&nbsp;</th>
                                 </tr>
                             </thead>
@@ -137,18 +137,22 @@ DescuentoController ctrlD= new DescuentoController();
                                     <td><%=p.getDireccionEnvio()%> </td>
                                     <%} %>
                                     <td><%=cliente.getNombre()%> <%=cliente.getApellido() %> </td>
+                                    <%if (p.getId_dcto()<1){ %>
+                                    <td>-</td>
+                                    <%}else{ %>
+                                    <%des.setIdDcto(p.getId_dcto());
+                                    des=ctrlD.getById(des);%>
+                                    <td><%=des.getPorcDcto() %></td>
+                                    <%} %>
                                           
-                                     <td style="width: 8%;">
+                                     <td style="width: 6%;">
                                         <a href="BuscarPedido?id=<%=p.getIdPedido()%>" class="table-link text-info">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                             </span>
                                         </a>
-                                    
-                                    </td>
-                                    
-                                  
+                                    </td>                                  
 	                    		</tr>
 	                    		<%} %>
                     		</tbody>	
