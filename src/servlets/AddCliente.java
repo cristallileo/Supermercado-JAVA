@@ -57,13 +57,13 @@ public class AddCliente extends HttpServlet {
 			if(h.isNumeric(nDoc)==false) {
 				request.setAttribute("message_cliente2","El campo número de documento debe ser numérico.");
 				request.getRequestDispatcher("registro.jsp").forward(request, response);
-			}
+			}else
 			
 			
 		if(h.isNumeric(telefono)==false) {
 			request.setAttribute("message_cliente3","El campo teléfono debe ser numérico. No incluir guiones.");
 			request.getRequestDispatcher("registro.jsp").forward(request, response);
-		}
+		}else {
 		
 		per.setTipoDoc(tDoc);
 		per.setNroDoc(nDoc);
@@ -85,7 +85,7 @@ public class AddCliente extends HttpServlet {
 		request.setAttribute("nuevoCliente", cli);
 		request.getRequestDispatcher("registro-aceptado.jsp").forward(request, response);
 					
-		}
+		}}
 		
 	}
 
