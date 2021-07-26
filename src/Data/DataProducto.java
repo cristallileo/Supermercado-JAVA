@@ -46,7 +46,6 @@ public class DataProducto {
 					p.setFecha_hora_baja(rs.getTimestamp("fecha_hora_baja"));
 					p.setImagen(rs.getBytes("imagen"));
 					p.setId_proveedor(rs.getInt("id_proveedor"));
-					
 					productos.add(p);
 				}
 			}

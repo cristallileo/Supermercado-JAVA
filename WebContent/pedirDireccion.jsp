@@ -53,7 +53,7 @@
               <h3 class="login-heading mb-4 text-center">Ingrese dirección</h3>
                    
                 <div class="form-label-group">
-                  <input type="text" name="direc" id="direc" class="form-control" placeholder="Dirección de envío" required >
+                  <input type="text" name="direc" id="direc" class="form-control" autocomplete="off" placeholder="Dirección de envío" required >
                   <label for="direc">Dirección de envío</label>
                 </div>
 

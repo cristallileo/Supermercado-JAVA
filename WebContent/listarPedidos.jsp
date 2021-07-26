@@ -34,8 +34,6 @@ Calendar cal = Calendar.getInstance();
 String MES[] = {"Enero", "Feb", "Marzo", "Abril", "Mayo", "Jun", "Jul", "Agosto", "Sept", "Oct", "Nov", "Dic"};
 Persona cliente = new Persona();
 PersonaController ctrl = new PersonaController();
-Descuento des = new Descuento();
-DescuentoController ctrlD= new DescuentoController();
 
 %>
 
@@ -108,7 +106,9 @@ DescuentoController ctrlD= new DescuentoController();
 	                           <% for (Pedido p: lp) { %>
 	                    			<tr>
 	                    			<td><%=p.getIdPedido()%></td>
-	                    			<%cal.setTime(p.getFechaPedido());
+	                    			<%Descuento descuento = new Descuento();
+									DescuentoController ctrlD= new DescuentoController();	
+	                    			cal.setTime(p.getFechaPedido());
 	                    			int year = cal.get(Calendar.YEAR); 
 	                    			String month = MES[cal.get(Calendar.MONTH)];
 	                    			int day = cal.get(Calendar.DAY_OF_MONTH);
@@ -116,8 +116,8 @@ DescuentoController ctrlD= new DescuentoController();
 	                    			cliente.setIdPersona(id);
 	                    			cliente=ctrl.getById(cliente);
 	                    			Integer id_d= p.getId_dcto();
-	                    			des.setIdDcto(id_d);
-	                    			des=ctrlD.getById(des);
+	                    			descuento.setIdDcto(id_d);
+	                    			descuento=ctrlD.getById(descuento);
 	                    			%>
                                     <td><%=day%> <%=month%> <%=year%></td>
                                     <td><%=p.getEstado()%> </td>
@@ -137,12 +137,15 @@ DescuentoController ctrlD= new DescuentoController();
                                     <td><%=p.getDireccionEnvio()%> </td>
                                     <%} %>
                                     <td><%=cliente.getNombre()%> <%=cliente.getApellido() %> </td>
-                                    <%if (p.getId_dcto()==null){ %>
-                                    <td>-</td>
-                                    <%}else{ %>
-                                    <%des.setIdDcto(p.getId_dcto());
-                                    des=ctrlD.getById(des);%>
-                                    <td><%=des.getPorcDcto() %></td>
+                                    
+                                    <%if (p.getId_dcto()<1){ %>
+                                    <td style="color:red">Sin dcto</td>
+                                    <%}else{
+
+									
+									descuento.setIdDcto(p.getId_dcto());
+									descuento=ctrlD.getById(descuento);%>
+                                    <td><%=descuento.getPorcDcto()%></td>
                                     <%} %>
                                           
                                      <td style="width: 6%;">

@@ -167,7 +167,7 @@ import entidades.*;
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select * from descuento where fechaDctoInicio<=curdate() and fechaDctoFin>=curdate()");
+			rs= stmt.executeQuery("select * from descuento where fechaDctoInicio<=curdate() and fechaDctoFin>=curdate() and fecha_hora_baja is null");
 			if(rs!=null) {
 				while(rs.next()) {
 					Descuento d=new Descuento();

@@ -20,7 +20,7 @@ public LinkedList<Pedido> getAll(){
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idPedido,fechaPedido,precioTotal,fechaEntrega,direccionEnvio,estado,id_persona,id_dcto from pedido");
+			rs= stmt.executeQuery("select * from pedido");
 			if(rs!=null) {
 				while(rs.next()) {
 					Pedido p=new Pedido();
@@ -38,7 +38,8 @@ public LinkedList<Pedido> getAll(){
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
+			LinkedList<Pedido> pedidos2= new LinkedList<Pedido>();
+			return pedidos2;
 		} finally {
 			try {
 				if(rs!=null) {rs.close();}
@@ -70,7 +71,7 @@ public LinkedList<Pedido> getAll(){
 			stmt.setString(4, p.getDireccionEnvio());
 			stmt.setString(5, p.getEstado());
 			stmt.setInt(6, p.getId_persona());
-			if(p.getId_dcto()!=0) {
+			if(p.getId_dcto()!=null) {
 				stmt.setInt(7, p.getId_dcto());
 			}else {
 				 stmt.setNull(7, Types.INTEGER);

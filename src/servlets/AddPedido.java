@@ -57,10 +57,12 @@ public class AddPedido extends HttpServlet {
 		
 		//ASIGNO UN DESCUENTO SI ES QUE HAY ALGUNO ACTIVO.
 		LinkedList<Descuento> dctos= new LinkedList<Descuento>();
+		LinkedList<Descuento> dctos_activos= new LinkedList<Descuento>();
 		DescuentoController ctrlDesc= new DescuentoController();
 		Descuento d= new Descuento();
 		Descuento d_max= new Descuento();
 		dctos= ctrlDesc.listarDescuentosAct();
+		
 		//BUSCO EL MAYOR DESCUENTO: SI HAY MAS DE UN DESCUENTO ACTIVO EN UN DIA SE TOMA EL MAYOR PARA EL PEDIDO.
 		if(dctos.size()>1) {
 			Double valor=(double) 0;
@@ -77,10 +79,10 @@ public class AddPedido extends HttpServlet {
 				d=des2; //tomo el unico que hay activo
 			}
 			p.setId_dcto(d.getIdDcto());
-		}else if (dctos==null || dctos.size()==0) {
+		}else if (dctos == null || dctos.size()<1) {
 			//lprod == null || lprod.size() == 0
 			//p.setId_dcto();
-			p.setId_dcto(0);
+			p.setId_dcto(null);
 		}
 		
 		ctrl.add(p);
