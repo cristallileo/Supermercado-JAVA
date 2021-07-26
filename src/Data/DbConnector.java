@@ -19,6 +19,7 @@ public class DbConnector {
 		try {
 			Class.forName(driver);
 		} catch (ClassNotFoundException e) {
+			System.out.println("Error message = " + e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -38,8 +39,12 @@ public class DbConnector {
 				//conn=DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + db + "?user=" + user + "&password=" + password + "&useSSL=true");
 				conectados=0;
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (SQLException sqe) {
+			System.out.println("Error Code = " + sqe.getErrorCode());
+			System.out.println("SQL state = " + sqe.getSQLState());
+			System.out.println("Message = " + sqe.getMessage());
+			System.out.println("");
+			sqe.printStackTrace();
 		}
 		conectados++;
 		return conn;
@@ -51,8 +56,12 @@ public class DbConnector {
 			if (conectados<=0) {
 				conn.close();
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (SQLException sqe) {
+			System.out.println("Error Code = " + sqe.getErrorCode());
+			System.out.println("SQL state = " + sqe.getSQLState());
+			System.out.println("Message = " + sqe.getMessage());
+			System.out.println("");
+			sqe.printStackTrace();
 		}
 	}
 }

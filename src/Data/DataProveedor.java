@@ -32,16 +32,24 @@ public class DataProveedor {
 					}
 				}
 				
-			} catch (SQLException e) {
-				e.printStackTrace();
+			} catch (SQLException sqe) {
+				System.out.println("Error Code = " + sqe.getErrorCode());
+				System.out.println("SQL state = " + sqe.getSQLState());
+				System.out.println("Message = " + sqe.getMessage());
+				System.out.println("");
+				sqe.printStackTrace();
 				
 			} finally {
 				try {
 					if(rs!=null) {rs.close();}
 					if(stmt!=null) {stmt.close();}
 					DbConnector.getInstancia().releaseConn();
-				} catch (SQLException e) {
-					e.printStackTrace();
+				} catch (SQLException sqe) {
+					System.out.println("Error Code = " + sqe.getErrorCode());
+					System.out.println("SQL state = " + sqe.getSQLState());
+					System.out.println("Message = " + sqe.getMessage());
+					System.out.println("");
+					sqe.printStackTrace();
 				}
 			}
 			
@@ -71,16 +79,23 @@ public class DataProveedor {
                 p.setIdProveedor(keyResultSet.getInt(1)); //por ser autoincremental!
             }
            
-			
-		}  catch (SQLException e) {
-            e.printStackTrace();
+		} catch (SQLException sqe) {
+			System.out.println("Error Code = " + sqe.getErrorCode());
+			System.out.println("SQL state = " + sqe.getSQLState());
+			System.out.println("Message = " + sqe.getMessage());
+			System.out.println("");
+			sqe.printStackTrace();
 		} finally {
             try {
                 if(keyResultSet!=null)keyResultSet.close();
                 if(stmt!=null)stmt.close();
                 DbConnector.getInstancia().releaseConn();
-            } catch (SQLException e) {
-            	e.printStackTrace();
+            } catch (SQLException sqe) {
+    			System.out.println("Error Code = " + sqe.getErrorCode());
+    			System.out.println("SQL state = " + sqe.getSQLState());
+    			System.out.println("Message = " + sqe.getMessage());
+    			System.out.println("");
+    			sqe.printStackTrace();
             }
 		}
 		return p;
@@ -108,15 +123,23 @@ public class DataProveedor {
             if(keyResultSet!=null && keyResultSet.next()){
                 p.setIdProveedor(keyResultSet.getInt(1));
             }
-		} catch (SQLException e) {
-        e.printStackTrace();
+		} catch (SQLException sqe) {
+			System.out.println("Error Code = " + sqe.getErrorCode());
+			System.out.println("SQL state = " + sqe.getSQLState());
+			System.out.println("Message = " + sqe.getMessage());
+			System.out.println("");
+			sqe.printStackTrace();
 		} finally {
         try {
         	 if(keyResultSet!=null)keyResultSet.close();
             if(stmt!=null) stmt.close();
             DbConnector.getInstancia().releaseConn();
-        } catch (SQLException e) {
-        	e.printStackTrace();
+        } catch (SQLException sqe) {
+			System.out.println("Error Code = " + sqe.getErrorCode());
+			System.out.println("SQL state = " + sqe.getSQLState());
+			System.out.println("Message = " + sqe.getMessage());
+			System.out.println("");
+			sqe.printStackTrace();
         }
 	}
 	return p;
@@ -145,15 +168,23 @@ public class DataProveedor {
 
 		
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (SQLException sqe) {
+			System.out.println("Error Code = " + sqe.getErrorCode());
+			System.out.println("SQL state = " + sqe.getSQLState());
+			System.out.println("Message = " + sqe.getMessage());
+			System.out.println("");
+			sqe.printStackTrace();
 		}finally {
 			try {
 				if(rs!=null) {rs.close();}
 				if(stmt!=null) {stmt.close();}
 				DbConnector.getInstancia().releaseConn();
-			} catch (SQLException e) {
-				e.printStackTrace();
+			} catch (SQLException sqe) {
+				System.out.println("Error Code = " + sqe.getErrorCode());
+				System.out.println("SQL state = " + sqe.getSQLState());
+				System.out.println("Message = " + sqe.getMessage());
+				System.out.println("");
+				sqe.printStackTrace();
 			}
 		}
 		
@@ -184,16 +215,24 @@ public class DataProveedor {
 				}
 			}
 			
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (SQLException sqe) {
+			System.out.println("Error Code = " + sqe.getErrorCode());
+			System.out.println("SQL state = " + sqe.getSQLState());
+			System.out.println("Message = " + sqe.getMessage());
+			System.out.println("");
+			sqe.printStackTrace();
 			
 		} finally {
 			try {
 				if(rs!=null) {rs.close();}
 				if(stmt!=null) {stmt.close();}
 				DbConnector.getInstancia().releaseConn();
-			} catch (SQLException e) {
-				e.printStackTrace();
+			} catch (SQLException sqe) {
+				System.out.println("Error Code = " + sqe.getErrorCode());
+				System.out.println("SQL state = " + sqe.getSQLState());
+				System.out.println("Message = " + sqe.getMessage());
+				System.out.println("");
+				sqe.printStackTrace();
 			}
 		}
 		

@@ -31,16 +31,24 @@ public class DataLineaDePedido {
 				}
 			}
 			
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (SQLException sqe) {
+			System.out.println("Error Code = " + sqe.getErrorCode());
+			System.out.println("SQL state = " + sqe.getSQLState());
+			System.out.println("Message = " + sqe.getMessage());
+			System.out.println("");
+			sqe.printStackTrace();
 			
 		} finally {
 			try {
 				if(rs!=null) {rs.close();}
 				if(stmt!=null) {stmt.close();}
 				DbConnector.getInstancia().releaseConn();
-			} catch (SQLException e) {
-				e.printStackTrace();
+			} catch (SQLException sqe) {
+				System.out.println("Error Code = " + sqe.getErrorCode());
+				System.out.println("SQL state = " + sqe.getSQLState());
+				System.out.println("Message = " + sqe.getMessage());
+				System.out.println("");
+				sqe.printStackTrace();
 			}
 		}
 		return lineas;
@@ -64,23 +72,23 @@ public class DataLineaDePedido {
 						
 			stmt.executeUpdate();
 			
-			//Esto no va porque no tiene un id incremental lineapedido sino que su clave primaria es compuesta de 2 id de otras tablas
-			//keyResultSet=stmt.getGeneratedKeys();
-            //if(keyResultSet!=null && keyResultSet.next()){
-              // lp.set(keyResultSet.getInt(1)); 
-          
-            //}
-           
-			
-		}  catch (SQLException e) {
-            e.printStackTrace();
+		}  catch (SQLException sqe) {
+			System.out.println("Error Code = " + sqe.getErrorCode());
+			System.out.println("SQL state = " + sqe.getSQLState());
+			System.out.println("Message = " + sqe.getMessage());
+			System.out.println("");
+			sqe.printStackTrace();
 		} finally {
             try {
                 //if(keyResultSet!=null)keyResultSet.close();
                 if(stmt!=null)stmt.close();
                 DbConnector.getInstancia().releaseConn();
-            } catch (SQLException e) {
-            	e.printStackTrace();
+            } catch (SQLException sqe) {
+    			System.out.println("Error Code = " + sqe.getErrorCode());
+    			System.out.println("SQL state = " + sqe.getSQLState());
+    			System.out.println("Message = " + sqe.getMessage());
+    			System.out.println("");
+    			sqe.printStackTrace();
             }
 		}
 		
@@ -98,21 +106,23 @@ public class DataLineaDePedido {
 				stmt.setInt(2, lp.getId_pedido());
 				
 				stmt.executeUpdate();
-				
-				/*keyResultSet=stmt.getGeneratedKeys();
-	            if(keyResultSet!=null && keyResultSet.next()){
-	                p.setIdProveedor(keyResultSet.getInt(1));
-	            }*/
-				
-			} catch (SQLException e) {
-	        e.printStackTrace();
+			} catch (SQLException sqe) {
+				System.out.println("Error Code = " + sqe.getErrorCode());
+				System.out.println("SQL state = " + sqe.getSQLState());
+				System.out.println("Message = " + sqe.getMessage());
+				System.out.println("");
+				sqe.printStackTrace();
 			} finally {
 	        try {
 	        	//if(keyResultSet!=null)keyResultSet.close();
 	            if(stmt!=null) stmt.close();
 	            DbConnector.getInstancia().releaseConn();
-	        } catch (SQLException e) {
-	        	e.printStackTrace();
+	        } catch (SQLException sqe) {
+				System.out.println("Error Code = " + sqe.getErrorCode());
+				System.out.println("SQL state = " + sqe.getSQLState());
+				System.out.println("Message = " + sqe.getMessage());
+				System.out.println("");
+				sqe.printStackTrace();
 	        }
 		}
 		return lp;

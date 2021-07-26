@@ -32,16 +32,24 @@ import entidades.*;
 					}
 				}
 				
-			} catch (SQLException e) {
-				e.printStackTrace();
+			} catch (SQLException sqe) {
+				System.out.println("Error Code = " + sqe.getErrorCode());
+				System.out.println("SQL state = " + sqe.getSQLState());
+				System.out.println("Message = " + sqe.getMessage());
+				System.out.println("");
+				sqe.printStackTrace();
 				
 			} finally {
 				try {
 					if(rs!=null) {rs.close();}
 					if(stmt!=null) {stmt.close();}
 					DbConnector.getInstancia().releaseConn();
-				} catch (SQLException e) {
-					e.printStackTrace();
+				} catch (SQLException sqe) {
+					System.out.println("Error Code = " + sqe.getErrorCode());
+					System.out.println("SQL state = " + sqe.getSQLState());
+					System.out.println("Message = " + sqe.getMessage());
+					System.out.println("");
+					sqe.printStackTrace();
 				}
 			}
 			return descuentos;
@@ -72,8 +80,12 @@ import entidades.*;
             }
            
 			
-		}  catch (SQLException e) {
-            e.printStackTrace();
+		}  catch (SQLException sqe) {
+			System.out.println("Error Code = " + sqe.getErrorCode());
+			System.out.println("SQL state = " + sqe.getSQLState());
+			System.out.println("Message = " + sqe.getMessage());
+			System.out.println("");
+			sqe.printStackTrace();
 		} finally {
             try {
                 if(keyResultSet!=null)keyResultSet.close();
@@ -81,8 +93,12 @@ import entidades.*;
                 if(stmt!=null)stmt.close();
              //   conn.commit();
                 DbConnector.getInstancia().releaseConn();
-            } catch (SQLException e) {
-            	e.printStackTrace();
+            } catch (SQLException sqe) {
+    			System.out.println("Error Code = " + sqe.getErrorCode());
+    			System.out.println("SQL state = " + sqe.getSQLState());
+    			System.out.println("Message = " + sqe.getMessage());
+    			System.out.println("");
+    			sqe.printStackTrace();
             }
 		}
 		
@@ -108,15 +124,23 @@ import entidades.*;
             if(keyResultSet!=null && keyResultSet.next()){
                 d.setIdDcto(keyResultSet.getInt(1));
             }
-		} catch (SQLException e) {
-        e.printStackTrace();
+		} catch (SQLException sqe) {
+			System.out.println("Error Code = " + sqe.getErrorCode());
+			System.out.println("SQL state = " + sqe.getSQLState());
+			System.out.println("Message = " + sqe.getMessage());
+			System.out.println("");
+			sqe.printStackTrace();
 		} finally {
         try {
         	 if(keyResultSet!=null)keyResultSet.close();
             if(stmt!=null) stmt.close();
             DbConnector.getInstancia().releaseConn();
-        } catch (SQLException e) {
-        	e.printStackTrace();
+        } catch (SQLException sqe) {
+			System.out.println("Error Code = " + sqe.getErrorCode());
+			System.out.println("SQL state = " + sqe.getSQLState());
+			System.out.println("Message = " + sqe.getMessage());
+			System.out.println("");
+			sqe.printStackTrace();
         }
 	}
 	return d;
@@ -144,15 +168,23 @@ import entidades.*;
 
 				
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (SQLException sqe) {
+			System.out.println("Error Code = " + sqe.getErrorCode());
+			System.out.println("SQL state = " + sqe.getSQLState());
+			System.out.println("Message = " + sqe.getMessage());
+			System.out.println("");
+			sqe.printStackTrace();
 		}finally {
 			try {
 				if(rs!=null) {rs.close();}
 				if(stmt!=null) {stmt.close();}
 				DbConnector.getInstancia().releaseConn();
-			} catch (SQLException e) {
-				e.printStackTrace();
+			} catch (SQLException sqe) {
+				System.out.println("Error Code = " + sqe.getErrorCode());
+				System.out.println("SQL state = " + sqe.getSQLState());
+				System.out.println("Message = " + sqe.getMessage());
+				System.out.println("");
+				sqe.printStackTrace();
 			}
 		}
 		
@@ -181,16 +213,24 @@ import entidades.*;
 				}
 			}
 			
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (SQLException sqe) {
+			System.out.println("Error Code = " + sqe.getErrorCode());
+			System.out.println("SQL state = " + sqe.getSQLState());
+			System.out.println("Message = " + sqe.getMessage());
+			System.out.println("");
+			sqe.printStackTrace();
 			
 		} finally {
 			try {
 				if(rs!=null) {rs.close();}
 				if(stmt!=null) {stmt.close();}
 				DbConnector.getInstancia().releaseConn();
-			} catch (SQLException e) {
-				e.printStackTrace();
+			}catch (SQLException sqe) {
+				System.out.println("Error Code = " + sqe.getErrorCode());
+				System.out.println("SQL state = " + sqe.getSQLState());
+				System.out.println("Message = " + sqe.getMessage());
+				System.out.println("");
+				sqe.printStackTrace();
 			}
 		}
 		return descuentos;
@@ -217,16 +257,24 @@ import entidades.*;
 				}
 			}
 			
-		} catch (SQLException e) {
-				e.printStackTrace();
+		} catch (SQLException sqe) {
+			System.out.println("Error Code = " + sqe.getErrorCode());
+			System.out.println("SQL state = " + sqe.getSQLState());
+			System.out.println("Message = " + sqe.getMessage());
+			System.out.println("");
+			sqe.printStackTrace();
 			
 		} finally {
 			try {
 				if(rs!=null) {rs.close();}
 				if(stmt!=null) {stmt.close();}
 				DbConnector.getInstancia().releaseConn();
-			} catch (SQLException e) {
-				e.printStackTrace();
+			} catch (SQLException sqe) {
+				System.out.println("Error Code = " + sqe.getErrorCode());
+				System.out.println("SQL state = " + sqe.getSQLState());
+				System.out.println("Message = " + sqe.getMessage());
+				System.out.println("");
+				sqe.printStackTrace();
 			}
 		}
 		return descuentos;
