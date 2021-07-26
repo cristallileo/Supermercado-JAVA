@@ -16,21 +16,6 @@ public class MyHelper {
 			throw new CustomException("La fecha de comienzo no puede ser posterior a la fecha de fin.");
 		}
 	}
-	
-/*	public void isCatDuplicada (String desc_cat) throws CustomException{
-		
-		LinkedList<Categoria> cats= new LinkedList<Categoria>();
-		CategoriaController ctrl= new CategoriaController();
-		
-		cats= ctrl.listAllCategorias();
-		
-		for (Categoria c: cats) {
-			if (c.getDescCategoria().equals(desc_cat)) {
-				throw new CustomException("La categoría "+ c.getDescCategoria()+" ya existe.");
-			}
-		}
-		
-	} */
 
 	public void isClienteDuplicado(String email) throws CustomException {
 		
@@ -64,43 +49,20 @@ public class MyHelper {
 		
 	}
 	
-	public  void docIsNumeric(String cadena) throws CustomException{
+	
+	public Boolean isNumeric(String cadena) {
+		Boolean resultado;
 		try {
 			Integer.parseInt(cadena);
+			resultado=true;
 	
 		} catch (NumberFormatException nfe){
-			throw new CustomException("El campo número de documento debe ser numérico.");
+			resultado=false;
+			
 		}
+		return resultado;
 	}
-	
-	public  void cuilIsNumeric(String cadena) throws CustomException{
-		try {
-			//Integer.parseInt(cadena);
-			cadena.matches("-?\\d+(\\.\\d+)?");
-			//return str.matches("-?\\d+(\\.\\d+)?");
-	
-		} catch (NumberFormatException nfe){
-			throw new CustomException("El campo CUIL debe ser numérico. No incluir guiones.");
-		}
-	}
-	
-	public  void telIsNumeric(String cadena) throws CustomException{
-		try {
-			Integer.parseInt(cadena);
-	
-		} catch (NumberFormatException nfe){
-			throw new CustomException("El campo teléfono debe ser numérico.");
-		}
-	}
-	public  void cantIsNumeric(String cadena) throws CustomException{
-		try {
-			Integer.parseInt(cadena);
-	
-		} catch (NumberFormatException nfe){
-			throw new CustomException("El campo cantidad debe ser numérico.");
-		}
-	}
-	
+
 	}
 	
 	

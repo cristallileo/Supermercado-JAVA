@@ -42,17 +42,19 @@ public class ListDescuentosActivos extends HttpServlet {
 		
 		DescuentoController ctrl= new DescuentoController();
 		LinkedList<Descuento> descuentos= new LinkedList<Descuento>();
+
+		LinkedList<Descuento> descuentos2= new LinkedList<Descuento>();
 		Persona per= new Persona();
 		per= (Persona)request.getSession(true).getAttribute("usuario");
 		if(per==null){
 			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
-		}else 
-	
+		}else {
 		descuentos=ctrl.listarDescuentosAct();
-		request.setAttribute("descuentos", descuentos);
+		
+		request.setAttribute("descuentos", descuentos2);
 		request.getRequestDispatcher("listarDescuentos.jsp").forward(request, response);
 				
-		
+		}
 	}
 
 }

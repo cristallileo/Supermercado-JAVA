@@ -80,7 +80,7 @@
 
 				<form action="ObtenerProducto" method="post">
 	                <div class="form-label-group">
-	                  <input type="text" name="id" id="id" class="form-control" placeholder="ID del producto" required >
+	                  <input type="text" name="id" id="id" class="form-control" autocomplete="off" placeholder="ID del producto" required >
 	                  <label for="id">ID Producto</label>
 	                </div>
 	                

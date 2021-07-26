@@ -88,7 +88,7 @@
 	                  <label for="desc">Producto</label>
 	              </div>
 	              <div class="form-label-group">
-                 	 <input type="text" name="stock" id="stock" class="form-control" placeholder="Cantidad" required>
+                 	 <input type="text" name="stock" id="stock" class="form-control" placeholder="Cantidad" required autocomplete="off">
 	                  <label for="stock">Cantidad a ingresar</label>
                   </div>
                   <label for="prov">Proveedor</label>

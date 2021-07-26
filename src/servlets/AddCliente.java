@@ -3,6 +3,8 @@ package servlets;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.Calendar;
+import java.util.LinkedList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,29 +44,26 @@ public class AddCliente extends HttpServlet {
 		String email= request.getParameter("email");
 		String pass= request.getParameter("pass");
 		
-		try {
-			h.isClienteDuplicado(email);
-		}
-		catch (CustomException e1){
-			request.setAttribute("message_cliente1",e1.getMessage());
-			request.getRequestDispatcher("registro.jsp").forward(request, response);
-		}
-		
-		try {
-			  h.docIsNumeric(nDoc);
-				
-			}catch (CustomException e2) {
-				request.setAttribute("message_cliente2",e2.getMessage());
+		//cuenta de mail duplicada?
+		LinkedList<Persona> clientes = new LinkedList<Persona>();
+		clientes= ctrl.listarClientes();
+		for (Persona c: clientes) {
+			if (c.getEmail().equals(email)) {
+				request.setAttribute("message_cliente1","La cuenta de email "+ c.getEmail() + " ya se encuentra en uso.");
+				request.getRequestDispatcher("registro.jsp").forward(request, response);
+			
+		}}
+		//doc es numerico?
+			if(h.isNumeric(nDoc)==false) {
+				request.setAttribute("message_cliente2","El campo número de documento debe ser numérico.");
 				request.getRequestDispatcher("registro.jsp").forward(request, response);
 			}
 			
-		try {
-			  h.telIsNumeric(telefono);
-				
-			}catch (CustomException e3) {
-				request.setAttribute("message_cliente3",e3.getMessage());
-				request.getRequestDispatcher("registro.jsp").forward(request, response);
-			}
+			
+		if(h.isNumeric(telefono)==false) {
+			request.setAttribute("message_cliente3","El campo teléfono debe ser numérico. No incluir guiones.");
+			request.getRequestDispatcher("registro.jsp").forward(request, response);
+		}
 		
 		per.setTipoDoc(tDoc);
 		per.setNroDoc(nDoc);

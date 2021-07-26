@@ -13,8 +13,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/PATRI/Desktop/FACULTAD/Electiva - JAVA/tp_final/SendEmail/libs/mail-1.4.7.jar"/>
-	<classpathentry kind="lib" path="C:/Users/PATRI/Downloads/javax.mail (1).jar"/>
-	<classpathentry kind="lib" path="C:/Users/PATRI/Downloads/activation-1.1.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

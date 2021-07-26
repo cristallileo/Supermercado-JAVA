@@ -137,7 +137,7 @@ DescuentoController ctrlD= new DescuentoController();
                                     <td><%=p.getDireccionEnvio()%> </td>
                                     <%} %>
                                     <td><%=cliente.getNombre()%> <%=cliente.getApellido() %> </td>
-                                    <%if (p.getId_dcto()<1){ %>
+                                    <%if (p.getId_dcto()==null){ %>
                                     <td>-</td>
                                     <%}else{ %>
                                     <%des.setIdDcto(p.getId_dcto());

@@ -28,16 +28,20 @@ public class ListDescuentos extends HttpServlet {
 
 		DescuentoController ctrl= new DescuentoController();
 		LinkedList<Descuento> descuentos= new LinkedList<Descuento>();
-	
+		LinkedList<Descuento> descuentos2= new LinkedList<Descuento>();
 		//Veo a donde lo direcciono:
 				Persona per= new Persona();
 				per= (Persona)request.getSession(true).getAttribute("usuario");
 				if(per==null){
 					request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
-				}else 
-				if(per.isCliente()==true) {
+				}else if(per.isCliente()==true) {
 					descuentos=ctrl.listarDescuentosAct();
-					request.setAttribute("descuentos", descuentos);
+					for(Descuento d: descuentos) {
+						if(d.getFecha_hora_baja()==null) {
+							descuentos2.add(d);
+						}
+					}
+					request.setAttribute("descuentos", descuentos2);
 					Pedido p = new Pedido();
 					p= (Pedido)request.getSession(true).getAttribute("pedido");
 					request.setAttribute("pedido", p);

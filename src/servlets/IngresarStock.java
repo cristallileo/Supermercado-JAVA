@@ -50,13 +50,10 @@ public class IngresarStock extends HttpServlet {
 		//int stock = Integer.parseInt(request.getParameter("stock"));
 		String stock = request.getParameter("stock");
 		
-		try {
-			h.cantIsNumeric(stock);
-		}
-		catch (CustomException e1){
-			request.setAttribute("message_cantidad",e1.getMessage());
+		if(h.isNumeric(stock)==false) {
+			request.setAttribute("message_cantidad","El campo cantidad debe ser numérico.");
 			request.getRequestDispatcher("ingresarStock.jsp").forward(request, response);
-		}
+		}else {
 		int stock2 = Integer.parseInt(stock);
 		int cant= stock2 + prod.getStock();
 		prod.setStock(cant);
@@ -67,7 +64,7 @@ public class IngresarStock extends HttpServlet {
 		ctrl.agregoStock(prod);
 		
 		request.getRequestDispatcher("ingresarStock.jsp").forward(request, response);
-		
+		}
 	}
 
 }

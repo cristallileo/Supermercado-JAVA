@@ -3,6 +3,8 @@ package servlets;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.Calendar;
+import java.util.LinkedList;
+
 import entidades.*;
 import logic.CustomException;
 import logic.MyHelper;
@@ -45,36 +47,26 @@ public class AddEmpleado extends HttpServlet {
 		String email= request.getParameter("email");
 		String pass= request.getParameter("pass");
 		
-		try {
-			h.isEmpleadoDuplicado(email);
-		}
-		catch (CustomException e1){
-			request.setAttribute("message_empleado1",e1.getMessage());
-			request.getRequestDispatcher("crearEmpleado.jsp").forward(request, response);
-		}
+		//cuenta de mail duplicada?
+		LinkedList<Persona> empleados = new LinkedList<Persona>();
+		empleados= ctrl.listarEmpleados();
+		for (Persona c: empleados) {
+			if (c.getEmail().equals(email)) {
+			request.setAttribute("message_empleado1","La cuenta de email "+ c.getEmail() + " ya se encuentra en uso.");
+			request.getRequestDispatcher("crearEmpleado.jsp").forward(request, response);		
+				}}			
 		
-		try {
-		  h.docIsNumeric(nDoc);
-			
-		}catch (CustomException e2) {
-			request.setAttribute("message_empleado2",e2.getMessage());
+		//doc es numerico?
+		if(h.isNumeric(nDoc)==false) {
+			request.setAttribute("message_empleado2","El campo número de documento debe ser numérico.");
 			request.getRequestDispatcher("crearEmpleado.jsp").forward(request, response);
-		}
-		
-		try {
-			  h.cuilIsNumeric(cuil);
-				
-			}catch (CustomException e3) {
-				request.setAttribute("message_empleado3",e3.getMessage());
-				request.getRequestDispatcher("crearEmpleado.jsp").forward(request, response);
-			}
-		try {
-			  h.telIsNumeric(telefono);
-				
-			}catch (CustomException e4) {
-				request.setAttribute("message_empleado4",e4.getMessage());
-				request.getRequestDispatcher("crearEmpleado.jsp").forward(request, response);
-			}
+		}else if(h.isNumeric(telefono)==false) {
+			request.setAttribute("message_empleado3","El teléfono debe ser numérico. No incluir guiones.");
+			request.getRequestDispatcher("crearEmpleado.jsp").forward(request, response);
+		} if(h.isNumeric(cuil)==false) {
+			request.setAttribute("message_empleado4","El campo CUIL debe ser numérico. No incluir guiones.");
+			request.getRequestDispatcher("crearEmpleado.jsp").forward(request, response);
+		}else {
 		per.setTipoDoc(tDoc);
 		per.setNroDoc(nDoc);
 		per.setNombre(nombre);
@@ -95,7 +87,7 @@ public class AddEmpleado extends HttpServlet {
 		request.setAttribute("nuevoEmpleado", emp);
 		request.setAttribute("empleados", ctrl.listarEmpleados());
 		request.getRequestDispatcher("ListEmpleados").forward(request, response);
-					
+		}
 	}
 
 }
