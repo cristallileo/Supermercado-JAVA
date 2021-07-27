@@ -214,6 +214,7 @@ import entidades.*;
 			}
 			
 		} catch (SQLException sqe) {
+			descuentos.clear();
 			System.out.println("Error Code = " + sqe.getErrorCode());
 			System.out.println("SQL state = " + sqe.getSQLState());
 			System.out.println("Message = " + sqe.getMessage());
@@ -226,6 +227,7 @@ import entidades.*;
 				if(stmt!=null) {stmt.close();}
 				DbConnector.getInstancia().releaseConn();
 			}catch (SQLException sqe) {
+				descuentos.clear();
 				System.out.println("Error Code = " + sqe.getErrorCode());
 				System.out.println("SQL state = " + sqe.getSQLState());
 				System.out.println("Message = " + sqe.getMessage());
@@ -258,6 +260,7 @@ import entidades.*;
 			}
 			
 		} catch (SQLException sqe) {
+			descuentos.clear();
 			System.out.println("Error Code = " + sqe.getErrorCode());
 			System.out.println("SQL state = " + sqe.getSQLState());
 			System.out.println("Message = " + sqe.getMessage());
@@ -270,6 +273,7 @@ import entidades.*;
 				if(stmt!=null) {stmt.close();}
 				DbConnector.getInstancia().releaseConn();
 			} catch (SQLException sqe) {
+				descuentos.clear();
 				System.out.println("Error Code = " + sqe.getErrorCode());
 				System.out.println("SQL state = " + sqe.getSQLState());
 				System.out.println("Message = " + sqe.getMessage());

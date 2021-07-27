@@ -33,11 +33,15 @@ public class ListEmpleados extends HttpServlet {
 			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
 		}
 		empleados=ctrl.listarEmpleados();
-		
-		//request.getAttribute("usuario");
-		request.setAttribute("desc", null);
-		request.setAttribute("empleados", empleados);
-        request.getRequestDispatcher("listarEmpleados.jsp").forward(request, response);
+		if(empleados.size()>=1) {
+			
+			request.setAttribute("desc", null);
+			request.setAttribute("empleados", empleados);
+	        request.getRequestDispatcher("listarEmpleados.jsp").forward(request, response);
+		}else {
+			request.getRequestDispatcher("error-gral.jsp").forward(request, response);
+		}
+
 
 	}
 

@@ -51,13 +51,11 @@ public class VerPedido extends HttpServlet {
 		ped=(Pedido)request.getSession(true).getAttribute("pedido");
 		if(ped!=null) {
 		lineas= ctrlLinea.getByPedido(ped);
-		if(lineas.size()>=1) {
+	
 		request.setAttribute("lineas",lineas );
 		request.setAttribute("prod_eliminado", false );
 		request.getRequestDispatcher("carrito.jsp").forward(request, response);
-		}else {
-			request.getRequestDispatcher("error-gral-cliente.jsp").forward(request, response);
-		}
+		
 		}else {
 			request.getRequestDispatcher("error-gral-cliente.jsp").forward(request, response);
 		}

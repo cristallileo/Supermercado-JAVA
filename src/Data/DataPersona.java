@@ -414,6 +414,7 @@ public class DataPersona {
 		}
 		
 	} catch (SQLException sqe) {
+		personas.clear();
 		System.out.println("Error Code = " + sqe.getErrorCode());
 		System.out.println("SQL state = " + sqe.getSQLState());
 		System.out.println("Message = " + sqe.getMessage());
@@ -426,6 +427,7 @@ public class DataPersona {
 			if(stmt!=null) {stmt.close();}
 			DbConnector.getInstancia().releaseConn();
 		} catch (SQLException sqe) {
+			personas.clear();
 			System.out.println("Error Code = " + sqe.getErrorCode());
 			System.out.println("SQL state = " + sqe.getSQLState());
 			System.out.println("Message = " + sqe.getMessage());
@@ -469,6 +471,7 @@ public class DataPersona {
 			}
 			
 		}catch (SQLException sqe) {
+			personas.clear();
 			System.out.println("Error Code = " + sqe.getErrorCode());
 			System.out.println("SQL state = " + sqe.getSQLState());
 			System.out.println("Message = " + sqe.getMessage());
@@ -481,6 +484,7 @@ public class DataPersona {
 				if(stmt!=null) {stmt.close();}
 				DbConnector.getInstancia().releaseConn();
 			} catch (SQLException sqe) {
+				personas.clear();
 				System.out.println("Error Code = " + sqe.getErrorCode());
 				System.out.println("SQL state = " + sqe.getSQLState());
 				System.out.println("Message = " + sqe.getMessage());
@@ -525,6 +529,7 @@ public class DataPersona {
 			}
 			
 		} catch (SQLException sqe) {
+			personas.clear();
 			System.out.println("Error Code = " + sqe.getErrorCode());
 			System.out.println("SQL state = " + sqe.getSQLState());
 			System.out.println("Message = " + sqe.getMessage());
@@ -537,6 +542,7 @@ public class DataPersona {
 				if(stmt!=null) {stmt.close();}
 				DbConnector.getInstancia().releaseConn();
 			} catch (SQLException sqe) {
+				personas.clear();
 				System.out.println("Error Code = " + sqe.getErrorCode());
 				System.out.println("SQL state = " + sqe.getSQLState());
 				System.out.println("Message = " + sqe.getMessage());

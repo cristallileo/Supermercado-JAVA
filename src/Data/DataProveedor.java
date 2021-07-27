@@ -33,6 +33,7 @@ public class DataProveedor {
 				}
 				
 			} catch (SQLException sqe) {
+				proveedores.clear();
 				System.out.println("Error Code = " + sqe.getErrorCode());
 				System.out.println("SQL state = " + sqe.getSQLState());
 				System.out.println("Message = " + sqe.getMessage());
@@ -45,6 +46,7 @@ public class DataProveedor {
 					if(stmt!=null) {stmt.close();}
 					DbConnector.getInstancia().releaseConn();
 				} catch (SQLException sqe) {
+					proveedores.clear();
 					System.out.println("Error Code = " + sqe.getErrorCode());
 					System.out.println("SQL state = " + sqe.getSQLState());
 					System.out.println("Message = " + sqe.getMessage());
@@ -214,6 +216,7 @@ public class DataProveedor {
 			}
 			
 		} catch (SQLException sqe) {
+			proveedores.clear();
 			System.out.println("Error Code = " + sqe.getErrorCode());
 			System.out.println("SQL state = " + sqe.getSQLState());
 			System.out.println("Message = " + sqe.getMessage());
@@ -226,6 +229,7 @@ public class DataProveedor {
 				if(stmt!=null) {stmt.close();}
 				DbConnector.getInstancia().releaseConn();
 			} catch (SQLException sqe) {
+				proveedores.clear();
 				System.out.println("Error Code = " + sqe.getErrorCode());
 				System.out.println("SQL state = " + sqe.getSQLState());
 				System.out.println("Message = " + sqe.getMessage());

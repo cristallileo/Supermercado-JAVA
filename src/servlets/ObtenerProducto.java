@@ -48,17 +48,23 @@ public class ObtenerProducto extends HttpServlet {
 		int id= Integer.parseInt(request.getParameter("id"));
 		prod.setIdProducto(id);
 		prod =ctrl.getById(prod);
-		lprov= ctrlProv.listarActivos();
 		
 		if(prod==null) {
-			
 			request.getRequestDispatcher("error-consulta.jsp").forward(request, response);
 		}else {
-			request.setAttribute("encontrado", true);
-			request.setAttribute("proveedores", lprov);
-			request.setAttribute("prod", prod);
-			request.getRequestDispatcher("ingresarStock2.jsp").forward(request, response);
+			lprov= ctrlProv.listarActivos();
+			if(lprov.size()>=1) {
+				request.setAttribute("encontrado", true);
+				request.setAttribute("proveedores", lprov);
+				request.setAttribute("prod", prod);
+				request.getRequestDispatcher("ingresarStock2.jsp").forward(request, response);
+			}else {
+				request.getRequestDispatcher("error-gral.jsp").forward(request, response);
+			}
+			
 		}
+		
+		
 			
 		
 	}

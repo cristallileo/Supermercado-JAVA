@@ -35,22 +35,20 @@ public class ListClientesNombre extends HttpServlet {
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
+	
 		PersonaController ctrl= new PersonaController();
 		LinkedList<Persona> clientes= new LinkedList<Persona>();
 		
 		String desc= request.getParameter("search2");
 		clientes=ctrl.listarClientesNombre(desc);
+		if(clientes.size()>=1) {
 		
-		//request.getAttribute("usuario");
 		request.setAttribute("descrip", desc);
 		request.setAttribute("listado", clientes);
         request.getRequestDispatcher("listarClientes.jsp").forward(request, response);
+		}else {
+			request.getRequestDispatcher("error-gral.jsp").forward(request, response);
+		}	
 	}
-
 }

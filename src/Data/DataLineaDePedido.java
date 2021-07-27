@@ -18,7 +18,7 @@ public class DataLineaDePedido {
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select id_pedido,id_producto,cantidad from lineapedido");
+			rs= stmt.executeQuery("select * from lineapedido");
 			//select id_pedido,id_producto,desc_producto,cantidad from lineapedido lp inner join producto p on p.idProducto=lp.id_producto
 			if(rs!=null) {
 				while(rs.next()) {
@@ -32,6 +32,7 @@ public class DataLineaDePedido {
 			}
 			
 		} catch (SQLException sqe) {
+			lineas.clear();
 			System.out.println("Error Code = " + sqe.getErrorCode());
 			System.out.println("SQL state = " + sqe.getSQLState());
 			System.out.println("Message = " + sqe.getMessage());
@@ -44,6 +45,7 @@ public class DataLineaDePedido {
 				if(stmt!=null) {stmt.close();}
 				DbConnector.getInstancia().releaseConn();
 			} catch (SQLException sqe) {
+				lineas.clear();
 				System.out.println("Error Code = " + sqe.getErrorCode());
 				System.out.println("SQL state = " + sqe.getSQLState());
 				System.out.println("Message = " + sqe.getMessage());
