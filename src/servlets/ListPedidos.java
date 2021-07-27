@@ -46,13 +46,21 @@ public class ListPedidos extends HttpServlet {
     			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
     		}else if(per.isCliente()==true) {
       			pedidos=ctrl.getByCliente(per);
+      			if(pedidos.size()>=1) {
+      			
       			request.setAttribute("pedidos", pedidos);
       			request.setAttribute("confirmado", false);
       			request.setAttribute("cancelado", false);
       			request.getRequestDispatcher("mis-pedidos.jsp").forward(request, response);
       			
-      		}else  if (per.isEmpleado()==true){
+      			}else {
+      				request.getRequestDispatcher("error-gral-cliente.jsp").forward(request, response);
+      			}
+      		}
+    		
+    		else if (per.isEmpleado()==true){
       			pedidos=ctrl.listarPedidos();
+      			if(pedidos.size()>1) {
       			for(Pedido p: pedidos) {
       				if(p.getEstado().equals("Confirmado") || p.getEstado().equals("Despachado")|| p.getEstado().equals("Entregado")) {
       					pedidos2.add(p);
@@ -60,8 +68,10 @@ public class ListPedidos extends HttpServlet {
       			}
       	      	request.setAttribute("pedidos", pedidos2);
       	      	request.getRequestDispatcher("listarPedidos.jsp").forward(request, response);
+      		}else {
+      			request.getRequestDispatcher("error-gral.jsp").forward(request, response);
       		}
 
 
 	}
-}
+	}}

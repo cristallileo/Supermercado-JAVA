@@ -19,9 +19,6 @@
  <link href="style/clientes-admin/listado-clientes.css" rel="stylesheet">
  
  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
- 
-     <!-- Custom styles for this template -->
-  <link href="style/clientes-admin/confirmacion.css" rel="stylesheet">
   
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   
@@ -139,13 +136,11 @@ PersonaController ctrl = new PersonaController();
                                     <td><%=cliente.getNombre()%> <%=cliente.getApellido() %> </td>
                                     
                                     <%if (p.getId_dcto()<1){ %>
-                                    <td style="color:red">Sin dcto</td>
+                                    <td >--</td>
                                     <%}else{
-
-									
 									descuento.setIdDcto(p.getId_dcto());
 									descuento=ctrlD.getById(descuento);%>
-                                    <td><%=descuento.getPorcDcto()%></td>
+                                    <td><%=descuento.getPorcDcto()*100%></td>
                                     <%} %>
                                           
                                      <td style="width: 6%;">

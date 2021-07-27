@@ -145,8 +145,6 @@ public class DataProveedor {
 	return p;
 	}
 
-	
-
 	public Proveedor getById(Proveedor prov) {
 		Proveedor p=null;
 		PreparedStatement stmt=null;

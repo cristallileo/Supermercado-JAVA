@@ -19,7 +19,6 @@
   	<!-- Estilo para el listado de clientes -->
  	<link href="style/clientes-admin/listado-clientes.css" rel="stylesheet">
  	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
- 	<link href="style/clientes-admin/confirmacion.css" rel="stylesheet">
   	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   	<link rel="stylesheet" href="style/filtros.css">
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

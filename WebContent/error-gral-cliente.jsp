@@ -1,3 +1,4 @@
+<%@page import="entidades.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,42 +12,28 @@
   <link href="style/mainpage/modern-business.css" rel="stylesheet">  
   <link href="style/login/login.css" rel="stylesheet">
    
+   <% Persona per= (Persona)request.getSession(true).getAttribute("usuario");
+   if(per==null){
+		request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
+   } 
+   %>
 </head>
 <body>
 
-<!-- Navigation -->
+ <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="mainpage-admin.jsp">Supermercado</a>
-
+      <a class="navbar-brand" href="ListDescuentos">Supermercado</a>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-
           <li class="nav-item">
-            <a class="nav-link" href="ListCategorias">Categorías</a>
-          </li>
-          <li class="nav-item">
-           <a class="nav-link" href="ListDescuentos">Descuentos</a>
-          </li>
-          <li class="nav-item ">
-	            <a class="nav-link" href="ListClientes">Clientes</a>
-	         
-          </li>
-          <li class="nav-item ">
-	            <a class="nav-link" href="ListEmpleados">Empleados</a>
-	             
-          </li>
-           <li class="nav-item">
-              <a class="nav-link" href="ListProductos">Productos</a>
+            <a class="nav-link" href="ListPedidos">Mis pedidos</a> <!--  poner en un boton -->
           </li>
           <li class="nav-item">
-             <a class="nav-link" href="ListPedidos">Pedidos</a>
-          </li>
-           <li class="nav-item ">
-            <a class="nav-link" href="ListProveedores">Proveedores</a>
-          </li>
+            <a class="nav-link" href="ListProductos">Productos</a>
+          </li>   
           <li class="nav-item ">
-            <a class="nav-link" href="ingresarStock.jsp">Stock</a>
+            <a class="nav-link" href="BuscarCliente?id=<%=per.getIdPersona()%>">Mi cuenta</a>
           </li>
           <li class="nav-item">
               	<a class="nav-link" href="CerrarSesion">Cerrar Sesión</a>
@@ -65,7 +52,7 @@
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto text-center ">
               <h3 class="login-heading mb-4 text-center">Algo salió mal.</h3>
-              <a href="mainpage-admin.jsp"  style="text-align:center;">Volver</a>
+              <a href="ListDescuentos"  style="text-align:center;">Volver</a>
           
             </div>
           </div>

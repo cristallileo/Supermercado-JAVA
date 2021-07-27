@@ -50,15 +50,19 @@ public class ListPedidosPendientes extends HttpServlet {
 		}
 
       	pedidos=ctrl.listarPedidos();
-      	for(Pedido p: pedidos) {
-      	if(p.getEstado().equals("Confirmado")) {
-      		pedidos2.add(p);
+      	if(pedidos.size()>=1) {
+      		for(Pedido p: pedidos) {
+      	      	if(p.getEstado().equals("Confirmado")) {
+      	      		pedidos2.add(p);
+      	      	}		
+      	      	}
+      	      	request.setAttribute("pedidos", pedidos2);
+      	      	request.getRequestDispatcher("listarPedidos.jsp").forward(request, response);
+      	     }else {
+      	    	request.getRequestDispatcher("error-gral.jsp").forward(request, response);
+      	     }
       	}
-      			
-      	}
-      	request.setAttribute("pedidos", pedidos2);
-      	request.getRequestDispatcher("listarPedidos.jsp").forward(request, response);
-      	}
+      	
 		
 	}
 

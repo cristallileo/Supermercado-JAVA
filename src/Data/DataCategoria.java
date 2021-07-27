@@ -143,45 +143,6 @@ public class DataCategoria {
 	return c;
 	}
 	
-	public Categoria deleteCategoria(Categoria c) {
-		
-		PreparedStatement stmt= null;
-		ResultSet keyResultSet=null;
-		try {
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"delete from categoria c where c.idCategoria=? ", PreparedStatement.RETURN_GENERATED_KEYS);
-			stmt.setInt(1, c.getIdCategoria());			
-			stmt.executeUpdate();			
-			keyResultSet=stmt.getGeneratedKeys();
-            if(keyResultSet!=null && keyResultSet.next()){
-                c.setIdCategoria(keyResultSet.getInt(1));
-            }
-		} catch (SQLException sqe) {
-			System.out.println("Error Code = " + sqe.getErrorCode());
-			System.out.println("SQL state = " + sqe.getSQLState());
-			System.out.println("Message = " + sqe.getMessage());
-			System.out.println("");
-			sqe.printStackTrace();
-		}
-
-			
-		finally {
-        try {
-        	 if(keyResultSet!=null)keyResultSet.close();
-            if(stmt!=null) stmt.close();
-            DbConnector.getInstancia().releaseConn();
-        } catch (SQLException sqe) {
-			System.out.println("Error Code = " + sqe.getErrorCode());
-			System.out.println("SQL state = " + sqe.getSQLState());
-			System.out.println("Message = " + sqe.getMessage());
-			System.out.println("");
-			sqe.printStackTrace();
-        }
-	}
-	return c;
-	}
-
 	public Categoria getOne(Categoria cat) {
 		Categoria c=null;
 		PreparedStatement stmt=null;

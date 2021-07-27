@@ -58,16 +58,22 @@ public class ListBajoStock extends HttpServlet {
 			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
 		}
 		productos=ctrl.listarBajoStock();
+		if(productos!=null) {
+			
 		categorias= ctrlCat.listAllCategorias();
-		
-		//Collections.sort(productos);
+		if(categorias!=null) {
 		
 		request.setAttribute("descrip", null);
 		request.setAttribute("productos", productos);
 		request.setAttribute("categorias", categorias);
 		
         request.getRequestDispatcher("listarProductos.jsp").forward(request, response);
-        
+		}else {
+			request.getRequestDispatcher("error-gral.jsp").forward(request, response);
+		}
+		}else {
+		 request.getRequestDispatcher("error-gral.jsp").forward(request, response);
+		}
         
 	}
 

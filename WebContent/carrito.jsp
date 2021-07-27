@@ -29,8 +29,6 @@
      <!-- Custom styles for this template -->
      
   <link href="style/login/login.css" rel="stylesheet">
-  <link href="style/clientes-admin/confirmacion.css" rel="stylesheet">
-  
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   
   <link rel="stylesheet" href="style/filtros.css">
@@ -63,9 +61,6 @@
   
           <li class="nav-item">
             <a class="nav-link" href="ListPedidos">Mis pedidos</a> <!--  poner en un boton -->
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="ListDescuentos">Descuentos</a> <!--  poner en un boton -->
           </li>
           <li class="nav-item">
             <a class="nav-link" href="ListProductos">Productos</a>

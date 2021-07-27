@@ -25,9 +25,6 @@ public class PedidoController {
 	public Pedido editTotal (Pedido p) {
 		return dp.editTotal(p);
 	}
-	public void deletePedido (Pedido p) {
-		 dp.deletePedido(p);
-	}
 	
 	public Pedido getById(Pedido p) {
 		return dp.getById(p);

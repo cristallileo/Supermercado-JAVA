@@ -21,9 +21,6 @@ public class CategoriaController {
 	public Categoria editCategoria (Categoria c) {
 		return dc.editCategoria(c);
 	}
-	public Categoria deleteCategoria (Categoria c) {
-		return dc.deleteCategoria(c);
-	}
 	
 	public Categoria getOne(Categoria cat) {
 		Categoria c = new Categoria();

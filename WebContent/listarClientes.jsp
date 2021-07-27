@@ -17,8 +17,7 @@
   <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
   <link href="style/mainpage/modern-business.css" rel="stylesheet">
   <link href="style/clientes-admin/listado-clientes.css" rel="stylesheet">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="style/clientes-admin/confirmacion.css" rel="stylesheet">  
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"> 
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 
