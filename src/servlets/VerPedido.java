@@ -42,23 +42,24 @@ public class VerPedido extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LinkedList<LineaDePedido> lineas= new LinkedList<LineaDePedido>();
 		LineaDePedidoController ctrlLinea= new LineaDePedidoController();
-		//PedidoController ctrlPed= new PedidoController();
-		//LineaDePedido lp= new LineaDePedido();
 		Pedido ped= new Pedido();		
 		Persona per= new Persona();
 		per= (Persona)request.getSession(true).getAttribute("usuario");
 		if(per==null){
 			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
 		}
-		
 		ped=(Pedido)request.getSession(true).getAttribute("pedido");
+		if(ped!=null) {
 		lineas= ctrlLinea.getByPedido(ped);
-		
+		if(lineas.size()>=1) {
 		request.setAttribute("lineas",lineas );
 		request.setAttribute("prod_eliminado", false );
-		//request.setAttribute("mensaje", "Aún no hay productos.");
 		request.getRequestDispatcher("carrito.jsp").forward(request, response);
-		
-	}
-
+		}else {
+			request.getRequestDispatcher("error-gral-cliente.jsp").forward(request, response);
+		}
+		}else {
+			request.getRequestDispatcher("error-gral-cliente.jsp").forward(request, response);
+		}
+}
 }
