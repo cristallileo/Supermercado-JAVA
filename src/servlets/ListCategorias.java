@@ -34,7 +34,7 @@ public class ListCategorias extends HttpServlet {
 			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
 		}
 		categorias=ctrl.listAllCategorias();
-		if(categorias!=null) {
+		if(categorias.size()>=1) {
 		
 		request.setAttribute("descrip", null);
 		request.setAttribute("categorias", categorias);
