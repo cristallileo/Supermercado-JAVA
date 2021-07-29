@@ -55,13 +55,9 @@ public class ListProveedoresDesc extends HttpServlet {
 		String razonS= request.getParameter("search");
 		
 		proveedores=ctrl.listarByDesc(razonS);
-		if(proveedores.size()>=1) {
 			request.setAttribute("descrip", razonS);
 			request.setAttribute("proveedores", proveedores);
 	        request.getRequestDispatcher("listarProveedores.jsp").forward(request, response);
-		}else {
-			request.getRequestDispatcher("error-gral.jsp").forward(request, response);
-		}
 		
 		
 		

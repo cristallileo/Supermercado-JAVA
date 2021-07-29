@@ -53,14 +53,12 @@ public class ObtenerProducto extends HttpServlet {
 			request.getRequestDispatcher("error-consulta.jsp").forward(request, response);
 		}else {
 			lprov= ctrlProv.listarActivos();
-			if(lprov.size()>=1) {
+		
 				request.setAttribute("encontrado", true);
 				request.setAttribute("proveedores", lprov);
 				request.setAttribute("prod", prod);
 				request.getRequestDispatcher("ingresarStock2.jsp").forward(request, response);
-			}else {
-				request.getRequestDispatcher("error-gral.jsp").forward(request, response);
-			}
+			
 			
 		}
 		

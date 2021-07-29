@@ -49,13 +49,10 @@ public class ListClientes extends HttpServlet {
 			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
 		}
 		clientes=ctrl.listarClientes();
-		if(clientes.size()>=1) {
 			request.setAttribute("listado", clientes);
 			request.setAttribute("descrip", null);
 	        request.getRequestDispatcher("listarClientes.jsp").forward(request, response);
-		}else {
-			request.getRequestDispatcher("error-gral.jsp").forward(request, response);
-		}
+		
 		        
 	}
 

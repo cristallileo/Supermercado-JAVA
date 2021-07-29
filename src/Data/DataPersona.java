@@ -107,6 +107,7 @@ public class DataPersona {
             }
 			
 		} catch (SQLException sqe) {
+			
 			System.out.println("Error Code = " + sqe.getErrorCode());
 			System.out.println("SQL state = " + sqe.getSQLState());
 			System.out.println("Message = " + sqe.getMessage());
@@ -120,6 +121,7 @@ public class DataPersona {
              //   conn.commit();
                 DbConnector.getInstancia().releaseConn();
             } catch (SQLException sqe) {
+            	
     			System.out.println("Error Code = " + sqe.getErrorCode());
     			System.out.println("SQL state = " + sqe.getSQLState());
     			System.out.println("Message = " + sqe.getMessage());

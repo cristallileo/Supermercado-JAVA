@@ -66,14 +66,12 @@ public class ListProductos extends HttpServlet {
 			 //request.setAttribute("pedido", null);
 		}else if (per.isEmpleado()==true){
 			 productos=ctrl.listAllProductos();
-			 if(productos.isEmpty()) {
-				 request.getRequestDispatcher("error-gral.jsp").forward(request, response);
-			 }else {
+			
 			 categorias= ctrlCat.listAllCategorias();
 			 request.setAttribute("productos", productos);
 			 request.setAttribute("categorias", categorias);
 			 request.getRequestDispatcher("listarProductos.jsp").forward(request, response);
-		}
+		
 			 
 		}
 }

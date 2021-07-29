@@ -70,7 +70,6 @@ public class QuitarProducto extends HttpServlet {
 		
 		//traigo todas las lineas de mi pedido actual
 		lineas= ctrlLinea.getByPedido(ped);
-		if(lineas.size()>=1) {
 		
 		//veo cual el la linea que tengo q eliminar
 		try{
@@ -91,9 +90,7 @@ public class QuitarProducto extends HttpServlet {
 		request.setAttribute("lineas",lineas );
 		request.setAttribute("prod_eliminado", true );
 		request.getRequestDispatcher("carrito.jsp").forward(request, response);
-	}else {
-		request.getRequestDispatcher("error-gral-cliente.jsp").forward(request, response);
-	}
+	
 		
 	}
 }

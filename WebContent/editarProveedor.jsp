@@ -80,23 +80,23 @@
               <form action="EditProveedor?id=<%=prov.getIdProveedor()%>" method="post" >
                
                 <div class="form-label-group" >
-                  <input type="text" name="razonS" id="razonS" class="form-control" value=<%=prov.getRazonSocial()%> required>
+                  <input type="text" name="razonS" id="razonS" class="form-control" value="<%=prov.getRazonSocial()%>" required>
                   <label for="razonS">Razón Social</label>
                 </div>
                 
                 <div class="form-label-group"  >
-                  <input type="text" name="tel" id="tel" class="form-control" value=<%=prov.getTelefono()%> required >
+                  <input type="text" name="tel" id="tel" class="form-control" value="<%=prov.getTelefono()%>" required >
                   <label for="tel">Teléfono</label>
                 </div>
 
                 <div class="form-label-group">
-                  <input type="text" name="email" id="email" class="form-control" value=<%=prov.getMail()%> required>
+                  <input type="text" name="email" id="email" class="form-control" value="<%=prov.getMail()%>" required>
                   <label for="email">Email</label>
                 </div>
 
                 <%if (prov.getFechaBaja()!=null) {%>
                 <div class="form-label-group" >
-                  <input type="text" name="baja" id="baja" class="form-control" value=<%=prov.getFechaBaja()%> disabled>
+                  <input type="text" name="baja" id="baja" class="form-control" value="<%=prov.getFechaBaja()%>" disabled>
                   <label for="baja">Fecha Baja</label>
                 </div>
                 <%} %>

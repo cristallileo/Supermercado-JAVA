@@ -50,7 +50,6 @@ public class ListPedidosPendientes extends HttpServlet {
 		}
 
       	pedidos=ctrl.listarPedidos();
-      	if(pedidos.size()>=1) {
       		for(Pedido p: pedidos) {
       	      	if(p.getEstado().equals("Confirmado")) {
       	      		pedidos2.add(p);
@@ -58,9 +57,7 @@ public class ListPedidosPendientes extends HttpServlet {
       	      	}
       	      	request.setAttribute("pedidos", pedidos2);
       	      	request.getRequestDispatcher("listarPedidos.jsp").forward(request, response);
-      	     }else {
-      	    	request.getRequestDispatcher("error-gral.jsp").forward(request, response);
-      	     }
+      	    
       	}
       	
 		

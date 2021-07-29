@@ -68,17 +68,15 @@
               <form action="AddCategoria" method="post">
                
                 <div class="form-label-group">
-                  <input type="text" name="descrip" id="descrip" class="form-control" placeholder="Descripcion" required >
+                  <input type="text" name="descrip" id="descrip" class="form-control" placeholder="Descripcion" required autocomplete="off" >
                   <label for="descrip">Descripción</label>
                 </div>
 
                 <p>${message_categoria}</p>
  
-                <form action="AddCategoria" method="post">
                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se agregará una nueva categoría. Desea confirmar?')">Agregar</button>
                 </form>
-                
-      	     </form>
+           
             </div>
           </div>
         </div>

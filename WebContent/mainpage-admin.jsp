@@ -74,19 +74,6 @@
       <div class="col-md-4 mb-5">
         <div class="card h-100">
           <div class="card-body">
-            <h2 class="card-title">Gestión de Descuentos</h2>
-            <%DescuentoController ctrl = new DescuentoController();
-            int cant=ctrl.contarDctos();%>
-            <p class="card-text">Descuentos activos actualmente: <b><%=cant %></b></p>
-          </div>
-          <div class="card-footer">
-            <a href="ListDescuentosActivos" class="btn btn-primary btn-sm">Ver más</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <div class="card-body">
             <h2 class="card-title">Gestión de <br>
             Stock</h2>
             <%ProductoController ct = new ProductoController();

@@ -48,15 +48,12 @@ public class ListCategoriasDesc extends HttpServlet {
 
 		String desc= request.getParameter("search");		
 		categorias=ctrl.listarByDesc(desc);
-		if(categorias.size()>=1) {
 		
 		request.setAttribute("descrip", desc);
 		request.setAttribute("categorias", categorias);
         request.getRequestDispatcher("listarCategorias.jsp").forward(request, response);
 		
-		}else {
-			request.getRequestDispatcher("error-gral.jsp").forward(request, response);
-		}
+		
 	}
 
 }

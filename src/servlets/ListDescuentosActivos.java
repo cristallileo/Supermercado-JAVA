@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import entidades.Persona;
-import logic.PersonaController;
+import entidades.*;
+import logic.DescuentoController;
 
 /**
- * Servlet implementation class ListClientesNombre
+ * Servlet implementation class ListDescuentosActivos
  */
-@WebServlet("/ListClientesNombre")
-public class ListClientesNombre extends HttpServlet {
+@WebServlet("/ListDescuentosActivos")
+public class ListDescuentosActivos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListClientesNombre() {
+    public ListDescuentosActivos() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,20 +31,26 @@ public class ListClientesNombre extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		doPost(request, response);
 	}
 
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		DescuentoController ctrl= new DescuentoController();
+		LinkedList<Descuento> descuentos= new LinkedList<Descuento>();
+		Persona per= new Persona();
+		per= (Persona)request.getSession(true).getAttribute("usuario");
+		if(per==null){
+			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
+		}else {
 	
-		PersonaController ctrl= new PersonaController();
-		LinkedList<Persona> clientes= new LinkedList<Persona>();
-		
-		String desc= request.getParameter("search2");
-		clientes=ctrl.listarClientesNombre(desc);		
-		request.setAttribute("descrip", desc);
-		request.setAttribute("listado", clientes);
-        request.getRequestDispatcher("listarClientes.jsp").forward(request, response);
-		
+		descuentos=ctrl.listarDescuentosAct();
+		request.setAttribute("descuentos", descuentos);
+		request.getRequestDispatcher("listarDescuentos.jsp").forward(request, response);
+				
 	}
+	}
+
 }

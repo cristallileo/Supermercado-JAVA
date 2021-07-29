@@ -34,12 +34,10 @@ public class ListProveedores extends HttpServlet {
 			request.getRequestDispatcher("error-sesion.jsp").forward(request, response);
 		}
 		proveedores=ctrl.listarProveedores();
-		if(proveedores.size()>=1) {
+		
 			request.setAttribute("descrip", null);
 			request.setAttribute("proveedores", proveedores);
 	        request.getRequestDispatcher("listarProveedores.jsp").forward(request, response);
-		}else {
-			request.getRequestDispatcher("error-gral.jsp").forward(request, response);
-		}	
+			
 	}
 }

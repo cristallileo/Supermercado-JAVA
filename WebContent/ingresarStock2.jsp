@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Ingresar stoc</title>
+<title>Ingresar stock</title>
 
 <!-- Bootstrap core CSS -->
   <link href="style/mainpage/bootstrap.min.css" rel="stylesheet">
@@ -84,7 +84,7 @@
 				<form action="IngresarStock" method="post" >
 				
 	               <div class="form-label-group">
-	                  <input type="text" name="desc" id="desc" class="form-control" value="<%=prod.getDescProducto() %>" placeholder="Producto" disabled >
+	                  <input type="text" name="desc" id="desc" class="form-control" placeholder="Producto" value="<%=prod.getDescProducto()%>"  disabled >
 	                  <label for="desc">Producto</label>
 	              </div>
 	              <div class="form-label-group">
