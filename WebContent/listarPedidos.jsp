@@ -142,8 +142,15 @@ PersonaController ctrl = new PersonaController();
 									descuento=ctrlD.getById(descuento);%>
                                     <td><%=descuento.getPorcDcto()*100%></td>
                                     <%} %>
-                                          
-                                     <td style="width: 6%;">
+                                    <td style="width: 9%;"> 
+                                    
+                                    <a href="ListLineas?id=<%=p.getIdPedido() %>" class="table-link  text-warning">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                       </a>
+                                     
                                         <a href="BuscarPedido?id=<%=p.getIdPedido()%>" class="table-link text-info">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
