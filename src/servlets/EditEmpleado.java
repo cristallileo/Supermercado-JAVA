@@ -1,6 +1,8 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.LinkedList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entidades.Persona;
+import logic.MyHelper;
 import logic.PersonaController;
 
 /**
@@ -38,8 +41,10 @@ public class EditEmpleado extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		Persona per= new Persona();	
+		
+		MyHelper h= new MyHelper();
+		Persona per= new Persona();
+		
 		PersonaController ctrl= new PersonaController();
 		
 		String nombre= request.getParameter("name");
@@ -51,7 +56,12 @@ public class EditEmpleado extends HttpServlet {
 		String pass= request.getParameter("pass");
 
 		int id = Integer.parseInt(request.getParameter("id"));
-
+		
+		if(h.isNumeric(nDoc)==false) {
+			request.getRequestDispatcher("error-doc.jsp").forward(request, response);
+		}else if(h.isNumeric(telefono)==false) {
+			request.getRequestDispatcher("error-tel.jsp").forward(request, response);
+		} else {
 		per.setIdPersona(id);
 		per.setTipoDoc(tDoc);
 		per.setNroDoc(nDoc);
@@ -62,10 +72,17 @@ public class EditEmpleado extends HttpServlet {
 		per.setPassword(pass);
 
 		per=ctrl.editPersona(per);
+		LinkedList<Persona> empleados= new LinkedList<Persona>();
+		empleados=ctrl.listarEmpleados();
 		
-		request.setAttribute("empleadoEditado", per);
-		request.setAttribute("empleado", ctrl.listarEmpleados());
-		request.getRequestDispatcher("ListEmpleados").forward(request, response);
+		request.setAttribute("desc", null);
+		request.setAttribute("empleados", empleados);
+	    request.getRequestDispatcher("listarEmpleados.jsp").forward(request, response);
+
+		
+
 	}
+		
+ }
 
 }

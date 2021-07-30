@@ -130,8 +130,7 @@
                   <label for="pass">Contraseña</label>
                 </div>
                 
-                
-                	<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se editará el empleado. Desea confirmar?')">Guardar cambios</button>
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="return confirm('Se editará el empleado. Desea confirmar?')">Guardar cambios</button>
                 
                 
          
