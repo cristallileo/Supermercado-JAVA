@@ -99,12 +99,6 @@
                 <div class="form-label-group">
                   <input type="password" name="pass" id="pass" class="form-control" placeholder="Contraseña" required>
                   <label for="pass">Contraseña</label>
-                </div>
-                
-                <div class="form-label-group">
-                  <input type="text" name="cuil" id="cuil" class="form-control" placeholder="CUIL" required  autocomplete="off" >
-                  <label for="cuil">CUIL</label>
-                </div>
                 
                 <p>${message_empleado1}</p>
                 <p>${message_empleado2}</p>

@@ -120,7 +120,6 @@
                                 <th align="center"><span>Telefono</span></th>
                                 <th align="center"><span>Dirección</span></th>
                                 <th align="center"><span>Email</span></th>
-                                <th align="center"><span>CUIL</span></th>
                                 <th align="center"><span>Ingreso</span></th>
                                
                                 <th>&nbsp;</th>
@@ -141,7 +140,6 @@
                                     <td><%=per.getTelefono() %> </td>
                                     <td><%=per.getDireccion()%> </td>
                                     <td><%=per.getEmail()%> </td>
-                                    <td><%=per.getCuil()%> </td>
                                     <td><%=day%> <%=month %> <%=year %></td>
                                      <td style="width: 10%;">
                                         

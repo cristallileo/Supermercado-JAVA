@@ -41,7 +41,6 @@ public class DataPersona {
 					p.setDireccion(rs.getString("direccion"));
 					p.setEmail(rs.getString("email"));
 					p.setPassword(rs.getString("password"));
-					p.setCuil(rs.getString("cuil"));
 					p.setFechaIngreso(rs.getDate("fechaIngreso"));
 					p.setFechaRegistro(rs.getDate("fechaRegistro"));
 					p.setCliente(rs.getBoolean("cliente"));
@@ -81,7 +80,7 @@ public class DataPersona {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into persona( tipoDoc, nroDoc, nombre, apellido, telefono, direccion, email, password, cuil, fechaIngreso, fechaRegistro, cliente,empleado, fecha_hora_baja) values(?,?,?,?,?,?,?,?,?,?,?,1,0,?)",
+							"insert into persona( tipoDoc, nroDoc, nombre, apellido, telefono, direccion, email, password, fechaIngreso, fechaRegistro, cliente,empleado, fecha_hora_baja) values(?,?,?,?,?,?,?,?,?,?,?,1,0,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
 			
@@ -94,10 +93,9 @@ public class DataPersona {
 			stmt.setString(6, p.getDireccion());
 			stmt.setString(7, p.getEmail());
 			stmt.setString(8, p.getPassword());
-			stmt.setString(9, p.getCuil());
-			stmt.setDate(10, p.getFechaIngreso());
-			stmt.setDate(11, p.getFechaRegistro());
-			stmt.setDate(12, p.getFecha_hora_baja());
+			stmt.setDate(9, p.getFechaIngreso());
+			stmt.setDate(10, p.getFechaRegistro());
+			stmt.setDate(11, p.getFecha_hora_baja());
 			
 			stmt.executeUpdate();
 			
@@ -139,7 +137,7 @@ public class DataPersona {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into persona( tipoDoc, nroDoc, nombre, apellido, telefono, direccion, email, password, cuil, fechaIngreso, fechaRegistro, cliente,empleado, fecha_hora_baja) values(?,?,?,?,?,?,?,?,?,?,?,0,1,?)",
+							"insert into persona( tipoDoc, nroDoc, nombre, apellido, telefono, direccion, email, password, fechaIngreso, fechaRegistro, cliente, empleado, fecha_hora_baja) values(?,?,?,?,?,?,?,?,?,?,0,1,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
 			
@@ -152,10 +150,9 @@ public class DataPersona {
 			stmt.setString(6, p.getDireccion());
 			stmt.setString(7, p.getEmail());
 			stmt.setString(8, p.getPassword());
-			stmt.setString(9, p.getCuil());
-			stmt.setDate(10, p.getFechaIngreso());
-			stmt.setDate(11, p.getFechaRegistro());
-			stmt.setDate(12, p.getFecha_hora_baja());
+			stmt.setDate(9, p.getFechaIngreso());
+			stmt.setDate(10, p.getFechaRegistro());
+			stmt.setDate(11, p.getFecha_hora_baja());
 			
 			stmt.executeUpdate();
 			
@@ -299,7 +296,6 @@ public class DataPersona {
 				p.setDireccion(rs.getString("direccion"));
 				p.setEmail(rs.getString("email"));
 				p.setPassword(rs.getString("password"));
-				p.setCuil(rs.getString("cuil"));
 				p.setFechaIngreso(rs.getDate("fechaIngreso"));
 				p.setFechaRegistro(rs.getDate("fechaRegistro"));
 				p.setCliente(rs.getBoolean("cliente"));
@@ -352,7 +348,6 @@ public class DataPersona {
 				p.setDireccion(rs.getString("direccion"));
 				p.setEmail(rs.getString("email"));
 				p.setPassword(rs.getString("password"));
-				p.setCuil(rs.getString("cuil"));
 				p.setFechaIngreso(rs.getDate("fechaIngreso"));
 				p.setFechaRegistro(rs.getDate("fechaRegistro"));
 				p.setCliente(rs.getBoolean("cliente"));
@@ -404,7 +399,6 @@ public class DataPersona {
 				p.setDireccion(rs.getString("direccion"));
 				p.setEmail(rs.getString("email"));
 				p.setPassword(rs.getString("password"));
-				p.setCuil(rs.getString("cuil"));
 				p.setFechaIngreso(rs.getDate("fechaIngreso"));
 				p.setFechaRegistro(rs.getDate("fechaRegistro"));
 				p.setCliente(rs.getBoolean("cliente"));
@@ -461,7 +455,6 @@ public class DataPersona {
 					p.setDireccion(rs.getString("direccion"));
 					p.setEmail(rs.getString("email"));
 					p.setPassword(rs.getString("password"));
-					p.setCuil(rs.getString("cuil"));
 					p.setFechaIngreso(rs.getDate("fechaIngreso"));
 					p.setFechaRegistro(rs.getDate("fechaRegistro"));
 					p.setCliente(rs.getBoolean("cliente"));
@@ -520,7 +513,6 @@ public class DataPersona {
 					p.setDireccion(rs.getString("direccion"));
 					p.setEmail(rs.getString("email"));
 					p.setPassword(rs.getString("password"));
-					p.setCuil(rs.getString("cuil"));
 					p.setFechaIngreso(rs.getDate("fechaIngreso"));
 					p.setFechaRegistro(rs.getDate("fechaRegistro"));
 					p.setCliente(rs.getBoolean("cliente"));

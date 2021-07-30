@@ -7,7 +7,7 @@ public class Persona {
 	private int idPersona;
 	private String tipoDoc;
 	private String nroDoc;
-	private String nombre, apellido, telefono, direccion, email, password, cuil;
+	private String nombre, apellido, telefono, direccion, email, password;
 	private Date fechaIngreso, fechaRegistro, fecha_hora_baja;
 	public Date getFecha_hora_baja() {
 		return fecha_hora_baja;
@@ -70,12 +70,6 @@ public class Persona {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public String getCuil() {
-		return cuil;
-	}
-	public void setCuil(String cuil) {
-		this.cuil = cuil;
 	}
 	public Date getFechaIngreso() {
 		return fechaIngreso;

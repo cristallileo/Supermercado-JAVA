@@ -73,7 +73,6 @@ public class AddCliente extends HttpServlet {
 		per.setDireccion(direccion);
 		per.setEmail(email);
 		per.setPassword(pass);
-		per.setCuil("");
 		per.setFechaIngreso(null);
 		per.setFecha_hora_baja(null);
 

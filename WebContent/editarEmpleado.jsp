@@ -120,12 +120,6 @@
                   <label for="direc">Dirección</label>
                 </div>
                 
-                             
-                <div class="form-label-group">
-                  <input type="text" name="cuil" id="cuil" class="form-control" value="<%=per.getCuil()%>" required>
-                  <label for="cuil">CUIL</label>
-                </div>
-                
                 <div class="form-label-group">
                   <input type="email" name="email" id="email" class="form-control" value="<%=per.getEmail()%>" disabled>
                   <label for="email">Email</label>

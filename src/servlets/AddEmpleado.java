@@ -43,7 +43,6 @@ public class AddEmpleado extends HttpServlet {
 		String nDoc= request.getParameter("nroDoc");
 		String telefono= request.getParameter("tel");		
 		String direccion= request.getParameter("direc");		
-		String cuil= request.getParameter("cuil");	
 		String email= request.getParameter("email");
 		String pass= request.getParameter("pass");
 		
@@ -63,10 +62,7 @@ public class AddEmpleado extends HttpServlet {
 		}else if(h.isNumeric(telefono)==false) {
 			request.setAttribute("message_empleado3","El teléfono debe ser numérico. No incluir guiones.");
 			request.getRequestDispatcher("crearEmpleado.jsp").forward(request, response);
-		} if(h.isNumeric(cuil)==false) {
-			request.setAttribute("message_empleado4","El campo CUIL debe ser numérico. No incluir guiones.");
-			request.getRequestDispatcher("crearEmpleado.jsp").forward(request, response);
-		}else {
+		} else {
 		per.setTipoDoc(tDoc);
 		per.setNroDoc(nDoc);
 		per.setNombre(nombre);
@@ -75,7 +71,6 @@ public class AddEmpleado extends HttpServlet {
 		per.setDireccion(direccion);
 		per.setEmail(email);
 		per.setPassword(pass);
-		per.setCuil(cuil);
 		per.setFechaRegistro(null);
 
 		java.sql.Date timeNow = new Date(Calendar.getInstance().getTimeInMillis());
