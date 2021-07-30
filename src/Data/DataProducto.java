@@ -180,44 +180,41 @@ public class DataProducto {
 	public Producto editProducto (Producto p,Boolean isthereafile) {
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
-		try {
-		if(isthereafile==true) {
-		
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"UPDATE `tp_java`.`producto` SET `desc_producto` = ?, `stockMinimo` = ?, `marca` = ?, `id_categoria` = ?, `precio` = ?, `fecha_hora_baja` = ?, `imagen` = ? WHERE (`idProducto` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+		try {	
+			if(isthereafile==true) {
 				
-			stmt.setString(1, p.getDescProducto());
-			stmt.setInt(2, p.getStock());
-			stmt.setInt(3, p.getStockMinimo());
-			stmt.setString(4, p.getMarca());
-			stmt.setInt(5, p.getId_categoria());
-			stmt.setDouble(6, p.getPrecio());
-			stmt.setTimestamp(7, p.getFecha_hora_baja());
-			stmt.setBlob(8, p.getImagen_carga());
-			stmt.setInt(9, p.getIdProducto());
-			
-			stmt.executeUpdate();
-		}else {
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"UPDATE `tp_java`.`producto` SET `desc_producto` = ?, `stock` = ?, `stockMinimo` = ?, `marca` = ?, `id_categoria` = ?, `precio` = ?, `fecha_hora_baja` = ? WHERE (`idProducto` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+				stmt=DbConnector.getInstancia().getConn().
+						prepareStatement(
+								"UPDATE `tp_java`.`producto` SET `desc_producto` = ?, `stockMinimo` = ?, `marca` = ?, `id_categoria` = ?, `precio` = ?, `fecha_hora_baja` = ?, `imagen` = ? WHERE (`idProducto` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+					
+				stmt.setString(1, p.getDescProducto());
+				stmt.setInt(2, p.getStockMinimo());
+				stmt.setString(3, p.getMarca());
+				stmt.setInt(4, p.getId_categoria());
+				stmt.setDouble(5, p.getPrecio());
+				stmt.setTimestamp(6, p.getFecha_hora_baja());
+				stmt.setBlob(7, p.getImagen_carga());
+				stmt.setInt(8, p.getIdProducto());
 				
-			stmt.setString(1, p.getDescProducto());
-			stmt.setInt(2, p.getStock());
-			stmt.setInt(3, p.getStockMinimo());
-			stmt.setString(4, p.getMarca());
-			stmt.setInt(5, p.getId_categoria());
-			stmt.setDouble(6, p.getPrecio());
-			stmt.setTimestamp(7, p.getFecha_hora_baja());
-			stmt.setInt(8, p.getIdProducto());
-			
-			stmt.executeUpdate();			
-		}
-			keyResultSet=stmt.getGeneratedKeys();
-            if(keyResultSet!=null && keyResultSet.next()){
-                p.setIdProducto(keyResultSet.getInt(1));
-            }
+				stmt.executeUpdate();
+			}else {
+				stmt=DbConnector.getInstancia().getConn().
+						prepareStatement(
+								"UPDATE `tp_java`.`producto` SET `desc_producto` = ?, `stock` = ?, `stockMinimo` = ?, `marca` = ?, `id_categoria` = ?, `precio` = ?, `fecha_hora_baja` = ? WHERE (`idProducto` = ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+					
+				stmt.setString(1, p.getDescProducto());
+				stmt.setInt(2, p.getStockMinimo());
+				stmt.setString(3, p.getMarca());
+				stmt.setInt(4, p.getId_categoria());
+				stmt.setDouble(5, p.getPrecio());
+				stmt.setTimestamp(6, p.getFecha_hora_baja());
+				stmt.setInt(7, p.getIdProducto());
+				
+				stmt.executeUpdate();			
+			}
+            
+
+            
 		}
 		catch (SQLException sqe) {
 			System.out.println("Error Code = " + sqe.getErrorCode());

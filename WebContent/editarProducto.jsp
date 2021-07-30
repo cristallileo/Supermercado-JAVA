@@ -108,8 +108,8 @@ LinkedList<Categoria> lc= (LinkedList<Categoria>)request.getAttribute("categoria
                   <input type="text" name="precio" id="precio" class="form-control" value="<%=prod.getPrecio()%>" required>
                   <label for="precio">Precio</label>
                 </div>
-                
-                <div class="form-group">
+
+				<div class="form-group">
 				  <label for="foto">Nueva Imagen</label>  
 				  <div class="col-md-12">
 				  <input id="foto" name="foto" type="file" class="form-control input-md" >
