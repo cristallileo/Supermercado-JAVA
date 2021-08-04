@@ -11,10 +11,10 @@
    
 <title>Alta Empleado</title>
 </head>
-<body>
+<body style="padding-top: 87px;">
 
   <div class="container">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand" href="mainpage-admin.jsp">Supermercado</a>
       <div class="collapse navbar-collapse" id="navbarResponsive">

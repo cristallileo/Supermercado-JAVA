@@ -77,6 +77,4 @@ public class PedidoController {
 		return pedidos.size();
 	}
 	
-
-
 }

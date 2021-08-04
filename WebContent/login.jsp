@@ -12,9 +12,11 @@
   <link href="style/login/login.css" rel="stylesheet">
    
 </head>
-<body>
+<body style="padding-top: 87px;">
 
-	  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+	  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+	  <!-- nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"-->
 	    <div class="container">
 	      <a class="navbar-brand" href="index.jsp">Supermercado</a>
 

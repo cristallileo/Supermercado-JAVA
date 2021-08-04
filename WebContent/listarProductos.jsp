@@ -45,7 +45,8 @@
 	</script>
 </head>
 
-<body>
+<body style="padding-top: 87px;">
+
 
 	<!-- Sidebar -->
 	<div class="w3-sidebar w3-bar-block" style="display:none;z-index:5" id="mySidebar">
@@ -77,7 +78,7 @@
   	<div class="container">
   	
  		<!-- Navigation -->
-  		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
    		<button class="w3-button w3-dark-gray w3-large" onclick="w3_open()">&#9776;</button>
     <div class="container">
       <a class="navbar-brand" href="mainpage-admin.jsp">Supermercado</a>

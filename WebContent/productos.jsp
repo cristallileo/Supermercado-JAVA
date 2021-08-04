@@ -69,9 +69,9 @@ function w3_close() {
 
 </head>
 
-<body>
- <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<body style="padding-top: 87px;">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
    <button class="w3-button w3-dark-gray w3-large" onclick="w3_open()">&#9776;</button>
     <div class="container">
       <a class="navbar-brand" href="ListDescuentos">Supermercado</a>

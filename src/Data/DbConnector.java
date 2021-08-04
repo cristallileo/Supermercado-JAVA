@@ -10,7 +10,7 @@ public class DbConnector {
 	private String host="localhost";
 	private String port="3306";
 	private String user="root";
-	private String password="root";
+	private String password="LYRxok51566";
 	private String db="tp_java";
 	private int conectados=0;
 	private Connection conn=null;
@@ -35,7 +35,7 @@ public class DbConnector {
 		try {
 			if(conn==null || conn.isClosed()) {
 				//conn=DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+ db +"?user="+ user + "&password=" + password +"&useSSL=false" );
-				conn=DriverManager.getConnection("jdbc:mysql://" +host+":"+port+"/"+ db, user, password);
+				conn=DriverManager.getConnection("jdbc:mysql://node2943-env-6226861.sp.skdrive.net/"+db+"?serverTimezone=UTC", user, password);
 				//conn=DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + db + "?user=" + user + "&password=" + password + "&useSSL=true");
 				conectados=0;
 			}

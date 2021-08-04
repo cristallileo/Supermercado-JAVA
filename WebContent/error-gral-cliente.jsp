@@ -18,10 +18,9 @@
    } 
    %>
 </head>
-<body>
+<body style="padding-top: 87px;">
 
- <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+	  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand" href="ListDescuentos">Supermercado</a>
       <div class="collapse navbar-collapse" id="navbarResponsive">
